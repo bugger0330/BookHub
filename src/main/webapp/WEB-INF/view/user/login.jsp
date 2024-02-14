@@ -81,9 +81,12 @@
 			<div class="log-form-group">
 				<button type="submit" class="login-btn">로그인</button>
 				<hr />
-				<h5>
+				<h6>
 					회원이 아니신가요? <a href="회원가입 페이지 URL" class="signup-btn">회원가입</a>
-				</h5>
+				</h6>
+				<h6>
+					계정정보를 잊으셨나요? <a href="회원정보찾기 페이지 URL" class="signup-btn">계정찾기</a>
+				</h6>
 				<hr />
 				<h5>소셜로그인</h5>
 				<div class="text-center">
