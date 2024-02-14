@@ -110,6 +110,12 @@
 		%>
 		<a href="<%=apiURL%>"><img height="38" width="154.53"
 			src="/img/btnG_완성형.png" /></a>
+			
+			<a
+			href="">
+			<img alt="" src="/img/web_light_sq_ctn@4x.png"
+			height="38" class="mt-3">
+		</a>
 			</div>
 			</div>
 		</form>
