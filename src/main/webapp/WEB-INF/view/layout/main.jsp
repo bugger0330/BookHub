@@ -100,7 +100,7 @@
 	<!-- 통합검색 끝 -->
 
 
-	<!-- BookHub 둘러보기 시작 -->
+	<!-- BookHub 소식 시작 -->
 	<div style="display: flex; align-items: center;">
     <h2 style="margin-right: auto;">
        <i class="fa-solid fa-flag me-3"></i>Book Hub 소식
@@ -110,8 +110,8 @@
 </div>
 
 <h4>공지사항 부분</h4>
-
-	<!-- BookHub 둘러보기 끝 -->
+	<!-- 여기는 ajax로 공지사항 게시판 불러오기.... -->
+	<!-- BookHub 소식 끝 -->
 	
 	 <!-- Service Start -->
     <div class="container-xxl py-5">
@@ -120,9 +120,9 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Skilled Instructors</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                            <h5 class="mb-3">ssss</h5>
+                            <p>sss</p>
                         </div>
                     </div>
                 </div>
