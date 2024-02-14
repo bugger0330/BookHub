@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Green Book Library :: 독서와 무제한으로 친해지기</title>
+    <title>BookHub :: 독서와 무제한으로 친해지기</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
