@@ -6,14 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import lombok.ToString;
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Builder
 public class User {
     private Long id;
-    private String userName;
+    private String username;
     private String password;
     private String name;
     private int gender;
@@ -25,6 +25,6 @@ public class User {
     private String addr1;
     private String addr2;
     private int status;
-    private LocalDateTime wdate;
-    private LocalDateTime rdate;
+    private LocalDateTime wDate;
+    private LocalDateTime rDate;
 }

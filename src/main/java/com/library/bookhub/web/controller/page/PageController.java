@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class TestController {
+public class PageController {
 
 	@GetMapping("/")
 	public String home() {
@@ -45,9 +45,9 @@ public class TestController {
 	}
 	
 	// 관리자페이지 - 회원관리
-	@GetMapping("/customer")
-	public String customerPage() {
-		return "pages/admin/customer";
+	@GetMapping("/userlist")
+	public String userListPage() {
+		return "userlist";
 	}
 	
 	
