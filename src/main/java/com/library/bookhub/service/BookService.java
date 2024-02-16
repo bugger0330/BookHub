@@ -1,6 +1,7 @@
 package com.library.bookhub.service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,32 +28,35 @@ public class BookService {
 	
 	@Transactional
 	public boolean bookBorrow(int bookId, String username) {
-		int result = 0;
-		System.out.println("===================================");
 		// 현재 시간 + 7일 = 반납일자 / 형태 2024-02-16 17:40:57
-		LocalDateTime now = LocalDateTime.now();
-		System.out.println("현재시간--"+now);
-		//now.plusDays(7);
-		now.plusMonths(11);
-		System.out.println("대출기한--" + now);// 안됨..
-		
-		
+		LocalDateTime now = LocalDateTime.now().plusDays(7);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		String returnDate = now.format(formatter);
+
 		BookBorrow bookBorrow = BookBorrow.builder()
 				.userName(username)
 				.bookNo(bookId)
-				.returnDate("")
+				.returnDate(returnDate)
 				.build();
-//		int userResult = bookRepository.borrowUser(bookBorrow);
-//		if(userResult == 0) {
-//			throw new RuntimeException("bh_book_borrow에 대출정보 등록 실패!");
-//		}
-//		int bookResult = bookRepository.borrowBook(bookId);
-//		if(bookResult == 0) {
-//			throw new RuntimeException("bh_book에 대출정보 수정 실패!");
-//		}
-//		result = userResult + bookResult;
+		int userResult = bookRepository.borrowUser(bookBorrow);
+		if(userResult == 0) {
+			throw new RuntimeException("bh_book_borrow에 대출정보 등록 실패!");
+		}
 		
-		return result == 2;
+		Book book = bookRepository.bookInfo(bookId);
+		// 북에 대출건수 +1 하고, 대출여부 수정해야함
+		
+		book.setBorrow(book.getBorrow() + 1);
+		book.setStatus("대출 불가");
+		book.setWdate(returnDate);
+		int bookResult = bookRepository.borrowBook(book);
+		if(bookResult == 0) {
+			throw new RuntimeException("bh_book에 대출정보 수정 실패!");
+		}
+		
+		return true;
 	}
+
+		
 	
 }

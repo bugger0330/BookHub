@@ -77,10 +77,7 @@ public class BookController {
 		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
-	
-	
-	
-	
+
 	
 	
 	

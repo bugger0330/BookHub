@@ -15,10 +15,22 @@
 	<insert id="borrowUser">
 		insert into bh_book_borrow(userName, brComplete, brDate, returnDate, bookNo)
 		values(
-			
+			#{userName},
+			1,
+			now(),
+			#{returnDate},
+			#{bookNo}
 		);
 	</insert>
 	
+	<update id="borrowBook">
+		update bh_book set
+			borrow = #{borrow},
+			status = #{status},
+			wdate = #{wdate}
+		where id = #{id};
+	</update>
+
 	
 
 </mapper>

@@ -16,5 +16,6 @@ public interface BookRepository {
 	
 	// 대출
 	public int borrowUser(BookBorrow bookBorrow);
-	public int borrowBook(int id);
+	public int borrowBook(Book book);
+	
 }
