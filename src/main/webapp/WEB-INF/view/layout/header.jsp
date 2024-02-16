@@ -31,6 +31,9 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    
+    <!-- CS CSS -->
+    <link href="css/csStyle.css" rel="stylesheet"> 
 </head>
 
 <body>
@@ -66,8 +69,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">공지사항</a>
-                        <a href="testimonial.html" class="dropdown-item">고객센터</a>
+                        <a href="/notice" class="dropdown-item">공지사항</a>
+                        <a href="/qna" class="dropdown-item">문의하기</a>
+                        <a href="/faq" class="dropdown-item">자주 묻는 질문</a>
                        
                     </div>
                 </div>
