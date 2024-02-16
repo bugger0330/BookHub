@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS bh_payment;
 DROP TABLE IF EXISTS bh_club;
 -- 회원
 CREATE TABLE bh_member (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT AUTO_INCREMENT PRIMARY KEY,
     userName VARCHAR(20) NOT NULL,
     password VARCHAR(255) NOT NULL,
     name VARCHAR(20),
@@ -26,12 +26,7 @@ CREATE TABLE bh_member (
     addr2 VARCHAR(255),
     status INT DEFAULT 0 NOT NULL,
     wdate DATETIME,
-    rdate DATETIME NOT NULL,
-    etc1 INT,
-    etc2 INT,
-    etc3 VARCHAR(10),
-    etc4 VARCHAR(20),
-    etc5 VARCHAR(30)
+    rdate DATETIME NOT NULL
 );
 
 

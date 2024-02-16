@@ -47,7 +47,7 @@ public class PageController {
 	// 관리자페이지 - 회원관리
 	@GetMapping("/userlist")
 	public String userListPage() {
-		return "userlist";
+		return "pages/admin/userlist";
 	}
 	
 	

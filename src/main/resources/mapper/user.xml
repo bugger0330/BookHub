@@ -6,5 +6,15 @@
     <select id="findAll" resultType="com.library.bookhub.entity.User">
         SELECT * FROM bh_member
     </select>
+    
+ <select id="findAllWithPagingAndUsername" resultType="com.library.bookhub.entity.User">
+    SELECT * FROM bh_member WHERE LOWER(name) LIKE CONCAT('%', LOWER(#{name}), '%') LIMIT #{limit} OFFSET #{offset}
+</select>
+
+
+   <select id="getTotalCount" resultType="int">
+    SELECT COUNT(*) FROM bh_member;
+</select>
+
 
 </mapper>
