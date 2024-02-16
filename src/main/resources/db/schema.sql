@@ -19,7 +19,7 @@ CREATE TABLE bh_member (
     gender TINYINT NOT NULL CHECK (gender IN (1, 2)),
     phone CHAR(13) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    type TINYINT NOT NULL CHECK (type IN (1, 9)),
+    type TINYINT DEFAULT 1 NOT NULL CHECK (type IN (1, 9)),
     point INT DEFAULT 0,
     zip VARCHAR(10),
     addr1 VARCHAR(255),
