@@ -46,7 +46,7 @@
 								그것을 나누는 것은 함께하는 모험입니다.</p>
 							<a href=""
 								class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">모임 개설하기
-								</a> 
+								</a>
 						</div>
 					</div>
 				</div>
@@ -70,7 +70,7 @@
 								동참해보세요.</p>
 							<a href=""
 								class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">책 기부하기
-								</a> 
+								</a>
 						</div>
 					</div>
 				</div>
@@ -106,14 +106,14 @@
        <i class="fa-solid fa-flag me-3"></i>Book Hub 소식
     </h2>
 
-   
+
 </div>
 
 <h4>공지사항 부분</h4>
 
 	<!-- BookHub 둘러보기 끝 -->
-	
-	
+
+
 
     <!-- Categories Start -->
     <div class="container-xxl py-5 category">
@@ -163,6 +163,23 @@
         </div>
     </div>
     <!-- Categories Start -->
+
+<!-- 광고 캐러셀 -->
+<div class="owl-carousel header-carousel position-relative" style="height: 200px">
+		<div class="owl-carousel-item position-relative" >
+			<img class="img-fluid" src="img/carousel-1.jpg" alt="" style="height: 200px">
+
+		</div>
+		<div class="owl-carousel-item position-relative" >
+        			<img class="img-fluid" src="img/carousel-1.jpg" alt="" style="height: 200px">
+
+        		</div>
+		<div class="owl-carousel-item position-relative" >
+        			<img class="img-fluid" src="img/carousel-1.jpg" alt="" style="height: 200px">
+
+        		</div>
+	</div>
+<!-- 광고캐러셀 End -->
 
 
     <!-- Courses Start -->
