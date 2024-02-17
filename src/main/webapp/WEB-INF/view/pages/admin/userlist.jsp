@@ -132,7 +132,7 @@ img {
 								<td class="text-center">${user.type == 1 ? '일반계정' : '관리자'}</td>
 								<!-- 계정 유형을 한글로 표시합니다. -->
 								<td class="text-center">${user.point}</td>
-								<td><a href="/user/detail/${user.id}"><button type="button"
+								<td class="text-center"><a href="/user/detail/${user.id}"><button type="button"
 										class="btn btn-warning">자세히보기</button></a></td>
 								
 							</tr>

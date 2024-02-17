@@ -15,7 +15,7 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
-        
+
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
 #    driver-class-name: com.mysql.cj.jdbc.Driver

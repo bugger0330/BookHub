@@ -56,6 +56,11 @@ public class PageController {
 	public String adSettingPage() {
 		return "pages/admin/adSettings";
 	}
+
+	@GetMapping("/ad-list")
+	public String adListPage() {
+		return "pages/admin/adList";
+	}
 	
 	// 관리자페이지 - 환불요청목록
 	@GetMapping("/refund-list")

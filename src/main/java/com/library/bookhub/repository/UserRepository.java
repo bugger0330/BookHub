@@ -1,6 +1,7 @@
 package com.library.bookhub.repository;
 
 import com.library.bookhub.entity.User;
+import com.library.bookhub.web.dto.UserFormDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.Optional;
 @Mapper
 public interface UserRepository {
 
+
+    // 전체조회, 페이징처리
 	List<User> findAllWithPagingAndUsername(@Param("offset") int offset, @Param("limit") int limit, @Param("name") String name);
 
 
