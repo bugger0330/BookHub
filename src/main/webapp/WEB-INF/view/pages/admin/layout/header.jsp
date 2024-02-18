@@ -47,8 +47,7 @@
                             <li><a class="dropdown-item" href="/ad-setting">배너광고추가</a></li>
                             <li><a class="dropdown-item" href="/ad/list">배너광고목록</a></li>
                         </ul></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
+
                 </ul>
             </div>
         </div>

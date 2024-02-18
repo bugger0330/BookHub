@@ -33,7 +33,7 @@
                                 <input type="text" class="form-control" id="title" name="title" required>
                             </div>
                             <div class="form-group">
-                                <label for="content">내용</label>
+                                <label for="content">내용(url)</label>
                                 <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
                             </div>
                             <div class="form-group">

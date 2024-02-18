@@ -24,4 +24,48 @@
     </select>
 
 
+    <select id="findById" resultType="com.library.bookhub.entity.BannerAd">
+        SELECT ID ,UPLOAD_FILE_NAME, CONTENT FROM BH_BANNER
+        WHERE POST_YN = 'Y';
+    </select>
+
+
+    <select id="findByBannerId" parameterType="int"
+            resultType="com.library.bookhub.entity.BannerAd">
+        SELECT *
+        FROM bh_banner
+        WHERE id = #{id}
+    </select>
+
+
+
+
+
+    <update id="update" parameterType="com.library.bookhub.entity.BannerAd">
+        UPDATE bh_banner
+        SET
+        title = #{title},
+        content = #{content},
+        writer = #{writer},
+        origin_file_name = #{originFileName},
+        upload_file_name = #{uploadFileName},
+        post_yn = #{postYn},
+        created_at = now()
+        WHERE id = #{id}
+    </update>
+
+
+
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM bh_banner
+        WHERE id = #{id}
+    </delete>
+
+
+    <select id="existById" parameterType="int" resultType="long">
+        SELECT COUNT(id)
+        FROM bh_banner
+        WHERE id = #{id}
+    </select>
+
 </mapper>
