@@ -41,7 +41,7 @@ public class BannerAdController {
             pageReq.setPage(1); // 페이지가 0이하인 경우 첫 페이지로 설정
         }
         if (pageReq.getSize() <= 0) {
-            pageReq.setSize(10); // 페이지당 기본 개수 설정
+            pageReq.setSize(5); // 페이지당 기본 개수 설정
         }
 
         // 페이징된 유저 목록 가져오기
@@ -124,13 +124,60 @@ public class BannerAdController {
         return "pages/admin/adUpdate";
     }
 
-
-    // 수정함수 : db 수정 저장
+ // 수정함수 : db 수정 저장
     @PutMapping("/edit/{id}")
-    public RedirectView updateBannerAd(@PathVariable int id, @ModelAttribute BannerAd bannerAd) {
-      
-        return new RedirectView("/ad/list");
+    public RedirectView updateBannerAd(@PathVariable int id, @ModelAttribute BannerAdFormDto dto) {
+
+        // 이미지를 업로드하지 않았을 경우 유효성 검사
+        if (dto.getBannerImage() == null || dto.getBannerImage().isEmpty()) {
+            throw new CustomRestFulException("이미지 업로드는 필수입니다.", HttpStatus.BAD_REQUEST);
+        }
+        
+        // 배너광고가 존재하는지 확인
+        Optional<BannerAd> optionalBannerAd = bannerAdService.findByBannerId(id);
+        if (optionalBannerAd.isPresent()) {
+            BannerAd existingBannerAd = optionalBannerAd.get();
+
+            // 텍스트 정보 업데이트
+            existingBannerAd.setTitle(dto.getTitle());
+            existingBannerAd.setContent(dto.getContent());
+            existingBannerAd.setWriter(dto.getWriter());
+            existingBannerAd.setPostYn(dto.getPostYn());
+
+            // 이미지가 수정되었을 때만 이미지 업데이트 수행
+            if (dto.getBannerImage() != null && !dto.getBannerImage().isEmpty()) {
+                MultipartFile file = dto.getBannerImage();
+                String saveDirectory = Define.UPLOAD_FILE_DERECTORY;
+                String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
+                File destination = new File(saveDirectory, fileName);
+                try {
+                    file.transferTo(destination);
+                    existingBannerAd.setOriginFileName(file.getOriginalFilename());
+                    existingBannerAd.setUploadFileName(fileName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // 이미지가 수정되지 않은 경우, 기존 이미지 정보를 유지
+                existingBannerAd.setOriginFileName(dto.getOriginFileName());
+                existingBannerAd.setUploadFileName(dto.getUploadFileName());
+            }
+
+            // 배너광고 정보 저장
+            int result = bannerAdService.save(existingBannerAd);
+            if (result != -1) {
+                return new RedirectView("/ad/list");
+            } else {
+                return new RedirectView("/ad/list");
+            }
+        } else {
+            return new RedirectView("/ad/list");
+        }
     }
+
+
+
+
 
 
 

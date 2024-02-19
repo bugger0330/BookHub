@@ -122,17 +122,17 @@ img {
 						<c:forEach var="user" items="${userList}">
 							<tr>
 							 
-								<td class="text-center">${user.id}</td>
-								<td class="text-center">${user.username}</td>
-								<td class="text-center">${user.name}</td>
-								<td class="text-center">${user.gender == 1 ? '남성' : '여성'}</td>
+								<td class="text-center align-middle">${user.id}</td>
+								<td class="text-center align-middle">${user.username}</td>
+								<td class="text-center align-middle">${user.name}</td>
+								<td class="text-center align-middle">${user.gender == 1 ? '남성' : '여성'}</td>
 								<!-- 성별을 한글로 표시합니다. -->
-								<td class="text-center">${user.email}</td>
-								<td class="text-center">${user.phone}</td>
-								<td class="text-center">${user.type == 1 ? '일반계정' : '관리자'}</td>
+								<td class="text-center align-middle">${user.email}</td>
+								<td class="text-center align-middle">${user.phone}</td>
+								<td class="text-center align-middle">${user.type == 1 ? '일반계정' : '관리자'}</td>
 								<!-- 계정 유형을 한글로 표시합니다. -->
-								<td class="text-center">${user.point}</td>
-								<td class="text-center"><a href="/user/detail/${user.id}"><button type="button"
+								<td class="text-center align-middle">${user.point}</td>
+								<td class="text-center align-middle"><a href="/user/detail/${user.id}"><button type="button"
 										class="btn btn-warning">자세히보기</button></a></td>
 								
 							</tr>
