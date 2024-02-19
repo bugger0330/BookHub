@@ -1,18 +1,19 @@
 server: 
   port: 80
-  servlet:
-    encoding:
+  servlet: 
+    encoding: 
       charset: utf-8
       force: true
-      
 
-spring:
-  mvc:
+
+spring: 
+  mvc: 
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
   servlet:
     multipart:
+<<<<<<< HEAD
       max-file-size:
         20MB
       max-request-size:
@@ -22,15 +23,47 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: asd1234
+=======
+      max-file-size: 20MB
+      max-request-size: 20MB
+>>>>>>> 8f68c2007fafc42cba826a2d59f7b39ad1deb1a9
 
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: asd1234   
+#            
+  datasource: # DB 설정
+    url: jdbc:h2:mem:testdb;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: user # 유저 이름
+    password: # 비밀번호 (비워두면 비밀번호 X)
+  sql: 
+    init: # 초기 sql 파일 읽기 
+      schema-locations: # 스키마 (테이블 생성 등)
+      - classpath:db/schema.sql 
+      data-locations: # 샘플 데이터
+      - classpath:db/data.sql
+  h2: 
+    console: 
+      enabled: true
+  output: 
+    ansi: 
+      enabled: always
 
-mybatis:
-  mapper-locations:
+mybatis: 
+ mapper-locations:
   - classpath:mapper/**.xml
-  configuration:
-    map-underscore-to-camel-case: true # mysql <--> spring 간에 스네이크 케이스, 카멜케이스 자동 매핑 해준다
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+ configuration:
+   map-underscore-to-camel-case: true 
+   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
    
 logging:
   level:
     org.mybatis: DEBUG
+    
+    
+    
+pagination:
+  size: 10

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.UserRepository">
+
+
+
+	<select id="findAllWithPagingAndUsername"
+		resultType="com.library.bookhub.entity.User">
+		SELECT * FROM bh_member WHERE LOWER(name) LIKE CONCAT('%',
+		LOWER(#{name}),
+		'%') LIMIT #{limit} OFFSET #{offset}
+	</select>
+
+
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM
+		bh_member;
+	</select>
+
+
+
+	<select id="findById" parameterType="int"
+		resultType="com.library.bookhub.entity.User">
+		SELECT *
+		FROM bh_member
+		WHERE id = #{id}
+	</select>
+
+
+	<insert id="insert" parameterType="com.library.bookhub.entity.User">
+		INSERT INTO bh_member (username, password, name, gender, phone, email, zip, addr1, rdate)
+		VALUES (#{username}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP);
+	</insert>
+
+
+	<update id="update" parameterType="com.library.bookhub.entity.User">
+		UPDATE bh_member
+		SET
+		username = #{username},
+		password = #{password},
+		name = #{name},
+		type = #{type},
+		gender = #{gender},
+		phone = #{phone},
+		email = #{email},
+		zip = #{zip},
+		addr1 = #{addr1}
+		WHERE id = #{id}
+	</update>
+
+
+
+	<delete id="deleteById" parameterType="int">
+        DELETE FROM bh_member
+        WHERE id = #{id}
+    </delete>
+    
+    
+     <select id="existById" parameterType="int" resultType="long">
+        SELECT COUNT(id)
+        FROM bh_member
+        WHERE id = #{id}
+    </select>
+
+
+</mapper>
