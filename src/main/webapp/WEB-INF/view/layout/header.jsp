@@ -34,6 +34,10 @@
     
     <!-- CS CSS -->
     <link href="css/csStyle.css" rel="stylesheet"> 
+    
+    <!-- 네이버 스마트 에디터 2.0 -->
+    <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    
 </head>
 
 <body>

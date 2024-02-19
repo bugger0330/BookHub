@@ -979,7 +979,56 @@
     box-sizing: border-box;
   }
   
-  .qna pagination {
-  justify-content: center;
-  align-items: center;
+#cs > .qnaMainContainer  {
+	
+	display: flex;
+}
+
+#cs > .qnaMainContainer > div.d-flex.flex-column.flex-shrink-0.p-3.bg-light{
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: flex-start;
+	justify-content: flex-start;
+	align-items: baseline;
+	align-content: flex-start;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#cs > .qnaMainContainer>div>div>div  select{
+	color: #52565b;
+    border: 1px solid #ced4da; 
+}
+
+#cs > .qnaMainContainer>div>div>div {
+	justify-content: flex-end;
+	
+}
+
+#cs > .qnaMainContainer>div>div>div> .btn {
+    position: relative;
+}
+
+#cs > .qnaMainContainer>div>ul {
+	justify-content: center;
+	align-content: center;
+}
+ .nav-item {
+    /* 기본 가로 크기 설정 */
+    width: 250px;
   }
+
+  @media (max-width: 768px) {
+    /* 화면 너비가 768px 이하일 때 적용되는 스타일 */
+    .nav-item {
+      width: 100px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    /* 화면 너비가 576px 이하일 때 적용되는 스타일 */
+    .nav-item {
+      width: 80px;
+    }
+  }
+

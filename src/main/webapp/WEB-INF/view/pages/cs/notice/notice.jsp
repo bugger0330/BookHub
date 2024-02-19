@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -11,103 +12,109 @@
 		</div>
 	</div>
 </div>
-<div class="infodesk">
+<!-- Header End -->
 
-	<section id="cs">
-		<div class="notice">
-			<nav>
-				<div>
-					<p>
-						홈<span>></span>공지사항
-					</p>
-				</div>
+<section id="cs">
+
+	<div class="qnaMainContainer">
+
+		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
+
+		<div class="container">
+
+			<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
+					<li class="breadcrumb-item active" aria-current="page"
+						style="color: #0596a3;">공지사항</li>
+				</ol>
 			</nav>
-			<section class="list">
-				<aside>
-					<h2>공지사항</h2>
-					<ul>
-						<li class="on"><a href="#">전체</a></li>
-						<li><a href="#">고객서비스</a></li>
-						<li><a href="#">안전거래</a></li>
-						<li><a href="#">위해상품</a></li>
-						<li><a href="#">이벤트당첨</a></li>
-					</ul>
-				</aside>
-				<article>
-					<nav>
-						<h1>전체</h1>
-						<h2>공지사항 전체 내용입니다.</h2>
-						<div>
-							<form id="formSearch" 
-								method="get">
-								<input type="hidden" name="seller"
-									> <select
-									name="searchType">
-									<option value="prodName">상품명</option>
-									<option value="prodNo">상품코드</option>
-									<option value="company">제조사</option>
-								</select> <input type="text" name="searchKeyword" />
-								<button id="btnSearch">검색</button>
-							</form>
-						</div>
-					</nav>
 
-					<table>
-						<tr>
-							<td><a href="./view.html">[안내] 해외결제 사칭 문자 주의</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="./view.html">[발표]『G.Live X SK스토아(하남쭈꾸미)』
-									이벤트 당첨자</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[안내] 로젠택배 반품/교환 수거지시 지연 안내</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[안내] 해외직구셀러 특별약관 개정</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[안내] 위치정보이용 약관 개정 공지</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[발표]『써모스 상품 구매』 이벤트 당첨자</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">한국소비자원, '22년 OECD 글로벌 제품안전 캠페인</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[점검] G마켓 사이트 이용 일시 중단</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[안내] 구매회원 이용약관 개정</a></td>
-							<td>2022.11.21</td>
-						</tr>
-						<tr>
-							<td><a href="#">[안내] 씨티은행 시스템 점검에 따른 계좌, 체크카드결제 서비스 일시
-									중단</a></td>
-							<td>2022.11.21</td>
-						</tr>
-					</table>
-
-					<div class="page">
-						<a href="#" class="prev">이전</a> <a href="#" class="num on">1</a> <a
-							href="#" class="num">2</a> <a href="#" class="num">3</a> <a
-							href="#" class="next">다음</a>
+			<div>
+				<h2>공지사항</h2>
+				<div class="input-group" style="margin-top: 30px;">
+					<select name="searchType">
+						<option value="prodName">전체</option>
+						<option value="prodNo">제목+내용</option>
+						<option value="company">작성일</option>
+					</select>
+					<div class="form-outline">
+						<input type="search" id="form1" class="form-control"
+							placeholder="Search" />
 					</div>
 
-				</article>
-			</section>
+					<button type="button" class="btn btn-primary">
+						<i class="fas fa-search"></i>
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover" style="margin-top: 30px; margin-bottom: 30px;">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>첨부</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><i class="bi bi-megaphone-fill text-danger"></i></td>
+						<td>설날 중앙도서관 휴관 안내</td>
+						<td><i class="bi bi-file-earmark-text-fill"></i></td>
+						<td>관리자</td>
+						<td>2024-02-01</td>
+						<td>144</td>
+					</tr>
+					<tr>
+						<td><i class="bi bi-megaphone-fill text-danger"></i></td>
+						<td>설날 중앙도서관 휴관 안내</td>
+						<td><i class="bi bi-file-earmark-text-fill"></i></td>
+						<td>관리자</td>
+						<td>2024-02-01</td>
+						<td>144</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>설날 중앙도서관 휴관 안내</td>
+						<td><i class="bi bi-file-earmark-text-fill"></i></td>
+						<td>관리자</td>
+						<td>2024-02-01</td>
+						<td>144</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>설날 중앙도서관 휴관 안내</td>
+						<td><i class="bi bi-file-earmark-text-fill"></i></td>
+						<td>관리자</td>
+						<td>2024-02-01</td>
+						<td>144</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>설날 중앙도서관 휴관 안내</td>
+						<td><i class="bi bi-file-earmark-text-fill"></i></td>
+						<td>관리자</td>
+						<td>2024-02-01</td>
+						<td>144</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<ul class="qna pagination" >
+				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item active"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+
 		</div>
-	</section>
-	<!-- Header End -->
+	</div>
+</section>
+
+<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 
-	<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
