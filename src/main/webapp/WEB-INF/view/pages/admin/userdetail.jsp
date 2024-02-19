@@ -81,10 +81,13 @@
 							</tbody>
 						</table>
 						<div class="text-center">
-						<a href="/user/update/${user.id}"><button type="button" class="btn btn-outline-success me-3">회원수정</button></a>
-						
-						<a href="/user/delete/${user.id}"><button type="button" class="btn btn-outline-danger">회원삭제</button></a>
-						</div>
+                            <a href="/user/update/${user.id}">
+                                <button type="button" class="btn btn-outline-success me-3">회원수정</button>
+                            </a>
+
+
+                        </div>
+
 					</div>
 				</div>
 			</div>

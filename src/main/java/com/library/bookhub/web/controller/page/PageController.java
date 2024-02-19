@@ -6,11 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
-	@GetMapping("/")
-	public String home() {
-		return "home";
-	}
-
 	// 로그인페이지
 	@GetMapping("/login")
 	public String loginPage() {
@@ -55,6 +50,14 @@ public class PageController {
 	@GetMapping("/ad-setting")
 	public String adSettingPage() {
 		return "pages/admin/adSettings";
+	}
+
+	@GetMapping("/ad-update")
+	public String adUpdate(){return "pages/admin/adUpdate";}
+
+	@GetMapping("/ad-list")
+	public String adListPage() {
+		return "pages/admin/adList";
 	}
 	
 	// 관리자페이지 - 환불요청목록

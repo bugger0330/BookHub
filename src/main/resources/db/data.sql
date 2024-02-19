@@ -2,7 +2,7 @@
 INSERT INTO bh_member (userName, password, name, gender, phone, email, type, point, zip, addr1, addr2, status, rdate)
 VALUES 
     ('user1', 'password1', '김철수', 1, '123-4567-8901', 'user1@example.com', 9, 100, '12345', 'Address 1', 'City 1', 2, CURRENT_TIMESTAMP),
-    ('user2', 'password2', '이영희', 2, '234-5678-9012', 'user2@example.com', 1, 200, '23456', 'Address 2', 'City 2', 0, CURRENT_TIMESTAMP),
+	('user2', 'password2', '이영희', 2, '234-5678-9012', 'user2@example.com', 1, 200, '23456', 'Address 2', 'City 2', 0, CURRENT_TIMESTAMP),
     ('user3', 'password3', '박민수', 1, '345-6789-0123', 'user3@example.com', 1, 300, '34567', 'Address 3', 'City 3', 0, CURRENT_TIMESTAMP),
     ('user4', 'password4', '정지영', 2, '456-7890-1234', 'user4@example.com', 1, 400, '45678', 'Address 4', 'City 4', 0, CURRENT_TIMESTAMP),
     ('user5', 'password5', '이지은', 1, '567-8901-2345', 'user5@example.com', 1, 500, '56789', 'Address 5', 'City 5', 0, CURRENT_TIMESTAMP),
@@ -64,10 +64,7 @@ INSERT INTO bh_cs_notice (cate1, cate2, title, content, hit, rdate)
 VALUES (1, 1, 'Notice 1', 'Content of Notice 1', 0, CURRENT_TIMESTAMP),
        (2, 2, 'Notice 2', 'Content of Notice 2', 0, CURRENT_TIMESTAMP);
 
--- 광고 더미 데이터 삽입
-INSERT INTO bh_banner (title, content, writer, thumb1, thumb2)
-VALUES ('Banner 1', 'Content of Banner 1', 'Admin', 'thumb1.jpg', 'thumb2.jpg'),
-       ('Banner 2', 'Content of Banner 2', 'Admin', 'thumb3.jpg', 'thumb4.jpg');
+
 
 -- 결제 더미 데이터 삽입
 INSERT INTO bh_payment (userName, price, period, scProduct, ptProduct, rdate)

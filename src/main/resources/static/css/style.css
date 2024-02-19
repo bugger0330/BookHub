@@ -162,6 +162,7 @@
     height: 768px; /* 이미지 높이를 768px로 고정 */
 }
 
+
 .header-carousel .owl-carousel-item img {
     width: 100%;
     height: 100%;
@@ -213,6 +214,10 @@
 .breadcrumb-item + .breadcrumb-item::before {
     color: var(--light);
 }
+
+
+
+
 
 
 /*** Section Title ***/
