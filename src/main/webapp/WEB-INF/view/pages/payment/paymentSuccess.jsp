@@ -22,11 +22,17 @@
 	</div>
 	<!-- Header End -->
 	
-	<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+	
+     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
 				
-				<h4>결제에 성공하였습니다.</h4>
+	<div class="container rounded-3 border border-2 border-secondary p-3 mb-3">
+				<h3>결제에 성공하였습니다.</h3>
+				
+				<h4>구매내역은 마이페이지에서 확인가능합니다.</h4>
 			</div>
 
+    </div>
+	
 
 
 	<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
