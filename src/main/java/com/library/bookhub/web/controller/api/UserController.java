@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,7 +57,7 @@ public class UserController {
 
         return "pages/admin/userlist";
     }
-    
+
     
     // 상세조회
     @GetMapping("/detail/{id}")
@@ -84,7 +85,7 @@ public class UserController {
     	Optional<User> optionalUser = userService.findById(id);
     	// jsp 전달
     	model.addAttribute("user", optionalUser.get());
-    	return "pages/admin/userupdate";
+    	return "pages/admin/update";
     }
     
     // 수정함수 : db 수정 저장
@@ -95,8 +96,6 @@ public class UserController {
         // 전체조회 페이지로 이동
         return new RedirectView("/user/list");
     }
-
-    
     
  // 삭제함수
     @DeleteMapping("/delete/{id}")

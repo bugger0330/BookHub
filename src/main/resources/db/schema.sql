@@ -118,8 +118,10 @@ CREATE TABLE bh_banner (
     title VARCHAR(255),
     content VARCHAR(255),
     writer VARCHAR(20),
-    thumb1 VARCHAR(255) NOT NULL,
-    thumb2 VARCHAR(255) NOT NULL
+    origin_file_name VARCHAR(255) NOT NULL,
+    upload_file_name VARCHAR(255) NOT NULL,
+    post_yn VARCHAR(2) DEFAULT 'N',
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 -- 결제

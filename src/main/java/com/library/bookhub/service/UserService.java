@@ -1,16 +1,17 @@
 package com.library.bookhub.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.UserRepository;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -19,9 +20,10 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    // 모든 유저 목록 조회
-    public List<User> getAllUsers(int offset, int size, String name) {
-        return userRepository.findAllWithPagingAndUsername(offset, size, name);
+
+    // 총 회원 수 조회 메서드
+    public long getTotalUserCount() {
+        return userRepository.getTotalCount();
     }
 
     // 페이징된 유저 목록 조회
@@ -68,7 +70,7 @@ public class UserService {
     	
     	return queryResult;
     }
-    
+
     
     // 삭제함수
     public boolean removeById(int id) {

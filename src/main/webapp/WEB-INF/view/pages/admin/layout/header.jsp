@@ -15,6 +15,7 @@
 <link href="/css/adminpagestyles.css" rel="stylesheet" />
 <!-- Bootstrap CSS -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
     <!-- Responsive navbar-->
@@ -43,10 +44,10 @@
                         class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">광고</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/ad-setting">광고설정</a></li>
+                            <li><a class="dropdown-item" href="/ad-setting">배너광고추가</a></li>
+                            <li><a class="dropdown-item" href="/ad/list">배너광고목록</a></li>
                         </ul></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
+
                 </ul>
             </div>
         </div>
