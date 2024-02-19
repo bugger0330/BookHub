@@ -33,6 +33,7 @@ public class BannerAdRestFulController {
     }
     
     
+    // 광고여부 상태값 수정
     @PutMapping("/updatepost/{id}")
     public ResponseEntity<?> updatePostStatus(@PathVariable Long id, @RequestBody Map<String, String> requestBody) {
         String postYn = requestBody.get("post_yn");
