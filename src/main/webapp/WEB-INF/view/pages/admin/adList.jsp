@@ -53,7 +53,6 @@ th {
 .pagination a:hover:not(.active) {
 	background-color: #ddd;
 }
-
 </style>
 </head>
 <body>
@@ -82,7 +81,7 @@ th {
 						<tr class="text-center">
 							<th>No</th>
 							<th>제목</th>
-							<th>내용(url)</th>
+							<th>URL</th>
 							<th>광고주명</th>
 							<th>이미지</th>
 							<th>광고여부</th>
@@ -92,16 +91,23 @@ th {
 					<tbody>
 						<c:forEach var="ad" items="${adList}">
 							<tr>
-								<td class="text-center">${ad.id}</td>
-								<td class="text-center">${ad.title}</td>
-								<td class="text-center" style="word-wrap: break-word; max-width: 200px;">${ad.content}</td>
-								<td class="text-center">${ad.writer}</td>
-								<td class="text-center"><img src="${ad.setupAdImage()}"
-									width="200" height="100"></td>
-								<td class="text-center">${ad.postYn == 'Y' ? '광고중' : '광고중단'}</td>
-								<td class="text-center"><a href="/ad/update/${ad.id}"
-									class="btn btn-primary">수정하기</a></td>
+								<td class="text-center align-middle">${ad.id}</td>
+								<td class="text-center align-middle">${ad.title}</td>
+								<td class="text-center align-middle"
+									style="word-wrap: break-word; max-width: 200px;">${ad.content}</td>
+								<td class="text-center align-middle">${ad.writer}</td>
+								<td class="text-center align-middle" style="width: 500px"><img
+									src="${ad.setupAdImage()}" width="80%" height="80%"></td>
+								<td class="text-center align-middle"><select
+									class="form-select" id="postYn-${ad.id}"
+									onchange="updatePostStatus(${ad.id})">
+										<option value="Y" ${ad.postYn == 'Y' ? 'selected' : ''}>광고중</option>
+										<option value="N" ${ad.postYn == 'N' ? 'selected' : ''}>광고중단</option>
+								</select></td>
+								<td class="text-center align-middle"><a
+									href="/ad/update/${ad.id}" class="btn btn-primary">수정하기</a></td>
 							</tr>
+
 						</c:forEach>
 					</tbody>
 				</table>
@@ -145,6 +151,25 @@ th {
 		$(document).ready(function() {
 			$('.dropdown-toggle').dropdown();
 		});
+		
+		
+		 function updatePostStatus(adId) {
+		        var postYn = $("#postYn-" + adId).val();
+		        $.ajax({
+		            type: "PUT",
+		            url: "/updatepost/" + adId,
+		            contentType: "application/json",
+		            data: JSON.stringify({ "post_yn": postYn }),
+		            success: function () {
+		                // 성공적으로 업데이트됐을 때 처리할 내용
+		                alert("광고 상태가 업데이트되었습니다.");
+		            },
+		            error: function () {
+		                // 오류 발생 시 처리할 내용
+		                alert("광고 상태를 업데이트하는 중 오류가 발생했습니다.");
+		            }
+		        });
+		    }
 	</script>
 </body>
 </html>

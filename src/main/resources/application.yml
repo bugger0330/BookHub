@@ -4,8 +4,6 @@ server:
     encoding: 
       charset: utf-8
       force: true
-
-
 spring: 
   mvc: 
     view:
@@ -55,3 +53,4 @@ logging:
     
 pagination:
   size: 10
+  
