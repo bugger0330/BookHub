@@ -12,7 +12,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/images/upload/**")
-                .addResourceLocations("file:////Users/junhyuk/git/BookHub/src/main/resources/static/img/upload/");
+                .addResourceLocations("file:///C:\\Users\\GGG\\git\\bookhub\\upload/");
     }
 
 

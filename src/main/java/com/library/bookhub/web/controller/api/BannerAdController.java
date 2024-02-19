@@ -127,57 +127,8 @@ public class BannerAdController {
 
     // 수정함수 : db 수정 저장
     @PutMapping("/edit/{id}")
-    public RedirectView updateBannerAd(@PathVariable int id, @ModelAttribute BannerAdFormDto updatedAdDto) {
-        // 광고 ID에 해당하는 광고를 찾기
-        Optional<BannerAd> optionalBannerAd = bannerAdService.findByBannerId(id);
-
-        // 해당 ID의 광고가 존재하는지 확인
-        if (optionalBannerAd.isPresent()) {
-            // 존재한다면 수정 진행
-            BannerAd existingAd = optionalBannerAd.get();
-            // 수정할 내용 업데이트
-            existingAd.setTitle(updatedAdDto.getTitle());
-            existingAd.setContent(updatedAdDto.getContent());
-            existingAd.setWriter(updatedAdDto.getWriter());
-
-            // 이미지 업로드 처리
-            MultipartFile file = updatedAdDto.getBannerImage();
-            if (!file.isEmpty()) {
-                // 파일 크기 확인
-                if (file.getSize() > Define.MAX_FILE_SIZE) {
-                    throw new CustomRestFulException("파일 크기는 20MB 이상 클 수 없습니다.", HttpStatus.BAD_REQUEST);
-                }
-
-                // 파일 업로드 처리
-                String saveDirectory = Define.UPLOAD_FILE_DERECTORY;
-                File dir = new File(saveDirectory);
-                if (!dir.exists()) {
-                    dir.mkdirs(); // 디렉토리가 없으면 생성
-                }
-
-                // 파일 이름 설정
-                UUID uuid = UUID.randomUUID();
-                String fileName = uuid + "_" + file.getOriginalFilename();
-                String uploadPath = Define.UPLOAD_FILE_DERECTORY + File.separator + fileName;
-                File destination = new File(uploadPath);
-
-                try {
-                    file.transferTo(destination);
-                    existingAd.setOriginFileName(file.getOriginalFilename());
-                    existingAd.setUploadFileName(fileName);
-                } catch (IllegalStateException | IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            // 수정된 광고를 저장
-            bannerAdService.save(existingAd);
-        } else {
-            // 해당 ID에 해당하는 광고가 존재하지 않을 경우 예외 처리
-            throw new CustomRestFulException("해당 ID에 해당하는 광고를 찾을 수 없습니다.", HttpStatus.NOT_FOUND);
-        }
-
-        // 수정된 광고를 조회 페이지로 리다이렉트
+    public RedirectView updateBannerAd(@PathVariable int id, @ModelAttribute BannerAd bannerAd) {
+      
         return new RedirectView("/ad/list");
     }
 
