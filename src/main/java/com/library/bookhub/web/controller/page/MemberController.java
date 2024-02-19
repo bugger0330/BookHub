@@ -1,16 +1,43 @@
 package com.library.bookhub.web.controller.page;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.library.bookhub.service.MemberService;
+import com.library.bookhub.web.dto.member.SignUpFormDto;
+
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 public class MemberController {
 
+	
+	@Autowired
+	private MemberService memberService;
+	
+	/*
+	 *  http://localhost/(아래 이름)
+	 */
+	
 	// 회원가입 페이지
-	@GetMapping("/register")
-	public String registerPage() {
+	@GetMapping("/user/signUp")
+	public String signUpPage() {
 		
-		return "user/register";
+		return "user/signUp";
+	}
+	
+	// 회원가입 기능
+	@PostMapping("/signUp")
+	public String signUpLogic(SignUpFormDto dto) {
+		log.info(dto.toString());
+		
+		memberService.createUser(dto);
+		
+		return "user/signUp";
 	}
 	
 	// 약관 페이지
@@ -40,6 +67,8 @@ public class MemberController {
 		
 		return "user/findPwd";
 	}
+	
+	// 비밀번호 변경 페이지
 	@GetMapping("/findPwdChange")
 	public String findPwdChangePage() {
 		

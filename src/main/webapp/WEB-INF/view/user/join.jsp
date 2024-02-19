@@ -95,7 +95,7 @@
 				<h5>북허브 이용약관</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="checking1" id="checking1" required>
+					<input type="checkbox" name="termbox" id="checking1" required>
 					<label for="checking1">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -138,7 +138,7 @@
 				<h5>개인정보 취급방침</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="checking2" id="checking2" required>
+					<input type="checkbox" name="termbox" id="checking2" required>
 					<label for="checking2">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -183,7 +183,7 @@
 				<h5>위치정보 이용약관</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="checking3" id="checking3" required>
+					<input type="checkbox" name="termbox" id="checking3" required>
 					<label for="checking3">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -218,7 +218,7 @@
 				<h5>전자금융거래 이용약관</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="checking4" id="checking4" required>
+					<input type="checkbox" name="termbox" id="checking4" required>
 					<label for="checking4">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -249,10 +249,21 @@
 			</li>
 		</ul>
 		<div class="last-checkbox">
-			<input type="checkbox" name="allChcking" id="all-checking" required>
+			<input type="checkbox" name="allChcking" value="all" onclick="selectAll(this)" required>
 			<label for="all-checking">모두 동의합니다.</label>
 		</div>
 		<button type="button">다음</button>
+		
+		<script>
+			/* 모두 체크 */
+			function selectAll(all) {
+				const checkboxs = document.getElementsByName('termbox')[0];
+				
+				checkboxes.forEach((checkbox) => {
+				    checkbox.checked = selectAll.checked;
+				  });
+			}
+		</script>
 	</div>
 </body>
 </html>

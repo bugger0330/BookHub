@@ -69,10 +69,10 @@
 
 	<div class="log-container">
 		<h2>로그인</h2>
-		<form action="login_process.jsp" method="post">
+		<form action="/login" method="post">
 			<div class="log-form-group">
-				<label for="email">아이디(이메일)</label> <input type="email" id="email"
-					name="email" placeholder="Enter email" required>
+				<label for="uid">아이디</label> <input type="text" id="username"
+					name="username" placeholder="Enter username" required>
 			</div>
 			<div class="log-form-group">
 				<label for="password">비밀번호</label> <input type="password"
@@ -82,10 +82,10 @@
 				<button type="submit" class="login-btn">로그인</button>
 				<hr />
 				<h6>
-					회원이 아니신가요? <a href="회원가입 페이지 URL" class="signup-btn">회원가입</a>
+					회원이 아니신가요? <a href="/join" class="signup-btn">회원가입</a>
 				</h6>
 				<h6>
-					계정정보를 잊으셨나요? <a href="회원정보찾기 페이지 URL" class="signup-btn">계정찾기</a>
+					계정정보를 잊으셨나요? <a href="/findId" class="signup-btn">계정찾기</a>
 				</h6>
 				<hr />
 				<h5>소셜로그인</h5>

@@ -134,7 +134,7 @@
 	<div class="register-container">
 		
 		<h3>회원가입</h3>
-		<form action="#">
+		<form action="/signUp" method="post">
 			<div class="log-form-group">
 				<label for="uid">아이디</label> <input type="text" id="uid"
 					name="uid" placeholder="Enter uid" class="input-id" required>
@@ -161,11 +161,11 @@
 				<label>성별</label>
 				<ul class="adult-list">
 					<li class="radio-item">
-						<input type="radio" id="gender1" class="blind" name="gender" value="M" required>
+						<input type="radio" id="gender1" class="blind" name="gender" value="1" required>
 						<label for="gender1">남자</label>
 					</li>
 					<li class="radio-item">
-						<input type="radio" id="gender2" class="blind" name="gender" value="W" required>
+						<input type="radio" id="gender2" class="blind" name="gender" value="2" required>
 						<label for="gender2">여자</label>
 					</li>
 				</ul>
@@ -190,7 +190,18 @@
 			</div>
 		</form>
 	</div>
-
+	
+	<script>
+		const btnId = document.getElementsByClassName("check-id")[0];
+		const idText = document.getElementById('uid');
+		
+		btnId.addEventListener('click',function(e){
+			console.log(idText.value);
+		});
+		
+		
+		
+	</script>
 
 </body>
 </html>

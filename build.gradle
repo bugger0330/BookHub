@@ -37,6 +37,10 @@ dependencies {
 	
 	// H2
     runtimeOnly 'com.h2database:h2'
+    
+    // Spring Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('bootBuildImage') {
