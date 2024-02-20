@@ -24,6 +24,15 @@ spring:
     username: root
     password: asd1234
 
+<<<<<<< Updated upstream
+=======
+  datasource:
+    url: jdbc:mysql://localhost:3306/bookhub?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: asd1234
+
+>>>>>>> Stashed changes
 #  datasource: # DB 설정
 #    url: jdbc:h2:mem:testdb;MODE=MySQL
 #    driver-class-name: org.h2.Driver
