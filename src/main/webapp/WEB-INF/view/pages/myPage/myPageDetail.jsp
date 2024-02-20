@@ -28,14 +28,14 @@
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/view/pages/admin/layout/header.jsp"%>
+
 
 	<!-- Header Start -->
 	<div class="container-fluid bg-dark py-5 mb-5 page-header">
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">회원상세조회</h3>
+					<h3 class="display-5 text-white animated slideInDown">마이페이지</h3>
 				</div>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 
 								<tr>
 									<th scope="row" class="bg-light">아이디</th>
-									<td>${user.userName}</td>
+									<td>${user.username}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">이름</th>
@@ -63,42 +63,25 @@
 									<td>${user.gender == 1 ? '남성' : '여성'}</td>
 								</tr>
 								<tr>
-									<th scope="row" class="bg-light">Email</th>
+									<th scope="row" class="bg-light">이메일</th>
 									<td>${user.email}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">연락처</th>
 									<td>${user.phone}</td>
 								</tr>
-								<tr>
-									<th scope="row" class="bg-light">우편번호</th>
-									<td>${user.zip}</td>
-								</tr>
-								<tr>
-									<th scope="row" class="bg-light">주소</th>
-									<td>${user.addr1}</td>
-								</tr>
-								<tr>
-									<th scope="row" class="bg-light">상세주소</th>
-									<td>${user.addr2}</td>
-								</tr>
-								<tr>
-									<th scope="row" class="bg-light">계정유형</th>
-									<td>${user.type == 1 ? '일반계정' : '관리자'}</td>
-								</tr>
-								<tr>
-									<th scope="row" class="bg-light">보유포인트</th>
-									<td>${user.point} 포인트</td>
-								</tr>
+
+
+
 							</tbody>
 						</table>
 						<div class="text-center">
-                            <a href="/user/update/${user.id}">
-                                <button type="button" class="btn btn-outline-success me-3">회원수정</button>
-                            </a>
+							<a href="/myPage/update/${user.id}">
+								<button type="button" class="btn btn-outline-success me-3">회원수정</button>
+							</a>
 
 
-                        </div>
+						</div>
 
 					</div>
 				</div>
@@ -113,7 +96,6 @@
 		console.log(obj);
 	</script>
 
-	<%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
 
 </body>
 </html>

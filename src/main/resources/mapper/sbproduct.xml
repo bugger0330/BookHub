@@ -33,4 +33,34 @@
 		resultType="com.library.bookhub.entity.SubscriptionProduct">
 		SELECT * FROM BH_SUBSCRIPTION_PRODUCT 
 	</select>
+
+
+	<select id="findByProductId" resultType="com.library.bookhub.entity.SubscriptionProduct">
+		SELECT * FROM BH_SUBSCRIPTION_PRODUCT
+		WHERE sp_id = #{spId}
+
+	</select>
+
+	<update id="update" parameterType="com.library.bookhub.entity.SubscriptionProduct">
+		UPDATE BH_SUBSCRIPTION_PRODUCT
+		SET
+		prodName = #{prodName},
+		price = #{price},
+		period = #{period}
+		WHERE sp_id = #{spId}
+	</update>
+
+
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM BH_SUBSCRIPTION_PRODUCT
+		WHERE sp_id = #{spId}
+	</delete>
+
+
+	<select id="existById" parameterType="int" resultType="long">
+		SELECT COUNT(sp_id)
+		FROM BH_SUBSCRIPTION_PRODUCT
+		WHERE sp_id = #{spId}
+	</select>
+
 </mapper>

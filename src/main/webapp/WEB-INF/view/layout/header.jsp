@@ -68,7 +68,7 @@
                  <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">구독상품</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="/sub-product" class="dropdown-item">구독상품구매하기</a>
+                        <a href="/sc-product/nopage" class="dropdown-item">구독상품구매하기</a>
                      
                        
                     </div>

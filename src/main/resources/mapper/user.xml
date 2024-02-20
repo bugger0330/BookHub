@@ -29,8 +29,8 @@
 
 
 	<insert id="insert" parameterType="com.library.bookhub.entity.User">
-		INSERT INTO bh_member (username, password, name, gender, phone, email, zip, addr1, rdate)
-		VALUES (#{username}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP);
+		INSERT INTO bh_member (userName, password, name, gender, phone, email, zip, addr1, rdate)
+		VALUES (#{userName}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP);
 	</insert>
 
 
@@ -49,6 +49,15 @@
 		WHERE id = #{id}
 	</update>
 
+    <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">
+        UPDATE bh_member SET password = #{password}, name = #{name}, phone = #{phone},
+        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, status = #{status},
+        wDate = #{wDate}, rDate = now() WHERE id = #{id}
+    </update>
+
+    <update id="myPageDeleteById" parameterType="com.library.bookhub.entity.User">
+        UPDATE bh_member SET status = 1, wDate = now() WHERE id = #{id}
+    </update>
 
 
 	<delete id="deleteById" parameterType="int">

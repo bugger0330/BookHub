@@ -54,8 +54,8 @@
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">구독상품관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="/ad-setting">구독상품추가</a></li>
-							<li><a class="dropdown-item" href="/sub-product/list">구독상품목록</a></li>
+							<li><a class="dropdown-item" href="/subproduct-add">구독상품추가</a></li>
+							<li><a class="dropdown-item" href="/sc-product/list">구독상품목록</a></li>
 						</ul></li>
 
 				</ul>
