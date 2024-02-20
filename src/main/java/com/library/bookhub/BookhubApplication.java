@@ -12,6 +12,7 @@ public class BookhubApplication {
 		SpringApplication.run(BookhubApplication.class, args);
 	}
 
+	
 	@Bean
 	HiddenHttpMethodFilter hiddenHttpMethodFilter() {
 		return new HiddenHttpMethodFilter();

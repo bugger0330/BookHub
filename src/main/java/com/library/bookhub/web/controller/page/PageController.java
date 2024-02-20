@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageController {
-	
 
 	// 로그인페이지
 	@GetMapping("/login")
@@ -39,39 +38,61 @@ public class PageController {
 	public String adminPage() {
 		return "pages/admin/main";
 	}
-	
+
 	// 관리자페이지 - 회원관리
 	@GetMapping("/userlist")
 	public String userListPage() {
 		return "pages/admin/userlist";
 	}
-	
-	
-	// 관리자페이지 - 광고설정
+
+	// 관리자페이지 - 광고추가
 	@GetMapping("/ad-setting")
 	public String adSettingPage() {
 		return "pages/admin/adSettings";
 	}
 
+	// 관리자페이지 - 광고수정
 	@GetMapping("/ad-update")
-	public String adUpdate(){return "pages/admin/adUpdate";}
+	public String adUpdate() {
+		return "pages/admin/adUpdate";
+	}
 
+	// 관리자페이지 - 광고전체목록
 	@GetMapping("/ad-list")
 	public String adListPage() {
 		return "pages/admin/adList";
 	}
-	
+
 	// 관리자페이지 - 환불요청목록
 	@GetMapping("/refund-list")
 	public String refundListPage() {
 		return "pages/admin/refundList";
 	}
-	
+
 	// 관리자페이지 - 환불요청승인
-		@GetMapping("/refund-request")
-		public String refundRequestPage() {
-			return "pages/admin/refundRequest";
-		}
+	@GetMapping("/refund-request")
+	public String refundRequestPage() {
+		return "pages/admin/refundRequest";
+	}
+
+	// 결제페이지
+	@GetMapping("/payment")
+	public String paymentPage() {
+		return "pages/payment/checkout";
+	}
+
+	// 결제페이지 - 결제성공
+	@GetMapping("/success")
+	public String paymentSuccessPage() {
+		return "pages/payment/paymentSuccess";
+	}
+
+	// 결제페이지 - 결제실패
+	@GetMapping("/fail")
+	public String paymentFailPage() {
+		return "pages/payment/fail";
+	}
+
 }
 
 // page 패키지에는 페이지를 여는 용도로만 사용
