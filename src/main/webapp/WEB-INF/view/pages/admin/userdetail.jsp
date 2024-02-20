@@ -71,6 +71,18 @@
 									<td>${user.phone}</td>
 								</tr>
 								<tr>
+									<th scope="row" class="bg-light">우편번호</th>
+									<td>${user.zip}</td>
+								</tr>
+								<tr>
+									<th scope="row" class="bg-light">주소</th>
+									<td>${user.addr1}</td>
+								</tr>
+								<tr>
+									<th scope="row" class="bg-light">상세주소</th>
+									<td>${user.addr2}</td>
+								</tr>
+								<tr>
 									<th scope="row" class="bg-light">계정유형</th>
 									<td>${user.type == 1 ? '일반계정' : '관리자'}</td>
 								</tr>

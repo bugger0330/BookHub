@@ -13,6 +13,7 @@ public class BookhubApplication {
 	}
 
 	
+	// hidden 속성 사용
 	@Bean
 	HiddenHttpMethodFilter hiddenHttpMethodFilter() {
 		return new HiddenHttpMethodFilter();

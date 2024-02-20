@@ -11,6 +11,8 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	rel="stylesheet">
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
 .card-header {
 	background-color: #343a40;
@@ -37,12 +39,7 @@
 							<input type="hidden" name="_method" value="put" /> <input
 								type="hidden" name="id" value="${user.id}" />
 
-							<div class="form-group">
-								<label for="username">아이디</label> <input type="text"
-									class="form-control" id="username" name="username"
-									value="${user.username}" required>
-								<div id="usernameFeedback" class="invalid-feedback"></div>
-							</div>
+
 
 							<div class="form-group">
 								<label for="name">이름</label> <input type="text"
@@ -98,17 +95,35 @@
 								<div id="phoneFeedback" class="invalid-feedback"></div>
 							</div>
 							<div class="form-group">
-								<label for="zip">우편번호</label> <input type="text"
-									class="form-control" id="zip" name="zip" value="${user.zip}"
-									required>
-								<div id="zipFeedback" class="invalid-feedback"></div>
+								<button id="find-address-btn" type="button"
+									class="btn btn-primary">주소찾기</button>
 							</div>
 
-							<div class="form-group">
-								<label for="addr1">주소</label> <input type="text"
-									class="form-control" id="addr1" name="addr1"
-									value="${user.addr1}" required>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="zip">우편번호</label> <input type="text"
+										class="form-control" id="zip" name="zip" value="${user.zip}"
+										required>
+									<div id="zipFeedback" class="invalid-feedback"></div>
+								</div>
 							</div>
+
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="addr1">주소</label> <input type="text"
+										class="form-control" id="addr1" name="addr1"
+										value="${user.addr1}" required>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="addr2">상세주소</label> <input type="text"
+										class="form-control" id="addr2" name="addr2"
+										value="${user.addr2}" required>
+								</div>
+							</div>
+
+
+
+							<div class="form-group"></div>
 
 
 							<button type="submit" class="btn btn-primary btn-submit mb-3">수정하기</button>
@@ -198,6 +213,27 @@
 
 				return isValid;
 			}
+		});
+
+		$(document).ready(function() {
+			// 이하 생략
+			new daum.Postcode({
+				oncomplete : function(data) {
+					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+					// 예제를 참고하여 다양한 활용법을 확인해 보세요.
+				}
+			});
+			// 주소찾기 버튼 클릭 이벤트 핸들러
+			$('#find-address-btn').on('click', function() {
+				new daum.Postcode({
+					oncomplete : function(data) {
+						// 주소 검색 결과가 선택되었을 때 실행되는 부분
+						// 검색 결과를 사용자가 선택한 값을 입력 폼에 채워넣는 등의 동작을 여기에 추가할 수 있습니다.
+						$('#zip').val(data.zonecode); // 우편번호 입력 폼에 우편번호 값 채우기
+						$('#addr1').val(data.address); // 주소 입력 폼에 주소 값 채우기
+					}
+				}).open();
+			});
 		});
 	</script>
 
