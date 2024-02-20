@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,13 +28,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
+@RequestMapping("/sub-product/")
 public class SubscriptionProductController {
 	
 	@Autowired
 	private SubscriptionProductService subscriptionProductService;
 	
 	// 구독상품 전체조회 (페이징처리)
-    @GetMapping("/product-list")
+    @GetMapping("/list")
     public String getAllProduct(PageReq pageReq, Model model) {
         // 기본 페이지 및 크기 설정
         if (pageReq.getPage() <= 0) {
@@ -73,7 +75,7 @@ public class SubscriptionProductController {
     
     
     // 상품 업로드
-    @PostMapping("/product-upload")
+    @PostMapping("/upload")
     public String productUpload(SubscriptionProduct product) {
 
         // 유효성 검사

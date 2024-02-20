@@ -118,8 +118,8 @@ img {
 								<td class="text-center align-middle">${product.prodName}</td>
 								<td class="text-center align-middle">${product.formatBalance()}</td>
 								<td class="text-center align-middle">${product.period}일</td>
-								<td class="text-center align-middle"><a href="/user/detail/${product.spId}"><button type="button"
-										class="btn btn-warning">자세히보기</button></a></td>
+								<td class="text-center align-middle"><a href="/sub-product/update/${product.spId}"><button type="button"
+										class="btn btn-warning">수정하기</button></a></td>
 								
 							</tr>
 						</c:forEach>
