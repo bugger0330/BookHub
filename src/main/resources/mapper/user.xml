@@ -37,7 +37,6 @@
 	<update id="update" parameterType="com.library.bookhub.entity.User">
 		UPDATE bh_member
 		SET
-		username = #{username},
 		password = #{password},
 		name = #{name},
 		type = #{type},
@@ -45,7 +44,8 @@
 		phone = #{phone},
 		email = #{email},
 		zip = #{zip},
-		addr1 = #{addr1}
+		addr1 = #{addr1},
+		addr2 = #{addr2}
 		WHERE id = #{id}
 	</update>
 

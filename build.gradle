@@ -19,6 +19,7 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -41,6 +42,8 @@ dependencies {
     
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
    
+   	// 아이엠포트
+   	implementation 'com.github.iamport:iamport-rest-client-java:0.1.6'
     
 }
 
