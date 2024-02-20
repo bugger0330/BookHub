@@ -28,11 +28,11 @@ public interface SubscriptionProductRepository {
 	public int update(SubscriptionProduct subscriptionProduct);
 
 	// 삭제하기
-	public int deleteById(Integer id);
+	public int deleteById(int id);
 
 	// 총 데이터의 개수 조회
 	public int getProductTotalCount();
 
-	// 상품 찾기
-	Optional<SubscriptionProduct> findByProductId(int id);
+	// 상품 찾기 - 단건조회
+	public Optional<SubscriptionProduct> findByProductId(int id);
 }

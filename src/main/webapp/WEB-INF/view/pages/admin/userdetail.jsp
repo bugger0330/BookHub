@@ -52,7 +52,7 @@
 
 								<tr>
 									<th scope="row" class="bg-light">아이디</th>
-									<td>${user.username}</td>
+									<td>${user.userName}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">이름</th>

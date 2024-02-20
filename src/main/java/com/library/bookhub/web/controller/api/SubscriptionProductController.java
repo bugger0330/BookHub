@@ -3,15 +3,15 @@ package com.library.bookhub.web.controller.api;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+import com.library.bookhub.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.library.bookhub.entity.BannerAd;
@@ -24,16 +24,18 @@ import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @Slf4j
+@RequestMapping("/sc-product")
 public class SubscriptionProductController {
 	
 	@Autowired
 	private SubscriptionProductService subscriptionProductService;
 	
 	// 구독상품 전체조회 (페이징처리)
-    @GetMapping("/product-list")
+    @GetMapping("/list")
     public String getAllProduct(PageReq pageReq, Model model) {
         // 기본 페이지 및 크기 설정
         if (pageReq.getPage() <= 0) {
@@ -61,7 +63,7 @@ public class SubscriptionProductController {
     }
     
     // 구독상품 전체조회(페이징X)
-    @GetMapping("/sub-product")
+    @GetMapping("/nopage")
     public String getAllProductNoPage(Model model) {
     	
     	List<SubscriptionProduct> list = subscriptionProductService.getProductNoPage();
@@ -70,10 +72,30 @@ public class SubscriptionProductController {
     	
     	return "pages/subproduct/subproduct";
     }
-    
-    
+
+    // 수정함수 : 수정페이지로 이동 + 상세조회 1건
+    @GetMapping("/update/{id}")
+    public String editProduct(@PathVariable int id, Model model) {
+        // 서비스 상세조회 함수 호출
+        Optional<SubscriptionProduct> optionalProduct = subscriptionProductService.findByProductId(id);
+        // jsp 전달
+        model.addAttribute("product", optionalProduct.get());
+        return "pages/admin/subproductUpdate";
+    }
+
+    // 수정함수 : db 수정 저장
+    @PutMapping("/edit/{id}")
+    public RedirectView updateProduct(@PathVariable int id, @ModelAttribute SubscriptionProduct product) {
+        // db 수정 저장
+        subscriptionProductService.save(product);
+        // 전체조회 페이지로 이동
+        return new RedirectView("/sc-product/list");
+    }
+
+
+
     // 상품 업로드
-    @PostMapping("/product-upload")
+    @PostMapping("/upload")
     public String productUpload(SubscriptionProduct product) {
 
         // 유효성 검사
@@ -89,9 +111,15 @@ public class SubscriptionProductController {
        
 
         subscriptionProductService.saveSubProduct(product);
-        return "redirect:/product-list";
+        return "redirect:/sc-product/list";
     }
 
+    // 삭제함수
+    @DeleteMapping("/delete/{id}")
+    public RedirectView deleteProduct(@PathVariable int id) {
+        subscriptionProductService.removeById(id);
+        return new RedirectView("/sc-product/list");
+    }
 	
 
 }

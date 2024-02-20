@@ -123,7 +123,7 @@ img {
 							<tr>
 							 
 								<td class="text-center align-middle">${user.id}</td>
-								<td class="text-center align-middle">${user.username}</td>
+								<td class="text-center align-middle">${user.userName}</td>
 								<td class="text-center align-middle">${user.name}</td>
 								<td class="text-center align-middle">${user.gender == 1 ? '남성' : '여성'}</td>
 								<!-- 성별을 한글로 표시합니다. -->
