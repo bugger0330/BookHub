@@ -38,7 +38,7 @@ public class MyUserDetails implements UserDetails {
 		return authorities;
 	}
 
-
+	
 	@Override
 	public String getPassword() {
 		return user.getPassword();
@@ -47,7 +47,7 @@ public class MyUserDetails implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return user.getUserName();
 	}
 
 
@@ -56,19 +56,19 @@ public class MyUserDetails implements UserDetails {
 		return true;
 	}
 
-
+    // 사용자 아이디 만료 여부
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
-
+	// 사용자 아이디 잠김 여부
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-
+	// 사용자 아이디 사용가능 여부
 	@Override
 	public boolean isEnabled() {
 		return true;

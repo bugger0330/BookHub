@@ -22,20 +22,15 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	@Autowired
 	private SecurityUserService service;
 	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/user/**").addResourceLocations("classpath:/static/");
-	}
-	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http
-			// 사이트 위변조 방지 비활성
+			// 사이트 위변조 방지 비활성화
 			.csrf(CsrfConfigurer::disable)
-			// 
+			// X-Frame-Options 비활성화
 			.headers(header -> header
-					.frameOptions(FrameOptionsConfig::sameOrigin))
+					.frameOptions(FrameOptionsConfig::disable))
 			// 로그인 설정
 			.formLogin(config -> config
 					.loginPage("/login")

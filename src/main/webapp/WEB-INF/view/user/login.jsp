@@ -82,10 +82,10 @@
 				<button type="submit" class="login-btn">로그인</button>
 				<hr />
 				<h6>
-					회원이 아니신가요? <a href="/join" class="signup-btn">회원가입</a>
+					회원이 아니신가요? <a href="/user/join" class="signup-btn">회원가입</a>
 				</h6>
 				<h6>
-					계정정보를 잊으셨나요? <a href="/findId" class="signup-btn">계정찾기</a>
+					계정정보를 잊으셨나요? <a href="/user/findId" class="signup-btn">계정찾기</a>
 				</h6>
 				<hr />
 				<h5>소셜로그인</h5>

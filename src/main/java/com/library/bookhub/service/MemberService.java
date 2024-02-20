@@ -28,7 +28,7 @@ public class MemberService {
 		log.info("dto : "+dto.toString());
 		
 		User userEntity = User.builder()
-							.username(dto.getUid())
+							.userName(dto.getUid())
 							.password(encoder.encode(dto.getPassword()))
 							.name(dto.getName())
 							.gender(dto.getGender())
@@ -42,8 +42,17 @@ public class MemberService {
 		log.info("createUser...2");
 		log.info("userEntity : "+userEntity.toString());
 		
-		int result = memberRepository.insert(userEntity);
+		memberRepository.insert(userEntity);
 		
+	}
+	
+	// 아이디 중복확인
+	public int confirmUid(String uid) {
+		
+		int result = memberRepository.countByUsername(uid);
+		log.info("where uid ? :"+ result);
+		
+		return result;
 	}
 	
 }

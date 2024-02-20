@@ -13,4 +13,8 @@
 	<select id="findByUsername" resultType="com.library.bookhub.entity.User">
 		SELECT * FROM bh_member WHERE `username`=#{username}
 	</select>
+	
+	<select id="countByUsername" resultType="int">
+		SELECT COUNT(*) FROM bh_member WHERE `username`=#{username}
+	</select>
 </mapper>

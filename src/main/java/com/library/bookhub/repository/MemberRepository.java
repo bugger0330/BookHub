@@ -10,4 +10,6 @@ public interface MemberRepository {
 	public int insert(User member);
 	
 	public User findByUsername(String username);
+	
+	public int countByUsername(String username);
 }
