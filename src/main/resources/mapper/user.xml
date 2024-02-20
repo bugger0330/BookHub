@@ -49,6 +49,15 @@
 		WHERE id = #{id}
 	</update>
 
+    <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">
+        UPDATE bh_member SET password = #{password}, name = #{name}, phone = #{phone},
+        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, status = #{status},
+        wDate = #{wDate}, rDate = now() WHERE id = #{id}
+    </update>
+
+    <update id="myPageDeleteById" parameterType="com.library.bookhub.entity.User">
+        UPDATE bh_member SET status = 1, wDate = now() WHERE id = #{id}
+    </update>
 
 
 	<delete id="deleteById" parameterType="int">
