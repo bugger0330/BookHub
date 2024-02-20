@@ -148,7 +148,7 @@
 							<h3 class="mb-0">3,000 원</h3>
 							<h5 class="mb-4">7일권</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="#"
+								<a href="/sub-product"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -166,7 +166,7 @@
 							<h3 class="mb-0">15,000 원</h3>
 							<h5 class="mb-4">30일권</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="#"
+								<a href="/sub-product"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -184,7 +184,7 @@
 							<h3 class="mb-0">35,000 원</h3>
 							<h5 class="mb-4">1년권</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="#"
+								<a href="/sub-product"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>

@@ -33,6 +33,9 @@ public class PageController {
 		return "pages/book/suggest";
 	}
 
+
+
+	// ---------------- 관리자 페이지 ----------------//
 	// 어드민 페이지
 	@GetMapping("/admin")
 	public String adminPage() {
@@ -78,7 +81,13 @@ public class PageController {
 	// 결제페이지
 	@GetMapping("/payment")
 	public String paymentPage() {
-		return "pages/payment/checkout";
+		return "pages/payment/paymentTest";
+	}
+
+	// 환불페이지
+	@GetMapping("/refund")
+	public String refundPage() {
+		return "pages/payment/refund";
 	}
 
 	// 결제페이지 - 결제성공
@@ -91,6 +100,18 @@ public class PageController {
 	@GetMapping("/fail")
 	public String paymentFailPage() {
 		return "pages/payment/fail";
+	}
+	
+	// 구독상품 - (관리자)구독상품전체조회
+	@GetMapping("/subproduct")
+	public String subproductPage() {
+		return "pages/admin/subproductList";
+	}
+	
+	// 구독상품 - (관리자)구독상품추가
+	@GetMapping("/subproduct-add")
+	public String subproductAddPage() {
+		return "pages/admin/subproductAdd";
 	}
 
 }

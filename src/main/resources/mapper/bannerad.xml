@@ -23,14 +23,14 @@
 
 	<select id="getAdTotalCount" resultType="int">
 		SELECT COUNT(*) FROM
-		bh_banner;
+		bh_banner
 	</select>
 
 
 	<select id="findById"
 		resultType="com.library.bookhub.entity.BannerAd">
 		SELECT ID ,UPLOAD_FILE_NAME, CONTENT FROM BH_BANNER
-		WHERE POST_YN = 'Y';
+		WHERE POST_YN = 'Y'
 	</select>
 
 
