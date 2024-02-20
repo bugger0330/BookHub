@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.library.bookhub.repository.cs.CsQnaRepository">
+
+	<!-- 문의하기 리스트 조회  -->
+	<select id="selectCsQnaList"
+		resultType="com.library.bookhub.entity.cs.CsQnaEntity">
+		select * from bh_cs_qna;
+	</select>
+
+
+</mapper>
