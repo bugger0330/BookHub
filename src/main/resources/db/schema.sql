@@ -10,6 +10,12 @@ DROP TABLE IF EXISTS bh_cs_notice;
 DROP TABLE IF EXISTS bh_banner;
 DROP TABLE IF EXISTS bh_payment;
 DROP TABLE IF EXISTS bh_club;
+DROP TABLE IF EXISTS bh_subscription_product;
+DROP TABLE IF EXISTS bh_subscription_product_cart;
+
+
+
+
 -- 회원
 CREATE TABLE bh_member (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -153,3 +159,19 @@ CREATE TABLE bh_club (
     rdate DATETIME NOT NULL,
     wdate DATETIME
 );
+
+-- 정기권
+CREATE TABLE bh_subscription_product (
+    sp_id INT AUTO_INCREMENT PRIMARY KEY,
+    prodName VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    period INT NOT NULL
+);
+
+-- 정기권 장바구니
+CREATE TABLE bh_subscription_product_cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    sp_id INT
+);
+

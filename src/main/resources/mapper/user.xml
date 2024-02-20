@@ -29,8 +29,8 @@
 
 
 	<insert id="insert" parameterType="com.library.bookhub.entity.User">
-		INSERT INTO bh_member (username, password, name, gender, phone, email, zip, addr1, rdate)
-		VALUES (#{username}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP);
+		INSERT INTO bh_member (userName, password, name, gender, phone, email, zip, addr1, rdate)
+		VALUES (#{userName}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP);
 	</insert>
 
 

@@ -27,6 +27,17 @@
 
 	<%@ include file="/WEB-INF/view/pages/admin/layout/header.jsp"%>
 
+	<!-- Header Start -->
+    	<div class="container-fluid bg-dark py-5 mb-5 page-header">
+    		<div class="container py-5">
+    			<div class="row justify-content-center">
+    				<div class="col-lg-10 text-center">
+    					<h3 class="display-5 text-white animated slideInDown">배너광고 수정</h3>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
 	<div class="container mt-5 mb-5">
 		<div class="row justify-content-center">
 			<div class="col-md-8">

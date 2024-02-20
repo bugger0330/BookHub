@@ -65,6 +65,14 @@
                         <a href="/suggest" class="dropdown-item">추천도서</a>
                     </div>
                 </div>
+                 <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">구독상품</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="/sc-product/nopage" class="dropdown-item">구독상품구매하기</a>
+                     
+                       
+                    </div>
+                </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">

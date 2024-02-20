@@ -28,6 +28,12 @@ VALUES
     ('user25', 'password25', '홍길동', 1, '567-8901-2345', 'user25@example.com', 1, 2500, '56789', 'Address 25', 'City 25', 0, CURRENT_TIMESTAMP);
 
 
+-- 정액권상품 
+INSERT INTO bh_subscription_product (prodName, price, period) 
+VALUES ('7일권', 3000, 7),
+('30일권', 15000, 30),
+('1년권', 35000, 365);
+
 
 -- 회원포인트 더미 데이터 삽입
 INSERT INTO bh_member_point (userName, pId, point, ptDate)

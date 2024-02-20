@@ -59,6 +59,7 @@ public class BannerAdController {
 
         return "pages/admin/adList";
     }
+    
 
     // 광고 업로드
     @PostMapping("/upload")

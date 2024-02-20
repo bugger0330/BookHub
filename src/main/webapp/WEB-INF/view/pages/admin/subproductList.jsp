@@ -82,57 +82,43 @@ img {
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">회원조회</h3>
+					<h3 class="display-5 text-white animated slideInDown">구독상품 전체조회</h3>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
-
-		<div class="search mb-3">
-			<form action="/user/list" method="get">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="유저 이름 검색"
-						name="name">
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-primary">검색</button>
-					</div>
-				</div>
-			</form>
+	
+	
+		<div class="row justify-content-end mb-3">
+			<div class="col-auto">
+				<a href="/subproduct-add" class="btn btn-primary">상품 추가하기</a>
+			</div>
 		</div>
+	
 
 		<c:choose>
-			<c:when test="${not empty userList}">
+			<c:when test="${not empty productList}">
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
 							<th>순서</th>
-							<th>아이디</th>
-							<th>이름</th>
-							<th>성별</th>
-							<th>Email</th>
-							<th>연락처</th>
-							<th>계정유형</th>
-							<th>보유포인트</th>
+							<th>상품명</th>
+							<th>가격</th>
+							<th>기간</th>
 							<th>SETTING</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="user" items="${userList}">
+						<c:forEach var="product" items="${productList}">
 							<tr>
 							 
-								<td class="text-center align-middle">${user.id}</td>
-								<td class="text-center align-middle">${user.userName}</td>
-								<td class="text-center align-middle">${user.name}</td>
-								<td class="text-center align-middle">${user.gender == 1 ? '남성' : '여성'}</td>
-								<!-- 성별을 한글로 표시합니다. -->
-								<td class="text-center align-middle">${user.email}</td>
-								<td class="text-center align-middle">${user.phone}</td>
-								<td class="text-center align-middle">${user.type == 1 ? '일반계정' : '관리자'}</td>
-								<!-- 계정 유형을 한글로 표시합니다. -->
-								<td class="text-center align-middle">${user.point}</td>
-								<td class="text-center align-middle"><a href="/user/detail/${user.id}"><button type="button"
+								<td class="text-center align-middle">${product.spId}</td>
+								<td class="text-center align-middle">${product.prodName}</td>
+								<td class="text-center align-middle">${product.formatBalance()}</td>
+								<td class="text-center align-middle">${product.period}일</td>
+								<td class="text-center align-middle"><a href="/sc-product/update/${product.spId}"><button type="button"
 										class="btn btn-warning">자세히보기</button></a></td>
 								
 							</tr>
@@ -164,7 +150,7 @@ img {
 
 			</c:when>
 			<c:otherwise>
-				<p>아직 생성된 유저가 없습니다.</p>
+				<p>상품이 없습니다. 상품을 추가해주세요</p>
 			</c:otherwise>
 		</c:choose>
 	</div>

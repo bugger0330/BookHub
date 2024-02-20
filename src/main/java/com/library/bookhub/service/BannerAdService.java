@@ -49,7 +49,7 @@ public class BannerAdService {
 		}
 	}
 
-	// 페이징된 유저 목록 조회
+	// 페이징된 배너 목록 조회
 	public PageRes<BannerAd> getAdWithPaging(PageReq pageReq, String writer) {
 		int page = pageReq.getPage();
 		int size = pageReq.getSize();
@@ -75,7 +75,7 @@ public class BannerAdService {
 		return optionalBannerAd;
 	}
 
-	// 저장
+	// 수정
 	public int save(BannerAd bannerAd) {
 		int queryResult = -1;
 		try {
