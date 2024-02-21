@@ -33,13 +33,17 @@
                             </div>
                             <div class="col-lg-6">
                             	<!-- javascript 이용하기 위해 hidden 태그 사용하기 -->
-                                <input value="${club.id}" hidden>
-                                <h4 id="club--id" class="fw-bold mb-3" hidden>${club.id}</h4>
+                                <input id="club--id" value="${club.id}" hidden>
+                                <!-- innerText로도 기능 잘 되긴했는데 String 타입인 게 조금 불안해서 위에 꺼 씀 -->
+                                <h4 class="fw-bold mb-3" hidden>${club.id}</h4>
+                                
                                 <h4 class="fw-bold mb-3">${club.clubName}</h4>
                                 <p class="mb-3">Category: Vegetables</p>
                                 <!-- 정원 - 3 채워지면 마감임박 으로 표시하기 -->
-                                <h5 class="fw-bold mb-3">${club.status}</h5>
+                                <h5 id="club-status" class="fw-bold mb-3">${club.status}</h5>
                                 <h5 class="fw-bold mb-3">${club.hcApply} / ${club.headCount}</h5>
+                                <input id="club--hcapply" value="${club.hcApply}" hidden>
+                                <input id="club--headcount" value="${club.headCount}" hidden>
                                 <div class="d-flex mb-4">
                                     <i class="fa fa-star text-secondary"></i>
                                     <i class="fa fa-star text-secondary"></i>
@@ -63,7 +67,7 @@
                                 </div>
                                 <!-- 신청하기 버튼 -->
                                 <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 찜하기</a>
-                                <a id="apply--button" href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 신청하기</a>
+                                <a id="apply--button" href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">신청하기</a>
                             </div>
                             <div class="col-lg-12">
                                 <nav>
