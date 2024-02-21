@@ -2,7 +2,16 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="utf-8">
+    <title>BookHub :: 독서와 무제한으로 친해지기</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
 <head>
+
 <!-- PortOne SDK -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script>
@@ -17,7 +26,7 @@
 	function requestPay() {
 
 		var merchant_uid = generateMerchantUid(); // 랜덤한 merchant_uid 생성
-		var productName = "${product.prodName}";
+		var productName = "BookHub 구독상품 ${product.prodName}";
 		var amount = "${product.price}";
 		IMP.request_pay({
 			pg : "html5_inicis",
@@ -36,7 +45,7 @@
 				window.location.href = "/success"; // 성공 페이지 URL로 이동
 			} else {
 				// 결제 실패 시 처리 로직
-				alert("결제에 실패했습니다.");
+				alert(`결제에 실패했습니다.`);
 			}
 		});
 	}
@@ -84,7 +93,7 @@
 	<%@ include file="/WEB-INF/view/layout/header.jsp"%>
 
 	<!-- Header Start -->
-	<div class="container-fluid bg-primary py-5 mb-5 page-header">
+	<div class="container-fluid bg-dark py-5 mb-5 ">
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
@@ -103,7 +112,7 @@
         <div class="card-body">
             <h3 class="product-name">${product.prodName}</h3>
             <div class="product-info">
-    <div class="price"><strong>가격:</strong> ${product.price}원</div>
+    <div class="price"><strong>가격:</strong> ${product.formatBalance()}</div>
     <div class="period"><strong>기간:</strong> ${product.period}일</div>
 </div>
 
