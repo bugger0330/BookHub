@@ -54,17 +54,24 @@ public class ClubPageController {
 		return "pages/club/save";
 	}
 	
-	// 결제
-	@GetMapping("/checkout")
-	public String checkoutPage() {
-		return "pages/club/checkout";
+	// 개설내역
+	@GetMapping("/saveList")
+	public String saveListPage() {
+		return "pages/club/saveList";
 	}
 	
-	// 결제완료
-	@GetMapping("/checkoutSuccess")
-	public String checkoutSuccessPage() {
-		return "pages/club/checkoutSuccess";
+	// 신청내역
+	@GetMapping("/applicationList")
+	public String applicationListPage() {
+		return "pages/club/applicationList";
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 	// 결제완료
 	@GetMapping("/test")

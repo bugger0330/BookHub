@@ -22,7 +22,7 @@ public class Club {
 	private Timestamp cDate;
 	private String host;
 	private Integer headCount;
-	private String hcApply;
+	private Integer hcApply;
 	private String status;
 	private String originFileName1;
 	private String originFileName2;
@@ -33,7 +33,15 @@ public class Club {
 	private Timestamp rdate;
 	private Timestamp wdate;
 	
+	// 이미지설정
 	public String setupClubImage() {
 		return "/img/club/" + uploadFileName1; 
 	}
+	
+	// 신청인원수 수정
+	public void setupHcApply() {
+		this.hcApply += 1;
+	}
+	
+	// status값 3자리 남을때 마감임박으로 변경하기
 }
