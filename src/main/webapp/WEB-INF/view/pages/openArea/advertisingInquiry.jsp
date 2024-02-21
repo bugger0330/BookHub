@@ -76,9 +76,11 @@
         <div class="form-group row">
     <label for="advertisement_image" class="col-sm-2 col-form-label">광고이미지 첨부</label>
     <div class="col-sm-10">
+     <h5 style="color: red;">★★★광고이미지는 가로형 이미지만 가능합니다.★★★</h5>
         <div class="custom-file">
+       
             <input type="file" class="custom-file-input" id="advertisement_image" name="advertisement_image" accept="image/*" required>
-            <label class="custom-file-label" for="advertisement_image">파일 선택...</label>
+            <label class="custom-file-label" for="advertisement_image"></label>
         </div>
     </div>
 </div>
