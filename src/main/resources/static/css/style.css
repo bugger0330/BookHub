@@ -176,6 +176,7 @@
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
+    z-index: 1; /* 이미지 위에 버튼을 표시하기 위해 z-index 값을 추가합니다 */
 }
 
 .header-carousel .owl-nav .owl-prev,
@@ -191,7 +192,17 @@
     border: 1px solid #FFFFFF;
     font-size: 22px;
     transition: .5s;
+    top: 50%; /* 이미지의 중앙에 버튼을 배치합니다 */
 }
+
+.header-carousel .owl-nav .owl-prev {
+    left: 10px; /* 이전 버튼을 왼쪽으로 이동 */
+}
+
+.header-carousel .owl-nav .owl-next {
+    right: 10px; /* 다음 버튼을 오른쪽으로 이동 */
+}
+
 
 .header-carousel .owl-nav .owl-prev:hover,
 .header-carousel .owl-nav .owl-next:hover {
@@ -213,8 +224,6 @@
 .breadcrumb-item + .breadcrumb-item::before {
     color: var(--light);
 }
-
-
 
 
 

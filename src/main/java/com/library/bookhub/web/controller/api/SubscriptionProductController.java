@@ -12,14 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.library.bookhub.entity.BannerAd;
 import com.library.bookhub.entity.SubscriptionProduct;
 import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.service.SubscriptionProductService;
-import com.library.bookhub.utils.Define;
-import com.library.bookhub.web.dto.BannerAdFormDto;
+
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 

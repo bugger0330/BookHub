@@ -25,28 +25,30 @@
 
 	<!-- 광고영역 -->
 	<div class="advertising-area">
-        <c:choose>
-            <c:when test="${not empty banner}">
-                <!-- Carousel Start -->
-                <div class="container-fluid p-0 mb-5" style="height: 200px">
-                    <div class="owl-carousel header-carousel position-relative">
-                        <!-- Iterate through banners -->
-                        <c:forEach var="ad" items="${banner}">
-                            <div class="owl-carousel-item position-relative">
-                                <a href="${ad.content}"><img class="img-fluid" src="/images/upload/${ad.uploadFileName}" style="height: 200px" alt="" /></a>
-                            </div>
-                        </c:forEach>
-                    </div>
-                </div>
-                <!-- Carousel End -->
-            </c:when>
-            <c:otherwise>
-                <div class="container">
-                    <p class="text-center"></p>
-                </div>
-            </c:otherwise>
-        </c:choose>
-    </div>
+		<c:choose>
+			<c:when test="${not empty banner}">
+				<!-- Carousel Start -->
+				<div class="container-fluid p-0 mb-5" style="height: 200px">
+					<div class="owl-carousel header-carousel position-relative">
+						<!-- Iterate through banners -->
+						<c:forEach var="ad" items="${banner}">
+							<div class="owl-carousel-items position-relative">
+								<a href="${ad.content}"><img class="img-fluid"
+									src="/images/upload/${ad.uploadFileName}" style="height: 200px"
+									alt="" /></a>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				<!-- Carousel End -->
+			</c:when>
+			<c:otherwise>
+				<div class="container">
+					<p class="text-center"></p>
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</div>
 
 
 	<!-- 광고 끝 -->
@@ -81,9 +83,7 @@
 							<a class="position-relative d-block overflow-hidden"
 								href="/about"> <img class="img-fluid" src="/img/cat-1.jpg"
 								alt="">
-								<div
-									class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
-									style="margin: 1px;">
+								<div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
 									<h5 class="m-0">BookHub 소개</h5>
 								</div>
 							</a>
@@ -148,7 +148,7 @@
 							<h3 class="mb-0">3,000 원</h3>
 							<h5 class="mb-4">7일권</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="/sub-product"
+								<a href="/sc-product/nopage"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -166,7 +166,7 @@
 							<h3 class="mb-0">15,000 원</h3>
 							<h5 class="mb-4">30일권</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="/sub-product"
+								<a href="/sc-product/nopage"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -184,7 +184,7 @@
 							<h3 class="mb-0">35,000 원</h3>
 							<h5 class="mb-4">1년권</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="/sub-product"
+								<a href="/sc-product/nopage"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -318,6 +318,8 @@
 
 </div>
 <!-- 메인 컨텐츠부분 끝 -->
+
+
 
 
 

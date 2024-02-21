@@ -96,7 +96,7 @@ img {
 					<input type="text" class="form-control" placeholder="유저 이름 검색"
 						name="name">
 					<div class="input-group-append">
-						<button type="submit" class="btn btn-primary">검색</button>
+						<button type="submit" class="btn btn-dark">검색</button>
 					</div>
 				</div>
 			</form>

@@ -70,7 +70,7 @@ th {
 	<div class="container-xxl">
 		<div class="row justify-content-end mb-3">
 			<div class="col-auto">
-				<a href="/ad-setting" class="btn btn-primary">광고 추가하기</a>
+				<a href="/ad-setting" class="btn btn-dark">광고 추가하기</a>
 			</div>
 		</div>
 
