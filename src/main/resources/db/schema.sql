@@ -176,3 +176,15 @@ CREATE TABLE bh_subscription_product_cart (
     sp_id INT
 );
 
+-- 포인트 상품
+CREATE TABLE bh_point_product (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prodName VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    point INT NOT NULL,
+    originFileName VARCHAR(255),
+    uploadFileName VARCHAR(255),
+    postYn VARCHAR(2) DEFAULT 'Y',
+    createdAt DATETIME NOT NULL
+);
+

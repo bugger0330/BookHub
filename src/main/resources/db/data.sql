@@ -68,3 +68,10 @@ VALUES ('user1', 10000, 12, 1, 0, CURRENT_TIMESTAMP),
 INSERT INTO bh_club (clubCate1, clubCate2, clubName, descript, cDate, host, headCount, hcApply, status, thumb1, thumb2, thumb3, rdate)
 VALUES (1, 1, 'Club One', 'Description of Club One', '2024-02-20 10:00:00', 'Host 1', 20, 0, 'Available', 'thumb1.jpg', 'thumb2.jpg', 'thumb3.jpg', CURRENT_TIMESTAMP),
        (2, 2, 'Club Two', 'Description of Club Two', '2024-02-21 10:00:00', 'Host 2', 15, 0, 'Available', 'thumb4.jpg', 'thumb5.jpg', 'thumb6.jpg', CURRENT_TIMESTAMP);
+
+-- 포인트 상품 더미데이터
+INSERT INTO bh_point_product (prodName, price, point, originFileName, uploadFileName, createdAt) 
+VALUES 
+('상품1', 10000, 100, 'image1.jpg', 'image1_thumb.jpg', NOW()),
+('상품2', 20000, 200, 'image2.jpg', 'image2_thumb.jpg', NOW()),
+('상품3', 30000, 300, 'image3.jpg', 'image3_thumb.jpg', NOW());
