@@ -1,5 +1,7 @@
 package com.library.bookhub.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -53,6 +55,14 @@ public class MemberService {
 		log.info("where uid ? :"+ result);
 		
 		return result;
+	}
+	
+	// 아이디 찾기
+	public List<String> findUid(String email) {
+		
+		List<String> uids = memberRepository.findEmailByUsername(email);
+		
+		return uids;
 	}
 	
 }

@@ -3,11 +3,10 @@ package com.library.bookhub.service;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.library.bookhub.web.dto.member.SenderDTO;
 
 import jakarta.mail.internet.MimeMessage;
 import lombok.extern.log4j.Log4j2;
@@ -24,17 +23,17 @@ public class MailService {
 	// 인증 번호
 	private static String generatedCode;
 	
+	@Value("${spring.mail.username}")
+    private String username;
 	
 	// 메일 발송
-	public void sendCodeByEmail(String receiver, SenderDTO dto) throws Exception {
+	public void sendCodeByEmail(String receiver) throws Exception {
 		// 인증코드 생성
 		int code = ThreadLocalRandom.current().nextInt(100000,1000000); // 랜덤 생성
 		generatedCode = ""+code;
 		log.info("전송된 인증 번호 : "+generatedCode);
 		
-		
-		String sender = dto.getUsername();
-		String password = dto.getPassword();
+		String sender = username;
 		String title = "BookHub 인증코드";
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
@@ -48,7 +47,7 @@ public class MailService {
 		msgOfEmail += "<div style='margin:20px;'>";
         msgOfEmail += "<br>";
         msgOfEmail += "<div  align='center' style='border:1px solid black; font-family:verdana';>";
-        msgOfEmail += "<h3 style='color:blue;'>회원가입 인증 코드입니다.</h3>";
+        msgOfEmail += "<h3 style='color:blue;'>이메일 인증 번호입니다.</h3>";
         msgOfEmail += "<div style='font-size:130%'>";
         msgOfEmail += "<strong>"+ generatedCode + "</strong><div><br/> ";
         msgOfEmail += "</div>";

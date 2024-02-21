@@ -15,5 +15,5 @@ public interface MemberRepository {
 	public User findByUsername(String username);
 	
 	public int countByUsername(String username);
-	public List<User> findEmailByUsername(String email);
+	public List<String> findEmailByUsername(String email);
 }

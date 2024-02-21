@@ -108,15 +108,15 @@
 				<div class="log-form-group">
 					<label for="email">이메일 인증</label> <input type="email" id="email"
 						name="email" placeholder="Enter email" class="input-email" required>
-					<button type="button" class="auth-email">인증하기</button>
+					<button type="button" class="auth-email" onclick="authEmail()">인증하기</button>
 				</div>
 			</form>
 			<!-- 인증 확인 -->
 			<form action="#">
 				<div class="log-form-group">
-					<label for="authNumber">인증번호</label> <input type="text" id="authNumber"
+					<label for="authNumber">인증번호</label> <input type="text" id="auth-number"
 						name="authNumber" placeholder="Enter number" class="input-authNumber" required>
-						<button type="submit" class="btn-complete">완료</button>
+						<button type="button" class="btn-complete" onclick="EnterNumber()">완료</button>
 				</div>
 			</form>
 		</div>
@@ -126,6 +126,56 @@
 		</div>
 	</div>
 
+	<script>
+		const inputEmail = document.getElementById('email');
+		const authNumber = document.getElementById('auth-number');
+
+		const btnAuthEmail = document.getElementsByClassName('input-email')[0];
+		const btnNum = document.getElementsByClassName('btn-complete')[0];
+
+		// 이메일 인증
+		function authEmail() {
+
+			const email = inputEmail.value;
+			
+			fetch(`/sendEmail/`+email,{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json;charset=UTF-8",
+				},
+			}).then((response) => response.text())
+			.then((data) => {
+				alert('이메일이 전송되었습니다.');
+			})
+			.catch((error) => {
+				alert('이메일 인증을 실패했습니다.');
+				console.log(error);
+			});
+			
+		}
+
+		function EnterNumber() {
+			const num = authNumber.value;
+			alert('num : '+num);
+
+			fetch(`/authNumber?number=`+num,{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json;charset=UTF-8",
+				},
+			}).then((response) => response.text())
+			.then((data) => {
+				if(data <= 1){
+					
+				}
+			})
+			.catch((error) => {
+				alert('인증 번호에 문제가 발생했습니다.');
+				console.log(error);
+			});
+		}
+
+	</script>
 
 </body>
 </html>
