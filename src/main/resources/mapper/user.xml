@@ -39,7 +39,7 @@
 		SET
 		password = #{password},
 		name = #{name},
-		type = #{type},
+		role = #{role},
 		gender = #{gender},
 		phone = #{phone},
 		email = #{email},
@@ -51,7 +51,7 @@
 
     <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">
         UPDATE bh_member SET password = #{password}, name = #{name}, phone = #{phone},
-        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, status = #{status},
+        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, role = #{role},
         wDate = #{wDate}, rDate = now() WHERE id = #{id}
     </update>
 

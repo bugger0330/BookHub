@@ -70,7 +70,7 @@
 						<div class="card-body">
 							<h5 class="card-title">${product.prodName}</h5>
 							    <p class="card-text">${product.formatBalance()}</p>
-							<a href="#" class="btn btn-primary">선택</a>
+							<a href="/payment/detail/${product.spId}" class="btn btn-primary">선택</a>
 						</div>
 
 					</div>

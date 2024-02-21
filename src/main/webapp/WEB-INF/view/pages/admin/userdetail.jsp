@@ -84,7 +84,7 @@
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">계정유형</th>
-									<td>${user.type == 1 ? '일반계정' : '관리자'}</td>
+									<td>${user.role == 'USER' ? '일반계정' : '관리자'}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">보유포인트</th>

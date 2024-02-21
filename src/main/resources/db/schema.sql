@@ -18,21 +18,21 @@ DROP TABLE IF EXISTS bh_subscription_product_cart;
 
 -- 회원
 CREATE TABLE bh_member (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(20) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(20),
-    gender TINYINT NOT NULL CHECK (gender IN (1, 2)),
-    phone CHAR(13) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    type TINYINT DEFAULT 1 NOT NULL CHECK (type IN (1, 9)),
-    point INT DEFAULT 0,
-    zip VARCHAR(10),
-    addr1 VARCHAR(255),
-    addr2 VARCHAR(255),
-    status INT DEFAULT 0 NOT NULL,
-    wdate DATETIME,
-    rdate DATETIME NOT NULL
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(20) NOT NULL,
+  password varchar(255) NOT NULL,
+  name varchar(20) DEFAULT NULL,
+  gender tinyint NOT NULL,
+  phone char(13) NOT NULL,
+  email varchar(100) NOT NULL,
+  role varchar(20) DEFAULT 'USER',
+  point int DEFAULT '0',
+  zip varchar(10) DEFAULT NULL,
+  addr1 varchar(255) DEFAULT NULL,
+  addr2 varchar(255) DEFAULT NULL,
+  status int NOT NULL DEFAULT '0',
+  wdate datetime DEFAULT NULL,
+  rdate datetime NOT NULL
 );
 
 

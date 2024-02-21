@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
+	// ---------------- 메인 페이지 ----------------//
+
 	// 로그인페이지
 	@GetMapping("/login")
 	public String loginPage() {
@@ -33,7 +35,11 @@ public class PageController {
 		return "pages/book/suggest";
 	}
 
-
+	// 추천도서 페이지
+	@GetMapping("/ad-inquiry")
+	public String adInquiryPage() {
+		return "pages/openArea/advertisingInquiry";
+	}
 
 	// ---------------- 관리자 페이지 ----------------//
 	// 어드민 페이지
@@ -101,13 +107,13 @@ public class PageController {
 	public String paymentFailPage() {
 		return "pages/payment/fail";
 	}
-	
+
 	// 구독상품 - (관리자)구독상품전체조회
 	@GetMapping("/subproduct")
 	public String subproductPage() {
 		return "pages/admin/subproductList";
 	}
-	
+
 	// 구독상품 - (관리자)구독상품추가
 	@GetMapping("/subproduct-add")
 	public String subproductAddPage() {

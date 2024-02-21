@@ -9,8 +9,8 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>BookHub Admin Page</title>
-<!-- Favicon-->
-<link rel="icon" type="/image/x-icon" href="/assets/favicon.ico" />
+<!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/css/adminpagestyles.css" rel="stylesheet" />
 <!-- Bootstrap CSS -->
