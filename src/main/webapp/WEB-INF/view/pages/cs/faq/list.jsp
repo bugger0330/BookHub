@@ -2,6 +2,30 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 
+<!-- <script>
+	$(function() {
+		$('.more').click(function(e) {
+			e.preventDefault();
+
+			$(this).parents('.faqBlock').find('> li').show();
+			$(this).hide();
+		});
+		$('.simple').click(function(e) {
+			e.preventDefault();
+
+			// 모든 li 요소를 숨기고
+			$(this).parent().find('> li').hide();
+			// 처음 3개 li 요소를 다시 보이게 하고
+			$(this).parent().find('> .faqItem:nth-child(1)').show();
+			$(this).parent().find('> .faqItem:nth-child(2)').show();
+			$(this).parent().find('> .faqItem:nth-child(3)').show();
+			// "더 보기" 버튼을 표시
+			$(this).parent().find('> .more').show();
+
+		});
+	});
+</script> -->
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -23,7 +47,7 @@
 		<div class="container">
 
 			<nav
-				style="--bs-breadcrumb-divider: url(&amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;#34;);"
+				style="--bs-breadcrumb-divider: url(&amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
 				aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
@@ -35,80 +59,25 @@
 			<div>
 				<h2>자주 묻는 질문</h2>
 
-				<div class="accordion" id="accordionPanelsStayOpenExample" style="margin-top: 30px; margin-bottom: 30px;">
-					<div class="accordion-item">
-						<h2 class="accordion-header">
-							<button class="accordion-button" type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#panelsStayOpen-collapseOne"
-								aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-								Accordion Item #1</button>
-						</h2>
-						<div id="panelsStayOpen-collapseOne"
-							class="accordion-collapse collapse show">
-							<div class="accordion-body">
-								<strong>This is the first item's accordion body.</strong> It is
-								shown by default, until the collapse plugin adds the appropriate
-								classes that we use to style each element. These classes control
-								the overall appearance, as well as the showing and hiding via
-								CSS transitions. You can modify any of this with custom CSS or
-								overriding our default variables. It's also worth noting that
-								just about any HTML can go within the
-								<code>.accordion-body</code>
-								, though the transition does limit overflow.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h2 class="accordion-header">
-							<button class="accordion-button collapsed" type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#panelsStayOpen-collapseTwo"
-								aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-								Accordion Item #2</button>
-						</h2>
-						<div id="panelsStayOpen-collapseTwo"
-							class="accordion-collapse collapse">
-							<div class="accordion-body">
-								<strong>This is the second item's accordion body.</strong> It is
-								hidden by default, until the collapse plugin adds the
-								appropriate classes that we use to style each element. These
-								classes control the overall appearance, as well as the showing
-								and hiding via CSS transitions. You can modify any of this with
-								custom CSS or overriding our default variables. It's also worth
-								noting that just about any HTML can go within the
-								<code>.accordion-body</code>
-								, though the transition does limit overflow.
-							</div>
-						</div>
-					</div>
-					<div class="accordion-item">
-						<h2 class="accordion-header">
-							<button class="accordion-button collapsed" type="button"
-								data-bs-toggle="collapse"
-								data-bs-target="#panelsStayOpen-collapseThree"
-								aria-expanded="false"
-								aria-controls="panelsStayOpen-collapseThree">Accordion
-								Item #3</button>
-						</h2>
-						<div id="panelsStayOpen-collapseThree"
-							class="accordion-collapse collapse">
-							<div class="accordion-body">
-								<strong>This is the third item's accordion body.</strong> It is
-								hidden by default, until the collapse plugin adds the
-								appropriate classes that we use to style each element. These
-								classes control the overall appearance, as well as the showing
-								and hiding via CSS transitions. You can modify any of this with
-								custom CSS or overriding our default variables. It's also worth
-								noting that just about any HTML can go within the
-								<code>.accordion-body</code>
-								, though the transition does limit overflow.
-							</div>
-						</div>
-					</div>
+				<div>
+
+
+					<ul class="list-group">
+						<%-- <c:forEach> --%>
+						<li class="list-group-item active" aria-current="true">
+						<a>1.
+						<span>Q.</span>제목
+						</a>
+						</li>
+						<%-- </c:forEach> --%>
+						
+						<li class="list-group-more" id="showMore">더보기</li>
+						<li class="list-group-simple" id="showLess">간단히 보기</li>
+					</ul>
 				</div>
-				
-				<ul class="qna pagination" style="display:flex; justify-content: center; align-content: center;">
+
+				<ul class="qna pagination"
+					style="display: flex; justify-content: center; align-content: center;">
 					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 					<li class="page-item"><a class="page-link" href="#">1</a></li>
 					<li class="page-item active"><a class="page-link" href="#">2</a></li>
