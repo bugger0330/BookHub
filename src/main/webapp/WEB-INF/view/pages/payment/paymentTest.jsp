@@ -46,6 +46,7 @@
 			} else {
 				// 결제 실패 시 처리 로직
 				alert(`결제에 실패했습니다.`);
+				window.location.href = "/sc-product/nopage"
 			}
 		});
 	}
