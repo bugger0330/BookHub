@@ -14,6 +14,8 @@ import com.library.bookhub.entity.cs.CsQnaEntity;
 import com.library.bookhub.service.CsService;
 
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @Log4j2
@@ -65,4 +67,8 @@ public class CsListController {
 	}
 
 	// 챗봇
+	
+
+	
+	
 }
