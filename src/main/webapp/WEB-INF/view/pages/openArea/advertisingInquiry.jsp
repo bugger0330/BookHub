@@ -77,6 +77,7 @@
     <label for="advertisement_image" class="col-sm-2 col-form-label">광고이미지 첨부</label>
     <div class="col-sm-10">
      <h5 style="color: red;">★★★광고이미지는 가로형 이미지만 가능합니다.★★★</h5>
+     <img  src="/img/bannerexam.jpg" class="m-3">
         <div class="custom-file">
        
             <input type="file" class="custom-file-input" id="advertisement_image" name="advertisement_image" accept="image/*" required>
