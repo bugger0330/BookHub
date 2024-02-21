@@ -82,11 +82,7 @@
 				<button type="submit" class="login-btn">로그인</button>
 				<hr />
 				<h6>
-<<<<<<< Updated upstream
 					회원이 아니신가요? <a href="/user/join" class="signup-btn">회원가입</a>
-=======
-					회원이 아니신가요? <a href="/join" class="signup-btn">회원가입</a>
->>>>>>> Stashed changes
 				</h6>
 				<h6>
 					계정정보를 잊으셨나요? <a href="/user/findId" class="signup-btn">계정찾기</a>

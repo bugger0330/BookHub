@@ -1,8 +1,11 @@
 package com.library.bookhub.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.library.bookhub.entity.User;
+
 
 @Mapper
 public interface MemberRepository {
@@ -12,4 +15,5 @@ public interface MemberRepository {
 	public User findByUsername(String username);
 	
 	public int countByUsername(String username);
+	public List<User> findEmailByUsername(String email);
 }

@@ -41,6 +41,13 @@ dependencies {
     // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
+	
+	// validator
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    // 이메일 인증
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+  	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('bootBuildImage') {

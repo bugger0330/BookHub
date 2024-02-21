@@ -95,7 +95,7 @@
 				<h5>북허브 이용약관</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="termbox" id="checking1" required>
+					<input type="checkbox" class="term-box" name="termbox" onchange="checkSelectAll()" id="checking1" required>
 					<label for="checking1">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -138,7 +138,7 @@
 				<h5>개인정보 취급방침</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="termbox" id="checking2" required>
+					<input type="checkbox" class="term-box" name="termbox" onchange="checkSelectAll()" id="checking2" required>
 					<label for="checking2">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -183,7 +183,7 @@
 				<h5>위치정보 이용약관</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="termbox" id="checking3" required>
+					<input type="checkbox" class="term-box" name="termbox" onchange="checkSelectAll()" id="checking3" required>
 					<label for="checking3">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -218,7 +218,7 @@
 				<h5>전자금융거래 이용약관</h5>
 				
 				<div class="term-checkbox">
-					<input type="checkbox" name="termbox" id="checking4" required>
+					<input type="checkbox" class="term-box" name="termbox" onchange="checkSelectAll()" id="checking4" required>
 					<label for="checking4">동의합니다.</label>
 				</div>
 				<div class="box">
@@ -249,20 +249,42 @@
 			</li>
 		</ul>
 		<div class="last-checkbox">
-			<input type="checkbox" name="allChcking" value="all" onclick="selectAll(this)" required>
+			<input type="checkbox" name="allChcking" value="all" onchange="selectAll(this)" required>
 			<label for="all-checking">모두 동의합니다.</label>
 		</div>
-		<button type="button">다음</button>
+		<button type="button" id="btn-next">다음</button>
 		
 		<script>
-			/* 모두 체크 */
-			function selectAll(all) {
-				const checkboxs = document.getElementsByName('termbox')[0];
-				
-				checkboxes.forEach((checkbox) => {
-				    checkbox.checked = selectAll.checked;
-				  });
+			const checkboxes = document.querySelectorAll('.term-box');
+			const checked = document.querySelectorAll('input[name="termbox"]:checked');
+			const allChcking = document.querySelector('input[name="allChcking"]');
+			const btnNext = document.getElementById('btn-next');
+
+			// 전체 체크 확인
+			function checkSelectAll() {
+				if(checkboxes.length === checked.length)  {
+					allChcking.checked = true;
+				}else {
+					allChcking.checked = false;
+				}
 			}
+
+			// 모두 체크
+			function selectAll(all) {
+				checkboxes.forEach((checkbox)=>{
+					checkbox.checked = all.checked
+				});
+			}
+
+			// 페이지 이동
+			btnNext.addEventListener('click', function(e){
+				if(checkboxes.length < 4){
+					alert('모든 약관에 동의해주세요.')
+				} else {
+					window.location.href = '/user/signUp';
+				}
+			});
+			
 		</script>
 	</div>
 </body>

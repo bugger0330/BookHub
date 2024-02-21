@@ -1,13 +1,17 @@
 package com.library.bookhub.web.controller.page;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.library.bookhub.security.handler.exception.CustomRestfulException;
 import com.library.bookhub.service.MemberService;
 import com.library.bookhub.web.dto.member.SignUpFormDto;
 
@@ -36,12 +40,16 @@ public class MemberController {
 	
 	// 회원가입 기능
 	@PostMapping("/signUp")
-	public String signUpLogic(SignUpFormDto dto) {
+	public String signUpLogic(@Validated SignUpFormDto dto, BindingResult bindingResult) {
 		log.info(dto.toString());
+		
+		if(bindingResult.hasErrors()) {
+			throw new CustomRestfulException("입력한 회원정보를 다시 확인해주세요.",HttpStatus.BAD_REQUEST);
+		}
 		
 		memberService.createUser(dto);
 		
-		return "user/signUp";
+		return "redirect:/";
 	}
 	
 	// 약관 페이지

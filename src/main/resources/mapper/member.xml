@@ -6,15 +6,19 @@
 
 	<insert id="insert">
 		INSERT INTO bh_member 
-		(`username`,`password`,`name`, `gender`, `phone`, `email`, `type`, `zip`, `addr1`, `addr2`, `rdate`)
-		VALUES (#{username},#{password},#{name},#{gender},#{phone},#{email},1,#{zip},#{addr1},#{addr2},NOW())
+		(`userName`,`password`,`name`, `gender`, `phone`, `email`, `role`, `zip`, `addr1`, `addr2`, `rdate`)
+		VALUES (#{userName},#{password},#{name},#{gender},#{phone},#{email},'USER',#{zip},#{addr1},#{addr2},NOW())
 	</insert>
 	
 	<select id="findByUsername" resultType="com.library.bookhub.entity.User">
-		SELECT * FROM bh_member WHERE `username`=#{username}
+		SELECT * FROM bh_member WHERE `userName`=#{userName}
 	</select>
 	
 	<select id="countByUsername" resultType="int">
-		SELECT COUNT(*) FROM bh_member WHERE `username`=#{username}
+		SELECT COUNT(*) FROM bh_member WHERE `userName`=#{userName}
+	</select>
+	
+	<select id="findEmailByUsername">
+		SELECT `userName`,`email` FROM bh_member WHERE `email`=#{email}
 	</select>
 </mapper>
