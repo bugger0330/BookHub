@@ -59,20 +59,20 @@
 				</div>
 			</div>
 			<table class="table table-hover">
-				<thead>
+				<thead class="thead-light text-center">
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>상태</th>
+						<th>No</th>
+						<th>Q&A Title</th>
+						<th>Writer</th>
+						<th>Date</th>
+						<th>Answer</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="text-center">
 					<c:forEach var="list" items="${qnaList}">
 						<tr>
 							<td>${list.id}</td>
-							<td>${list.title}</td>
+							<td class="text-left" width="50%">${list.title}</td>
 							<td>${list.writer}</td>
 							<!-- 작성자 마킹처리 -->
 							<td>${list.rdate}</td>

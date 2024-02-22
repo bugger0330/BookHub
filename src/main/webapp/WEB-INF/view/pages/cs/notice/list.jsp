@@ -52,17 +52,17 @@
 			</div>
 			<table class="table table-hover"
 				style="margin-top: 30px; margin-bottom: 30px;">
-				<thead>
+				<thead class="thead-light text-center">
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>첨부</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>조회</th>
+						<th>No</th>
+						<th>NOTICE Title</th>
+						<th>File</th>
+						<th>Writer</th>
+						<th>Date</th>
+						<th>Hit</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="text-center">
 					<!-- 가장 조회수가 높은 게시글 상위 노출 -->
 					<tr>
 						<td><i class="bi bi-megaphone-fill text-danger"></i></td>
