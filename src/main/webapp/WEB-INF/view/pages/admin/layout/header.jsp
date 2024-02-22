@@ -42,18 +42,26 @@
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">광고</a>
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">광고관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="/ad/list">배너광고목록</a></li>
 							<li><a class="dropdown-item" href="/ad-setting">배너광고추가</a></li>
-							<li><a class="dropdown-item" href="/ad/list">배너광고목록</a></li>
 						</ul></li>
 						
 						<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">구독상품관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a class="dropdown-item" href="/sc-product/list">구독상품목록</a></li>
 							<li><a class="dropdown-item" href="/subproduct-add">구독상품추가</a></li>
-							<li><a class="dropdown-item" href="/sc-product/list">구독상품목록</a></li>
+						</ul></li>
+						
+						<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">먹거리상품관리</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="/point-product/list">상품목록</a></li>
+							<li><a class="dropdown-item" href="/point-product-add">상품추가</a></li>
 						</ul></li>
 
 				</ul>

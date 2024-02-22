@@ -21,10 +21,10 @@ public interface PointProductRepository {
     public int getPointProductTotalCount();
 	
 	// 전체조회 페이징 처리
-	List<PointProduct> findAllWithPagingAndProductName(@Param("offset") int offset, @Param("limit") int limit, String prodName);
+	public List<PointProduct> findAllWithPagingAndProductName(@Param("offset") int offset, @Param("limit") int limit, @Param("prodName") String prodName);
 	
 	// id 값으로 상품 찾기
-	Optional<PointProduct> findByPointProductId(int id);
+	public Optional<PointProduct> findByPointProductId(int id);
 	
 	// 포인트 상품 게시여부 상태값 변경
 	public void updatePostStatus(@Param("id") int id, @Param("postYn") String postYn);

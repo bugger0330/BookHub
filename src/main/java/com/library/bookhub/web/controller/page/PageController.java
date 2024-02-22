@@ -119,6 +119,12 @@ public class PageController {
 	public String subproductAddPage() {
 		return "pages/admin/subproductAdd";
 	}
+	
+	// 포인트상품 - (관리자)포인트상품추가
+	@GetMapping("/point-product-add")
+	public String pointProductAddPage() {
+		return "pages/admin/pointProductAdd";
+	}
 
 }
 

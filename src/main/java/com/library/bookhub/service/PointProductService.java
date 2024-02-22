@@ -14,6 +14,7 @@ import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.repository.PointProductRepository;
 import com.library.bookhub.utils.Define;
 import com.library.bookhub.web.dto.BannerAdFormDto;
+import com.library.bookhub.web.dto.PointProductFormDto;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 
@@ -32,13 +33,14 @@ public class PointProductService {
 	
 	// 업로드 처리
 		@Transactional
-		public void uploadPointProduct(PointProduct product) {
+		public void uploadPointProduct(PointProductFormDto dto) {
 			PointProduct pointProduct = PointProduct.builder()
-					.prodName(product.getProdName())
-					.price(product.getPrice())
-					.postYn(product.getPostYn())
-					.originFileName(product.getOriginFileName())
-					.uploadFileName(product.getUploadFileName())
+					.prodName(dto.getProdName())
+					.price(dto.getPrice())
+					.point(dto.getPoint())
+					.postYn(dto.getPostYn())
+					.originFileName(dto.getOriginFileName())
+					.uploadFileName(dto.getUploadFileName())
 					.build();
 
 			int result = pointProductRepository.insert(pointProduct);
@@ -66,7 +68,7 @@ public class PointProductService {
 	}
 
 	// 상세조회
-	public Optional<PointProduct> findByBannerId(int id) {
+	public Optional<PointProduct> findByProductId(int id) {
 		// db 상세조회 호출
 		Optional<PointProduct> optionalPointProduct = pointProductRepository.findByPointProductId(id);
 

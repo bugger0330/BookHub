@@ -1,6 +1,7 @@
 package com.library.bookhub.entity;
 
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +26,21 @@ public class PointProduct {
 	public String setupPointProductImage() {
 		return uploadFileName == null ? "이미지가 없습니다." : "/images/upload/" + uploadFileName;
 	}
+
+	// 포메터 기능(금액)
+	public String formatBalance() {
+		// 1000 -> 1,000
+		DecimalFormat df = new DecimalFormat("#,###");
+		String formaterNumber = df.format(price);
+		return formaterNumber + "원";
+	}
+	
+	// 포메터 기능(금액)
+		public String formatBalancePoint() {
+			// 1000 -> 1,000
+			DecimalFormat df = new DecimalFormat("#,###");
+			String formaterNumber = df.format(point);
+			return formaterNumber + "포인트";
+		}
 
 }

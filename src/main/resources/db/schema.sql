@@ -1,18 +1,5 @@
 
 -- 테이블 드롭
-DROP TABLE IF EXISTS bh_member;
-DROP TABLE IF EXISTS bh_member_point;
-DROP TABLE IF EXISTS bh_book;
-DROP TABLE IF EXISTS bh_product_cart;
-DROP TABLE IF EXISTS bh_book_borrow;
-DROP TABLE IF EXISTS bh_cs_qna;
-DROP TABLE IF EXISTS bh_cs_faq;
-DROP TABLE IF EXISTS bh_cs_notice;
-DROP TABLE IF EXISTS bh_banner;
-DROP TABLE IF EXISTS bh_payment;
-DROP TABLE IF EXISTS bh_club;
-DROP TABLE IF EXISTS bh_subscription_product;
-DROP TABLE IF EXISTS bh_subscription_product_cart;
 
 
 
@@ -184,7 +171,7 @@ CREATE TABLE bh_point_product (
     point INT NOT NULL,
     originFileName VARCHAR(255),
     uploadFileName VARCHAR(255),
-    postYn VARCHAR(2) DEFAULT 'Y',
+    post_yn VARCHAR(2) DEFAULT 'Y',
     createdAt DATETIME NOT NULL
 );
 
