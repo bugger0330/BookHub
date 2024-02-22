@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,6 +81,7 @@
                     </div>
                 </div>
                 <!-- 이부분은 로그인 되었을 경우에만 표시되게 설정 -->
+                <sec:authorize access="isAuthenticated()">
                   <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
                     <div class="dropdown-menu fade-down m-0">
@@ -87,14 +89,31 @@
                         <a href="testimonial.html" class="dropdown-item">회원정보수정</a>
                        <a href="testimonial.html" class="dropdown-item">회원탈퇴</a>
                     </div>
-                    
+                </sec:authorize>
                     
                 </div>
                 <!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
-              <a href="/admin" class="nav-item nav-link active">관리자 페이지</a>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+					<a href="/admin" class="nav-item nav-link active">관리자 페이지</a>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<div class="navbar-nav" style="
+					    display: flex;
+					    width: 170px;
+					    text-align: center;
+					    flex-direction: column;
+					    justify-content: space-around;
+					    color: #06BBCC;"
+					><sec:authentication property="principal.user.name"/></div>
+				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->
-            <a href="/login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">로그인/회원가입<i class="fa fa-arrow-right ms-3"></i></a>
+            <sec:authorize access="isAnonymous()">
+           		<a href="/login" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">로그인/회원가입<i class="fa fa-arrow-right ms-3"></i></a>
+           	</sec:authorize>
+           	<sec:authorize access="isAuthenticated()">
+			<a href="/logout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">로그아웃<i class="fa fa-arrow-right ms-3"></i></a>
+			</sec:authorize>
         </div>
     </nav>
     <!-- 내비바 끝 -->

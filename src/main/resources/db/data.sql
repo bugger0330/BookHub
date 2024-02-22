@@ -1,7 +1,8 @@
 -- 회원 더미 데이터 삽입
-INSERT INTO bh_member (userName, password, name, gender, phone, email, type, point, zip, addr1, addr2, status, rdate)
-VALUES ('user1', 'password1', 'User One', 1, '123-4567-8901', 'user1@example.com', 1, 100, '12345', 'Address 1', 'City 1', 0, CURRENT_TIMESTAMP),
-       ('user2', 'password2', 'User Two', 2, '234-5678-9012', 'user2@example.com', 1, 200, '23456', 'Address 2', 'City 2', 0, CURRENT_TIMESTAMP);
+INSERT INTO bh_member (userName,password,name,gender,phone,email,`role`,`point`,zip,addr1,addr2,status,wdate,rdate) VALUES
+	 ('admin','$2a$10$zM25SwQ74P0QiRvedN2zZekqKQa1K0KMdaEXs0r48yxAbEGe6N6y6','관리자',1,'010-5678-9012','admin@bookhub.com','ADMIN',2147483647,'47353','부산광역시 부산진구','중앙대로 123',0,NULL,'2024-02-22 18:46:46'),
+	 ('user1','$2a$10$Y.xHopea4tqZJyCj7hy9ye.Tf3ifGgsXzJ6WNUXH4dQWvyfaLZtAO','JaneSmith',1,'010-4567-8901','user1@example.com','USER',0,'47353','부산광역시 부산진구','중앙대로 123',0,NULL,'2024-02-22 18:51:54'),
+	 ('user2','$2a$10$8vtHibzz7yG999T1NIVjO.6tVQCe4s13J5LarrvEM0OV8LYROg1eW','JaneSmith',2,'010-4567-8901','user2@example.com','USER',0,'47353','부산광역시 부산진구','중앙대로 123',0,NULL,'2024-02-22 18:53:09');
 
 -- 회원포인트 더미 데이터 삽입
 INSERT INTO bh_member_point (userName, pId, point, ptDate)

@@ -278,7 +278,8 @@
 
 			// 페이지 이동
 			btnNext.addEventListener('click', function(e){
-				if(checkboxes.length < 4){
+				const checkedbox = document.querySelectorAll('input[name="termbox"]:checked');
+				if( !== checkedbox.length){
 					alert('모든 약관에 동의해주세요.')
 				} else {
 					window.location.href = '/user/signUp';

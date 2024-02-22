@@ -21,9 +21,9 @@ import lombok.extern.log4j.Log4j2;
 @Builder
 @ToString
 public class MyUserDetails implements UserDetails {
+	
 	@Autowired
 	private User user;
-	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

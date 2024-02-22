@@ -23,9 +23,6 @@ public class MailService {
 	// 인증 번호
 	private static String generatedCode;
 	
-	@Value("${spring.mail.username}")
-    private String username;
-	
 	// 메일 발송
 	public void sendCodeByEmail(String receiver) throws Exception {
 		// 인증코드 생성
@@ -33,7 +30,7 @@ public class MailService {
 		generatedCode = ""+code;
 		log.info("전송된 인증 번호 : "+generatedCode);
 		
-		String sender = username;
+		String sender = "BookHub";
 		String title = "BookHub 인증코드";
 		
 		MimeMessage message = javaMailSender.createMimeMessage();

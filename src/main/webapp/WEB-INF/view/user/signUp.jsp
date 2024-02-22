@@ -70,8 +70,8 @@
 	width: 25%;
 }
 
-.blind {
-	position: absolute;
+.blind-hide {
+	position: fixed;
     clip: rect(0 0 0 0);
     width: 1px;
     height: 1px;
@@ -105,11 +105,11 @@
 	box-sizing: border-box;
 }
 
-.input-email, .input-id {
+.input-email, .input-id, .input-authNumber {
 	width: 76% !important;
 }
 
-.check-id, .find-zip, .auth-email {
+.check-id, .find-zip, .btn-email, .btn-complete {
 	width: 20% !important;
 	padding: 11px !important;
 }
@@ -171,9 +171,10 @@
 			</div>
 			<div class="log-form-group">
 				<label for="email"><span class="essential">*</span> 이메일</label> <input type="email" id="email"
-					name="email" placeholder="Enter email" class="input-email" onblur="valiEmail()" required>
-				<button type="button" class="auth-email">인증하기</button>
+					name="email" placeholder="Enter email" class="input-email" required>
+				<button type="button" class="btn-email" onclick="valiEmail()">인증하기</button>
 				<p class="result-email"></p>
+				
 			</div>
 			<div class="log-form-group">
 				<label for="hp"><span class="essential">*</span> 휴대폰 번호</label> <input type="text" id="hp"
@@ -197,16 +198,16 @@
 			<div class="address">
 				<div class="log-form-group">
 					<label for="zip">우편번호</label> <input type="text" id="zip"
-						name="zip" placeholder="우편주소" readonly required>
+						name="zip" placeholder="우편주소" readonly>
 					<button type="button" class="find-zip">조회</button>
 				</div>
 				<div class="log-form-group">
 					<label for="addr1">기본 주소</label> <input type="text" id="addr1"
-						name="addr1" placeholder="기본 주소" readonly required>
+						name="addr1" placeholder="기본 주소" readonly>
 				</div>
 				<div class="log-form-group">
 					<label for="addr2">상세 주소</label> <input type="text" id="addr2"
-						name="addr2" placeholder="상세 주소" required>
+						name="addr2" placeholder="상세 주소">
 				</div>
 			</div>
 			<div class="log-form-group">

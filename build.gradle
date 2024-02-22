@@ -48,6 +48,10 @@ dependencies {
     // 이메일 인증
     implementation 'org.springframework.boot:spring-boot-starter-mail'
   	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  	
+  	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation 'org.springframework.security:spring-security-taglibs:6.2.2'
+
 }
 
 tasks.named('bootBuildImage') {

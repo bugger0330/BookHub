@@ -40,6 +40,7 @@ btnId.addEventListener('click', function(e) {
 	const uid = inputId.value;
 	console.log(uid);
 	
+	// 아이디 유효성 검사
 	if(!uid.match(reUid)){
 		inputId.style.borderColor = 'red';
 		resultUid.style.display = 'block';
@@ -48,7 +49,8 @@ btnId.addEventListener('click', function(e) {
 		isUidOk = false;
 		return;
 	}
-
+	
+	// 중복 검사
 	fetch(`/user/confirmId/`+uid,{
 		method: "POST",
 		headers: {
@@ -87,6 +89,8 @@ const resultHp = document.getElementsByClassName("result-hp")[0];
 const inputHp = document.getElementById('hp');
 const inputGender = document.getElementsByName('gender');
 
+const btnEmail = document.querySelector('.btn-email');
+
 // 비밀번호
 function valiPass() {
 	const password = inputPass.value;
@@ -120,6 +124,7 @@ function valiName() {
 	}
 }
 
+
 // 이메일
 function valiEmail() {
 	const email = inputEmail.value;
@@ -132,8 +137,96 @@ function valiEmail() {
 	} else {
 		inputEmail.style.borderColor = '#ccc';
 		resultEmail.textContent = '';
-		isEmailOk = true;
+		// 이메일 전송
+		authEmail(email);
 	}
+}
+
+const divEmail = document.getElementsByClassName('log-form-group')[3];
+const btnComplete = document.getElementsByClassName('btn-complete')[0];
+const labelNumber = document.getElementsByClassName('label-number')[0];
+
+// 추가할 태그
+const labelTag = '<label for="authNumber" class="label-number">인증번호</label>';
+const inputTag = '<input type="text" id="auth-number"'
+			+ 'name="authNumber" placeholder="Enter number"'
+			+ 'class="input-authNumber"'
+			+' style="margin-right: 4px;" required>';
+const buttonTag = '<button type="button" class="btn-complete" '
+			+'onclick="enterNumber()">완료</button>';
+
+// 이메일 전송
+function authEmail(email) {
+
+	resultEmail.style.display = 'block';
+	resultEmail.style.color = '#52565b';
+	resultEmail.textContent = '인증 코드 전송 중입니다';
+
+	// 1초 뒤 요청
+	setTimeout(function(){
+		fetch(`/user/sendEmail/`+email,{
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json;charset=UTF-8",
+			},
+		}).then((response) => response.text())
+		.then((data) => {
+			resultEmail.textContent = ('인증 코드가 전송되었습니다!');
+			divEmailCreate();
+		})
+		.catch((error) => {
+			alert('이메일 인증을 실패했습니다.');
+			console.log(error);
+			
+		});
+
+	}, 1000); // end setTimeout
+} // end authEmail
+
+// 동적 태그 추가
+function divEmailCreate() {
+	if(!btnComplete) {
+		divEmail.insertAdjacentHTML("beforeend", labelTag);
+		divEmail.insertAdjacentHTML("beforeend", inputTag);
+		divEmail.insertAdjacentHTML("beforeend", buttonTag);
+	}
+}
+
+// 동적 태그 바인딩 처리
+document.addEventListener('DOMContentLoaded', function() {
+	enterNumber();
+});
+
+// 인증 번호 확인
+function enterNumber() {
+	const newInput = document.querySelector('.input-authNumber');
+	const btnComplete = document.getElementsByClassName('btn-complete')[0];
+	const labelNumber = document.getElementsByClassName('label-number')[0];
+	const num = newInput.value;
+
+	console.log('num : '+num);
+
+	fetch(`/user/authNumber?number=`+num,{
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json;charset=UTF-8",
+		},
+	}).then((response) => response.text())
+	.then((data) => {
+		if(data > 0){
+			alert('인증되었습니다.');
+			labelNumber.remove();
+			newInput.remove();
+			btnComplete.remove();
+			isEmailOk = true;
+		} else {
+			alert('인증 코드를 다시 입력해주세요.');
+		}
+	})
+	.catch((error) => {
+		alert('인증 번호에 문제가 발생했습니다.');
+		console.log(error);
+	});
 }
 
 // 휴대폰 번호
@@ -162,13 +255,16 @@ function checkGender() {
 	}
 }
 
+
+// 최종 전송 버튼
 const btnForm = document.getElementsByClassName('btn-form')[0];
+
 // 최종 전송
 btnForm.addEventListener('click',function(e) {
 	
 	if(!isUidOk){
 		alert('아이디를 확인 하십시요.');
-		e.preventDefault(); 
+		e.preventDefault();
 		return false;
 	}
 

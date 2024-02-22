@@ -1,37 +1,22 @@
 -- 테이블 드롭
-DROP TABLE IF EXISTS bh_member;
-DROP TABLE IF EXISTS bh_member_point;
-DROP TABLE IF EXISTS bh_book;
-DROP TABLE IF EXISTS bh_product_cart;
-DROP TABLE IF EXISTS bh_book_borrow;
-DROP TABLE IF EXISTS bh_cs_qna;
-DROP TABLE IF EXISTS bh_cs_faq;
-DROP TABLE IF EXISTS bh_cs_notice;
-DROP TABLE IF EXISTS bh_banner;
-DROP TABLE IF EXISTS bh_payment;
-DROP TABLE IF EXISTS bh_club;
+-- 회원
 -- 회원
 CREATE TABLE bh_member (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(20) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(20),
-    gender TINYINT NOT NULL CHECK (gender IN (1, 2)),
-    phone CHAR(13) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    type TINYINT NOT NULL CHECK (type IN (1, 9)),
-    point INT DEFAULT 0,
-    zip VARCHAR(10),
-    addr1 VARCHAR(255),
-    addr2 VARCHAR(255),
-    status INT DEFAULT 0 NOT NULL,
-    wdate DATETIME,
-    rdate DATETIME NOT NULL,
-    etc1 INT,
-    etc2 INT,
-    etc3 VARCHAR(10),
-    etc4 VARCHAR(20),
-    etc5 VARCHAR(30)
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(20) NOT NULL,
+  password varchar(255) NOT NULL,
+  name varchar(20) DEFAULT NULL,
+  gender tinyint NOT NULL,
+  phone char(13) NOT NULL,
+  email varchar(100) NOT NULL,
+  role varchar(20) DEFAULT 'USER',
+  point int DEFAULT '0',
+  zip varchar(10) DEFAULT NULL,
+  addr1 varchar(255) DEFAULT NULL,
+  addr2 varchar(255) DEFAULT NULL,
+  status int NOT NULL DEFAULT '0',
+  wdate datetime DEFAULT NULL,
+  rdate datetime NOT NULL
 );
 
 
