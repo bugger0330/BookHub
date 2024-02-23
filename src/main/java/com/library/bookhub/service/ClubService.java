@@ -48,6 +48,12 @@ public class ClubService {
 		return clubRepository.findAll();
 	}
 	
+	// 카테고리별 목록
+	public List<Club> readByClubCate(Integer clubCate) {
+		
+		return clubRepository.findByClubCate(clubCate);
+	}
+	
 	// 모임 상세보기
 	public Club readByClubId(Integer id) {
 		
@@ -112,6 +118,8 @@ public class ClubService {
 		clubRepository.updateByApplication(club);
 		return clubRepository.deleteApplication(id);
 	}
+	
+	
 	
 	
 	

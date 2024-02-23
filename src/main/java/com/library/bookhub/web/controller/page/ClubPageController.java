@@ -39,6 +39,18 @@ public class ClubPageController {
 		return "pages/club/index";
 	}
 	
+	// 카테고리별 목록
+	@GetMapping("/list/{clubCate}")
+	public String ListPage(@PathVariable Integer clubCate, Model model) {
+		
+		List<Club> clubList = clubService.readByClubCate(clubCate);
+		model.addAttribute("clubList", clubList);
+		// 카테고리번호 이용해서 카테고리 타이틀 제목, 이미지 다르게 표시하기 위함
+		model.addAttribute("clubCate", clubCate);
+		
+		return "/pages/club/list";
+	}
+	
 	// 상세보기
 	@GetMapping("/view/{id}")
 	public String viewPage(@PathVariable Integer id, Model model) {
@@ -82,6 +94,8 @@ public class ClubPageController {
 		
 		return "pages/club/applicationList";
 	}
+	
+	
 	
 	
 	

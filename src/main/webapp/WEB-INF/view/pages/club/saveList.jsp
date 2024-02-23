@@ -20,9 +20,11 @@
 	<!-- Main Start -->
 	<c:forEach var="club" items= "${clubList}">
 		<div class="card center mx-auto" style="width:450px; height: 450px">
-		  <img class="card-img-top" src="${club.setupClubImage()}" alt="Card image">
-		  <div class="card-body">
-		    <h4 class="card-title text-center">${club.clubName}</h4>
+			<a href="/club/view/${club.id }">
+			  <img class="card-img-top" src="${club.setupClubImage()}" alt="Card image">
+			  <div class="card-body">
+			    <h4 class="card-title text-center">${club.clubName}</h4>
+		    </a>
 		    <p class="card-text text-center">개설일 : ${club.formatCreatedAt()}</p>
 		    <a href="#" class="btn btn-primary">개설 취소</a>
 		  </div>
