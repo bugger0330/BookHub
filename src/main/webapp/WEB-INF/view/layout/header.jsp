@@ -38,7 +38,8 @@
     <link href="/css/csStyle.css" rel="stylesheet"> 
     
     <!-- 네이버 스마트 에디터 2.0 -->
-    <script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/lib/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     
     
 </head>

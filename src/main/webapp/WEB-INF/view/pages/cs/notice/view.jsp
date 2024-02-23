@@ -48,60 +48,7 @@
 					</button>
 				</div>
 			</div>
-			<table class="table table-hover" style="margin-top: 30px; margin-bottom: 30px;">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>첨부</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>조회</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><i class="bi bi-megaphone-fill text-danger"></i></td>
-						<td>설날 중앙도서관 휴관 안내</td>
-						<td><i class="bi bi-file-earmark-text-fill"></i></td>
-						<td>관리자</td>
-						<td>2024-02-01</td>
-						<td>144</td>
-					</tr>
-					<tr>
-						<td><i class="bi bi-megaphone-fill text-danger"></i></td>
-						<td>설날 중앙도서관 휴관 안내</td>
-						<td><i class="bi bi-file-earmark-text-fill"></i></td>
-						<td>관리자</td>
-						<td>2024-02-01</td>
-						<td>144</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>설날 중앙도서관 휴관 안내</td>
-						<td><i class="bi bi-file-earmark-text-fill"></i></td>
-						<td>관리자</td>
-						<td>2024-02-01</td>
-						<td>144</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td>설날 중앙도서관 휴관 안내</td>
-						<td><i class="bi bi-file-earmark-text-fill"></i></td>
-						<td>관리자</td>
-						<td>2024-02-01</td>
-						<td>144</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td>설날 중앙도서관 휴관 안내</td>
-						<td><i class="bi bi-file-earmark-text-fill"></i></td>
-						<td>관리자</td>
-						<td>2024-02-01</td>
-						<td>144</td>
-					</tr>
-				</tbody>
-			</table>
+
 
 			<ul class="qna pagination" >
 				<li class="page-item"><a class="page-link" href="#">Previous</a></li>

@@ -13,7 +13,16 @@
 	</div>
 </div>
 <!-- Header End -->
-
+<script>
+	function save() {
+		oEditors.getById["txtContent"].exec("UPDATE_CONTENTS_FIELD", []);
+		//스마트 에디터 값을 텍스트컨텐츠로 전달
+		var content = document.getElementById("smartEditor").value;
+		alert(document.getElementById("txtContent").value);
+		// 값을 불러올 땐 document.get으로 받아오기
+		return;
+	}
+</script>
 <section id="cs">
 
 	<div class="qnaMainContainer">
@@ -23,7 +32,7 @@
 		<div class="container">
 
 			<nav
-				style="--bs-breadcrumb-divider: url(&amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;#34;);"
+				style="--bs-breadcrumb-divider: url(&amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
 				aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
@@ -96,6 +105,23 @@
 		</div>
 	</div>
 </section>
+<script id="smartEditor" type="text/javascript">
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef : oEditors,
+		elPlaceHolder : "txtContent", //textarea ID 입력
+		sSkinURI : "/lib/smarteditor/SmartEditor2Skin.html", //martEditor2Skin.html 경로 입력
+		fCreator : "createSEditor2",
+		htParams : {
+			// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+			bUseToolbar : true,
+			// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+			bUseVerticalResizer : false,
+			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+			bUseModeChanger : false
+		}
+	});
+</script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
