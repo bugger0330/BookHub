@@ -42,6 +42,13 @@ public class PageController {
 	}
 
 	// ---------------- 관리자 페이지 ----------------//
+
+	// 접근거부 페이지
+	@GetMapping("/access-denied")
+	public String deninedPage() {
+		return "pages/error/access-denied";
+	}
+
 	// 어드민 페이지
 	@GetMapping("/admin")
 	public String adminPage() {
@@ -119,7 +126,7 @@ public class PageController {
 	public String subproductAddPage() {
 		return "pages/admin/subproductAdd";
 	}
-	
+
 	// 포인트상품 - (관리자)포인트상품추가
 	@GetMapping("/point-product-add")
 	public String pointProductAddPage() {
