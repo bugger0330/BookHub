@@ -73,4 +73,3 @@ INSERT INTO bh_club (clubCate1, clubCate2, clubName, descript, cDate, host, head
 VALUES (1, 1, 'Club One', 'Description of Club One', '2024-02-20 10:00:00', 'Host 1', 20, 0, 'Available', 'thumb1.jpg', 'thumb2.jpg', 'thumb3.jpg', CURRENT_TIMESTAMP),
        (2, 2, 'Club Two', 'Description of Club Two', '2024-02-21 10:00:00', 'Host 2', 15, 0, 'Available', 'thumb4.jpg', 'thumb5.jpg', 'thumb6.jpg', CURRENT_TIMESTAMP);
 
-

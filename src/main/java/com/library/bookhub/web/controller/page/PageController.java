@@ -12,7 +12,7 @@ public class PageController {
 	@GetMapping("/login")
 	public String loginPage() {
 
-		return "pages/user/login";
+		return "user/login";
 	}
 
 	// about 페이지

@@ -1,3 +1,4 @@
+
 package com.library.bookhub.entity;
 
 import java.time.LocalDateTime;
@@ -6,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,11 +20,11 @@ public class User {
     private int gender;
     private String phone;
     private String email;
-    private String role;
     private int point;
     private String zip;
     private String addr1;
     private String addr2;
+    private String role;
     private LocalDateTime wDate;
     private LocalDateTime rDate;
     

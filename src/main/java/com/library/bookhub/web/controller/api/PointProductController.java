@@ -21,12 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.library.bookhub.entity.BannerAd;
 import com.library.bookhub.entity.PointProduct;
 import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.service.PointProductService;
 import com.library.bookhub.utils.Define;
-import com.library.bookhub.web.dto.BannerAdFormDto;
 import com.library.bookhub.web.dto.PointProductFormDto;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
@@ -56,7 +54,6 @@ public class PointProductController {
 		// 페이징된 상품 목록 가져오기
 		PageRes<PointProduct> pageRes = pointProductService.getPointProductWithPaging(pageReq, prodName);
 		List<PointProduct> ppdList = pageRes.getContent();
-		System.out.println("리스트" + ppdList);
 
 		// 페이징 정보를 모델에 추가
 		model.addAttribute("productList", ppdList);
