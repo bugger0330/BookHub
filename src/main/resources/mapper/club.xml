@@ -23,20 +23,35 @@
 		rdate = now()
 </insert>
 
-<select id="findAll" resultType="com.library.bookhub.entity.Club">
-	select * from bh_club
-</select>
-
-<select id="findById" resultType="com.library.bookhub.entity.Club">
-	select * from bh_club where id = #{id}
-</select>
-
 <insert id="insertApplication">
 	insert into bh_club_application set
 	`clubId` = #{clubId},
 	`userName` = #{userName},
 	`rdate`= now()
 </insert>
+
+<select id="findAll" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club order by id desc
+</select>
+
+<select id="findById" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club where id = #{id}
+</select>
+
+<select id="findApplicationByIdAndUserName" resultType="com.library.bookhub.entity.ClubApplication">
+	select * from bh_club_application where clubId = #{clubId} and userName = #{userName}
+</select>
+
+<select id="findByUserName" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club where userName = #{userName} order by id desc
+</select>
+
+<select id="findApplicationByUserName" resultType="com.library.bookhub.entity.ClubApplication">
+	select a.*, b.clubName, b.uploadFileName1
+	from bh_club_application as a join 
+	bh_club as b on a.clubId = b.id
+	where a.userName = #{userName} order by id desc
+	</select>
 
 <update id="updateByApplication">
 	update bh_club set
@@ -45,8 +60,10 @@
 	where bh_club.id = #{id}
 </update>
 
-<select id="findByIdAndUserName" resultType="com.library.bookhub.entity.ClubApplication">
-	select * from bh_club_application where clubId = #{clubId} and userName = #{userName}
-</select>
+<delete id="deleteApplication">
+	delete from bh_club_application where id = #{id}
+</delete>
+
+
 
 </mapper>

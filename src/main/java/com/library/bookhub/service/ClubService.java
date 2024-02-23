@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
@@ -54,9 +55,11 @@ public class ClubService {
 	}
 	
 	// 모임 신청
+	@Transactional
 	public boolean createApplication(Integer clubId, String userName) {
 		
-		ClubApplication clubApplication = clubRepository.findByIdAndUserName(clubId, userName);
+		// 같은 아이디로 신청한 내역 있는지 조회
+		ClubApplication clubApplication = clubRepository.findApplicationByIdAndUserName(clubId, userName);
 		
 		// 같은 아이디로 신청한 내역이 없을 때
 		if(clubApplication == null) {
@@ -66,8 +69,8 @@ public class ClubService {
 			// 신청인원 + 1
 			club.setupHcApply();
 			
-			// 신청인원수가 정원 - 5 이 되면 status 수정
-			if(club.getHcApply() == club.getHeadCount() - 5) {
+			// 신청인원수가 정원 - 5 보다 크거나 같으면 status 수정 / 마감은?? 마감표시 디비에 넣는 것 일단 보류
+			if(club.getHcApply() >= club.getHeadCount() - 5) {
 				club.setStatus("마감임박");
 			}
 			
@@ -80,7 +83,35 @@ public class ClubService {
 		}
 	}
 	
+	// 모임개설내역
+	public List<Club> readClubListByUserName(String userName) {
+		
+		return clubRepository.findByUserName(userName);
+	}
 	
+	// 모임신청내역
+	public List<ClubApplication> readApplicationListByUserName(String userName) {
+		
+		return clubRepository.findApplicationByUserName(userName);
+	}
+	
+	// 모임신청취소
+	public boolean deleteApplication(Integer id, Integer clubId) {
+		
+		// 신청취소하는 모임 조회
+		Club club = clubRepository.findById(clubId);
+		
+		// 모임 신청인원 수정
+		club.minusHcApply();
+		
+		// 신청인원수가 정원 - 5 보다 작으면 status 수정 
+		if(club.getHcApply() < club.getHeadCount() - 5) {
+			club.setStatus("신청가능");
+		}
+
+		clubRepository.updateByApplication(club);
+		return clubRepository.deleteApplication(id);
+	}
 	
 	
 	

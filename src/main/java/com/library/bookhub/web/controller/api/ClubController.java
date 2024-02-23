@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.library.bookhub.handler.exception.CustomRestFulException;
@@ -48,7 +49,7 @@ public class ClubController {
 			// 폴더가 없다면 오류 발생(파일 생성시)
 			File dir = new File(saveDirectory);
 			if(dir.exists() == false) {
-				dir.mkdir(); // 폴더가 없으면 폴더 생성
+				dir.mkdir(); // 폴더가 없으면 폴더 생성 / work_spring폴더 자체가 없으면 upload폴더 생성 못함
 			}
 			
 			// 파일 이름(중복처리 예방)
@@ -79,6 +80,9 @@ public class ClubController {
 		
 		return "redirect:/club/index";
 	}
+	
+	
+	
 	
 	
 }

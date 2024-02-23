@@ -39,7 +39,6 @@
                                 
                                 <h4 class="fw-bold mb-3">${club.clubName}</h4>
                                 <p class="mb-3">Category: Vegetables</p>
-                                <!-- 정원 - 3 채워지면 마감임박 으로 표시하기 -->
                                 <h5 id="club-status" class="fw-bold mb-3">${club.status}</h5>
                                 <h5 class="fw-bold mb-3">${club.hcApply} / ${club.headCount}</h5>
                                 <input id="club--hcapply" value="${club.hcApply}" hidden>

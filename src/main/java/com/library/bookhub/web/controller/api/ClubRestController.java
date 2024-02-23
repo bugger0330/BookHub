@@ -1,10 +1,13 @@
 package com.library.bookhub.web.controller.api;
 
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.library.bookhub.service.ClubService;
@@ -19,6 +22,7 @@ public class ClubRestController {
 	@Autowired
 	ClubService clubService;
 	
+	// 독서모임 신청
 	// Ajax로 보낸 데이터 아래와 같이 파라미터로 받음
 	@PostMapping("/apply")
 	public ResponseEntity<?> Apply(Integer clubId, String userName) {
@@ -34,4 +38,16 @@ public class ClubRestController {
 		// RestController는 무조건 return 값이 있다
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK); 
 	}
+	
+	// 독서모임 신청취소
+	@DeleteMapping("/apply")
+	public ResponseEntity<?> deleteApplication(Integer id, Integer clubId) {
+		
+		boolean result = clubService.deleteApplication(id, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);  // userName 파라미터 보내야하는건가??
+	}
+	
+	
+	
 }

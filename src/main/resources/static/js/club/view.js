@@ -6,8 +6,10 @@ window.onload = function(){
 	const applyBtn = document.getElementById('apply--button');
 	//const clubId = document.getElementById('club--id').innerText; // 타입이 String이 되네
 	const clubId = document.getElementById('club--id').value;
+	
+	// userName 임의 설정
 	//let userName = null;
-	let userName = "user2";
+	let userName = "user11";
 	
 	// hcApply가 headCount값과 같으면 신청하기 -> 마감으로 변경		
 	const clubHcApply = document.getElementById('club--hcapply').value;
@@ -40,7 +42,7 @@ window.onload = function(){
 			// 자바스크립트의 변수는 기본적으로 String이므로 숫자로 변환해줘야함
 			if(Number(clubHcApply) < Number(clubHeadCount)) {
 				
-				alert('if문 정상 작동');
+				//alert('if문 정상 작동');
 				
 					if(confirm('신청하시겠습니까?')) {
 					
@@ -54,12 +56,12 @@ window.onload = function(){
 							
 							// controller 에서 리턴한 값 data로
 							success : function(data) {
-								console.log(data);
+								//console.log(data);
 								if(data == true) {
 									alert('신청완료입니다');
 									
 									// 경로 변경 (상세페이지에서 하면 상세페이지로, index 페이지에서 하면 index페이지로)
-									//location.replace("/club/index");
+									location.replace("/club/applicationList/" + userName);
 									
 								} else {
 									// 이미 신청한 유저면 이미신청한 회원입니다 alert 띄우기
