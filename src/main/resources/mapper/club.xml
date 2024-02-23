@@ -38,15 +38,6 @@
 	`rdate`= now()
 </insert>
 
-<update id="updateByApplication">
-	update bh_club set
-	`hcApply` = #{hcApply},
-	`status` = #{status}
-	where bh_club.id = #{id}
-</update>
 
-<select id="findByIdAndUserName" resultType="com.library.bookhub.entity.ClubApplication">
-	select * from bh_club_application where clubId = #{clubId} and userName = #{userName}
-</select>
 
 </mapper>

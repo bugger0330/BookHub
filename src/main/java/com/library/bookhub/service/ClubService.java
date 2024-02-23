@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.bookhub.entity.Club;
-import com.library.bookhub.entity.ClubApplication;
 import com.library.bookhub.repository.ClubRepository;
 import com.library.bookhub.web.dto.ClubSaveFormDto;
 
@@ -56,32 +55,6 @@ public class ClubService {
 	// 모임 신청
 	public boolean createApplication(Integer clubId, String userName) {
 		
-		ClubApplication clubApplication = clubRepository.findByIdAndUserName(clubId, userName);
-		
-		// 같은 아이디로 신청한 내역이 없을 때
-		if(clubApplication == null) {
-			
-			// 신청하는 모임 정보 조회
-			Club club = clubRepository.findById(clubId);
-			// 신청인원 + 1
-			club.setupHcApply();
-			
-			// 신청인원수가 정원 - 5 이 되면 status 수정
-			if(club.getHcApply() == club.getHeadCount() - 5) {
-				club.setStatus("마감임박");
-			}
-			
-			clubRepository.updateByApplication(club);
-			return clubRepository.insertApplication(clubId, userName);
-			
-		} else {
-			// 같은 아이디로 신청한 내역 이미 있음
-			return false;
-		}
+		return clubRepository.insertApplication(clubId, userName);
 	}
-	
-	
-	
-	
-	
 }
