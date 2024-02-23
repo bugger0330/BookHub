@@ -1,10 +1,5 @@
 
 -- 테이블 드롭
-
-
-
-
--- 회원
 CREATE TABLE bh_member (
   id int NOT NULL AUTO_INCREMENT,
   userName varchar(20) NOT NULL,

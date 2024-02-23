@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.MemberRepository">
+
+	<insert id="insert">
+		INSERT INTO bh_member 
+		(`userName`,`password`,`name`, `gender`, `phone`, `email`, `role`, `zip`, `addr1`, `addr2`, `rdate`)
+		VALUES (#{userName},#{password},#{name},#{gender},#{phone},#{email},'USER',#{zip},#{addr1},#{addr2},NOW())
+	</insert>
+	
+	<select id="findByUsername" resultType="com.library.bookhub.entity.User">
+		SELECT * FROM bh_member WHERE `userName`=#{userName}
+	</select>
+	
+	<select id="countByUsername" resultType="int">
+		SELECT COUNT(*) FROM bh_member WHERE `userName`=#{userName}
+	</select>
+	
+	<select id="findEmailByUsername">
+		SELECT `userName`,`email` FROM bh_member WHERE `email`=#{email}
+	</select>
+</mapper>
