@@ -11,8 +11,6 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -50,6 +48,15 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .requestMatchers("/**").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers(PathRequest.toH2Console()).permitAll()
+                    .requestMatchers("/user/**").permitAll()
+                    .requestMatchers("/club/**").permitAll()
+                    .requestMatchers("/ad/**").permitAll()
+                    .requestMatchers("/myPage/**").permitAll()
+                    .requestMatchers("/payment/**").permitAll()
+                    .requestMatchers("/product-category/**").permitAll()
+                    .requestMatchers("/api/**").permitAll()
+                    .requestMatchers("/sc-product/**").permitAll()
+                    .requestMatchers("/point-product/**").permitAll()
                     .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll());
 		
 		// 사용자 인증처리 컴포넌트 등록

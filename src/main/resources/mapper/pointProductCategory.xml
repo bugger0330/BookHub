@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.library.bookhub.repository.PointProductCategoryRepository">
+
+
+	
+
+
+
+	<select id="findAllWithPagingAndCategoryName"
+		resultType="com.library.bookhub.entity.PointProductCategory">
+		SELECT * FROM BH_POINT_PRODUCT_CATEGORY  WHERE LOWER(categoryName) LIKE
+		CONCAT('%', LOWER(#{categoryName}), '%') LIMIT #{limit} OFFSET #{offset}
+	</select>
+
+	<select id="getCount" resultType="int">
+		SELECT
+		COUNT(*) FROM
+		BH_POINT_PRODUCT_CATEGORY
+	</select>
+	
+	
+
+</mapper>

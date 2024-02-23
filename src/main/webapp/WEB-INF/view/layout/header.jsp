@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -33,6 +34,7 @@
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
     
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -48,7 +50,7 @@
     <!-- 내비바 시작 -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Book Hub</h2>
+            <img src="/img/logo.png" style="width: 100%" height="100%">
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -65,11 +67,20 @@
                         <a href="/suggest" class="dropdown-item">추천도서</a>
                     </div>
                 </div>
+                 <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">구독상품</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="/sc-product/nopage" class="dropdown-item">구독상품 구매하기</a>
+                     
+                       
+                    </div>
+                </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">
                         <a href="team.html" class="dropdown-item">공지사항</a>
                         <a href="testimonial.html" class="dropdown-item">고객센터</a>
+                        <a href="/ad-inquiry" class="dropdown-item">광고문의</a>
                        
                     </div>
                 </div>

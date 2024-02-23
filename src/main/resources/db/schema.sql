@@ -1,6 +1,5 @@
+
 -- 테이블 드롭
--- 회원
--- 회원
 CREATE TABLE bh_member (
   id int NOT NULL AUTO_INCREMENT,
   userName varchar(20) NOT NULL,
@@ -108,8 +107,10 @@ CREATE TABLE bh_banner (
     title VARCHAR(255),
     content VARCHAR(255),
     writer VARCHAR(20),
-    thumb1 VARCHAR(255) NOT NULL,
-    thumb2 VARCHAR(255) NOT NULL
+    origin_file_name VARCHAR(255) NOT NULL,
+    upload_file_name VARCHAR(255) NOT NULL,
+    post_yn VARCHAR(2) DEFAULT 'N',
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 -- 결제
@@ -141,3 +142,31 @@ CREATE TABLE bh_club (
     rdate DATETIME NOT NULL,
     wdate DATETIME
 );
+
+-- 정기권
+CREATE TABLE bh_subscription_product (
+    sp_id INT AUTO_INCREMENT PRIMARY KEY,
+    prodName VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    period INT NOT NULL
+);
+
+-- 정기권 장바구니
+CREATE TABLE bh_subscription_product_cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    sp_id INT
+);
+
+-- 포인트 상품
+CREATE TABLE bh_point_product (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prodName VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    point INT NOT NULL,
+    originFileName VARCHAR(255),
+    uploadFileName VARCHAR(255),
+    post_yn VARCHAR(2) DEFAULT 'Y',
+    createdAt DATETIME NOT NULL
+);
+
