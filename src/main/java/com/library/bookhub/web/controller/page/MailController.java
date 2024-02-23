@@ -22,7 +22,7 @@ public class MailController {
 	private MailService mailService;
 	
 	// 이메일 전송
-	@PostMapping("/sendEmail/{email}")
+	@PostMapping("/user/sendEmail/{email}")
 	public void sendEmail(@PathVariable("email")String email) {
 		log.info("받는 자 : "+email);
 		
@@ -36,7 +36,7 @@ public class MailController {
 	}
 	
 	// 인증 번호
-	@GetMapping("/authNumber")
+	@GetMapping("/user/authNumber")
 	@ResponseBody
 	public int authEmail(@RequestParam("number") String number) {
 		log.info("입력한 번호 : "+number);

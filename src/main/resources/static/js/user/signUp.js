@@ -1,4 +1,9 @@
-// 검사 결과 내용
+/*
+* 아이디 중복체크, 유효성 검사, 이메일 인증, 최종 검사
+*/
+
+
+/* 검사 결과 내용 */
 const NOT_CONFIRM_UID	= '중복된 아이디입니다.';
 const CONFIRM_UID	= '사용가능한 아이디입니다.';
 const VALIDATION_UID	= '영문, 숫자로 4~12자리까지 설정해 주세요.';
@@ -7,7 +12,7 @@ const VALIDATION_NAME	= '이름은 한글로 입력해 주세요. (특수기호,
 const VALIDATION_HP		= '하이픈(-)을 포함하여 휴대전화번호를 정확하게 입력해주세요.';
 const VALIDATION_EMAIL	= '이메일 주소를 정확하게 입력해주세요.';	
 
-// 검증 상태변수
+/* 검증 상태변수 */
 let isUidOk		= false;
 let isPassOk	= false;
 let isNameOk	= false;
@@ -15,16 +20,47 @@ let isGenderOk  = false;
 let isEmailOk	= false;
 let isHpOk		= false;
 
-// 정규표현식
+/* 정규표현식 */
 const reUid   = /^[a-z]+[a-z0-9]{4,12}$/g;
 const rePass  = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+]).{8,12}$/;
 const reName  = /^[가-힣]{2,10}$/
 const reEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 const reHp    = /^01(?:0|1|[6-9])-(?:\d{4})-\d{4}$/;
 
+/* 유효성 검사 */
 const resultUid = document.getElementsByClassName("result-uid")[0];
 const btnId = document.getElementsByClassName("check-id")[0];
 const inputId = document.getElementById('uid');
+
+const resultPass = document.getElementsByClassName("result-pass")[0];
+const inputPass = document.getElementById('password');
+const resultName = document.getElementsByClassName("result-name")[0];
+const inputName = document.getElementById('name');
+const resultEmail = document.getElementsByClassName("result-email")[0];
+const inputEmail = document.getElementById('email');
+const resultHp = document.getElementsByClassName("result-hp")[0];
+const inputHp = document.getElementById('hp');
+const inputGender = document.getElementsByName('gender');
+
+const btnEmail = document.querySelector('.btn-email');
+
+/* 이메일 전송 */
+const divEmail = document.getElementsByClassName('log-form-group')[3];
+const btnComplete = document.getElementsByClassName('btn-complete')[0];
+const labelNumber = document.getElementsByClassName('label-number')[0];
+
+/* 추가할 태그 */
+const labelTag = '<label for="authNumber" class="label-number">인증번호</label>';
+const inputTag = '<input type="text" id="auth-number"'
+			+ 'name="authNumber" placeholder="Enter number"'
+			+ 'class="input-authNumber"'
+			+' style="margin-right: 4px;" required>';
+const buttonTag = '<button type="button" class="btn-complete" '
+			+'onclick="enterNumber()">완료</button>';
+			
+/* 최종 전송 버튼 */
+const btnForm = document.getElementsByClassName('btn-form')[0];
+
 
 
 // 아이디 값 조작 방지
@@ -78,18 +114,7 @@ btnId.addEventListener('click', function(e) {
 	});
 }); 
 
-/* 유효성 검사 */
-const resultPass = document.getElementsByClassName("result-pass")[0];
-const inputPass = document.getElementById('password');
-const resultName = document.getElementsByClassName("result-name")[0];
-const inputName = document.getElementById('name');
-const resultEmail = document.getElementsByClassName("result-email")[0];
-const inputEmail = document.getElementById('email');
-const resultHp = document.getElementsByClassName("result-hp")[0];
-const inputHp = document.getElementById('hp');
-const inputGender = document.getElementsByName('gender');
 
-const btnEmail = document.querySelector('.btn-email');
 
 // 비밀번호
 function valiPass() {
@@ -142,18 +167,7 @@ function valiEmail() {
 	}
 }
 
-const divEmail = document.getElementsByClassName('log-form-group')[3];
-const btnComplete = document.getElementsByClassName('btn-complete')[0];
-const labelNumber = document.getElementsByClassName('label-number')[0];
 
-// 추가할 태그
-const labelTag = '<label for="authNumber" class="label-number">인증번호</label>';
-const inputTag = '<input type="text" id="auth-number"'
-			+ 'name="authNumber" placeholder="Enter number"'
-			+ 'class="input-authNumber"'
-			+' style="margin-right: 4px;" required>';
-const buttonTag = '<button type="button" class="btn-complete" '
-			+'onclick="enterNumber()">완료</button>';
 
 // 이메일 전송
 function authEmail(email) {
@@ -254,10 +268,6 @@ function checkGender() {
 		}
 	}
 }
-
-
-// 최종 전송 버튼
-const btnForm = document.getElementsByClassName('btn-form')[0];
 
 // 최종 전송
 btnForm.addEventListener('click',function(e) {

@@ -70,7 +70,7 @@
 	width: 25%;
 }
 
-.blind-hide {
+.blind {
 	position: fixed;
     clip: rect(0 0 0 0);
     width: 1px;
@@ -216,7 +216,7 @@
 		</form>
 	</div>
 	
-	<script src="/js/signUp.js"></script>
+	<script src="/js/user/signUp.js"></script>
 </body>
 </html>
 
