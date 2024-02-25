@@ -96,7 +96,7 @@ public class MemberController {
 	// 아이디 중복 확인
 	@PostMapping("/confirmId/{uid}")
 	@ResponseBody
-	public int checkuid(@PathVariable("uid") String uid) {
+	public int checkUid(@PathVariable("uid") String uid) {
 		log.info("uid : "+uid);
 		
 		int num = memberService.confirmUid(uid);
@@ -104,7 +104,12 @@ public class MemberController {
 		return num;
 	}
 	
-	
+	// 아이디 찾기
+	public String findUid() {
+		
+		
+		return "";
+	}
 	
 	
 }

@@ -21,4 +21,8 @@ public interface MemberRepository {
 	
 	// 이메일로 아이디 찾기
 	public List<String> findEmailByUsername(String email);
+	
+	// 아이디, 이메일로 계정찾기
+	public int findIdAndEmailByUser(String id, String email);
+	
 }

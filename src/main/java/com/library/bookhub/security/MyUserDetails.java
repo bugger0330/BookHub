@@ -47,25 +47,31 @@ public class MyUserDetails implements UserDetails {
 		return user.getUserName();
 	}
 
-
+	// 계정 만료 여부
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
-    // 사용자 아이디 만료 여부
+    // 사용자 계정 블락 여부
 	@Override
 	public boolean isAccountNonLocked() {
+		
+		// 탈퇴된 계정
+		if(user.getWDate() != null) {
+			return false;
+		}
+		
 		return true;
 	}
 
-	// 사용자 아이디 잠김 여부
+	// 사용자 자격증명(비밀번호) 만료 여부
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-	// 사용자 아이디 사용가능 여부
+	// 사용자 아이디 활성화 여부
 	@Override
 	public boolean isEnabled() {
 		return true;

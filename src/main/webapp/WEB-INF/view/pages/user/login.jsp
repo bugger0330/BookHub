@@ -120,7 +120,19 @@
 			</div>
 		</form>
 	</div>
-
+	
+	<script>
+		// url 파라미터
+	    const urlParams = new URLSearchParams(window.location.search);
+	    const successValue = urlParams.get('success');
+	
+	    if (successValue === '401') {
+	        alert('아이디 혹은 비밀번호를 다시 확인해주세요.');
+	    }
+	    if (successValue === '200') {
+	        alert('정상적으로 로그아웃되었습니다.');
+	    }
+	</script>
 
 </body>
 </html>

@@ -33,7 +33,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
 			.formLogin(config -> config
 					.loginPage("/login")
 					.defaultSuccessUrl("/", true)
-					.failureUrl("/login?success=200")
+					.failureUrl("/login?success=401")
 	                .usernameParameter("username")
 	                .passwordParameter("password")
                     .permitAll())
@@ -42,7 +42,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .logoutUrl("/logout")
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
-                    .logoutSuccessUrl("/login?success=201"))
+                    .logoutSuccessUrl("/login?success=200"))
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                     .requestMatchers("/**").permitAll()
