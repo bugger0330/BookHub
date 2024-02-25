@@ -36,11 +36,11 @@
     
     <!-- CS CSS -->
     <link href="/css/csStyle.css" rel="stylesheet"> 
-    
-    <!-- 네이버 스마트 에디터 2.0 -->
-    <script type="text/javascript" src="/lib/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-	<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    
+	
+	<!-- 서머노트 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     
 </head>
 

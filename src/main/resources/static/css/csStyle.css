@@ -1066,3 +1066,8 @@
   /* 높이를 정해줘야지만 transition이 적용됨 */
 	height: 300px;
 }
+
+#btn-insert{
+	float: right;
+	margin-top: 20px;
+}

@@ -11,6 +11,7 @@ import com.library.bookhub.entity.cs.CsQnaEntity;
 import com.library.bookhub.repository.cs.CsFaqRepository;
 import com.library.bookhub.repository.cs.CsNoticeRepository;
 import com.library.bookhub.repository.cs.CsQnaRepository;
+import com.library.bookhub.web.dto.cs.CsQnaDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -40,6 +41,27 @@ public class CsService {
 	// 자주 묻는 질문 리스트
 	public List<CsFaqEntity> selectCsFaqList() {
 		return csFaqRepository.selectCsFaqList();
+	}
+
+	// 문의하기 작성하기
+	public boolean qnaInsert(CsQnaDto dto) {
+		CsQnaEntity csQnaEntity = new CsQnaEntity();
+		csQnaEntity.setTitle(dto.getTitle());
+		csQnaEntity.setContent(dto.getContent());
+
+		int result = csQnaRepository.qnaInsert(csQnaEntity);
+
+		if (result == 1) {
+			return true;
+		}
+
+		return false;
+	}
+
+	// 문의하기 상세보기
+	public CsQnaEntity qnaView(int id) {
+		
+		return csQnaRepository.qnaView(id);
 	}
 
 }

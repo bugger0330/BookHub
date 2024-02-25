@@ -18,5 +18,28 @@
 		</ul>
 		<hr>
 	</div>
+	
+	
+	<%-- <aside>
+                    <h2>공지사항</h2>
+                    <input type="hidden" th:value="${cate1}">
+                    <ul>
+                        <li th:class="${cate1 == null or cate1 == '' ? 'on' : ''}">
+                            <a th:href="@{/cs/notice/list}" >전체</a>
+                        </li>
+                        <li th:class="${cate1 == '10' ? 'on' : ''}">
+                            <a th:href="@{/cs/notice/list(cate1=10)}">고객서비스</a>
+                        </li>
+                        <li th:class="${cate1 == '11' ? 'on' : ''}">
+                            <a th:href="@{/cs/notice/list(cate1=11)}">안전거래</a>
+                        </li>
+                        <li th:class="${cate1 == '12' ? 'on' : ''}">
+                            <a th:href="@{/cs/notice/list(cate1=12)}">위해상품</a>
+                        </li>
+                        <li th:class="${cate1 == '13' ? 'on' : ''}">
+                            <a th:href="@{/cs/notice/list(cate1=13)}">이벤트당첨</a>
+                        </li>
+                    </ul>
+                </aside> --%>
   
   <!-- CS aside End -->
