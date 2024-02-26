@@ -57,29 +57,29 @@
                         <div class="position-relative mx-auto">
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-5">
+                    <div class="col-md-12 col-lg-5 text-center">
                         <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active rounded">
                                 	<!-- clubCate값에 따라 다르게 출력하기 -->
                                 	<c:choose>
 				                        <c:when test="${clubCate == 1 }">
-				                        	<img src="/img/club/category/커리어 성장.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+				                        	<img src="/img/club/category/커리어 성장.png" class="bg-secondary rounded" style="width: 500px; height: 500px;" alt="First slide">
 				                        </c:when>
 				                        <c:when test="${clubCate == 2 }">
-				                        	<img src="/img/club/category/예술과 문학.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+				                        	<img src="/img/club/category/예술과 문학.png" class=" bg-secondary rounded" style="width: 500px; height: 500px;" alt="First slide">
 				                        </c:when>
 				                        <c:when test="${clubCate == 3 }">
-				                        	<img src="/img/club/category/금융_경제_투자.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+				                        	<img src="/img/club/category/금융_경제_투자.png" class="bg-secondary rounded" style="width: 500px; height: 500px;" alt="First slide">
 				                        </c:when>
 				                        <c:when test="${clubCate == 4 }">
-				                        	<img src="/img/club/category/영화와 책.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+				                        	<img src="/img/club/category/영화와 책.png" class="bg-secondary rounded" style="width: 500px; height: 500px;" alt="First slide">
 				                        </c:when>
 				                        <c:when test="${clubCate == 5 }">
-				                        	<img src="/img/club/category/과학과 철학.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+				                        	<img src="/img/club/category/과학과 철학.png" class="bg-secondary rounded" style="width: 500px; height: 500px;" alt="First slide">
 				                        </c:when>
 				                        <c:otherwise>
-				                        	<img src="/img/club/category/기타.png" class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+				                        	<img src="/img/club/category/기타.png" class="bg-secondary rounded" style="width: 500px; height: 500px;" alt="First slide">
 				                        </c:otherwise>
 			                        </c:choose>
                                 	

@@ -54,6 +54,12 @@ public class ClubService {
 		return clubRepository.findByClubCate(clubCate);
 	}
 	
+	// 검색 기능
+	public List<Club> readByKeyword(String keyword) {
+		
+		return clubRepository.findByKeyword(keyword);
+	}
+	
 	// 모임 상세보기
 	public Club readByClubId(Integer id) {
 		

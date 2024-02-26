@@ -17,6 +17,8 @@ public interface ClubRepository {
 	public List<Club> findAll();
 	// 모임 카테고리별 조회
 	public List<Club> findByClubCate(Integer clubCate);
+	// 검색 기능
+	public List<Club> findByKeyword(String keyword);
 	// 모임 상세보기
 	public Club findById(Integer id);
 	
@@ -38,6 +40,8 @@ public interface ClubRepository {
 	public List<ClubApplication> findApplicationByUserName(String userName);
 	// 신청 취소
 	public boolean deleteApplication(Integer id);
+	
+	
 	
 	
 

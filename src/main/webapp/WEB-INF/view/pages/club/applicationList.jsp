@@ -41,7 +41,7 @@
 	
 	<!-- main end -->
 	
-<script src="/js/club/applicationList.js"></script>	
+<script src="/js/club/applicationlist.js"></script>	
 	
 
 

@@ -57,6 +57,10 @@
 	select * from bh_club where clubCate = #{clubCate} order by id desc
 </select>
 
+<select id="findByKeyword" resultType="com.library.bookhub.entity.Club">
+select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by id desc
+</select>
+
 <update id="updateByApplication">
 	update bh_club set
 	`hcApply` = #{hcApply},

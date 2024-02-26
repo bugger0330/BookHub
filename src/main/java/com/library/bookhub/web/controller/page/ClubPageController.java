@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
 import com.library.bookhub.service.ClubService;
+import com.library.bookhub.web.dto.ClubSearchFormDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -93,6 +94,26 @@ public class ClubPageController {
 		// userName 파라미터 값 없을 때는 페이지에 신청내역이 없습니다? 아니면 로그인 화면으로?
 		
 		return "pages/club/applicationList";
+	}
+	
+	// 검색
+	@GetMapping("/searchList")
+	public String searchListPage(ClubSearchFormDto dto, Model model) {
+		
+	
+		List<Club> clubList = clubService.readByKeyword(dto.getKeyword());
+		
+		
+		if(clubList.isEmpty()) {
+			model.addAttribute("clubList", null);
+		} else {
+			model.addAttribute("clubList", clubList);
+		}
+		
+		// 검색어 입력했던 값 그대로 검색창에 띄우기
+		model.addAttribute("keyword", dto.getKeyword());
+		
+		return "/pages/club/searchList";
 	}
 	
 	
