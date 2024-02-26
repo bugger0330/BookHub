@@ -17,7 +17,7 @@ public class PointOrderRequestDto {
 	private int productPrice;
 	private int productCount;
 	private int allProductPrice;
-	private String refund_type;
+	private String refundType;
 	
 	public PointOrder toEntity() {
 		return PointOrder.builder()
@@ -27,7 +27,7 @@ public class PointOrderRequestDto {
 				.productPrice(productPrice)
 				.productCount(productCount)
 				.allProductPrice(allProductPrice)
-				.refund_type(refund_type)
+				.refundType(refundType)
 				.build();
 	}
 }

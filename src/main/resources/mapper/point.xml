@@ -21,7 +21,7 @@
 			#{productCount},
 			#{allProductPrice},
 			now(),
-			#{refund_type}
+			#{refundType}
 		);
 	</insert>
 
@@ -55,9 +55,15 @@
 		where com_number = #{comNumber};
 	</update>
 
+	<select id="myOrderList">
+		select * from bh_point_order where userName = #{username};
+	</select>
 
-
-
+	<update id="orderRefund">
+		update bh_point_order set
+			refund_type = "환불완료"
+		where id = #{id};
+	</update>
 
 
 

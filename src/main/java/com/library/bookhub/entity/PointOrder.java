@@ -19,5 +19,5 @@ public class PointOrder {
 	private int productCount;//상품갯수
 	private int allProductPrice;//총가격(포인트)
 	private String rdate;//주문시각
-	private String refund_type;//환불 가능 여부
+	private String refundType;//환불 가능 여부
 }

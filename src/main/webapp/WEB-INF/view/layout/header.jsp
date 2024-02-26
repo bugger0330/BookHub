@@ -43,6 +43,7 @@
     <link href="/css/point/cafe.css" rel="stylesheet">
     <link href="/css/point/print.css" rel="stylesheet">
     <link href="/css/point/computer.css" rel="stylesheet">
+    <link href="/css/point/orderList.css" rel="stylesheet">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
