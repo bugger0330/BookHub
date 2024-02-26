@@ -7,15 +7,14 @@
 
 	<select id="findAllWithPagingAndUsername"
 		resultType="com.library.bookhub.entity.User">
-		SELECT * FROM bh_member WHERE LOWER(name) LIKE CONCAT('%',
-		LOWER(#{name}),
-		'%') LIMIT #{limit} OFFSET #{offset}
+		SELECT * FROM BH_MEMBER WHERE LOWER(name) LIKE CONCAT('%',
+		LOWER(#{name}),'%') LIMIT #{limit} OFFSET #{offset}
 	</select>
 
 
 	<select id="getTotalCount" resultType="int">
 		SELECT COUNT(*) FROM
-		bh_member;
+		BH_MEMBER
 	</select>
 
 
@@ -23,23 +22,23 @@
 	<select id="findById" parameterType="int"
 		resultType="com.library.bookhub.entity.User">
 		SELECT *
-		FROM bh_member
+		FROM BH_MEMBER
 		WHERE id = #{id}
 	</select>
 
 
 	<insert id="insert" parameterType="com.library.bookhub.entity.User">
-		INSERT INTO bh_member (username, password, name, gender, phone, email, zip, addr1, rdate)
-		VALUES (#{username}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP);
+		INSERT INTO BH_MEMBER (userName, password, name, gender, phone, email, zip, addr1, rdate)
+		VALUES (#{userName}, #{password}, #{name}, #{gender}, #{phone}, #{email}, #{zip}, #{addr1},CURRENT_TIMESTAMP)
 	</insert>
 
 
 	<update id="update" parameterType="com.library.bookhub.entity.User">
-		UPDATE bh_member
+		UPDATE BH_MEMBER
 		SET
 		password = #{password},
 		name = #{name},
-		type = #{type},
+		role = #{role},
 		gender = #{gender},
 		phone = #{phone},
 		email = #{email},
@@ -50,25 +49,25 @@
 	</update>
 
     <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">
-        UPDATE bh_member SET password = #{password}, name = #{name}, phone = #{phone},
-        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, status = #{status},
+        UPDATE BH_MEMBER SET password = #{password}, name = #{name}, phone = #{phone},
+        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, role = #{role},
         wDate = #{wDate}, rDate = now() WHERE id = #{id}
     </update>
 
     <update id="myPageDeleteById" parameterType="com.library.bookhub.entity.User">
-        UPDATE bh_member SET status = 1, wDate = now() WHERE id = #{id}
+        UPDATE BH_MEMBER SET status = 1, wDate = now() WHERE id = #{id}
     </update>
 
 
 	<delete id="deleteById" parameterType="int">
-        DELETE FROM bh_member
+        DELETE FROM BH_MEMBER
         WHERE id = #{id}
     </delete>
     
     
      <select id="existById" parameterType="int" resultType="long">
         SELECT COUNT(id)
-        FROM bh_member
+        FROM BH_MEMBER
         WHERE id = #{id}
     </select>
 

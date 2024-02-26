@@ -6,11 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PageController {
 
+	// ---------------- 메인 페이지 ----------------//
+
 	// 로그인페이지
 	@GetMapping("/login")
 	public String loginPage() {
 
-		return "user/login";
+		return "pages/user/login";
 	}
 
 	// 마이페이지
@@ -37,6 +39,20 @@ public class PageController {
 	@GetMapping("/suggest")
 	public String suggestPage() {
 		return "pages/book/suggest";
+	}
+
+	// 추천도서 페이지
+	@GetMapping("/ad-inquiry")
+	public String adInquiryPage() {
+		return "pages/openArea/advertisingInquiry";
+	}
+
+	// ---------------- 관리자 페이지 ----------------//
+
+	// 접근거부 페이지
+	@GetMapping("/access-denied")
+	public String deninedPage() {
+		return "pages/error/access-denied";
 	}
 
 	// 어드민 페이지
@@ -84,7 +100,13 @@ public class PageController {
 	// 결제페이지
 	@GetMapping("/payment")
 	public String paymentPage() {
-		return "pages/payment/checkout";
+		return "pages/payment/paymentTest";
+	}
+
+	// 환불페이지
+	@GetMapping("/refund")
+	public String refundPage() {
+		return "pages/payment/refund";
 	}
 
 	// 결제페이지 - 결제성공
@@ -97,6 +119,24 @@ public class PageController {
 	@GetMapping("/fail")
 	public String paymentFailPage() {
 		return "pages/payment/fail";
+	}
+
+	// 구독상품 - (관리자)구독상품전체조회
+	@GetMapping("/subproduct")
+	public String subproductPage() {
+		return "pages/admin/subproductList";
+	}
+
+	// 구독상품 - (관리자)구독상품추가
+	@GetMapping("/subproduct-add")
+	public String subproductAddPage() {
+		return "pages/admin/subproductAdd";
+	}
+
+	// 포인트상품 - (관리자)포인트상품추가
+	@GetMapping("/point-product-add")
+	public String pointProductAddPage() {
+		return "pages/admin/pointProductAdd";
 	}
 
 }

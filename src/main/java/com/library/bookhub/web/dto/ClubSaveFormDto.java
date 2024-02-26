@@ -12,6 +12,7 @@ public class ClubSaveFormDto {
 	private Integer clubCate;
 	private String clubName;
 	private String descript;
+	private String detail;
 	private Timestamp cDate;
 	private String host;
 	private Integer headCount;

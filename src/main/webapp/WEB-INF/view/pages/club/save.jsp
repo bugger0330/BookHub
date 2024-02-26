@@ -89,12 +89,20 @@
 									for="customFile">Choose file</label>
 							</div>
 						</div>
-						<div class="col-12">
+						<div class="col-md-6">
 							<div class="form-floating">
 								<textarea class="form-control bg-white border-0"
 									placeholder="Special Request" id="message"
 									style="height: 100px" name="descript"></textarea>
-								<label for="message">내용</label>
+								<label for="message">소개</label>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-floating">
+								<textarea class="form-control bg-white border-0"
+									placeholder="Special Request" id="message"
+									style="height: 100px" name="detail"></textarea>
+								<label for="message">상세설명</label>
 							</div>
 						</div>
 						<div class="col-12">

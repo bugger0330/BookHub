@@ -25,6 +25,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * 배너 광고 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @Controller
 @RequestMapping("/ad")
@@ -44,7 +48,7 @@ public class BannerAdController {
             pageReq.setSize(5); // 페이지당 기본 개수 설정
         }
 
-        // 페이징된 유저 목록 가져오기
+        // 페이징된 배너 목록 가져오기
         PageRes<BannerAd> pageRes = bannerAdService.getAdWithPaging(pageReq, writer);
         List<BannerAd> adList = pageRes.getContent();
 
@@ -59,6 +63,7 @@ public class BannerAdController {
 
         return "pages/admin/adList";
     }
+    
 
     // 광고 업로드
     @PostMapping("/upload")

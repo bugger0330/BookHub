@@ -22,13 +22,13 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
@@ -39,14 +39,29 @@ dependencies {
 	// H2
     runtimeOnly 'com.h2database:h2'
     
+    // mySQL
+    // runtimeOnly 'com.mysql:mysql-connector-j'
+    
     
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
    
    	// 아이엠포트
    	implementation 'com.github.iamport:iamport-rest-client-java:0.1.6'
+   	
+ 	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.2.2'
+	testImplementation 'org.springframework.security:spring-security-test'
+	
+	// validator
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     
+    // 이메일 인증
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+  	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  	
+  	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation 'org.springframework.security:spring-security-taglibs:6.2.2'   
 }
-
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
 }

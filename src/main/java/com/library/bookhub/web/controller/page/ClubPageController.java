@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.library.bookhub.entity.Club;
@@ -38,8 +39,12 @@ public class ClubPageController {
 	}
 	
 	// 상세보기
-	@GetMapping("/view")
-	public String viewPage() {
+	@GetMapping("/view/{id}")
+	public String viewPage(@PathVariable Integer id, Model model) {
+		
+		Club club = clubService.readByClubId(id);
+		model.addAttribute("club", club);
+		
 		return "pages/club/view";
 	}
 	

@@ -9,6 +9,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Timestamp;
 
+/**
+ * 배너광고 등록 폼 DTO
+ * @Author : 이준혁
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

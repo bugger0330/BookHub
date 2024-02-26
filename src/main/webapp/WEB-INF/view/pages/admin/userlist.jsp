@@ -96,7 +96,7 @@ img {
 					<input type="text" class="form-control" placeholder="유저 이름 검색"
 						name="name">
 					<div class="input-group-append">
-						<button type="submit" class="btn btn-primary">검색</button>
+						<button type="submit" class="btn btn-dark">검색</button>
 					</div>
 				</div>
 			</form>
@@ -123,13 +123,13 @@ img {
 							<tr>
 							 
 								<td class="text-center align-middle">${user.id}</td>
-								<td class="text-center align-middle">${user.username}</td>
+								<td class="text-center align-middle">${user.userName}</td>
 								<td class="text-center align-middle">${user.name}</td>
 								<td class="text-center align-middle">${user.gender == 1 ? '남성' : '여성'}</td>
 								<!-- 성별을 한글로 표시합니다. -->
 								<td class="text-center align-middle">${user.email}</td>
 								<td class="text-center align-middle">${user.phone}</td>
-								<td class="text-center align-middle">${user.type == 1 ? '일반계정' : '관리자'}</td>
+								<td class="text-center align-middle">${user.role == "USER" ? '일반계정' : '관리자'}</td>
 								<!-- 계정 유형을 한글로 표시합니다. -->
 								<td class="text-center align-middle">${user.point}</td>
 								<td class="text-center align-middle"><a href="/user/detail/${user.id}"><button type="button"

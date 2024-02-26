@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 유저 RestFul 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @RestController
 public class UserRestfulController {

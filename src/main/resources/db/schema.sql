@@ -1,32 +1,21 @@
+
 -- 테이블 드롭
-DROP TABLE IF EXISTS bh_member;
-DROP TABLE IF EXISTS bh_member_point;
-DROP TABLE IF EXISTS bh_book;
-DROP TABLE IF EXISTS bh_product_cart;
-DROP TABLE IF EXISTS bh_book_borrow;
-DROP TABLE IF EXISTS bh_cs_qna;
-DROP TABLE IF EXISTS bh_cs_faq;
-DROP TABLE IF EXISTS bh_cs_notice;
-DROP TABLE IF EXISTS bh_banner;
-DROP TABLE IF EXISTS bh_payment;
-DROP TABLE IF EXISTS bh_club;
--- 회원
 CREATE TABLE bh_member (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(20) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    name VARCHAR(20),
-    gender TINYINT NOT NULL CHECK (gender IN (1, 2)),
-    phone CHAR(13) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    type TINYINT DEFAULT 1 NOT NULL CHECK (type IN (1, 9)),
-    point INT DEFAULT 0,
-    zip VARCHAR(10),
-    addr1 VARCHAR(255),
-    addr2 VARCHAR(255),
-    status INT DEFAULT 0 NOT NULL,
-    wdate DATETIME,
-    rdate DATETIME NOT NULL
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(20) NOT NULL,
+  password varchar(255) NOT NULL,
+  name varchar(20) DEFAULT NULL,
+  gender tinyint NOT NULL,
+  phone char(13) NOT NULL,
+  email varchar(100) NOT NULL,
+  role varchar(20) DEFAULT 'USER',
+  point int DEFAULT '0',
+  zip varchar(10) DEFAULT NULL,
+  addr1 varchar(255) DEFAULT NULL,
+  addr2 varchar(255) DEFAULT NULL,
+  status int NOT NULL DEFAULT '0',
+  wdate datetime DEFAULT NULL,
+  rdate datetime NOT NULL
 );
 
 
@@ -153,3 +142,43 @@ CREATE TABLE bh_club (
     rdate DATETIME NOT NULL,
     wdate DATETIME
 );
+
+-- 정기권
+CREATE TABLE bh_subscription_product (
+    sp_id INT AUTO_INCREMENT PRIMARY KEY,
+    prodName VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    period INT NOT NULL
+);
+
+-- 정기권 장바구니
+CREATE TABLE bh_subscription_product_cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    sp_id INT
+);
+
+-- 포인트 상품
+CREATE TABLE bh_point_product (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    prodName VARCHAR(100) NOT NULL,
+    price INT NOT NULL,
+    point INT NOT NULL,
+    originFileName VARCHAR(255),
+    uploadFileName VARCHAR(255),
+    post_yn VARCHAR(2) DEFAULT 'Y',
+    createdAt DATETIME NOT NULL
+);
+
+
+CREATE TABLE bh_user_subscription (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(20) NOT NULL,
+    subscription_product_id INT,
+    refund_yn VARCHAR(2) DEFAULT 'N',
+    purchase_date TIMESTAMP,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP
+);
+
+

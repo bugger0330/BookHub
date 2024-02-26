@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -52,7 +53,7 @@
 
 								<tr>
 									<th scope="row" class="bg-light">아이디</th>
-									<td>${user.username}</td>
+									<td>${user.userName}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">이름</th>
@@ -84,7 +85,7 @@
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">계정유형</th>
-									<td>${user.type == 1 ? '일반계정' : '관리자'}</td>
+									<td>${user.role == 'USER' ? '일반계정' : '관리자'}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">보유포인트</th>

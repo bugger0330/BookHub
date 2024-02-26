@@ -71,9 +71,9 @@
 		<h2>로그인</h2>
 		<form action="login_process.jsp" method="post">
 			<div class="log-form-group">
-				<label for="email">아이디(이메일)</label> <input type="email" id="email"
-					name="email" placeholder="Enter email" required>
-			</div>
+                <label for="uid">아이디</label> <input type="text" id="username"
+                    name="username" placeholder="Enter username" required>
+            </div>
 			<div class="log-form-group">
 				<label for="password">비밀번호</label> <input type="password"
 					id="password" name="password" placeholder="Enter password" required>

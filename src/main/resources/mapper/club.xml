@@ -10,6 +10,7 @@
 		clubCate = #{clubCate}, 
 		clubName = #{clubName}, 
 		descript = #{descript}, 
+		detail = #{detail},
 		cDate = #{cDate}, 
 		host = #{host}, 
 		headCount = #{headCount}, 
@@ -25,6 +26,17 @@
 <select id="findAll" resultType="com.library.bookhub.entity.Club">
 	select * from bh_club
 </select>
+
+<select id="findById" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club where id = #{id}
+</select>
+
+<insert id="insertApplication">
+	insert into bh_club_application set
+	`clubId` = #{clubId},
+	`userName` = #{userName},
+	`rdate`= now()
+</insert>
 
 
 

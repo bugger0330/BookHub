@@ -70,16 +70,16 @@
 							<div class="form-group">
 								<label>계정유형</label><br>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="type"
-										id="user" value="1"
-										<c:if test="${user.type == 1}">checked</c:if>> <label
-										class="form-check-label" for="user">일반유저계정</label>
+									<input class="form-check-input" type="radio" name="role"
+										id="user" value="USER"
+										<c:if test="${user.role == 'USER'}">checked</c:if>> <label
+										class="form-check-label" for="USER">일반유저계정</label>
 								</div>
 								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="radio" name="type"
-										id="admin" value="9"
-										<c:if test="${user.type == 9}">checked</c:if>> <label
-										class="form-check-label" for="admin">관리자계정</label>
+									<input class="form-check-input" type="radio" name="role"
+										id="admin" value="ADMIN"
+										<c:if test="${user.role == 'ADMIN'}">checked</c:if>> <label
+										class="form-check-label" for="ADMIN">관리자계정</label>
 								</div>
 							</div>
 
@@ -241,4 +241,3 @@
 
 
 </html>
-
