@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.BookRepository">
+
+	<select id="bookListAll" resultType="com.library.bookhub.entity.Book">
+		select * from bh_book limit 100;
+	</select>
+
+	<select id="bookInfo" resultType="com.library.bookhub.entity.Book">
+		select * from bh_book where id = #{id};
+	</select>
+	
+	<insert id="borrowUser">
+		insert into bh_book_borrow(userName, brComplete, brDate, returnDate, bookNo)
+		values(
+			#{userName},
+			1,
+			now(),
+			#{returnDate},
+			#{bookNo}
+		);
+	</insert>
+	
+	<update id="borrowBook">
+		update bh_book set
+			borrow = #{borrow},
+			status = #{status},
+			wdate = #{wdate}
+		where id = #{id};
+	</update>
+
+	
+
+</mapper>
