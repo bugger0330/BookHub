@@ -8,7 +8,7 @@ import com.library.bookhub.entity.cs.CsFaqEntity;
 
 @Mapper
 public interface CsFaqRepository {
-	
+
 	// 자주 묻는 질문 리스트
 	public List<CsFaqEntity> selectCsFaqList();
 

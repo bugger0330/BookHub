@@ -21,5 +21,5 @@ public class CsFaqDto {
 	private String title;
 	private String content;
 	private Timestamp rdate;
-	
+
 }

@@ -60,22 +60,22 @@ public class CsService {
 
 	// 문의하기 상세보기
 	public CsQnaEntity qnaView(int id) {
-		
+
 		return csQnaRepository.qnaView(id);
 	}
 
 	// 문의하기 수정하기
 	public boolean qnaUpdate(int id, CsQnaDto dto) {
-		
+
 		CsQnaEntity csQnaEntity = CsQnaEntity.builder()
 				.title(dto.getTitle())
 				.content(dto.getContent())
 				.id(id)
 				.build();
-		
+
 		int result = csQnaRepository.qnaUpdate(csQnaEntity);
-		
-		
+
+
 		if (result == 1) {
 			return true;
 		}
@@ -85,9 +85,9 @@ public class CsService {
 
 	// 문의하기 삭제하기
 	public boolean qnaDelete(int id) {
-		
+
 		int result = csQnaRepository.qnaDelete(id);
-		
+
 		if (result == 1) {
 			return true;
 		}

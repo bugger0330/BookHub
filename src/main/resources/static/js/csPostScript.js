@@ -149,24 +149,4 @@ let postObject = {
 
 }
 
-button.onclick = () => {
-	$.ajax({
-		type : "post",
-		url : "/qna/update/" + addressNum, // detailveiw에서 pk값인 id잡아서 같이 넘겨준다
-		data : {
-			title : title.value,
-			content : content.value,
-		}, // ajax로 컨트롤러에 값을 들고 요청함
-		success : function(data){
-			if(data == true){
-				window.location.href = "/qna/list" + addressNum;
-			}else{
-				window.location.href = "/qna/view" + addressNum;
-			}
-		},
-		error : function(){
-			alert("실패");
-		}
-	});
-}
 postObject.init();

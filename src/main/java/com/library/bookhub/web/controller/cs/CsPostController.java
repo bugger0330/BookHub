@@ -70,7 +70,11 @@ public class CsPostController {
 	// 문의글 수정하기
 	@PostMapping("/qna/update/{id}")
 	@ResponseBody
-	private boolean qnaUpdate(@PathVariable int id, CsQnaDto dto) {
+	public boolean qnaUpdate(@PathVariable int id, CsQnaDto dto) {
+		
+		System.out.println("아이디 번호"+id);
+		System.out.println("데이터"+dto.toString());
+		
 		boolean result = csService.qnaUpdate(id, dto);
 
 		return result;

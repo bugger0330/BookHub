@@ -25,8 +25,8 @@ public class CsNoticeDto {
 	private String ofile;
 	private String sfile;
 	private String writer;
-	
-	
-	
-	
+
+
+
+
 }

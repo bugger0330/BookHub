@@ -49,7 +49,7 @@
 
 			<div>
 				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-				<button class="btn btn-warning" id="btn-update">수정하기</button>
+				<button class="btn btn-warning" id="btn-update">수정완료</button>
 			</div>
 
 
@@ -76,8 +76,10 @@
 						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
 			});
 </script>
-<script src="/js/csViewScript.js"></script>
-<script src="/js/csPostScript.js"></script>
+<script src="/js/csUpdateScript.js">
+
+</script>
+
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

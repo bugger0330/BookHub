@@ -43,26 +43,26 @@ public class TestController {
 	public String adminPage() {
 		return "pages/admin/main";
 	}
-	
+
 	// 관리자페이지 - 회원관리
 	@GetMapping("/customer")
 	public String customerPage() {
 		return "pages/admin/customer";
 	}
-	
-	
+
+
 	// 관리자페이지 - 광고설정
 	@GetMapping("/ad-setting")
 	public String adSettingPage() {
 		return "pages/admin/adSettings";
 	}
-	
+
 	// 관리자페이지 - 환불요청목록
 	@GetMapping("/refund-list")
 	public String refundListPage() {
 		return "pages/admin/refundList";
 	}
-	
+
 	// 관리자페이지 - 환불요청승인
 		@GetMapping("/refund-request")
 		public String refundRequestPage() {

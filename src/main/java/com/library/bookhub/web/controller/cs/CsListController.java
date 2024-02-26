@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.library.bookhub.entity.cs.CsFaqEntity;
 import com.library.bookhub.entity.cs.CsNoticeEntity;
@@ -14,7 +13,6 @@ import com.library.bookhub.entity.cs.CsQnaEntity;
 import com.library.bookhub.service.CsService;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -41,34 +39,34 @@ public class CsListController {
 	// 문의하기 리스트
 	@GetMapping("/qna/list")
 	public String qnaPage(Model model) {
-		
+
 		List<CsQnaEntity> qnaList = csService.selectCsQnaList();
 		model.addAttribute("qnaList", qnaList);
-		
+
 		System.out.println("qnaList" + qnaList);
 
 		log.info(qnaList.toString());
-		
+
 		return "pages/cs/qna/list";
 	}
 
 	// 자주 묻는 질문 리스트
 	@GetMapping("/faq/list")
 	public String faqPage(Model model) {
-		
+
 		List<CsFaqEntity> faqList = csService.selectCsFaqList();
 		model.addAttribute("faqList", faqList);
-		
+
 		System.out.println("faqList" + faqList);
 
 		log.info(faqList.toString());
-		
+
 		return "pages/cs/faq/list";
 	}
 
 	// 챗봇
-	
 
-	
-	
+
+
+
 }

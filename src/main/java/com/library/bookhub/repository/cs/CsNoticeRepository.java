@@ -8,7 +8,7 @@ import com.library.bookhub.entity.cs.CsNoticeEntity;
 
 @Mapper
 public interface CsNoticeRepository {
-	
+
 	// 공지사항 리스트
 	public List<CsNoticeEntity> selectCsNoticeList();
 
