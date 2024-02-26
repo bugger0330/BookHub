@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.UserSubscriptionRepository">
+
+    <resultMap id="userSubscriptionResultMap" type="com.library.bookhub.entity.UserSubscription">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="subscriptionProductId" column="subscription_product_id"/>
+        <result property="period" column="period"/>
+        <result property="refundYn" column="refund_yn"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="purchaseDate" column="purchase_date"/>
+    </resultMap>
+
+    <insert id="save" parameterType="com.library.bookhub.entity.UserSubscription">
+        INSERT INTO bh_user_subscription (user_id, subscription_product_id,  purchase_date, start_date, end_date)
+        VALUES (#{userId}, #{subscriptionProductId},  #{purchaseDate}, #{startDate}, #{endDate})
+    </insert>
+
+
+    <select id="findAllWithPagingAndUserId" resultType="com.library.bookhub.web.dto.UserSubscriptionDto">
+        select usersub.id, usersub.user_id, product.sp_id, product.prodName, product.price, product.period, usersub.start_date, usersub.end_date, usersub.refund_yn, usersub.purchase_date from BH_USER_SUBSCRIPTION  as usersub
+        left join BH_SUBSCRIPTION_PRODUCT  as product on product.sp_id = usersub.SUBSCRIPTION_PRODUCT_ID
+        WHERE LOWER(usersub.user_id) LIKE CONCAT('%',
+        LOWER(#{userId}),'%') LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <select id="getTotalCount" resultType="long">
+        SELECT COUNT(*) FROM
+        bh_user_subscription
+    </select>
+
+</mapper>

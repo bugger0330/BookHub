@@ -38,7 +38,6 @@ spring:
 #    ansi:
 #      enabled: always
 
-
   mail:
     host: smtp.gmail.com
     port: 587

@@ -7,8 +7,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 import com.library.bookhub.entity.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +27,10 @@ import com.library.bookhub.web.dto.common.PageRes;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * 구독상품 컨트롤러
+ * @Author : 이준혁
+ */
 @Controller
 @Slf4j
 @RequestMapping("/sc-product")
@@ -29,6 +38,8 @@ public class SubscriptionProductController {
 	
 	@Autowired
 	private SubscriptionProductService subscriptionProductService;
+
+
 	
 	// 구독상품 전체조회 (페이징처리)
     @GetMapping("/list")
@@ -61,12 +72,24 @@ public class SubscriptionProductController {
     // 구독상품 전체조회(페이징X)
     @GetMapping("/nopage")
     public String getAllProductNoPage(Model model) {
-    	
-    	List<SubscriptionProduct> list = subscriptionProductService.getProductNoPage();
-    	
-    	model.addAttribute("productList", list);
-    	
-    	return "pages/subproduct/subproduct";
+        // 구독 상품 목록을 가져옴
+        List<SubscriptionProduct> productList = subscriptionProductService.getProductNoPage();
+        model.addAttribute("productList", productList);
+
+        // 현재 로그인한 사용자의 정보를 가져옴
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        // 인증 객체로부터 사용자의 정보를 추출하여 sysout으로 출력
+        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            String username = userDetails.getUsername();
+            System.out.println("현재 로그인한 사용자: " + username);
+
+            // 사용자의 이름을 모델에 추가
+            model.addAttribute("username", username);
+        }
+
+        return "pages/subproduct/subproduct";
     }
 
     // 수정함수 : 수정페이지로 이동 + 상세조회 1건

@@ -1,0 +1,58 @@
+.point--order--main-div{
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.point--order--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.point--order--header span{
+    font-size: 40px;
+}
+
+.point--order--body{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.point--order--flag-box{
+    display: flex;
+}
+
+.point--order--flag{
+    padding: 10px;
+}
+
+.point--order--table{
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.point--order--table, .point--order--th, .point--order--td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+
+.point--order--th{
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.point--order--th, .point--order--td{
+    padding: 10px;
+
+}
+
+.point--order--tbody .point--order--tr:hover{
+    background-color: aliceblue;
+}

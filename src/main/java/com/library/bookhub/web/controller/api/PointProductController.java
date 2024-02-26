@@ -31,6 +31,10 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 포인트 상품 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @Controller
 @RequestMapping("/point-product")
