@@ -1,10 +1,10 @@
 //faq 아코디언 
 window.onload = () => {
   // panel-faq-container
-  const panelFaqContainer = document.querySelectorAll(".panel-faq-container"); // NodeList 객체
+  const panelFaqContainer = document.querySelectorAll(".panel-cs-container"); // NodeList 객체
   
   // panel-faq-answer
-  let panelFaqAnswer = document.querySelectorAll(".panel-faq-answer");
+  let panelFaqAnswer = document.querySelectorAll(".panel-cs-answer");
 
   // btn-all-close
   const btnAllClose = document.querySelector("#btn-all-close");

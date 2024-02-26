@@ -44,21 +44,27 @@ public class CsPostController {
 	}
 
 	// 문의글 상세보기 화면 띄우기
-	@GetMapping("/qna/view")
+	@GetMapping("/qna/view/{id}")
 	public String detail() {
-		return "qna/view";
+		return "pages/cs/qna/view";
 	}
 
 	// 문의글 상세보기
-	@GetMapping("/qna/view/{id}")
+	@PostMapping("/qna/view")
 	@ResponseBody
-	public CsQnaEntity qnaView(@PathVariable("id") int id) {
+	public CsQnaEntity qnaView(int id) {
 
 		System.out.println(id);
-		
+
 		CsQnaEntity csQnaEntity = csService.qnaView(id);
 
 		return csQnaEntity;
+	}
+
+	// 문의글 수정하기 화면 띄우기 
+	@GetMapping("/qna/update/{id}")
+	public String update() {
+		return "pages/cs/qna/update";
 	}
 
 	// 문의글 수정하기

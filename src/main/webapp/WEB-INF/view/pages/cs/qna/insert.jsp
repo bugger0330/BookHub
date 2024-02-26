@@ -44,8 +44,6 @@
 						<label for="content">Content:</label>
 						<textarea id="content" name="content"></textarea>
 					</div>
-
-
 					<button type="submit" class="btn btn-primary" id="btn-insert">Submit</button>
 				</form>
 			</div>
@@ -58,7 +56,7 @@
 <script>
 	$('#content').summernote(
 			{
-				placeholder : 'Hello stand alone ui',
+				
 				tabsize : 2,
 				height : 120,
 				toolbar : [ [ 'style', [ 'style' ] ],
@@ -74,5 +72,3 @@
 	
 </script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
-
-

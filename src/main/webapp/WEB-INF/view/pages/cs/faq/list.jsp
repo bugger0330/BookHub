@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
-<script src="/js/csScript.js"></script>
+
+
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -83,6 +85,7 @@
 	</div>
 </section>
 
+<script src="/js/csScript.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
