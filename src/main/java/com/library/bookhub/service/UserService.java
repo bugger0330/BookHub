@@ -13,6 +13,10 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 유저 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class UserService {

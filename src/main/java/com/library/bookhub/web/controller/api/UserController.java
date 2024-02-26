@@ -24,6 +24,10 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 유저 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @Controller
 @RequestMapping("/user")

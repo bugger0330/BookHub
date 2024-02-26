@@ -51,19 +51,22 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .logoutSuccessUrl("/login?success=201"))
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                    .requestMatchers("/**").permitAll()
-                    .requestMatchers("/h2-console/**").permitAll()
-                    .requestMatchers(PathRequest.toH2Console()).permitAll()
-                    .requestMatchers("/user/**").permitAll()
-                    .requestMatchers("/club/**").permitAll()
-                    .requestMatchers("/ad/**").permitAll()
-                    .requestMatchers("/myPage/**").permitAll()
-                    .requestMatchers("/payment/**").permitAll()
-                    .requestMatchers("/product-category/**").permitAll()
-                    .requestMatchers("/api/**").permitAll()
-                    .requestMatchers("/sc-product/**").permitAll()
-                    .requestMatchers("/point-product/**").permitAll()
-                    .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll());
+            	    .requestMatchers("/admin").hasRole("ADMIN") // "/admin" 경로에 대한 권한 설정
+            	    .requestMatchers("/**").permitAll() // 모든 경로에 대한 접근 허용
+            	    .requestMatchers("/h2-console/**").permitAll()
+            	    .requestMatchers(PathRequest.toH2Console()).permitAll()
+            	    .requestMatchers("/user/**").permitAll()
+            	    .requestMatchers("/club/**").permitAll()
+            	    .requestMatchers("/ad/**").permitAll()
+            	    .requestMatchers("/myPage/**").permitAll()
+            	    .requestMatchers("/payment/**").permitAll()
+            	    .requestMatchers("/product-category/**").permitAll()
+            	    .requestMatchers("/api/**").permitAll()
+            	    .requestMatchers("/sc-product/**").permitAll()
+            	    .requestMatchers("/point-product/**").permitAll()
+            	    .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll()
+            	);
+
 		
 		// 사용자 인증처리 컴포넌트 등록
 		http.userDetailsService(service);

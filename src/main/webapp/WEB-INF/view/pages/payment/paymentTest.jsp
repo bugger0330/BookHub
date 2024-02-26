@@ -23,33 +23,39 @@
 		return Math.floor(Math.random() * 10000000000).toString();
 	}
 
-	function requestPay() {
+	function requestPay(productId) {
+        var merchant_uid = generateMerchantUid(); // 랜덤한 merchant_uid 생성
+        var productName = "BookHub 구독상품 ${product.prodName}";
+        var amount = "${product.price}";
 
-		var merchant_uid = generateMerchantUid(); // 랜덤한 merchant_uid 생성
-		var productName = "BookHub 구독상품 ${product.prodName}";
-		var amount = "${product.price}";
-		IMP.request_pay({
-			pg : "html5_inicis",
-			pay_method : "card",
-			merchant_uid : merchant_uid,
-			name : productName,
-			amount : amount,
-			buyer_email : "Iamport@chai.finance",
-			buyer_name : "포트원 기술지원팀",
-			buyer_tel : "010-1234-5678",
-			buyer_addr : "서울특별시 강남구 삼성동",
-			buyer_postcode : "123-456",
-		}, function(rsp) {
-			// 결제 성공 시 페이지 이동
-			if (rsp.success) {
-				window.location.href = "/success"; // 성공 페이지 URL로 이동
-			} else {
-				// 결제 실패 시 처리 로직
-				alert(`결제에 실패했습니다.`);
-				window.location.href = "/sc-product/nopage"
-			}
-		});
-	}
+        // 결제 요청 시 productId도 함께 전달
+        IMP.request_pay({
+            pg: "html5_inicis",
+            pay_method: "card",
+            merchant_uid: merchant_uid,
+            name: productName,
+            amount: amount,
+            buyer_email: "Iamport@chai.finance",
+            buyer_name: "포트원 기술지원팀",
+            buyer_tel: "010-1234-5678",
+            buyer_addr: "서울특별시 강남구 삼성동",
+            buyer_postcode: "123-456",
+            // productId도 결제 정보에 추가
+            custom_data: {
+                productId: productId
+            }
+        }, function(rsp) {
+            // 결제 성공 시 페이지 이동
+            if (rsp.success) {
+                window.location.href = "/payment/success/" + rsp.custom_data.productId; // 성공 페이지 URL로 이동
+            } else {
+                // 결제 실패 시 처리 로직
+                alert(`결제에 실패했습니다.`);
+                window.location.href = "/sc-product/nopage"
+            }
+        });
+    }
+
 </script>
 <style>
 .product-details {
@@ -121,7 +127,8 @@
         
     </div>
     <div class=" text-center mt-5">
-            <button class="btn btn-primary btn-lg" onclick="requestPay()">결제하기</button>
+            <button class="btn btn-primary btn-lg" onclick="requestPay(${product.spId})">결제하기</button>
+
         </div>
 </div>
 
