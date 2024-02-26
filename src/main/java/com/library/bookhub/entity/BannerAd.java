@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
+/**
+ * 배너 광고 엔티티
+ * @Author : 이준혁
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

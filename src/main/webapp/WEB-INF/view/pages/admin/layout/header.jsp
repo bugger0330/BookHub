@@ -39,6 +39,7 @@
 						data-bs-toggle="dropdown" aria-expanded="false">회원관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="/user/list">회원조회</a></li>
+							<li><a class="dropdown-item" href="/subscriptions/list">유저 구독상품구매 조회</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"

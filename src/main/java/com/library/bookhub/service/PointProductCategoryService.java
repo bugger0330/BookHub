@@ -12,6 +12,10 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 포인트 상품 카테고리 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class PointProductCategoryService {

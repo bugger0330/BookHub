@@ -170,3 +170,15 @@ CREATE TABLE bh_point_product (
     createdAt DATETIME NOT NULL
 );
 
+
+CREATE TABLE bh_user_subscription (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(20) NOT NULL,
+    subscription_product_id INT,
+    refund_yn VARCHAR(2) DEFAULT 'N',
+    purchase_date TIMESTAMP,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP
+);
+
+

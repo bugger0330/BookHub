@@ -8,6 +8,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 포인트 상품 엔티티(관리자)
+ * @Author : 이준혁
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
