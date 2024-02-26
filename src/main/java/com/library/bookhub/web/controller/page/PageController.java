@@ -15,12 +15,6 @@ public class PageController {
 		return "pages/user/login";
 	}
 
-	// 마이페이지
-	@GetMapping("/my-page")
-	public String myPage() {
-		return "user/myPoint";
-	}
-	
 	// about 페이지
 	@GetMapping("/about")
 	public String aboutPage() {

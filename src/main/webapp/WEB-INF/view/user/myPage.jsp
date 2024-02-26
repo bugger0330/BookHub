@@ -89,8 +89,8 @@
 		<h2>내 정보</h2>
 		<form action="#" method="post">
 			<div class="log-form-group">
-				<label for="user-name">아이디</label> <input type="text" id="user-name"
-					name="user-name" required>
+				<label for="userName">아이디</label> <input type="text" id="userName"
+					name="userName" required>
 			</div>
 			<div class="log-form-group">
 				<label for="password">비밀번호</label> <input type="password"
