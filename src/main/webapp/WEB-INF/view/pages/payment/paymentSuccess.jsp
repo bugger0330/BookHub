@@ -11,8 +11,7 @@
 
     <!-- Favicon -->
     <link href="/img/favicon.ico" rel="icon">
-    
-    
+
 <head>
 
 <style>
@@ -75,6 +74,10 @@
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
+    
+
+
     <script type="text/javascript">
         $(document).ready(function() {
             // 페이지 로드 시 자동으로 실행되는 함수
@@ -87,7 +90,6 @@
             $(function() {
                 // 사용자 이름 가져오기
                 var username = document.getElementById('username').getAttribute('data-username');
-                console.log(username);
                 var startDate = new Date();
                 var endDate = new Date();
                 var purchaseDate = new Date();

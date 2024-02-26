@@ -40,5 +40,8 @@ public interface UserRepository {
     public long existById(int id);
     
     
+    // 아이디로 회원조회
+    public User findByUserId(String userId);
+    
 }
 
