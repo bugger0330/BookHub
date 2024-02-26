@@ -11,6 +11,8 @@
 
     <!-- Favicon -->
     <link href="/img/favicon.ico" rel="icon">
+    
+    
 <head>
 <meta charset="UTF-8">
 <title>BookHub :: 독서와 무제한 친해지기</title>
@@ -56,6 +58,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             // 페이지 로드 시 자동으로 실행되는 함수
+            // 뒤로가기 버튼 비활성화
+        	history.pushState(null, null, location.href);
+        	window.onpopstate = function () {
+            history.go(1);
+       		 };
+            
             $(function() {
                 // 사용자 이름 가져오기
                 var username = document.getElementById('username').getAttribute('data-username');
@@ -96,6 +104,9 @@
             });
         });
     </script>
+    <script type="text/javascript">
+  
+</script>
     
 
 </body>

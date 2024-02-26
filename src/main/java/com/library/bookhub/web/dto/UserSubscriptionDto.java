@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -30,6 +31,17 @@ public class UserSubscriptionDto {
     private String refundYn; // 환불여부
 
     
+    
+    
+	
+	// 포메터 기능
+		public String formatBalance() {
+			// 1000 -> 1,000
+			DecimalFormat df = new DecimalFormat("#,###");
+			String formaterNumber = df.format(price);
+			return formaterNumber + "원";
+		}
+
     
     public String getStartDateStr(){
         return formatDate(startDate);

@@ -8,72 +8,74 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>User List</title>
+<title>유저구독상품 List</title>
 
 <style>
 table {
-	border-collapse: collapse;
-	width: 100%;
-	border-radius: 20px; /* 테이블 모서리를 둥글게 만듭니다. */
-	overflow: hidden; /* 테이블 내용이 모서리를 넘어가지 않도록 설정합니다. */
+    border-collapse: collapse;
+    width: auto; /* 표의 너비를 글자 길이에 맞게 유동적으로 설정합니다. */
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 th, td {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    word-wrap: break-word; /* 글자 길이에 따라 줄 바꿈이 되도록 설정합니다. */
 }
 
 th {
-	background-color: #007bff; /* 테이블 헤더 배경색을 변경합니다. */
-	color: white; /* 테이블 헤더 텍스트 색상을 변경합니다. */
+    background-color: #007bff;
+    color: white;
 }
 
 .pagination {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 .pagination a {
-	color: black;
-	float: left;
-	padding: 8px 16px;
-	text-decoration: none;
-	transition: background-color .3s;
-	border: 1px solid #ddd;
-	margin: 0 4px;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
 }
 
 .pagination a.active {
-	background-color: #007bff;
-	color: white;
-	border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
 }
 
 .pagination a:hover:not(.active) {
-	background-color: #ddd;
+    background-color: #ddd;
 }
 
 .search {
-	position: relative;
-	width: 300px;
+    position: relative;
+    width: 300px;
 }
 
 input {
-	width: 100%;
-	border: 1px solid #bbb;
-	border-radius: 8px;
-	padding: 10px 12px;
-	font-size: 14px;
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
 }
 
 img {
-	position: absolute;
-	width: 17px;
-	top: 10px;
-	right: 12px;
-	margin: 0;
+    position: absolute;
+    width: 17px;
+    top: 10px;
+    right: 12px;
+    margin: 0;
 }
 </style>
+
 <link href="/css/adminpagestyles.css" rel="stylesheet" />
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -83,18 +85,13 @@ img {
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">유저상품 전체조회</h3>
+					<h3 class="display-5 text-white animated slideInDown">유저구독상품 전체조회</h3>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="container-xxl">
-
-
-
-
-
+	<div style="width: 80%; margin: 0 auto;" >
 		<c:choose>
 			<c:when test="${not empty userSubscriptionList}">
 				<table class="table table-hover table-light">
@@ -119,7 +116,7 @@ img {
 								<td class="text-center align-middle">${list.id}</td>
 								<td class="text-center align-middle">${list.userId}</td>
 								<td class="text-center align-middle">${list.prodName}</td>
-								<td class="text-center align-middle">${list.price}원</td>
+								<td class="text-center align-middle">${list.formatBalance()}</td>
 								<td class="text-center align-middle">${list.getPurchaseDateStr()}</td>
 								<td class="text-center align-middle">${list.period}일</td>
 								<td class="text-center align-middle">${list.getStartDateStr()}</td>

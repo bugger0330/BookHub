@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +60,7 @@ public class PaymentController {
 
 	// success 페이지에 유저 정보 및 구독 상품 내역 전달
 	@GetMapping("/success/{id}")
+	@Transactional
 	public String successPage(@PathVariable int id, Model model) {
 		// 현재 로그인한 사용자의 정보를 가져옴
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
