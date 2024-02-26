@@ -104,12 +104,6 @@ public class MemberController {
 		return num;
 	}
 	
-	// 아이디 찾기
-	public String findUid() {
-		
-		
-		return "";
-	}
 	
 	
 }

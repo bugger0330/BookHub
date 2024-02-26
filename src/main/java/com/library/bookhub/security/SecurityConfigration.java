@@ -10,6 +10,11 @@ import org.springframework.security.config.annotation.web.configurers.CsrfConfig
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -26,7 +31,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
 		http
 			// 사이트 위변조 방지 비활성화
 			.csrf(CsrfConfigurer::disable)
-			// X-Frame-Options 비활성화
+			// X-Frame-Options 비활성화(h2 DB 사용하기 위함)
 			.headers(header -> header
 					.frameOptions(FrameOptionsConfig::disable))
 			// 로그인 설정
@@ -43,12 +48,27 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
                     .logoutSuccessUrl("/login?success=200"))
+            // 자동 로그인 설정
+            .rememberMe(remember -> remember
+                    .rememberMeParameter("remember")
+                    .alwaysRemember(false)
+                    .tokenValiditySeconds(60*60*24*30*3)
+                    .key("rememberMe")
+                    .userDetailsService(service))
+            // 소셜 로그인 설정
+            .oauth2Login(oauth -> oauth
+            		.loginPage("/login")
+            		.clientRegistrationRepository(clientRegistrationRepository())
+    	            .defaultSuccessUrl("/", true)
+    	            .failureUrl("/login?success=403"))
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                     .requestMatchers("/**").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers(PathRequest.toH2Console()).permitAll()
                     .requestMatchers("/user/**").permitAll()
+                    .requestMatchers("/kakao/token/**").permitAll()
+                    .requestMatchers("/kakao/**").permitAll()
                     .requestMatchers("/club/**").permitAll()
                     .requestMatchers("/ad/**").permitAll()
                     .requestMatchers("/myPage/**").permitAll()
@@ -73,5 +93,57 @@ public class SecurityConfigration implements WebMvcConfigurer {
 		return new BCryptPasswordEncoder();
 	}
 	
+	// 소셜 로그인 등록
+	@Bean
+	public ClientRegistrationRepository clientRegistrationRepository() {
+	    return new InMemoryClientRegistrationRepository(
+	        kakaoClientRegistration()
+	        //googleClientRegistration(),
+	        //naverClientRegistration()
+	    );
+	}
+	
+	// 카카오 소셜 로그인
+	private ClientRegistration kakaoClientRegistration() {
+	    return ClientRegistration.withRegistrationId("kakao")
+	            .clientId("your-kakao-client-id")
+	            .clientSecret("your-kakao-client-secret")
+	            .redirectUri("your-kakao-redirect-uri")
+	            .authorizationUri("https://kauth.kakao.com/oauth/authorize")
+	            .tokenUri("https://kauth.kakao.com/oauth/token")
+	            .userInfoUri("https://kapi.kakao.com/v2/user/me")
+	            .userNameAttributeName("id")
+	            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+	            .clientName("Kakao")
+	            .build();
+	}
+	
+	// 구글 소셜 로그인
+	private ClientRegistration googleClientRegistration() {
+	    return ClientRegistration.withRegistrationId("google")
+	            .clientId("your-google-client-id")
+	            .clientSecret("your-google-client-secret")
+	            .redirectUri("your-google-redirect-uri")
+	            .authorizationUri("https://accounts.google.com/o/oauth2/auth")
+	            .tokenUri("https://www.googleapis.com/oauth2/v4/token")
+	            .userInfoUri("https://www.googleapis.com/oauth2/v3/userinfo")
+	            .userNameAttributeName(IdTokenClaimNames.SUB)
+	            .clientName("Google")
+	            .build();
+	}
+	
+	// 네이버 소셜 로그인
+	private ClientRegistration naverClientRegistration() {
+	    return ClientRegistration.withRegistrationId("naver")
+	            .clientId("your-naver-client-id")
+	            .clientSecret("your-naver-client-secret")
+	            .redirectUri("your-naver-redirect-uri")
+	            .authorizationUri("https://nid.naver.com/oauth2.0/authorize")
+	            .tokenUri("https://nid.naver.com/oauth2.0/token")
+	            .userInfoUri("https://openapi.naver.com/v1/nid/me")
+	            .userNameAttributeName("id")
+	            .clientName("Naver")
+	            .build();
+	}
 	
 }

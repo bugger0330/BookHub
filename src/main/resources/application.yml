@@ -37,8 +37,19 @@ spring:
   output:
     ansi:
       enabled: always
-
-
+  profiles:
+    include: oauth
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 3f33875eb91fe402a3b0db6bf310661a
+            # client-secret: 제품 설정 -> 카카오 로그인 -> 보안 -> Client Secret
+            redirect-uri: http://localhost/kakao
+            authorization-grant-type: authorization_code
+            client-authentication-method: POST
+            client-name: Kakao
   mail:
     host: smtp.gmail.com
     port: 587

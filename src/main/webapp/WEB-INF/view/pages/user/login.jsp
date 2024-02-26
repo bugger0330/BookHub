@@ -50,6 +50,17 @@
 .log-form-group button:hover {
 	background-color: #0056b3;
 }
+
+.remember-me-group {
+	display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 10px 10px 0;
+}
+.remember-me-group > label {
+	font-weight: bold;
+	margin-left: 5px;
+}
 </style>
 </head>
 <body>
@@ -78,6 +89,10 @@
 				<label for="password">비밀번호</label> <input type="password"
 					id="password" name="password" placeholder="Enter password" required>
 			</div>
+			<div class="remember-me-group">
+				<input type="checkbox" id="remember" name="remember">
+				<label for="remember">자동로그인</label> 
+			</div>
 			<div class="log-form-group">
 				<button type="submit" class="login-btn">로그인</button>
 				<hr />
@@ -91,24 +106,31 @@
 				<h5>소셜로그인</h5>
 				<div class="text-center">
 		
+		<%
+		String kakoClientId = "3f33875eb91fe402a3b0db6bf310661a";//애플리케이션 클라이언트 아이디값";
+		String kakaoRedirectURI = URLEncoder.encode("http://localhost/kakao", "UTF-8");
+		String kakaoApiURL = "https://kauth.kakao.com/oauth/authorize?response_type=code";
+			kakaoApiURL += "&client_id=" + kakoClientId;
+			kakaoApiURL += "&redirect_uri=" + kakaoRedirectURI;
+		%>
 		<a
-			href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=2c617de944e126184f4c77cab2d22c93&redirect_uri=http://localhost/user/kakao-callback">
-			<img alt="" src="/img/kakao_login_medium_narrow.png"
+			href="<%= kakaoApiURL %>">
+			<img alt="kakao" src="/img/kakao_login_medium_narrow.png"
 			height="38">
 		</a>
-	
+		
 		<%
-		String clientId = "hVlPdCIutDDpu0e0tAA1";//애플리케이션 클라이언트 아이디값";
-		String redirectURI = URLEncoder.encode("http://localhost/user/naver-callback", "UTF-8");
+		String naverClientId = "hVlPdCIutDDpu0e0tAA1";//애플리케이션 클라이언트 아이디값";
+		String naverRedirectURI = URLEncoder.encode("http://localhost/user/naver-callback", "UTF-8");
 		SecureRandom random = new SecureRandom();
 		String state = new BigInteger(130, random).toString();
-		String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		apiURL += "&client_id=" + clientId;
-		apiURL += "&redirect_uri=" + redirectURI;
-		apiURL += "&state=" + state;
+		String naverApiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+		naverApiURL += "&client_id=" + naverClientId;
+		naverApiURL += "&redirect_uri=" + naverRedirectURI;
+		naverApiURL += "&state=" + state;
 		session.setAttribute("state", state);
 		%>
-		<a href="<%=apiURL%>"><img height="38" width="154.53"
+		<a href="<%=naverApiURL%>"><img height="38" width="154.53"
 			src="/img/btnG_완성형.png" /></a>
 			
 			<a
@@ -129,9 +151,15 @@
 	    if (successValue === '401') {
 	        alert('아이디 혹은 비밀번호를 다시 확인해주세요.');
 	    }
+	    if (successValue === '403') {
+	        alert('소셜 로그인 인증이 실패하였습니다. 고객센터로 문의해주세요.');
+	    }
 	    if (successValue === '200') {
 	        alert('정상적으로 로그아웃되었습니다.');
 	    }
+	    
+	    // 파라미터 삭제
+	    history.replaceState({}, null, location.pathname);
 	</script>
 
 </body>

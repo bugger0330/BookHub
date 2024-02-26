@@ -58,7 +58,7 @@ public class MyUserDetails implements UserDetails {
 	public boolean isAccountNonLocked() {
 		
 		// 탈퇴된 계정
-		if(user.getWDate() != null) {
+		if(user.getWDate() != null || user.getStatus() > 1) {
 			return false;
 		}
 		

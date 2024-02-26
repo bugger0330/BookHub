@@ -2,11 +2,11 @@
 -- 테이블 드롭
 CREATE TABLE bh_member (
   id int NOT NULL AUTO_INCREMENT,
-  userName varchar(20) NOT NULL,
+  userName varchar(20) NOT NULL UNIQUE,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
-  gender tinyint NOT NULL,
-  phone char(13) NOT NULL,
+  gender tinyint,
+  phone char(13),
   email varchar(100) NOT NULL,
   role varchar(20) DEFAULT 'USER',
   point int DEFAULT '0',
@@ -14,6 +14,7 @@ CREATE TABLE bh_member (
   addr1 varchar(255) DEFAULT NULL,
   addr2 varchar(255) DEFAULT NULL,
   status int NOT NULL DEFAULT '0',
+  social varchar(20) DEFAULT NULL,
   wdate datetime DEFAULT NULL,
   rdate datetime NOT NULL
 );
