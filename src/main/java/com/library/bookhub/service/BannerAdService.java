@@ -16,6 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 배너 광고 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class BannerAdService {

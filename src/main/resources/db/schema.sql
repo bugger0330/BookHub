@@ -1,5 +1,22 @@
 
 -- 테이블 드롭
+DROP TABLE IF EXISTS bh_member;
+DROP TABLE IF EXISTS bh_member_point;
+DROP TABLE IF EXISTS bh_book;
+DROP TABLE IF EXISTS bh_product_cart;
+DROP TABLE IF EXISTS bh_book_borrow;
+DROP TABLE IF EXISTS bh_cs_qna;
+DROP TABLE IF EXISTS bh_cs_faq;
+DROP TABLE IF EXISTS bh_cs_notice;
+DROP TABLE IF EXISTS bh_banner;
+DROP TABLE IF EXISTS bh_payment;
+DROP TABLE IF EXISTS bh_club;
+DROP TABLE IF EXISTS bh_point_computer;
+DROP TABLE IF EXISTS bh_point_order;
+
+
+
+
 CREATE TABLE bh_member (
   id int NOT NULL AUTO_INCREMENT,
   userName varchar(20) NOT NULL,
@@ -29,20 +46,18 @@ CREATE TABLE bh_member_point (
 );
 
 -- 도서
-CREATE TABLE bh_book (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    bookCate1 TINYINT NOT NULL,
-    bookCate2 TINYINT NOT NULL,
-    bookName VARCHAR(100) NOT NULL,
-    descript VARCHAR(100) NOT NULL,
-    company VARCHAR(100) NOT NULL,
-    writer VARCHAR(20) NOT NULL,
-    borrow INT DEFAULT 0,
-    img VARCHAR(255) NOT NULL,
-    detailImg VARCHAR(255) NOT NULL,
-    status VARCHAR(20) DEFAULT '대출가능',
-    rdate DATETIME NOT NULL,
-    wdate DATETIME
+CREATE TABLE `bh_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bookName` varchar(100) NOT NULL,
+  `descript` varchar(1000) NOT NULL,
+  `company` varchar(100) NOT NULL,
+  `writer` varchar(20) NOT NULL,
+  `borrow` int DEFAULT '0',
+  `img` varchar(255) NOT NULL,
+  `status` varchar(20) DEFAULT '대출가능',
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 
 -- 도서 대출 장바구니
@@ -54,13 +69,37 @@ CREATE TABLE bh_product_cart (
 );
 
 -- 도서 대출
-CREATE TABLE bh_book_borrow (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    userName VARCHAR(20) NOT NULL,
-    brComplete TINYINT NOT NULL,
-    brDate DATETIME NOT NULL,
-    returnDate DATETIME,
-    bookNo INT NOT NULL
+CREATE TABLE `bh_book_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(20) NOT NULL,
+  `brComplete` tinyint NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_point_computer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `com_number` int NOT NULL,
+  `time` int DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  PRIMARY KEY (`id`,`com_number`)
+);
+
+CREATE TABLE `bh_point_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `orderId` int NOT NULL,
+  `productName` varchar(45) NOT NULL,
+  `productPrice` int NOT NULL,
+  `productCount` int NOT NULL,
+  `AllProductPrice` int NOT NULL,
+  `userName` varchar(45) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `refund_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 
 -- 문의
@@ -168,5 +207,16 @@ CREATE TABLE bh_point_product (
     uploadFileName VARCHAR(255),
     post_yn VARCHAR(2) DEFAULT 'Y',
     createdAt DATETIME NOT NULL
+);
+
+
+CREATE TABLE bh_user_subscription (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id VARCHAR(20) NOT NULL,
+    subscription_product_id INT,
+    refund_yn VARCHAR(2) DEFAULT 'N',
+    purchase_date TIMESTAMP,
+    start_date TIMESTAMP,
+    end_date TIMESTAMP
 );
 

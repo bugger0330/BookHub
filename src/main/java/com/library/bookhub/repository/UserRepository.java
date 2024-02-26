@@ -8,6 +8,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.User;
 
+/**
+ * 사용자 레포지토리
+ * @Author : 이준혁
+ */
 @Mapper
 public interface UserRepository {
 
@@ -35,6 +39,9 @@ public interface UserRepository {
     // 기본키(id)가 있는지 확인하는 조회함수
     public long existById(int id);
     
+    
+    // 아이디로 회원조회
+    public User findByUserId(String userId);
     
 }
 

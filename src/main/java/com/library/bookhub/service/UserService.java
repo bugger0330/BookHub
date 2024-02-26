@@ -13,6 +13,10 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 유저 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class UserService {
@@ -24,6 +28,11 @@ public class UserService {
     // 총 회원 수 조회 메서드
     public long getTotalUserCount() {
         return userRepository.getTotalCount();
+    }
+    
+    // 유저 아이디로 회원찾기
+    public User getUserId(String userId) {
+    	return userRepository.findByUserId(userId);
     }
 
     // 페이징된 유저 목록 조회

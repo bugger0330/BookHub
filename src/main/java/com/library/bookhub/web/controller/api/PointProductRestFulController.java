@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.library.bookhub.service.PointProductService;
 
+/**
+ * 포인트 상품 RestFul 컨트롤러
+ * @Author : 이준혁
+ */
 @RestController
 @RequestMapping("/api/point-product")
 public class PointProductRestFulController {
@@ -22,7 +26,7 @@ public class PointProductRestFulController {
 	private PointProductService pointProductService;
 	
 	
-	 // 광고여부 상태값 수정
+	 // 상품판매여부 상태값 수정
     @PutMapping("/poststatus/{id}")
     public ResponseEntity<?> updatePostStatus(@PathVariable int id, @RequestBody Map<String, String> requestBody) {
         String postYn = requestBody.get("post_yn");

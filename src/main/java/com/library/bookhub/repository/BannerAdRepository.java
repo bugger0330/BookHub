@@ -11,6 +11,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * 배너 광고 레포지토리
+ * @Author : 이준혁
+ */
 @Mapper
 public interface BannerAdRepository {
 

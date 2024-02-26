@@ -8,6 +8,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.SubscriptionProduct;
 
+/**
+ * 구독 상품 레포지토리
+ * @Author : 이준혁
+ */
 @Mapper
 public interface SubscriptionProductRepository {
 

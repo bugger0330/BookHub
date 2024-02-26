@@ -6,6 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 유저 등록 요청 DTO
+ * @Author : 이준혁
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
