@@ -151,7 +151,7 @@
 	            IMP.request_pay({
 	                pg: "html5_inicis",
 	                pay_method: "card",
-	                merchant_uid: merchant_uid,
+	                merchant_uid: username + "_" + merchant_uid,
 	                name: productName,
 	                amount: amount,
 	                buyer_email: buyer_email,
