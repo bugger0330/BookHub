@@ -89,7 +89,7 @@ img {
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container-xxl">
 
 
 
@@ -104,7 +104,7 @@ img {
 							<th>순서</th>
 							<th>유저ID</th>
 							<th>상품명</th>
-							<th>가격</th>
+							<th style="width: 100px">가격</th>
 							<th>구매일</th>
 							<th>구독 기간</th>
 							<th>구독 시작일</th>

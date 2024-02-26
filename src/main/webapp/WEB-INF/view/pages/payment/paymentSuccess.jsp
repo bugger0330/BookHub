@@ -40,7 +40,10 @@
 				<h4>구매내역은 마이페이지에서 확인가능합니다.</h4>
 			</div>
 
-		
+			 <!-- 사용자 이름 표시 -->
+             <div id="username" data-username="${username}"></div>
+               <h3>${product.spId}</h3>
+               <h3>${product.prodName}</h3>
 
     </div>
 	

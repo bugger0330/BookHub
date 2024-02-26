@@ -24,9 +24,4 @@ public class UserSubscription {
     private LocalDateTime startDate; // 구독 시작일
     private LocalDateTime endDate; // 구독 종료일
     private String refundYn; // 환불여부
-
-
-   
 }
-
-

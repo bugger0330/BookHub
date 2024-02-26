@@ -29,7 +29,8 @@ public class UserSubscriptionDto {
     private LocalDateTime purchaseDate; // 구매일
     private String refundYn; // 환불여부
 
-
+    
+    
     public String getStartDateStr(){
         return formatDate(startDate);
     }
@@ -50,5 +51,4 @@ public class UserSubscriptionDto {
             return dateTime.format(formatter);
         }
     }
-
 }

@@ -21,7 +21,7 @@ spring:
 #    password: asd1234
   
   datasource: # DB 설정
-    url: jdbc:h2:./data/demo
+    url: jdbc:h2:mem:testdb;MODE=MySQL
     driver-class-name: org.h2.Driver
     username: user # 유저 이름
     password: # 비밀번호 (비워두면 비밀번호 X)
