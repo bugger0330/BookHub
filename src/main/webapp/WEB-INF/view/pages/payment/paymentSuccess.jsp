@@ -126,7 +126,7 @@
                 clearInterval(timer);
             }
             document.getElementById('timer').innerHTML = "이 페이지는 " + seconds + "초 후에 메인 화면으로 자동 이동됩니다.";
-        }, 10000); // 1000 밀리초는 1초를 나타냄
+        }, 1000); // 1000 밀리초는 1초를 나타냄
                     },
                     error: function(xhr, status, error) {
                         // 저장 중 오류 발생 시 실행할 코드

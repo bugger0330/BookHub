@@ -59,7 +59,7 @@ public class UserSubscriptionDto {
         if (dateTime == null) {
             return "";
         } else {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시:mm분:ss초");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분ss초");
             return dateTime.format(formatter);
         }
     }
