@@ -27,19 +27,22 @@
 }
 </style>
 </head>
+ <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 <body>
 
 
-	<!-- Header Start -->
-	<div class="container-fluid bg-dark py-5 mb-5 page-header">
+<!-- Header Start -->
+	<div class="container-fluid bg-primary py-5 mb-5 page-header">
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">마이페이지</h3>
+					<h3 class="display-5 text-white animated slideInDown">나의 정보</h3>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Header End -->
+
 
 	<div class="container mb-5">
 		<div class="row justify-content-center">
@@ -52,7 +55,7 @@
 
 								<tr>
 									<th scope="row" class="bg-light">아이디</th>
-									<td>${user.username}</td>
+									<td>${user.userName}</td>
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">이름</th>
@@ -77,7 +80,7 @@
 						</table>
 						<div class="text-center">
 							<a href="/myPage/update/${user.id}">
-								<button type="button" class="btn btn-outline-success me-3">회원수정</button>
+								<button type="button" class="btn btn-outline-success me-3">수정하기</button>
 							</a>
 
 
@@ -96,6 +99,6 @@
 		console.log(obj);
 	</script>
 
-
+      <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 </body>
 </html>

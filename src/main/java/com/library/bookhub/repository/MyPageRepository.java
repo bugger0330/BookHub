@@ -1,25 +1,19 @@
 package com.library.bookhub.repository;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.User;
 
 @Mapper
 public interface MyPageRepository {
 
-    User findById(Long id);
+	// 회원 상세 조회
+    User findById(int id);
 
-//    List<User> findByUsername(String username);
-
-    int insert(User user);
-
+    // 회원 수정
     int myPageUpdate(User user);
 
+    // 회원 탈퇴
     int myPageDeleteById(User user);
 
-    List<User> findAll();
 }
