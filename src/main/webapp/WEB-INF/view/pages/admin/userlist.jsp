@@ -131,7 +131,7 @@ img {
 								<td class="text-center align-middle">${user.phone}</td>
 								<td class="text-center align-middle">${user.role == "USER" ? '일반계정' : '관리자'}</td>
 								<!-- 계정 유형을 한글로 표시합니다. -->
-								<td class="text-center align-middle">${user.point}</td>
+								<td class="text-center align-middle">${user.formatBalancePoint()}</td>
 								<td class="text-center align-middle"><a href="/user/detail/${user.id}"><button type="button"
 										class="btn btn-warning">자세히보기</button></a></td>
 								

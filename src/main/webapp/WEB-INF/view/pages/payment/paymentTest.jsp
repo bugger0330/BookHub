@@ -154,7 +154,7 @@
 	                name: productName,
 	                amount: amount,
 	                buyer_email: buyer_email,
-	                buyer_name: buyer_name, // 수정된 buyer_name 사용
+	                buyer_name: buyer_name, 
 	                buyer_tel: buyer_phone,
 	                buyer_addr: buyer_addr1 + buyer_addr2,
 	                buyer_postcode: buyer_zip,

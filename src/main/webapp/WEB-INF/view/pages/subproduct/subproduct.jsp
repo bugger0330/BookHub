@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>구독 요금제</title>
+ <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
 .card {

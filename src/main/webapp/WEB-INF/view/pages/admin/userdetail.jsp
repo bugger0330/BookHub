@@ -89,7 +89,7 @@
 								</tr>
 								<tr>
 									<th scope="row" class="bg-light">보유포인트</th>
-									<td>${user.point} 포인트</td>
+									<td>${user.formatBalancePoint()}</td>
 								</tr>
 							</tbody>
 						</table>
