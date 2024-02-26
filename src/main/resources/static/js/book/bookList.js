@@ -1,13 +1,15 @@
-const bookBox = document.querySelector(".book--list--main--div");
+const bookBox = document.querySelector(".book--list--inner--box");
+let nowPage = 0;
 
-load();
-function load(){
+load(nowPage);
+function load(firstPage){
 	$.ajax({
 		type : "get",
-		url : "/book/all",
+		url : `/book/all/${firstPage}`,
 		success : function(data){
 			if(data != null){
 				innerFun(data);
+				boardPageNum(data[0].bookAllCount);
 			}
 		},
 		error : function(){
@@ -48,7 +50,44 @@ function imageClickEvent(list){
 }
 
 
-
+function boardPageNum(data) {
+	const boardListPage = document.querySelector('.page--num--box');
+	const preNextBtn = document.querySelectorAll('.page--bar--btn');	// 이전/다음 버튼
+	
+	const totalPageCount = data % 5 == 0 ? Math.floor(data / 5) : Math.floor(data / 5) + 1;
+	
+	const startIndex = nowPage % 5 == 0 ? (nowPage + 1) : nowPage - Math.floor(nowPage % 5) + 1;
+	const endIndex = startIndex + 4 <= totalPageCount ? startIndex + 4 : totalPageCount;
+	
+	let pageNum = ``;
+	for(let i = startIndex; i <= endIndex; i++){
+		pageNum += `<span class="page--link">${i}</span>`;
+	}
+	 
+	boardListPage.innerHTML = pageNum;
+	
+	preNextBtn[0].onclick = () => { // 이전 버튼
+		nowPage = startIndex != 1 ? startIndex - 1 : 1;
+		load(nowPage);
+	}
+	
+	preNextBtn[1].onclick = () => { // 다음 버튼
+		nowPage = endIndex != totalPageCount ? endIndex + 1 : totalPageCount;
+		load(nowPage);
+	}
+	
+	const pageButton = boardListPage.querySelectorAll('span');
+	for(let i = 0; i < pageButton.length; i++){
+		pageButton[i].onclick = () => {
+			nowPage = pageButton[i].textContent;
+			load(nowPage);
+			pageButton[i].className = "page--link--on";
+			
+		}
+	}
+	
+	
+}
 
 
 

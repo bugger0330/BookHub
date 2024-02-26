@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.PointRepository">
+
+	<select id="getUserOrderId" resultType="Integer">
+		select orderId from bh_point_order 
+		where userName = #{userName}
+		order by orderId desc
+		limit 1;
+	</select>
+
+	<insert id="ProductOrder">
+		insert into bh_point_order(orderId, userName, productName, productPrice, productCount, allProductPrice, rdate, refund_type)
+		values(
+			#{orderId},
+			#{userName},
+			#{productName},
+			#{productPrice},
+			#{productCount},
+			#{allProductPrice},
+			now(),
+			#{refund_type}
+		);
+	</insert>
+
+	<select id="getUser" resultType="com.library.bookhub.entity.User">
+		select * from bh_member where userName = #{userName};
+	</select>
+
+	<update id="userPointUpdate">
+		update bh_member set
+			point = #{point}
+		where id = #{id};
+	</update>
+
+	<select id="getComputerFlag" resultType="com.library.bookhub.entity.Computer">
+		select * from bh_point_computer;
+	</select>
+
+	<update id="computerNotUsedUpdate">
+		update bh_point_computer set
+			time = #{time},
+			end_time = now(),
+			status = #{status}
+		where com_number = #{comNumber};
+	</update>
+
+	<update id="computerUsedUpdate">
+		update bh_point_computer set
+			time = #{time},
+			end_time = (SELECT DATE_ADD(NOW(), INTERVAL 1 HOUR)),
+			status = #{status}
+		where com_number = #{comNumber};
+	</update>
+
+
+
+
+
+
+
+
+
+</mapper>

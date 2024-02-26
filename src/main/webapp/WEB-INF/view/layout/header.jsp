@@ -33,16 +33,18 @@
 
     <!-- Template Stylesheet -->
     <link href="/css/style.css" rel="stylesheet">
-<<<<<<< HEAD
-    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     
     <!-- book custom css -->
     <link href="/css/book/bookList.css" rel="stylesheet">
     <link href="/css/book/bookDetail.css" rel="stylesheet">
-=======
+    <link href="/css/book/bookSearch.css" rel="stylesheet">
+
+    <!-- point custom css -->
+    <link href="/css/point/cafe.css" rel="stylesheet">
+    <link href="/css/point/print.css" rel="stylesheet">
+    <link href="/css/point/computer.css" rel="stylesheet">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
->>>>>>> 8f68c2007fafc42cba826a2d59f7b39ad1deb1a9
 </head>
 
 <body>

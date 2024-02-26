@@ -11,44 +11,32 @@ spring:
       suffix: .jsp
   servlet:
     multipart:
-<<<<<<< HEAD
-      max-file-size:
-        20MB
-      max-request-size:
-        20MB
+      max-file-size: 20MB
+      max-request-size: 20MB
+
   datasource:
-    url: jdbc:mysql://localhost:3306/book?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: asd1234
-=======
-      max-file-size: 20MB
-      max-request-size: 20MB
->>>>>>> 8f68c2007fafc42cba826a2d59f7b39ad1deb1a9
-
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: asd1234
   
-  datasource: # DB 설정
-    url: jdbc:h2:mem:testdb;MODE=MySQL
-    driver-class-name: org.h2.Driver
-    username: user # 유저 이름
-    password: # 비밀번호 (비워두면 비밀번호 X)
-  sql:
-    init: # 초기 sql 파일 읽기
-      schema-locations: # 스키마 (테이블 생성 등)
-        - classpath:db/schema.sql
-      data-locations: # 샘플 데이터
-        - classpath:db/data.sql
-  h2:
-    console:
-      enabled: true
-  output:
-    ansi:
-      enabled: always
+#  datasource: # DB 설정
+#    url: jdbc:h2:mem:testdb;MODE=MySQL
+#    driver-class-name: org.h2.Driver
+#    username: user # 유저 이름
+#    password: # 비밀번호 (비워두면 비밀번호 X)
+#  sql:
+#    init: # 초기 sql 파일 읽기
+#      schema-locations: # 스키마 (테이블 생성 등)
+#        - classpath:db/schema.sql
+#      data-locations: # 샘플 데이터
+#        - classpath:db/data.sql
+#  h2:
+#    console:
+#      enabled: true
+#  output:
+#    ansi:
+#      enabled: always
 
 
   mail:
@@ -87,5 +75,3 @@ logging:
 
 pagination:
   size: 10
-
-

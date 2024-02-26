@@ -1,0 +1,170 @@
+.main--div{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 5px;
+}
+
+.cafe--box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu--checkbox--coffie{
+	margin-right: 5px;
+}
+
+.menu--price--coffie{
+	margin-right: 5px;
+}
+
+.innr{
+	width: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.innr2{
+	width: 1px;
+	background: black;
+	height: 95%;
+}
+
+.cafe--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cafe--header span{
+    font-size: 50px;
+    height: 80%;
+}
+
+.cafe--menu--box{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border: 1px solid black;
+    background: bisque;
+}
+
+.menu--area{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    padding: 10px;
+    width: 460px;
+}
+
+.menu--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.menu--header span{
+	font-size: 30px;
+}
+
+.menus{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.menu{
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    background: antiquewhite;
+}
+
+.menu--title{
+	width: 220px;
+}
+
+.menu--title, .menu--price{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.coffie--count{
+	margin-right: 10px;
+	width: 50px;
+	padding-left: 5px;
+}
+
+.menu--checkbox{
+    margin-right: 10px;
+}
+
+.price--box{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 50px 0;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.price--select--area{
+    display: flex;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.price--all--box{
+    display: flex;
+    justify-content:space-between;
+    margin: 5px;
+}
+
+.all--box--title{
+	display: flex;
+	flex-direction: column;
+	width: 180px;
+}
+
+.all--box--content{
+	display: flex;
+	flex-direction: column;
+	margin-right: 10px;
+}
+
+.all--box--content div{
+	display: flex;
+}
+
+.all--box--point span{
+	color: blue;
+	display: flex;
+	flex-direction: column;
+}
+
+.price--all{
+	color: red;
+}
+
+.button--area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order--btn{
+	border: none;
+	border-radius: 10px;
+	background: gray;
+	color: white;
+	padding: 10px 20px;
+}

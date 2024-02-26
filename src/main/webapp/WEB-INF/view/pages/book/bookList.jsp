@@ -12,6 +12,14 @@
 		</div>
 	</div>
 	<!-- Header End -->
-	<div class="book--list--main--div"></div>
+	<div class="book--list--main--div">
+		<div class="book--list--inner--box"></div>
+		<div class="page--box">
+			<span class="page--bar--btn">◀</span>
+			<div class="page--num--box"></div>
+			<span class="page--bar--btn">▶</span>
+		</div>
+	</div>
+	
 	<script src="/js/book/bookList.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,9 +52,10 @@ public class BookController {
 //		return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
 //	}
 	
-	@GetMapping("/all")
-	public ResponseEntity<?> bookListAll(){
-		List<Book> list = bookService.bookListAll();
+	@GetMapping("/all/{pageNum}")
+	public ResponseEntity<?> bookListAll(@PathVariable int pageNum){
+		System.out.println("=================페이지 " + pageNum);
+		List<Book> list = bookService.bookListAll(pageNum);
 		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
 	}
 	
@@ -68,7 +70,7 @@ public class BookController {
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 	}
 	
-	@PostMapping("/borrow")
+	@PostMapping("/borrow") // 책 대출
 	public ResponseEntity<?> bookBorrow(int bookId, String username){
 		// bh_book에 책정보 update - id
 		// bh_book_borrow에 대출정보 insert - userId
@@ -78,12 +80,22 @@ public class BookController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
 
+	@DeleteMapping("/borrow")
+	public ResponseEntity<?> bookBorrowEnd(int bookId, String username){
+		// bh_book에 반납 정보 update - bookId
+		// bh_book_borrow에 대출정보 삭제해야함!
+		
+		boolean result = bookService.bookBorrowEnd(bookId, username);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 	
-	
-	
-	
-	
-	
+	// 검색
+	@GetMapping("/search/{option}/{inputValue}")
+	public ResponseEntity<?> findByBookOption(@PathVariable String option, @PathVariable String inputValue){
+		List<Book> list = bookService.findByBookOption(option, inputValue);
+		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
+	}
+
 	
 	
 	
