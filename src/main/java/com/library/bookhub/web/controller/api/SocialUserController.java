@@ -7,12 +7,17 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.bookhub.entity.User;
 import com.library.bookhub.security.SecurityUserService;
@@ -21,6 +26,7 @@ import com.library.bookhub.web.dto.member.KakaoProfile;
 import com.library.bookhub.web.dto.member.OauthToken;
 import com.library.bookhub.web.dto.member.SocialSignUpDto;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -41,11 +47,12 @@ public class SocialUserController {
 	@Autowired
 	private SecurityUserService securityUserService;
 	
-	// 카카오 인가 권한
-	// 카카오 로그인
+	@Autowired
+	HttpSession httpSession;
+	
 	// http://localhost:80/user/kakao-callback?code=
-	@GetMapping("/kakao")
-	public int kakaoCallback(@RequestParam("code") String code) {
+	@GetMapping("/kakao-callback")
+	public RedirectView kakaoCallback(@RequestParam("code") String code) {
 		
 		// POST 방식,  Header 구성, body 구성
 		RestTemplate rt1 = new RestTemplate();
@@ -110,9 +117,17 @@ public class SocialUserController {
 		}
 		
 		// 시큐리티 연결
-		securityUserService.loadUserByUsername(user.getUserName());
+		UserDetails userDetails = securityUserService.loadUserByUsername(dto.getUid());
 		
-		return 0;
+		log.info("userDetails : "+userDetails.toString());
+		
+		// UsernamePasswordAuthenticationToken 생성
+		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+		log.info("authentication : "+authentication);
+		// SecurityContextHolder에 인증 정보 설정
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		return new RedirectView("/");
 	}
 	
 	

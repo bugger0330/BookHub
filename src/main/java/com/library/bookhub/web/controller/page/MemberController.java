@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.library.bookhub.service.MemberService;
 import com.library.bookhub.web.dto.member.SignUpFormDto;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -104,6 +105,15 @@ public class MemberController {
 		return num;
 	}
 	
-	
-	
+	// 아이디 찾기 결과
+	@GetMapping("/findUids")
+	@ResponseBody
+	public List<String> findResult(HttpSession session) {
+		log.info("findResult...1");
+		
+		List<String> uids = (List<String>) session.getAttribute("uids");
+		log.info("uids : "+uids);
+		
+		return uids;
+	}
 }

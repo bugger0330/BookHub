@@ -1,8 +1,13 @@
 package com.library.bookhub.web.controller.page;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Controller
 public class PageController {
 
@@ -10,8 +15,9 @@ public class PageController {
 
 	// 로그인페이지
 	@GetMapping("/login")
-	public String loginPage() {
-
+	public String loginPage(@AuthenticationPrincipal UserDetails user) {
+		log.info("login: "+user);
+		
 		return "pages/user/login";
 	}
 

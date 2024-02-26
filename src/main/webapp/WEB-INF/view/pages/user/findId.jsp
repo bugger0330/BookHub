@@ -85,6 +85,10 @@
 	text-align: center;
 }
 
+.email-auth-form > form:nth-last-of-type(1) > .log-form-group {
+	display: none;
+}
+
 </style>
 </head>
 <body>
@@ -109,6 +113,7 @@
 					<label for="email">이메일 인증</label> <input type="email" id="email"
 						name="email" placeholder="Enter email" class="input-email" required>
 					<button type="button" class="auth-email" onclick="authEmail()">인증하기</button>
+					<p class="result-email"></p>
 				</div>
 			</form>
 			<!-- 인증 확인 -->
@@ -121,7 +126,7 @@
 			</form>
 		</div>
 		<div class="change-find">
-			<a href="/findPwd">-> 비밀번호 변경하기</a> <br>
+			<a href="/user/findPwd">-> 비밀번호 변경하기</a> <br>
 			<span>비밀번호를 잊어버리셨나요?</span>
 		</div>
 	</div>
@@ -129,36 +134,45 @@
 	<script>
 		const inputEmail = document.getElementById('email');
 		const authNumber = document.getElementById('auth-number');
-
 		const btnAuthEmail = document.getElementsByClassName('input-email')[0];
 		const btnNum = document.getElementsByClassName('btn-complete')[0];
-
+		const divNum = document.getElementsByClassName('log-form-group')[1];
+		const resultEmail = document.getElementsByClassName('result-email')[0];
+		
 		// 이메일 인증
 		function authEmail() {
 
 			const email = inputEmail.value;
+			resultEmail.textContent = '전송중입니다...';
 			
-			fetch(`/sendEmail/`+email,{
+			fetch(`/findId/sendEmail/`+email,{
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json;charset=UTF-8",
 				},
 			}).then((response) => response.text())
 			.then((data) => {
-				alert('이메일이 전송되었습니다.');
+				console.log(data);
+				
+				if(data <= 1){
+					divNum.style.display = 'block';
+					resultEmail.textContent = '전송되었습니다!';
+				} else {
+					alert("이메일 전송을 실패하였습니다.");
+					resultEmail.textContent = '';
+				}
+				
 			})
 			.catch((error) => {
 				alert('이메일 인증을 실패했습니다.');
 				console.log(error);
 			});
-			
 		}
 
 		function EnterNumber() {
 			const num = authNumber.value;
-			alert('num : '+num);
 
-			fetch(`/authNumber?number=`+num,{
+			fetch(`/findId/authNumber?number=`+num,{
 				method: "GET",
 				headers: {
 					"Content-Type": "application/json;charset=UTF-8",
@@ -166,7 +180,10 @@
 			}).then((response) => response.text())
 			.then((data) => {
 				if(data <= 1){
-					
+					alert("인증되었습니다.");
+					window.location.href="/user/findIdResult";
+				} else {
+					alert("인증 코드를 다시 입력해주세요.");
 				}
 			})
 			.catch((error) => {

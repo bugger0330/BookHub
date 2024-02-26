@@ -53,12 +53,15 @@
 
 /* 추가사항 */
 .result-id {
+	display: flex;
+    align-items: center;
 	width: 80%;
-	height: 150px;
+	min-height: 150px;
 	border-radius: 25px;
 	margin: 15px auto;
 	background-color: #f1f1f1;
 	justify-content: center;
+    align-items: center;
 }
 .result-id span {
 	line-height: 150px;
@@ -84,12 +87,32 @@
 		<span>현재 조회된 아이디입니다.</span>
 		
 		<div class="result-id">
-			<span>**님의 아이디 : bookstory0214</span>
+			<ul>
+				<li>히히</li>
+			</ul>
 		</div>
 		
 		<a href="/">메인으로</a>
 	</div>
 
+	<script>
+	function load() {
+		fetch('/findUids',{
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json;charset=UTF-8",
+			},
+		}).then((response) => response.text())
+		.then((data) => {
+			console.log();
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+	}
+	
+	load();
+	</script>
 </body>
 </html>
 

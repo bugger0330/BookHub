@@ -11,6 +11,9 @@ import com.library.bookhub.entity.User;
 import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.repository.MemberRepository;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @Service
 public class SecurityUserService implements UserDetailsService{
 	

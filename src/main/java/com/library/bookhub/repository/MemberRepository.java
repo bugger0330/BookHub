@@ -25,4 +25,7 @@ public interface MemberRepository {
 	// 아이디, 이메일로 계정찾기
 	public int findIdAndEmailByUser(String id, String email);
 	
+	// 비밀번호 변경
+	public int updatePassword(String username, String password);
+	
 }

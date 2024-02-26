@@ -8,6 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -61,6 +64,14 @@ public class SecurityConfigration implements WebMvcConfigurer {
             		.clientRegistrationRepository(clientRegistrationRepository())
     	            .defaultSuccessUrl("/", true)
     	            .failureUrl("/login?success=403"))
+            // 세션 설정
+            .sessionManagement(session -> session
+            		.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                    .invalidSessionUrl("/login")
+                    .sessionFixation().migrateSession()
+                    .maximumSessions(1)
+                        .expiredUrl("/login?expired")
+                        .maxSessionsPreventsLogin(true))
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                     .requestMatchers("/**").permitAll()
@@ -69,6 +80,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .requestMatchers("/user/**").permitAll()
                     .requestMatchers("/kakao/token/**").permitAll()
                     .requestMatchers("/kakao/**").permitAll()
+                    .requestMatchers("/oauth2/**").permitAll()
                     .requestMatchers("/club/**").permitAll()
                     .requestMatchers("/ad/**").permitAll()
                     .requestMatchers("/myPage/**").permitAll()
@@ -103,16 +115,22 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	    );
 	}
 	
+	// 세션 관리
+	@Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+	
 	// 카카오 소셜 로그인
 	private ClientRegistration kakaoClientRegistration() {
 	    return ClientRegistration.withRegistrationId("kakao")
-	            .clientId("your-kakao-client-id")
-	            .clientSecret("your-kakao-client-secret")
-	            .redirectUri("your-kakao-redirect-uri")
+	            .clientId("3f33875eb91fe402a3b0db6bf310661a")
+	            .clientSecret(null)
+	            .redirectUri("http://localhost/kakao-callback")
 	            .authorizationUri("https://kauth.kakao.com/oauth/authorize")
 	            .tokenUri("https://kauth.kakao.com/oauth/token")
 	            .userInfoUri("https://kapi.kakao.com/v2/user/me")
-	            .userNameAttributeName("id")
+	            .userNameAttributeName("userName")
 	            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 	            .clientName("Kakao")
 	            .build();

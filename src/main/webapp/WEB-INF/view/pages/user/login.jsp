@@ -108,7 +108,7 @@
 		
 		<%
 		String kakoClientId = "3f33875eb91fe402a3b0db6bf310661a";//애플리케이션 클라이언트 아이디값";
-		String kakaoRedirectURI = URLEncoder.encode("http://localhost/kakao", "UTF-8");
+		String kakaoRedirectURI = URLEncoder.encode("http://localhost/kakao-callback", "UTF-8");
 		String kakaoApiURL = "https://kauth.kakao.com/oauth/authorize?response_type=code";
 			kakaoApiURL += "&client_id=" + kakoClientId;
 			kakaoApiURL += "&redirect_uri=" + kakaoRedirectURI;

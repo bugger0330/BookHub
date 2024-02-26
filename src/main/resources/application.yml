@@ -45,8 +45,8 @@ spring:
         registration:
           kakao:
             client-id: 3f33875eb91fe402a3b0db6bf310661a
-            # client-secret: 제품 설정 -> 카카오 로그인 -> 보안 -> Client Secret
-            redirect-uri: http://localhost/kakao
+            client-secret: # 시크릿 키
+            redirect-uri: http://localhost/kakao-callback
             authorization-grant-type: authorization_code
             client-authentication-method: POST
             client-name: Kakao
@@ -80,7 +80,7 @@ logging:
     mybatis: DEBUG
     hibernate: info
     springframework:
-        security: info
+        security: DEBUG
 
 
 

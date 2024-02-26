@@ -25,6 +25,11 @@ public class MyUserDetails implements UserDetails {
 	@Autowired
 	private User user;
 	
+	public MyUserDetails(User user) {
+        this.user = user;
+    }
+
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		

@@ -43,8 +43,9 @@ public class MailService {
 		String msgOfEmail= "";
 		msgOfEmail += "<div style='margin:20px;'>";
         msgOfEmail += "<br>";
-        msgOfEmail += "<div  align='center' style='border:1px solid black; font-family:verdana';>";
-        msgOfEmail += "<h3 style='color:blue;'>이메일 인증 번호입니다.</h3>";
+        msgOfEmail += "<div  align='center' style='border:1px solid #ccc; border-radius: 5px;  ";
+        msgOfEmail += "box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family:verdana';>";
+        msgOfEmail += "<h3 style='color: #06BBCC;'>이메일 인증 번호입니다.</h3>";
         msgOfEmail += "<div style='font-size:130%'>";
         msgOfEmail += "<strong>"+ generatedCode + "</strong><div><br/> ";
         msgOfEmail += "</div>";

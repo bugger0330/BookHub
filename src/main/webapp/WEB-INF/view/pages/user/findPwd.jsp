@@ -125,7 +125,7 @@
 			</form>
 		</div>
 		<div class="change-find">
-			<a href="/findId">-> 아이디 찾기</a> <br>
+			<a href="/user/findId">-> 아이디 찾기</a> <br>
 			<span>아이디를 잊어버리셨나요?</span>
 		</div>
 	</div>
