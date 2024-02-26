@@ -98,8 +98,10 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">독서활동</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">모임 개설하기</a>
-                        <a href="testimonial.html" class="dropdown-item">책 기부</a>
+                        <a href="/club/index" class="dropdown-item">독서모임</a>
+                        <a href="/club/save" class="dropdown-item">모임 개설하기</a>
+                        <a href="/club/saveList" class="dropdown-item">모임 개설내역</a>
+                        <a href="/club/applicationList" class="dropdown-item">모임 신청내역</a>
                     </div>
                 </div>
                 <!-- 이부분은 로그인 되었을 경우에만 표시되게 설정 -->
