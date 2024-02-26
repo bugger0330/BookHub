@@ -1,18 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>커피 & 베이커리</title>
+ <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .product-name {
+        margin-left: 10px;
+    }
+
+    .coffie-count {
+        width: 60px;
+    }
+</style>
+</head>
+<body>
+
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
+
 <!-- Header Start -->
-	<div class="container-fluid bg-primary py-5 mb-5 page-header">
-		<div class="container py-5">
-			<div class="row justify-content-center">
-				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">Coffie & Bakery</h3>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Header End -->
-    <div class="main--div">
+<div class="container-fluid bg-primary py-5 mb-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <h3 class="display-5 text-white animated slideInDown">커피 & 베이커리</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<!-- 메인 컨텐츠 -->
+ <div class="main--div">
         <div class="cafe--box">
             <div class="cafe--header">
                 <span>M E N U</span>
@@ -233,5 +265,13 @@
             </div>
         </div>
     </div>
-<script src="/js/point/cafe.js"></script>
+<!-- 메인 컨텐츠 끝 -->
+
+
+
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
+
+
+
+</body>
+</html>

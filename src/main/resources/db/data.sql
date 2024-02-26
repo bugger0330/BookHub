@@ -31,10 +31,7 @@ INSERT INTO bh_member_point (userName, pId, point, ptDate)
 VALUES ('user1', 1, 50, CURRENT_TIMESTAMP),
        ('user2', 2, 75, CURRENT_TIMESTAMP);
 
--- 도서 더미 데이터 삽입
-INSERT INTO bh_book (bookCate1, bookCate2, bookName, descript, company, writer, borrow, img, detailImg, status, rdate)
-VALUES (1, 1, 'Book One', 'Description of Book One', 'Publisher 1', 'Author 1', 0, 'img1.jpg', 'detail_img1.jpg', 'Available', CURRENT_TIMESTAMP),
-       (2, 2, 'Book Two', 'Description of Book Two', 'Publisher 2', 'Author 2', 0, 'img2.jpg', 'detail_img2.jpg', 'Available', CURRENT_TIMESTAMP);
+
 
 -- 도서 대출 장바구니 더미 데이터 삽입
 INSERT INTO bh_product_cart (userName, bId, rdate)
