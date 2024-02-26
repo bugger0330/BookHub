@@ -54,6 +54,7 @@ public class PaymentController {
 			 // 사용자의 이름을 모델에 추가
 			 model.addAttribute("username", username);
 		 }
+
 	        return "pages/payment/paymentTest";
 	    }
 
@@ -89,6 +90,8 @@ public class PaymentController {
 		return "pages/payment/paymentSuccess";
 	}
 
+
+	
 
 
 

@@ -25,6 +25,14 @@
 		FROM BH_MEMBER
 		WHERE id = #{id}
 	</select>
+	
+	
+	<select id="findByUserId" parameterType="String"
+		resultType="com.library.bookhub.entity.User">
+		SELECT *
+		FROM BH_MEMBER
+		WHERE userName = #{userId}
+	</select>
 
 
 	<insert id="insert" parameterType="com.library.bookhub.entity.User">
