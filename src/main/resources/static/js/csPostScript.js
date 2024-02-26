@@ -1,5 +1,16 @@
+//qna list에서 상세보기 위한 클릭 이벤트
+function load(){
+	const pageClick = document.querySelectorAll(".page-click");
+	for(let i = 0; i < pageClick.length; i++){
+		pageClick[i].onclick = () => {
+			window.location.href = "/qna/view/" + pageClick[i].id;
+		}
+	}// for()
+}
+
+load();
+
 //qna 문의글 작성, 수정, 삭제
-let addressNum = window.location.pathname.split("/")[3];
 let postObject = {
 
 	init: function() {

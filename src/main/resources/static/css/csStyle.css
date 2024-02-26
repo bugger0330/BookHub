@@ -978,13 +978,17 @@
     padding: 10px;
     box-sizing: border-box;
   }
+
+#cs > div {
+	display: flex;
+}
   
-#cs > .qnaMainContainer  {
+#cs > .csMainContainer  {
 	
 	display: flex;
 }
 
-#cs > .qnaMainContainer > div.d-flex.flex-column.flex-shrink-0.p-3.bg-light{
+#cs > .csMainContainer > div.d-flex.flex-column.flex-shrink-0.p-3.bg-light{
 	flex-direction: row;
 	flex-wrap: nowrap;
 	align-content: flex-start;
@@ -995,21 +999,21 @@
 	margin-right: auto;
 }
 
-#cs > .qnaMainContainer>div>div>div  select{
+#cs > .csMainContainer>div>div>div  select{
 	color: #52565b;
     border: 1px solid #ced4da; 
 }
 
-#cs > .qnaMainContainer>div>div>div {
+#cs > .csMainContainer>div>div>div {
 	justify-content: flex-end;
 	
 }
 
-#cs > .qnaMainContainer>div>div>div> .btn {
+#cs > .csMainContainer>div>div>div> .btn {
     position: relative;
 }
 
-#cs > .qnaMainContainer>div>ul {
+#cs > .csMainContainer>div>ul {
 	justify-content: center;
 	align-content: center;
 }
@@ -1032,15 +1036,15 @@
     }
   }
 
-.panel-faq-container {
+.panel-cs-container {
   margin-bottom: -16px;
 }
-.panel-faq-title {
+.panel-cs-title {
   color: #06BBCC;
   font-weight: bold;
   cursor: pointer;
 }
-.panel-faq-answer {
+.panel-cs-answer {
   height: 0;
   overflow: hidden;
   /* 변화가 시작되는 쪽에다가 transition 적용해준다 0 -> 300px 
@@ -1071,3 +1075,4 @@
 	float: right;
 	margin-top: 20px;
 }
+

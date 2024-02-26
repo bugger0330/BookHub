@@ -19,4 +19,10 @@ public interface CsQnaRepository {
 	// 문의하기 상세보기
 	public CsQnaEntity qnaView(int id);
 
+	// 문의하기 수정하기
+	public int qnaUpdate(CsQnaEntity csQnaEntity);
+
+	// 문의하기 삭제하기
+	public int qnaDelete(int id);
+
 }

@@ -13,10 +13,13 @@ spring:
       suffix: .jsp
   servlet:
     multipart:
+      enabled: true
       max-file-size:
         20MB
       max-request-size:
         20MB
+      location: c:\\upload
+      
 
   datasource:
     url: jdbc:mysql://localhost:3306/bookhub?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8

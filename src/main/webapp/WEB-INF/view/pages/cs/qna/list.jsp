@@ -16,7 +16,7 @@
 
 <section id="cs">
 
-	<div class="qnaMainContainer">
+	<div class="csMainContainer">
 
 		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
 
@@ -70,9 +70,13 @@
 				</thead>
 				<tbody class="text-center">
 					<c:forEach var="list" items="${qnaList}">
-						<tr>
+						<tr  class="page-click" id="${list.id}">
 							<td>${list.id}</td>
-							<td class="text-left" width="50%">${list.title}</td>
+							<td class="text-left" width="50%">
+								<div class="panel-cs-container">
+									<p class="panel-cs-title">${list.title}</p>
+								</div>
+							</td>
 							<td>${list.writer}</td>
 							<!-- 작성자 마킹처리 -->
 							<td>${list.rdate}</td>
@@ -99,7 +103,7 @@
 	</div>
 </section>
 
-
+<script src="/js/csPostScript.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

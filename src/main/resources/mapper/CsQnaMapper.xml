@@ -20,5 +20,16 @@
 	<select id="qnaView" resultType="com.library.bookhub.entity.cs.CsQnaEntity">
   	SELECT * FROM bh_cs_qna WHERE id = #{id}; 
   	</select>
+  	
+  	<!-- 문의하기 수정하기  -->
+  	<update id="qnaUpdate">
+  	update bh_cs_qna set title = #{title}, content = #{content} where id = #{id};
+  	</update>
+  	
+  	
+  	<!-- 문의하기 삭제하기  -->
+  	<delete id="qnaDelete">
+  	delete from bh_cs_qna where id = #{id};
+  	</delete>
 
 </mapper>

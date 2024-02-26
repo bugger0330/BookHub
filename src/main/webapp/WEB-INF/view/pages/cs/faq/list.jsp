@@ -16,7 +16,7 @@
 
 <section id="cs">
 
-	<div class="qnaMainContainer">
+	<div class="csMainContainer">
 
 		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
 
@@ -52,9 +52,9 @@
 						<tr>
 							<td>${list.id}</td>
 							<td class="text-left" width="50%">
-								<div class="panel-faq-container">
-									<p class="panel-faq-title">${list.title}</p>
-									<div class="panel-faq-answer">
+								<div class="panel-cs-container">
+									<p class="panel-cs-title">${list.title}</p>
+									<div class="panel-cs-answer">
 										<p>${list.content}</p>
 									</div>
 								</div>

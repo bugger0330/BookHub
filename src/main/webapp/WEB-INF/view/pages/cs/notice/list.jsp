@@ -25,7 +25,7 @@
 </script>
 <section id="cs">
 
-	<div class="qnaMainContainer">
+	<div class="csMainContainer">
 
 		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
 

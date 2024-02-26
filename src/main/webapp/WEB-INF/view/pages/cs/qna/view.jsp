@@ -16,7 +16,7 @@
 
 <section id="cs">
 
-	<div class="qnaMainContainer">
+	<div class="csMainContainer">
 
 		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
 
@@ -35,11 +35,11 @@
 			<div class="container border">
 				<br>
 				<div>
-					<input/>
+					<input type="text" readonly/>
 				</div>
 				<br>
 				<div>
-					<textarea></textarea>
+					<textarea readonly></textarea>
 				</div>
 
 				<br>
@@ -49,7 +49,7 @@
 
 				<hr>
 				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-					<a href="/qna/updatePost/${view.id }" class="btn btn-warning">수정하기</a>
+					<button class="btn btn-warning">수정하기</button>
 					<button id="btn-delete" class="btn btn-danger">삭제하기</button>
 				<br>
 				<br>
@@ -60,8 +60,8 @@
 
 		</div>
 	</div>
-	</div>
 </section>
+
 
 
 <script src="/js/csViewScript.js">
