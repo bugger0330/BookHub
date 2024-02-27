@@ -20,28 +20,45 @@
 .btn-submit {
 	width: 100%;
 }
+
+.form-group label {
+	font-weight: bold;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<%@ include file="/WEB-INF/view/layout/header.jsp"%>
 <body>
 
+	<!-- Header Start -->
+	<div class="container-fluid bg-primary py-5 mb-5 page-header">
+		<div class="container py-5">
+			<div class="row justify-content-center">
+				<div class="col-lg-10 text-center">
+					<h3 class="display-5 text-white animated slideInDown">회원정보 수정,
+						탈퇴</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Header End -->
 
 
 	<div class="container mt-5 mb-5">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="card">
-					<div class="card-header bg-dark text-white">회원 정보 수정</div>
+					<!-- <div class="card-header bg-dark text-white">회원 정보 수정</div> -->
 					<div class="card-body">
 						<form action="/myPage/edit/${user.id}" id="edit-btn" method="post">
 							<input type="hidden" name="_method" value="put" /> <input
 								type="hidden" name="id" value="${user.id}" />
 
 							<div class="form-group">
-								<label for="username">아이디</label> <input type="text"
-									class="form-control" id="username" name="username"
-									value="${user.username}" required readonly>
-								<div id="usernameFeedback" class="invalid-feedback"></div>
+								<label for="userName">아이디</label> <input type="text"
+									class="form-control" id="userName" name="userName"
+									value="${user.userName}" required readonly>
+								<div id="userNameFeedback" class="invalid-feedback"></div>
 							</div>
 
 							<div class="form-group">
@@ -93,7 +110,7 @@
 						<form id="delete-btn" action="/myPage/delete/${user.id}"
 							method="post">
 							<input type="hidden" name="_method" value="put" />
-							<button type="submit" class="btn btn-danger btn-submit">회원삭제</button>
+							<button type="submit" class="btn btn-danger btn-submit">탈퇴하기</button>
 						</form>
 					</div>
 				</div>
@@ -102,8 +119,26 @@
 	</div>
 
 
-
+	<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 </body>
+<script>
+	/* 확인 창 */
+	$(document).ready(function() {
+		$("#edit-btn").submit(function(e) {
+			if (!confirm("수정 하시겠습니까?")) {
+				e.preventDefault(); // 폼 제출을 중단합니다.
+			}
+		});
+	});
+
+	$(document).ready(function() {
+		$("#delete-btn").submit(function(e) {
+			if (!confirm("탈퇴 하시겠습니까?")) {
+				e.preventDefault(); // 폼 제출을 중단합니다.
+			}
+		});
+	});
+</script>
 
 
 </html>

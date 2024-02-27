@@ -19,36 +19,10 @@ public class MyPageApiController {
 
 	@Autowired
 	private MyPageService myPageService;
-//
-//    // 사용자 정보 페이지 렌더링
-//    @GetMapping("/user/{id}")
-//    public String getUserById(Long id, Model model) {
-//    	List<User> user = userService.findById(id);
-//    	model.addAttribute("user", user);
-//    	return "/user/userDetail";
-//    }
-//
-//    // 사용자 정보 수정 페이지 렌더링
-////    @GetMapping("/edit/{id}")
-////    public String getEditUserPage(@PathVariable("id") Long id, Model model) {
-////        List<User> userOptional = userService.findById(id);
-////        if (userOptional.isPresent()) {
-////            model.addAttribute("user", userOptional.get());
-////            return "userEdit"; // userEdit.html로 이동
-////        } else {
-////            return "notFound"; // 사용자가 없을 경우 notFound.html로 이동
-////        }
-////    }
-//
-//    // 사용자 정보 수정 처리
-//    @PostMapping("/{id}/edit")
-//    public String updateUser(@PathVariable("id") Long id, @ModelAttribute User user) {
-//        userService.save(user);
-//        return "redirect:/users/" + id; // 수정된 사용자 정보를 보여주는 페이지로 리다이렉트
-//    }
 
+	// 회원 정보 조회
 	@GetMapping("/detail/{id}")
-	public String findId(@PathVariable Long id, Model model) {
+	public String findId(@PathVariable int id, Model model) {
 		User user = myPageService.findById(id);
 
 		model.addAttribute("user", user);
@@ -57,19 +31,22 @@ public class MyPageApiController {
 
 	}
 
+	// 수정 페이지 이동
 	@GetMapping("/update/{id}")
-	public String updateUser(@PathVariable Long id, Model model) {
+	public String updateUser(@PathVariable int id, Model model) {
 		User user = myPageService.findById(id);
 		model.addAttribute("user", user);
 		return "pages/myPage/myPageEdit";
 	}
 
+	// 회원 정보 수정
 	@PutMapping("/edit/{id}")
 	public RedirectView updateId(@PathVariable Long id, @ModelAttribute User user) {
 		myPageService.save(user);
-		return new RedirectView("/");
+		return new RedirectView("/myPage/detail/{id}");
 	}
 
+	// 회원 탈퇴
 	@PutMapping("/delete/{id}")
 	public RedirectView deleteId(@PathVariable Long id, @ModelAttribute User user) {
 		myPageService.deleteById(user);
