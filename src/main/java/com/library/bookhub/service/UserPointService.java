@@ -1,5 +1,6 @@
 package com.library.bookhub.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.entity.UserPoint;
 import com.library.bookhub.repository.UserPointRepository;
+import com.library.bookhub.web.dto.common.PageReq;
+import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,6 +24,26 @@ public class UserPointService {
 	
     @Autowired
     private UserService userService;
+    
+    
+    
+    // 페이징된 유저 목록 조회
+    public PageRes<UserPoint> getUserPointWithPaging(PageReq pageReq) {
+        int page = pageReq.getPage();
+        int size = pageReq.getSize();
+        int offset = (page - 1) * size; // 오프셋 계산
+        
+        // 총 데이터 개수 조회
+        long totalElements = userPointRepository.getTotalCount();
+        
+        // 페이징 처리된 유저 목록 조회
+        List<UserPoint> userPoint = userPointRepository.findAllUserPointPaging(offset, size);
+
+        // 페이징 결과 객체 생성
+        PageRes<UserPoint> pageRes = new PageRes<>(userPoint, page, totalElements, size);
+
+        return pageRes;
+    }
 	
 	 // 상세조회
     public Optional<UserPoint> findById(int id) {

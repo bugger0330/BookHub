@@ -9,6 +9,22 @@ select * from bh_user_point
 </select>
 
 
+	<select id="findAllUserPointPaging"
+		resultType="com.library.bookhub.entity.UserPoint">
+		SELECT * FROM bh_user_point WHERE LOWER(user_id) LIKE CONCAT('%',
+		LOWER(#{userId}),'%') LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	
+	
+	<select id="getTotalCount" resultType="int">
+		SELECT COUNT(*) FROM
+		bh_user_point
+	</select>
+	
+
+
+
  <!-- 저장 함수 매핑 -->
     <insert id="save" parameterType="com.library.bookhub.entity.UserPoint">
         INSERT INTO bh_user_point (user_id, point_name, purchase_date, point, imp_uid, merchant_uid)

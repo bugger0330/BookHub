@@ -1,8 +1,10 @@
 package com.library.bookhub.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.User;
 import com.library.bookhub.entity.UserPoint;
@@ -22,9 +24,18 @@ public interface UserPointRepository {
     // 기본키(id)가 있는지 확인하는 조회함수
     public long existById(int id);
     
+    // 유저 가져오기
     public User getUser(String username);
     
     
     // 상세조회(1건조회)
     public Optional<UserPoint> findById(int id);
+    
+    
+    // 전체조회, 페이징처리
+  	public List<UserPoint> findAllUserPointPaging(@Param("offset") int offset, @Param("limit") int limit);
+
+
+      // 총 데이터의 개수 조회
+      public int getTotalCount();
 }
