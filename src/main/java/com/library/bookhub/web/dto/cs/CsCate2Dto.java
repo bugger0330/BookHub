@@ -12,21 +12,11 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class CsNoticeDto {
+public class CsCate2Dto {
 
-	private int id;
-	private int cate1;
 	private int cate2;
-	private String title;
-	private String content;
-	private int hit;
-	private String writer;
-	private String ofile;
-	private String sfile;
-	private Timestamp rdate;
-
-
-
+	private int cate1;
+	private String c2Name;
 
 
 }
