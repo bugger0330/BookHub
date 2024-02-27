@@ -1,16 +1,18 @@
 package com.library.bookhub.security;
 
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -18,8 +20,13 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.library.bookhub.security.oauth.Oauth2UserService;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +34,12 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	
 	@Autowired
 	private SecurityUserService service;
+	
+	private final Oauth2UserService oAuth2UserService;
+	
+	public SecurityConfigration(Oauth2UserService oAuth2UserService) {
+        this.oAuth2UserService = oAuth2UserService;
+    }
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -61,17 +74,12 @@ public class SecurityConfigration implements WebMvcConfigurer {
             // 소셜 로그인 설정
             .oauth2Login(oauth -> oauth
             		.loginPage("/login")
+            		.userInfoEndpoint(userInfo -> userInfo
+            				.userService(oAuth2UserService))
             		.clientRegistrationRepository(clientRegistrationRepository())
-    	            .defaultSuccessUrl("/", true)
-    	            .failureUrl("/login?success=403"))
-            // 세션 설정
-            .sessionManagement(session -> session
-            		.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                    .invalidSessionUrl("/login")
-                    .sessionFixation().migrateSession()
-                    .maximumSessions(1)
-                        .expiredUrl("/login?expired")
-                        .maxSessionsPreventsLogin(true))
+            		.successHandler(successHandler())
+    	            .failureUrl("/login?success=403")
+    	            .permitAll())
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                     .requestMatchers("/**").permitAll()
@@ -98,12 +106,37 @@ public class SecurityConfigration implements WebMvcConfigurer {
 			
 	}
 	
+	@Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return ((request, response, authentication) -> {
+            DefaultOAuth2User defaultOAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
+ 
+            String id = defaultOAuth2User.getAttributes().get("id").toString();
+            String body = """
+                    {"id":"%s"}
+                    """.formatted(id);
+ 
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+ 
+            PrintWriter writer = response.getWriter();
+            writer.println(body);
+            writer.flush();
+        });
+    }
+	
 	
 	// 비밀번호 암호화
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	// RestTemplate 등록
+	@Bean
+    public RestTemplate restTemplate(RestTemplateBuilder restTemplateBuilder) {
+        return restTemplateBuilder.build();
+    }
 	
 	// 소셜 로그인 등록
 	@Bean
@@ -115,22 +148,16 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	    );
 	}
 	
-	// 세션 관리
-	@Bean
-    public SessionRegistry sessionRegistry() {
-        return new SessionRegistryImpl();
-    }
-	
 	// 카카오 소셜 로그인
 	private ClientRegistration kakaoClientRegistration() {
 	    return ClientRegistration.withRegistrationId("kakao")
-	            .clientId("3f33875eb91fe402a3b0db6bf310661a")
+	            .clientId("daa9133dd9b91f5965b4bdb82517dc70")
 	            .clientSecret(null)
-	            .redirectUri("http://localhost/kakao-callback")
+	            .redirectUri("http://localhost/login/oauth2/code/kakao")
 	            .authorizationUri("https://kauth.kakao.com/oauth/authorize")
 	            .tokenUri("https://kauth.kakao.com/oauth/token")
 	            .userInfoUri("https://kapi.kakao.com/v2/user/me")
-	            .userNameAttributeName("userName")
+	            .userNameAttributeName("id")
 	            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 	            .clientName("Kakao")
 	            .build();

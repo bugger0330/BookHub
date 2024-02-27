@@ -1,37 +1,29 @@
 package com.library.bookhub.web.controller.api;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.view.RedirectView;
 
-import com.library.bookhub.entity.User;
-import com.library.bookhub.security.SecurityUserService;
-import com.library.bookhub.service.MemberService;
-import com.library.bookhub.web.dto.member.KakaoProfile;
 import com.library.bookhub.web.dto.member.OauthToken;
-import com.library.bookhub.web.dto.member.SocialSignUpDto;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 public class SocialUserController {
+	
+	///////////////////////////////////
+	// 곧 삭제될 Controller
+	///////////////////////////////////
 	
 	// 카카오 Rest Key
 	@Value("${spring.security.oauth2.client.registration.kakao.client-id}")
@@ -41,18 +33,8 @@ public class SocialUserController {
 	@Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
 	private String KakaoRedirectUri;
 	
-	@Autowired
-	private MemberService service;
-	
-	@Autowired
-	private SecurityUserService securityUserService;
-	
-	@Autowired
-	HttpSession httpSession;
-	
-	// http://localhost:80/user/kakao-callback?code=
 	@GetMapping("/kakao-callback")
-	public RedirectView kakaoCallback(@RequestParam("code") String code) {
+	public String kakaoCallback(@RequestParam("code") String code) {
 		
 		// POST 방식,  Header 구성, body 구성
 		RestTemplate rt1 = new RestTemplate();
@@ -90,44 +72,14 @@ public class SocialUserController {
 		// 바디 x
 		// 결합 --> 요청
 		HttpEntity<MultiValueMap<String, String>> kakaoInfo = new HttpEntity<>(headers2);
-		ResponseEntity<KakaoProfile> response2 = 
-				rt2.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST, kakaoInfo, KakaoProfile.class);
+		ResponseEntity<String> response2 = 
+				rt2.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST, kakaoInfo, String.class);
 		
 		log.info(kakaoInfo.toString());
 		log.info(response2.getBody().toString());
+
 		
-		KakaoProfile kakaoProfile = response2.getBody();
-		
-		SocialSignUpDto dto = SocialSignUpDto.builder()
-				.uid(kakaoProfile.getKakaoAccount().getEmail())
-				.name(kakaoProfile.getProperties().getNickname())
-				.email(kakaoProfile.getKakaoAccount().getEmail())
-				.password("bookHubKakao북허브")
-				.social("kakao")
-				.build();
-		
-		log.info("SocialSignUpDto :"+dto);
-		log.info("SocialSignUpDto :"+dto.getUid());
-		
-		User user = new User();
-		
-		user = service.readUserByUserName(dto.getUid());
-		if(user == null) {
-			service.createSocialUser(dto);
-		}
-		
-		// 시큐리티 연결
-		UserDetails userDetails = securityUserService.loadUserByUsername(dto.getUid());
-		
-		log.info("userDetails : "+userDetails.toString());
-		
-		// UsernamePasswordAuthenticationToken 생성
-		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-		log.info("authentication : "+authentication);
-		// SecurityContextHolder에 인증 정보 설정
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
-		return new RedirectView("/");
+		return response2.getBody();
 	}
 	
 	

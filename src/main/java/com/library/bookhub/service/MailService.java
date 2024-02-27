@@ -45,9 +45,9 @@ public class MailService {
         msgOfEmail += "<br>";
         msgOfEmail += "<div  align='center' style='border:1px solid #ccc; border-radius: 5px;  ";
         msgOfEmail += "box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family:verdana';>";
-        msgOfEmail += "<h3 style='color: #06BBCC;'>이메일 인증 번호입니다.</h3>";
+        msgOfEmail += "<h3 style='color: #06BBCC;'>BookHub 인증 코드</h3>";
         msgOfEmail += "<div style='font-size:130%'>";
-        msgOfEmail += "<strong>"+ generatedCode + "</strong><div><br/> ";
+        msgOfEmail += "<p>"+ generatedCode + "</p><div><br/> ";
         msgOfEmail += "</div>";
 		
 		message.setText(msgOfEmail, "utf-8", "html");

@@ -1,6 +1,7 @@
 package com.library.bookhub.web.controller.page;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,13 +11,13 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.service.MemberService;
 import com.library.bookhub.web.dto.member.SignUpFormDto;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -106,12 +107,14 @@ public class MemberController {
 	}
 	
 	// 아이디 찾기 결과
-	@GetMapping("/findUids")
+	@PostMapping("/findUids")
 	@ResponseBody
-	public List<String> findResult(HttpSession session) {
+	public List<String> findResult(@RequestBody Map<String, String> email) {
 		log.info("findResult...1");
+		String email1 = email.get("email");
+		log.info("받는 자 : "+email1);
 		
-		List<String> uids = (List<String>) session.getAttribute("uids");
+		List<String> uids = memberService.findUid(email1);
 		log.info("uids : "+uids);
 		
 		return uids;

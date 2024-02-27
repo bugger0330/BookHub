@@ -26,6 +26,4 @@ public class User {
     private int status;
     private LocalDateTime wDate;
     private LocalDateTime rDate;
-    private String social;
-    
 }

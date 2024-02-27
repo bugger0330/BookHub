@@ -1,8 +1,8 @@
 
 -- 테이블 드롭
 CREATE TABLE bh_member (
-  id int NOT NULL AUTO_INCREMENT,
-  userName varchar(20) NOT NULL UNIQUE,
+  id int NOT NULL AUTO_INCREMENT primary KEY,
+  userName varchar(20) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
   gender tinyint,
@@ -14,7 +14,6 @@ CREATE TABLE bh_member (
   addr1 varchar(255) DEFAULT NULL,
   addr2 varchar(255) DEFAULT NULL,
   status int NOT NULL DEFAULT '0',
-  social varchar(20) DEFAULT NULL,
   wdate datetime DEFAULT NULL,
   rdate datetime NOT NULL
 );

@@ -96,22 +96,30 @@
 	</div>
 
 	<script>
+	const data = localStorage.getItem('email');
+	console.log(data);
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		load();
+	});
+	
 	function load() {
 		fetch('/findUids',{
-			method: "GET",
+			method: "POST",
 			headers: {
 				"Content-Type": "application/json;charset=UTF-8",
 			},
+			body: JSON.stringify({
+			    email: data,
+			}),
 		}).then((response) => response.text())
 		.then((data) => {
-			console.log();
+			console.log(data);
 		})
 		.catch((error) => {
 			console.log(error);
 		});
 	}
-	
-	load();
 	</script>
 </body>
 </html>

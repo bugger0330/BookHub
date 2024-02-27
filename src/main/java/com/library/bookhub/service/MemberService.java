@@ -71,7 +71,6 @@ public class MemberService {
 				.password(encoder.encode(dto.getPassword()))
 				.name(dto.getName())
 				.email(dto.getEmail())
-				.social(dto.getSocial())
 				.build();
 		
 		log.info("createSocialUser...2");

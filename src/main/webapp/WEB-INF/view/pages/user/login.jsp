@@ -114,7 +114,7 @@
 			kakaoApiURL += "&redirect_uri=" + kakaoRedirectURI;
 		%>
 		<a
-			href="<%= kakaoApiURL %>">
+			href="/oauth2/authorization/kakao">
 			<img alt="kakao" src="/img/kakao_login_medium_narrow.png"
 			height="38">
 		</a>
