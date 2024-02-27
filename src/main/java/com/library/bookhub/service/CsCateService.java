@@ -25,8 +25,8 @@ public class CsCateService {
 		return csCateRepository.selectCsCate1();
 	}
 
-	public List<CsCate2Entity> selectCsCate2(CsCate1Entity csCate1Entity) {
-		return csCateRepository.selectCsCate2(csCate1Entity);
+	public List<CsCate2Entity> selectCsCate2(int entity) {
+		return csCateRepository.selectCsCate2(entity);
 	}
 
 	

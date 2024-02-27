@@ -153,3 +153,20 @@ CREATE TABLE bh_club (
     rdate DATETIME NOT NULL,
     wdate DATETIME
 );
+
+
+CREATE TABLE bh_cs_cate1 (
+  cate1 int NOT NULL AUTO_INCREMENT,
+  c1Name varchar(40) NOT NULL,
+  PRIMARY KEY (cate1)
+); 
+
+
+CREATE TABLE bh_cs_cate2 (
+  cate2 int NOT NULL AUTO_INCREMENT,
+  cate1 int NOT NULL,
+  c2Name varchar(40) NOT NULL,
+  PRIMARY KEY (cate2)
+) ;
+
+
