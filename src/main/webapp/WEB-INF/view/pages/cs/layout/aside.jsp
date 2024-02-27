@@ -8,14 +8,16 @@
 			class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
 			<span class="fs-4">열린공간</span>
 		</a>
+		
+		<c:forEach var="list" items="${cate1list}">
 		<ul id="category1" class="nav nav-pills flex-column mb-auto">
-			<li><a href="/board/subcategories?cate1=10" class="nav-link link-dark" data-value="10"> 독서모임 </a></li>
+			<li><a href="/board/subcategories?cate1=10" class="nav-link link-dark" data-value="10"> ${list.c1Name} </a></li>
 			<li><a href="/board/subcategories?cate1=20" class="nav-link link-dark" data-value="20"> 편의시설 </a></li>
 			<li><a href="/board/subcategories?cate1=30" class="nav-link link-dark" data-value="30"> 구독요금제 </a></li>
 			<li><a href="/board/subcategories?cate1=40" class="nav-link link-dark" id="etc" value="40"> 기타 </a></li>
 			<li class="nav-item"><a  id="category2" href="/board/subcategories?cate1=50" class="nav-link active" aria-current="page" data-value="50"> 고객서비스 </a></li>
 		</ul>
-		
+		</c:forEach>
 		<hr>
 	</div>
   

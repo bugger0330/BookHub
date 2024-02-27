@@ -23,6 +23,7 @@ function load() {
 			alert("error!!!");
 		}
 	});
+	
 
 	// 삭제하기 
 	deleteBtn.onclick = () => {

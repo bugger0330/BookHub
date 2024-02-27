@@ -22,7 +22,9 @@
 
 		<div class="container">
 
-			<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+			<nav
+				style="--bs-breadcrumb-divider: url(&amp; amp; amp; amp; amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
+				aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
 					<li class="breadcrumb-item active" aria-current="page"
@@ -30,38 +32,50 @@
 				</ol>
 			</nav>
 
-			<div>
-				<h2>공지사항</h2>
-				<div class="input-group" style="margin-top: 30px;">
-					<select name="searchType">
-						<option value="prodName">전체</option>
-						<option value="prodNo">제목+내용</option>
-						<option value="company">작성일</option>
-					</select>
-					<div class="form-outline">
-						<input type="search" id="form1" class="form-control"
-							placeholder="Search" />
+			<div class="container mt-3">
+				<h2>공지사항 상세보기</h2>
+				<form>
+					<div class="mb-3">
+						<label for="title">Title:</label> <input type="text"
+							class="form-control" id="title" name="title"
+							readonly>
 					</div>
+					<div class="mb-3">
+						<label for="content">Content:</label>
+						<textarea id="content" name="content" readonly></textarea>
+					</div>
+				</form>
+			</div>
 
-					<button type="button" class="btn btn-primary">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
+			<div>
+				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
 			</div>
 
 
-			<ul class="qna pagination" >
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item active"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			</ul>
+			</div>
+
 
 		</div>
 	</div>
 </section>
 
+
+<script>
+	$('#content').summernote(
+			{
+				
+				tabsize : 2,
+				height : 120,
+				toolbar : [ [ 'style', [ 'style' ] ],
+						[ 'font', [ 'bold', 'underline', 'clear' ] ],
+						[ 'color', [ 'color' ] ],
+						[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+						[ 'table', [ 'table' ] ],
+						[ 'insert', [ 'link', 'picture', 'video' ] ],
+						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
+			});
+</script>
+<script src="/js/csViewScript.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

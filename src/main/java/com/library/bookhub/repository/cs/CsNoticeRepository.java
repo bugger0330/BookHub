@@ -12,4 +12,7 @@ public interface CsNoticeRepository {
 	// 공지사항 리스트
 	public List<CsNoticeEntity> selectCsNoticeList();
 
+	// 공지사항 상세보기
+	public CsNoticeEntity noticeView(int id);
+
 }

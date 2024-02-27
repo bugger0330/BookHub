@@ -4,11 +4,16 @@
 <mapper
 	namespace="com.library.bookhub.repository.cs.CsNoticeRepository">
 
-	<!-- 공지사항 리스트 조회  -->
+	<!-- 공지사항 리스트 조회 -->
 	<select id="selectCsNoticeList"
 		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
 		select * from bh_cs_notice order by #{id} desc;
 	</select>
 
+	<!-- 공지사항 상세보기 -->
+	<select id="noticeView"
+		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		SELECT * FROM bh_cs_notice WHERE id = #{id};
+	</select>
 
 </mapper>

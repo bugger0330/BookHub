@@ -25,34 +25,25 @@ public class CsCateController {
 
 
     @GetMapping("/layout/aside")
-    public String list(Model model){
+    public String Category1(Model model){
 
         List<CsCate1Entity> cate1list = csCateService.selectCsCate1();
         
         model.addAttribute("cate1list", cate1list);
 
         
-        
-        return "/pages/cs/layout/aside";
+        return "/pages/cs/layout/aside"; //동기적, 페이지로 들어가는 순간 생김
 
     }
 
     
-    @GetMapping("/board/subcategories/{cate1}")
+    @GetMapping("/layout/aside/{cate1}")
     @ResponseBody
-    public List<CsCate2Entity> loadCategory2(@PathVariable("cate1") int cate1, Model model) {
-    	
-    	System.out.println("컨트롤러11: " + cate1);
-    	
-    	
+    public List<CsCate2Entity> Category2(@PathVariable("cate1") int cate1) {
     	
     	List<CsCate2Entity> cate2 = csCateService.selectCsCate2(cate1);
     	
-    	System.out.println("컨트롤러2222: " + cate2);
-    	
-    	model.addAttribute("cate2",cate2);
-    	
-    		
+    	 //비동기적, 페이지 이동없이 클릭했을 때 데이터를 가져옴
     	
         return cate2;
     } 

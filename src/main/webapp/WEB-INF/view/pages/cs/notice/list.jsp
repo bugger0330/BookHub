@@ -82,9 +82,13 @@
 						<td>144</td>
 					</tr>
 					<c:forEach var="list" items="${noticeList}">
-						<tr>
+						<tr  class="page-click" id="${list.id}">
 							<td>${list.id}</td>
-							<td>${list.title}</td>
+							<td class="text-left" width="50%">
+								<div class="panel-cs-container">
+									<p class="panel-cs-title">${list.title}</p>
+								</div>
+							</td>
 							<td><i class="bi bi-file-earmark-text-fill">${list.ofile}</i></td>
 							<td>${list.writer}</td>
 							<td>${list.rdate}</td>
@@ -105,24 +109,8 @@
 		</div>
 	</div>
 </section>
-<script id="smartEditor" type="text/javascript">
-	var oEditors = [];
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef : oEditors,
-		elPlaceHolder : "txtContent", //textarea ID 입력
-		sSkinURI : "/lib/smarteditor/SmartEditor2Skin.html", //martEditor2Skin.html 경로 입력
-		fCreator : "createSEditor2",
-		htParams : {
-			// 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-			bUseToolbar : true,
-			// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
-			bUseVerticalResizer : false,
-			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-			bUseModeChanger : false
-		}
-	});
-</script>
 
+<script src="/js/csPostScript.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

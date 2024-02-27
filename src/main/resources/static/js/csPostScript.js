@@ -15,6 +15,7 @@ function load(){
 
 load();
 
+
 //qna 문의글 작성
 let postObject = {
 
@@ -56,6 +57,21 @@ let postObject = {
 	$.ajax({
 		type : "post",
 		url : "/qna/view",
+		data : {
+			id : Number(addressNum) 
+		},
+		success : function(data){
+			title.value = data.title;
+			content.value = data.content;
+		},
+		error : function(){
+			alert("error!!!");
+		}
+	});
+	
+	$.ajax({
+		type : "post",
+		url : "/notice/view",
 		data : {
 			id : Number(addressNum) 
 		},
