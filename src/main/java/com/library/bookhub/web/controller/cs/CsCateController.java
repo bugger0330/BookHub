@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.entity.cs.CsCate1Entity;
@@ -33,6 +32,7 @@ public class CsCateController {
         model.addAttribute("cate1list", cate1list);
 
         
+        
         return "/pages/cs/layout/aside";
 
     }
@@ -40,14 +40,22 @@ public class CsCateController {
     
     @GetMapping("/board/subcategories/{cate1}")
     @ResponseBody
-    public List<CsCate2Entity> loadCategory2(@RequestParam("cate1") int cate1) {
-        return csCateService.selectCsCate2(cate1);
+    public List<CsCate2Entity> loadCategory2(@PathVariable("cate1") int cate1, Model model) {
+    	
+    	System.out.println("컨트롤러11: " + cate1);
+    	
+    	
+    	
+    	List<CsCate2Entity> cate2 = csCateService.selectCsCate2(cate1);
+    	
+    	System.out.println("컨트롤러2222: " + cate2);
+    	
+    	model.addAttribute("cate2",cate2);
+    	
+    		
+    	
+        return cate2;
     } 
-
-	
-	
-
-
 
 
 	
