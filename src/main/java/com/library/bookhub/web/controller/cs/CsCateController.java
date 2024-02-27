@@ -26,14 +26,7 @@ public class CsCateController {
 	private CsCateService csCateService;
 	
 	
-	@GetMapping("/getCsCates")
-    public Map<String, Object> getCsCates(){
-		
-        return csCateService.getCsCates();
 
-    }
-	
-	
 
     @GetMapping("/layout/aside")
     public String list(Model model,@RequestParam("cate2") int cate1){
@@ -49,17 +42,7 @@ public class CsCateController {
 
     }
 
-    @ResponseBody
-    @PostMapping("/layout/aside")
-    public List<CsCate2Entity> cate2list(@RequestParam("cate2") int cate1) {
-        log.info("cate2cate2cate2???" + cate1);
-        List<CsCate2Entity> cate2list = csCateService.selectCsCate2(cate1);
 
-        System.out.println(cate2list.toString());
-        
-        return cate2list;
-    }
-	
 	
 
 }
