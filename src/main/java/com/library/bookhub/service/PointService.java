@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.library.bookhub.entity.Computer;
+import com.library.bookhub.entity.PointOrder;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.PointRepository;
 import com.library.bookhub.web.dto.point.ComputerRequestDto;
@@ -81,6 +82,30 @@ public class PointService {
 		}
 		if(dtos.size() != flag) {
 			throw new RuntimeException("컴퓨터 사용 전체 업데이트 실패!");
+		}
+		return true;
+	}
+
+	public List<PointOrder> myOrderList(String username) {
+		return pointRepository.myOrderList(username);
+	}
+
+	public boolean orderRefund(int id) {
+		return pointRepository.orderRefund(id);
+	}
+
+	public boolean myPointRefund(PointOrderRequestDto dto) {
+		User user = pointRepository.getUser(dto.getUserName());
+		if(user != null) {
+			System.out.println("6=============================================");
+			user.setPoint(user.getPoint() + dto.getAllProductPrice());
+			System.out.println("유저 포인트" + user.getPoint());
+			System.out.println("유저포인트1 "+ dto.getAllProductPrice());
+			System.out.println("------------" + user.toString());
+			int userPointUpdateResult = pointRepository.userPointUpdate(user);
+			if(userPointUpdateResult == 0) {
+				throw new RuntimeException("유저 포인트 정보 업데이트 실패!");
+			}
 		}
 		return true;
 	}

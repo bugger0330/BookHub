@@ -20,4 +20,8 @@ public class PointPageController {
 	public String computer() {
 		return "pages/point/computer";
 	}
+	@GetMapping("/order-list")
+	public String orderList() {
+		return "pages/point/orderList";
+	}
 }

@@ -18,4 +18,6 @@ public interface PointRepository {
 	public List<Computer> getComputerFlag();
 	public int computerUsedUpdate(Computer entity);
 	public int computerNotUsedUpdate(Computer entity);
+	public List<PointOrder> myOrderList(String username);
+	public boolean orderRefund(int id);
 }
