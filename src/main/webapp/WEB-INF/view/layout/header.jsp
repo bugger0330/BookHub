@@ -71,11 +71,11 @@
                 <a href="/" class="nav-item nav-link active">Home</a>
                  
                 <a href="/about" class="nav-item nav-link">도서관 소개</a>
-                   <div class="nav-item dropdown">
+                <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">도서</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="/search" class="dropdown-item">도서통합검색</a>
-                        <a href="/suggest" class="dropdown-item">추천도서</a>
+                        <a href="/book/list-all" class="dropdown-item">리스트</a>
+                        <a href="/book/search" class="dropdown-item">통합검색</a>
                     </div>
                 </div>
                  <div class="nav-item dropdown">
@@ -102,6 +102,15 @@
                         <a href="/club/save" class="dropdown-item">모임 개설하기</a>
                         <a href="/club/saveList" class="dropdown-item">모임 개설내역</a>
                         <a href="/club/applicationList" class="dropdown-item">모임 신청내역</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">포인트</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="/point/cafe" class="dropdown-item">카페</a>
+                        <a href="/point/print" class="dropdown-item">프린트/복사</a>
+                        <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
+                        <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
                     </div>
                 </div>
                 <!-- 이부분은 로그인 되었을 경우에만 표시되게 설정 -->
