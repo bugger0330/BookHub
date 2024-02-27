@@ -94,7 +94,7 @@ th {
 								<td class="text-center align-middle">${ppd.id}</td>
 								<td class="text-center align-middle">${ppd.prodName}</td>
 								<td class="text-center align-middle"
-									style="word-wrap: break-word; max-width: 100px;">${ppd.formatBalance()}</td>
+									style="word-wrap: break-word; max-width: 100px;">${ppd.formatPoint()}</td>
 															<td class="text-center align-middle" style="width: 300px"><img
 									src="${ppd.setupPointProductImage()}" width="80%" height="80%"></td>
 								<td class="text-center align-middle"><select

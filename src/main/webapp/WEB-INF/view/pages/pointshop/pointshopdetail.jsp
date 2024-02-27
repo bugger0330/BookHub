@@ -42,7 +42,7 @@
     <div class="price-section">
         <h3 class="card-title">가격: <span class="price">${list.price} 원</span></h3>
         <div class="text-end">
-           <button onclick="requestPay()">결제하기</button>
+           <button class="btn btn-primary" onclick="requestPay()">결제하기</button>
         </div>
     </div>
 </div>

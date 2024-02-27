@@ -31,13 +31,11 @@ public class PointProduct {
 	}
 
 	
-	
 	// 포메터 기능(금액)
-		public String formatBalancePoint() {
-			// 1000 -> 1,000
-			DecimalFormat df = new DecimalFormat("#,###");
-			String formaterNumber = df.format(point);
-			return formaterNumber + "포인트";
-		}
-
+	public String formatPoint() {
+		// 1000 -> 1,000
+		DecimalFormat df = new DecimalFormat("#,###");
+		String formaterNumber = df.format(point);
+		return formaterNumber + " 포인트";
+	}
 }
