@@ -20,7 +20,6 @@ public class PointProduct {
 
 	private Integer id;
 	private String prodName;
-	private Integer price;
 	private Integer point;
 	private String originFileName;
 	private String uploadFileName;
@@ -31,13 +30,7 @@ public class PointProduct {
 		return uploadFileName == null ? "이미지가 없습니다." : "/images/upload/" + uploadFileName;
 	}
 
-	// 포메터 기능(금액)
-	public String formatBalance() {
-		// 1000 -> 1,000
-		DecimalFormat df = new DecimalFormat("#,###");
-		String formaterNumber = df.format(price);
-		return formaterNumber + "원";
-	}
+	
 	
 	// 포메터 기능(금액)
 		public String formatBalancePoint() {

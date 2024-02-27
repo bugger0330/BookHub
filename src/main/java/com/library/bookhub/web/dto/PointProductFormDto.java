@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 public class PointProductFormDto {
 	
 	private String prodName;
-	private Integer price;
 	private Integer point;
 	private String postYn;
 	

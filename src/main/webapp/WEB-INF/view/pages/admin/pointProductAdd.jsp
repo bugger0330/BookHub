@@ -45,11 +45,7 @@
                                 <label for="title">상품명</label>
                                 <input type="text" class="form-control" id="prodName" name="prodName" required>
                             </div>
-                            <div class="form-group">
-                                <label for="content">가격</label>
-                                <input class="form-control price" id="price" name="price" rows="3" required></input>
-                            </div>
-                            <div class="form-group">
+                                                      <div class="form-group">
                                 <label for="point">포인트</label>
                                 <input type="text" class="form-control point" id="point" name="point" required>
                             </div>

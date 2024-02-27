@@ -78,9 +78,6 @@ public class PointProductController {
 		if (dto.getProdName() == null || dto.getProdName().isEmpty()) {
 			throw new CustomRestFulException("상품명을 입력하세요", HttpStatus.BAD_REQUEST);
 		}
-		if (dto.getPrice() == null || dto.getPrice() < 0) {
-			throw new CustomRestFulException("정확한 금액을 입력하세요", HttpStatus.BAD_REQUEST);
-		}
 		if (dto.getProductImage() == null || dto.getProductImage().isEmpty()) {
 			throw new CustomRestFulException("이미지 업로드는 필수입니다.", HttpStatus.BAD_REQUEST);
 		}

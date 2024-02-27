@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS bh_payment;
 DROP TABLE IF EXISTS bh_club;
 DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
+DROP TABLE IF EXISTS bh_point_shop;
 
 
 
@@ -182,26 +183,14 @@ CREATE TABLE bh_club (
     wdate DATETIME
 );
 
--- 정기권
-CREATE TABLE bh_subscription_product (
-    sp_id INT AUTO_INCREMENT PRIMARY KEY,
-    prodName VARCHAR(100) NOT NULL,
-    price INT NOT NULL,
-    period INT NOT NULL
-);
 
--- 정기권 장바구니
-CREATE TABLE bh_subscription_product_cart (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
-    sp_id INT
-);
+
+
 
 -- 포인트 상품
 CREATE TABLE bh_point_product (
     id INT AUTO_INCREMENT PRIMARY KEY,
     prodName VARCHAR(100) NOT NULL,
-    price INT NOT NULL,
     point INT NOT NULL,
     originFileName VARCHAR(255),
     uploadFileName VARCHAR(255),
@@ -210,13 +199,26 @@ CREATE TABLE bh_point_product (
 );
 
 
-CREATE TABLE bh_user_subscription (
+
+
+
+CREATE TABLE bh_point_shop (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id VARCHAR(20) NOT NULL,
-    subscription_product_id INT,
-    refund_yn VARCHAR(2) DEFAULT 'N',
-    purchase_date TIMESTAMP,
-    start_date TIMESTAMP,
-    end_date TIMESTAMP
+    prodName VARCHAR(30) NOT NULL,
+    point INT NOT NULL,
+    price INT NOT NULL
+);
+
+
+CREATE TABLE bh_user_point (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id VARCHAR(255) NOT NULL,
+    point_name VARCHAR(100) NOT NULL,
+    purchase_date DATETIME NOT NULL,
+    point INT NOT NULL,
+    refund_yn CHAR(1) DEFAULT 'N',
+	imp_uid VARCHAR(255) NOT NULL,
+	merchant_uid VARCHAR(255) NOT NULL
+	
 );
 
