@@ -85,7 +85,7 @@ public class ClubPageController {
 	// 로그인이 필요한 페이지는 로그인 페이지로 이동하게 한 후 로그인하면 클릭했던 페이지 보여주기 
 	// -> 어떻게하지??
 	
-	// 등록
+	// 개설
 	@GetMapping("/save")
 	public String savePage(Principal principal) {
 		

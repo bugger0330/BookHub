@@ -44,7 +44,9 @@
 					Get <span class="text-warning">50% Off</span> On Your First
 					Adventure Trip With Travela. Get More Deal Offers Here.
 				</p>
-				<form action="/club/save" method="post" enctype="multipart/form-data">
+				<!-- 독서모임 신청 form -->
+				<!-- Ajax로 데이터 보낼거니까 url이랑 전송방식 form에 설정할 필요없다 -->
+				<form enctype="multipart/form-data">
 					<div class="row g-3">
 						<div class="col-md-6">
 							<div class="form-floating">
@@ -60,16 +62,17 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-floating">
-								<input type="text" class="form-control bg-white border-0"
-									name="headCount" placeholder="숫자"> <label for="name">정원(숫자)</label>
+								<input type="number" min="1" class="form-control bg-white border-0"
+									name="headCount" placeholder="숫자"> <label for="name">최대인원</label>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-floating date" id="date3"
 								data-target-input="nearest">
-								<input type="text" class="datepicker-input form-control bg-white border-0"
-									id="startDate" placeholder="Date & Time" data-target="#date3"
-									data-toggle="datetimepicker" name="cDate" /> <label for="datetime">날짜</label>
+								<!-- type 변경으로 달력 출력함!!! -->
+								<input type="datetime-local" step="1800" class="datepicker-input form-control bg-white border-0"
+									id="datetime" placeholder="Date & Time" data-target="#date3"
+									data-toggle="datetimepicker" name="cDate" /> <label for="datetime">모임날짜</label>
 							</div>
 						</div>
 
@@ -77,8 +80,12 @@
 							<div class="form-floating">
 								<select class="form-select bg-white border-0"
 									id="CategoriesSelect" name="clubCate">
-									<option value="1">test1</option>
-									<option value="2">test2</option>
+									<option value="1">커리어 성장</option>
+									<option value="2">예술과 문학</option>
+									<option value="3">금융/경제/투자</option>
+									<option value="4">영화와 책</option>
+									<option value="5">과학과 철학</option>
+									<option value="6">기타</option>
 								</select> <label for="CategoriesSelect">카테고리</label>
 							</div>
 						</div>
@@ -86,7 +93,7 @@
 							<div class="custom-file">
 								<input type="file" class="custom-file-input" id="customFile"
 									name="customFile"> <label class="custom-file-label"
-									for="customFile">Choose file</label>
+									for="customFile">이미지</label>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -94,7 +101,7 @@
 								<textarea class="form-control bg-white border-0"
 									placeholder="Special Request" id="message"
 									style="height: 100px" name="descript"></textarea>
-								<label for="message">소개</label>
+								<label for="message">모임소개</label>
 							</div>
 						</div>
 						<div class="col-12">
@@ -102,15 +109,15 @@
 								<textarea class="form-control bg-white border-0"
 									placeholder="Special Request" id="message"
 									style="height: 100px" name="detail"></textarea>
-								<label for="message">상세설명</label>
+								<label for="message">모임내용</label>
 							</div>
 						</div>
 						<div class="col-12">
-							<button class="btn btn-primary text w-100 py-3" type="submit">Book
-								Now</button>
+							<button id="form--button" class="btn btn-primary text w-100 py-3" type="submit">개설하기</button>
 						</div>
 					</div>
 				</form>
+				<!-- form end -->
 			</div>
 		</div>
 	</div>
@@ -120,6 +127,42 @@
 
 
 <!-- main end -->
+
+<!-- 모달 시작 -->
+<div class="modal fade" id="pointModal" tabindex="-1" aria-labelledby="pointModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pointModalLabel">포인트 사용 여부</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        포인트를 사용하시겠습니까?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="confirmPointBtn">확인</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 모달 끝 -->
+
+<!-- 모달 시작 -->
+<div class="modal fade" id="falseModal" tabindex="-1" aria-labelledby="pointModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pointModalLabel">포인트 사용 여부</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      	포인트가 부족합니다
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 모달 끝 -->
 
 
 

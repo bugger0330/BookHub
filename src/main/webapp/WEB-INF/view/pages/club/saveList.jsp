@@ -25,14 +25,14 @@
 	
 	<c:forEach var="club" items= "${clubList}">
 		<div class="card center mx-auto" style="width:450px; height: 450px">
-			<a href="/club/view/${club.id }">
-			  <img class="card-img-top" src="${club.setupClubImage()}" alt="Card image">
-			  <div class="card-body">
+			<a href="/club/view/${club.id }" style="height: 310px;">
+			  <img class="card-img-top" src="${club.setupClubImage()}" style="max-width:100%; max-height:100%; object-fit: cover;" alt="Card image">
+			</a>	  
+		  	<div class="card-body">
 			    <h4 class="card-title text-center">${club.clubName}</h4>
-		    </a>
-		    <p class="card-text text-center">개설일 : ${club.formatCreatedAt()}</p>
-		    <a href="#" class="btn btn-primary">개설 취소</a>
-		  </div>
+			    <p class="card-text text-center">개설일 : ${club.formatCreatedAt()}</p>
+			    <a href="#" class="btn btn-primary">개설 취소</a>
+		  	</div>
 		</div>
 		<br>
 		<br>
