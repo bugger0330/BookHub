@@ -1,0 +1,41 @@
+.book--detail--order-box{
+    border: 1px solid black;
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.book--detail--order-header{
+    padding: 10px;
+
+}
+
+.book--detail--order-header span{
+    font-size: 30px;
+}
+
+.book--detail--order{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.book--detail--input-area{
+    margin-right: 10px;
+}
+
+.book--detail--order-date{
+	width: 70px;
+}
+
+.book--detail--price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book--detail--calc-price{
+    margin-right: 5px;
+}

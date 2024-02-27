@@ -45,6 +45,11 @@
     <link href="/css/point/computer.css" rel="stylesheet">
     <link href="/css/point/orderList.css" rel="stylesheet">
     
+    <!-- book share custom css -->
+    <link href="/css/share/write.css" rel="stylesheet">
+    <link href="/css/share/read.css" rel="stylesheet">
+    <link href="/css/share/detail.css" rel="stylesheet">
+    
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
