@@ -2,7 +2,9 @@ package com.library.bookhub.security.oauth;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.library.bookhub.entity.User;
+import com.library.bookhub.web.dto.member.KakaoUserInfo;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -17,7 +19,8 @@ public class OAuthAttributes {
     private String nickname;
     private String email;
     
-
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    
     @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String username,String nickname, String email) {
         this.attributes = attributes;
@@ -36,6 +39,7 @@ public class OAuthAttributes {
         return null;
     }
     
+    // kakao
     private static OAuthAttributes ofKakao(Map<String, Object> attributes) {
     	log.info("=========== OAuthAttributes ===========");
     	log.info("OAuthAttributes attributes id : "+attributes);
@@ -43,8 +47,29 @@ public class OAuthAttributes {
 		log.info("OAuthAttributes attributes kakao_account : "+attributes.get("kakao_account"));
 		log.info("=========== end ===========");
 		
+		Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
+	    Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
+	    
+	    log.info("=========== kakaoAccount,profile  ===========");
+	    log.info("kakaoAccount :"+kakaoAccount);
+	    log.info("profile :"+profile);
+	    log.info("=========== end ===========");
 		
-        return null;
+	    String nickname = (String) profile.get("nickname");
+        String email = (String) kakaoAccount.get("email");
+        String username = "kakao_" + email;
+        
+        log.info("=========== kakaoAccount,profile  ===========");
+	    log.info("nickname :"+nickname);
+	    log.info("email :"+email);
+	    log.info("username :"+username);
+	    log.info("=========== end ===========");
+
+        return OAuthAttributes.builder()
+                .nickname(nickname)
+                .email(email)
+                .username(username)
+                .build();
         
         /*
          *return OAuthAttributes.builder()

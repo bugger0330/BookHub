@@ -2,7 +2,7 @@
 -- 테이블 드롭
 CREATE TABLE bh_member (
   id int NOT NULL AUTO_INCREMENT primary KEY,
-  userName varchar(20) NOT NULL,
+  userName varchar(40) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
   gender tinyint,

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.MemberRepository;
+import com.library.bookhub.web.dto.member.KakaoUserInfo;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -54,15 +55,22 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
 
     // 소셜 등록 or 조회
     private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = memberRepository.findByUsername(attributes.getEmail());
+    	log.info("saveOrUpdate - attributes : "+attributes.toString());
+        User userEntity = memberRepository.findByUsername(attributes.getEmail());
         
-        if(user == null) {
+        if(userEntity == null) {
             // 새로운 사용자 등록 로직 추가
-        	memberRepository.insert(user);
+        	userEntity = new User();
+            userEntity.setUserName(attributes.getUsername());
+            userEntity.setName(attributes.getNickname());
+            userEntity.setEmail(attributes.getEmail());
+            userEntity.setRole("ROLE_USER");
+            
+        	memberRepository.insert(userEntity);
         }
-        log.info("saveOrUpdate user : "+user.toString());
+        log.info("saveOrUpdate user : "+userEntity.toString());
 
-        return user;
+        return userEntity;
     }
     
 }

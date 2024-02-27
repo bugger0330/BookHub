@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.MemberRepository;
 import com.library.bookhub.web.dto.member.SignUpFormDto;
-import com.library.bookhub.web.dto.member.SocialSignUpDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -60,25 +59,6 @@ public class MemberService {
 		
 	}
 	
-	// 소셜 회원가입 기능
-	@Transactional
-	public void createSocialUser(SocialSignUpDto dto) {
-		log.info("createSocialUser...1");
-		log.info("dto : "+dto.toString());
-		
-		User userEntity = User.builder()
-				.userName(dto.getUid())
-				.password(encoder.encode(dto.getPassword()))
-				.name(dto.getName())
-				.email(dto.getEmail())
-				.build();
-		
-		log.info("createSocialUser...2");
-		log.info("userEntity : "+userEntity.toString());
-		
-		memberRepository.insert(userEntity);
-		
-	}
 	
 	// 아이디 중복확인
 	public int confirmUid(String uid) {
