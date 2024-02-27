@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.library.bookhub.entity.cs.CsCate1Entity;
 import com.library.bookhub.entity.cs.CsCate2Entity;
-import com.library.bookhub.entity.cs.CsFaqEntity;
 
 @Mapper
 public interface CsCateRepository {
