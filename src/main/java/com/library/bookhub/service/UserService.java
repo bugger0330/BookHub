@@ -29,6 +29,11 @@ public class UserService {
     public long getTotalUserCount() {
         return userRepository.getTotalCount();
     }
+    
+    // 유저 아이디로 회원찾기
+    public User getUserId(String userId) {
+    	return userRepository.findByUserId(userId);
+    }
 
     // 페이징된 유저 목록 조회
     public PageRes<User> getUsersWithPaging(PageReq pageReq, String name) {

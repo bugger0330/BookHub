@@ -1,0 +1,147 @@
+.point--print--main-div{
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px soild black;
+    padding: 5px;
+}
+
+.point--print--header-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.point--print--header-title{
+    font-size: 50px;
+
+}
+
+.point--print--body-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.point--print--print-area{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 5px;
+    margin-top: 50px;
+}
+
+.point--print--print-item{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.point--print--print-title-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.point--print--print-title-area span{
+    font-size: 30px;
+}
+
+.point--print--print-img-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.point--print--print-img-area img{
+    width: 150px;
+}
+
+.point--print--print-select-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.point--print--print-count-area{
+    margin-left: 10px;
+}
+
+.point--print--print-input{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.point--print--footer-div{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.point--print--result-area{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.point--print--result-title{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+
+.point--print--result-print{
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+}
+
+.point--print--point-div{
+    display: flex;
+}
+
+.point--print--allpoint{
+    margin-right: 5px;
+    color: antiquewhite;
+}
+
+.point--print--point-color{
+    color: blueviolet;
+}
+
+.point--print--mypoint{
+    margin-right: 5px;
+    color: aquamarine;
+}
+
+.point--print--button-area{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.point--print--print-btn{
+    border: none;
+    padding: 50px 30px;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+    font-size: 30px;
+}

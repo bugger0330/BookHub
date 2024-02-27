@@ -1,6 +1,7 @@
 package com.library.bookhub.entity;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,4 +25,7 @@ public class UserSubscription {
     private LocalDateTime startDate; // 구독 시작일
     private LocalDateTime endDate; // 구독 종료일
     private String refundYn; // 환불여부
+    
+    
+  
 }

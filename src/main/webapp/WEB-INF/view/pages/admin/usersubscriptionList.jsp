@@ -154,7 +154,7 @@ img {
 
 			</c:when>
 			<c:otherwise>
-				<p>상품이 없습니다. 상품을 추가해주세요</p>
+				<p>구독 중인 유저가 없습니다.</p>
 			</c:otherwise>
 		</c:choose>
 	</div>

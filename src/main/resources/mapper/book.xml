@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.BookRepository">
+
+	<select id="bookListAll" parameterType="Integer" resultType="com.library.bookhub.entity.Book">
+		select *, (select count(*) from bh_book) as 'bookAllCount' 
+		from bh_book limit #{pageNum}, 30;
+	</select>
+
+	<select id="bookInfo" resultType="com.library.bookhub.entity.Book">
+		select * from bh_book where id = #{id};
+	</select>
+	
+	<insert id="borrowUser">
+		insert into bh_book_borrow(userName, brComplete, brDate, returnDate, bookNo)
+		values(
+			#{userName},
+			1,
+			now(),
+			#{returnDate},
+			#{bookNo}
+		);
+	</insert>
+	
+	<select id="selectBorrow" resultType="com.library.bookhub.entity.BookBorrow">
+		select * from bh_book_borrow where userName = #{username} and bookNo = #{bookId};
+	</select>
+	
+	<update id="borrowBook">
+		update bh_book set
+			borrow = #{borrow},
+			status = #{status},
+			wdate = #{wdate}
+		where id = #{id};
+	</update>
+	
+	<delete id="borrowUserEnd">
+		delete from bh_book_borrow where id = #{id};
+	</delete>
+
+	<update id="borrowBookEnd">
+		update bh_book set
+			status = #{status},
+			wdate =	null
+		where id = #{id};
+	</update>
+
+	<select id="findByBookOption" resultType="com.library.bookhub.entity.Book">
+		select *, (select count(*) from bh_book) as 'bookAllCount' from bh_book
+		<if test="option == 'bookName'">
+			where bookName LIKE CONCAT("%", #{inputValue}, "%"); 
+		</if>
+		<if test="option == 'writer'">
+			where writer LIKE CONCAT("%", #{inputValue}, "%"); 
+		</if>
+		<if test="option == 'company'">
+			where company LIKE CONCAT("%", #{inputValue}, "%"); 
+		</if>
+		
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
