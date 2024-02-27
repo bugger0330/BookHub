@@ -22,6 +22,8 @@ public interface UserPointRepository {
     // 기본키(id)가 있는지 확인하는 조회함수
     public long existById(int id);
     
+    public User getUser(String username);
+    
     
     // 상세조회(1건조회)
     public Optional<UserPoint> findById(int id);

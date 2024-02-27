@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserPoint {
-    private Long id; // 구독 정보 식별자
+    private Long id; 
     private String userId; // 유저 식별자
-    private String pointName; // 구독 요금제 식별자
+    private String pointName; // 포인트 식별자
     private LocalDateTime purchaseDate; // 구매일시
     private int point; // 포인트
     private String refundYn; // 환불여부

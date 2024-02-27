@@ -8,9 +8,51 @@ select * from bh_user_point
 
 </select>
 
-<insert id="save" parameterType="com.library.bookhub.entity.UserPoint">
-insert into bh_user_point(user_id, point_name, purchase_date, point, imp_uid, merchant_uid)
-values(#{userId}, #{pointName}, #{purchaseDate}, #{point}, #{impUid}, #{merchantUid})
-</insert>
+
+ <!-- 저장 함수 매핑 -->
+    <insert id="save" parameterType="com.library.bookhub.entity.UserPoint">
+        INSERT INTO bh_user_point (user_id, point_name, purchase_date, point, imp_uid, merchant_uid)
+        VALUES (#{userId}, #{pointName}, #{purchaseDate}, #{point},  #{impUid}, #{merchantUid})
+    </insert>
+    
+    <!-- 수정 함수 매핑 -->
+    <update id="update" parameterType="com.library.bookhub.entity.UserPoint">
+        UPDATE bh_user_point
+        SET userId = #{userId}, pointName = #{pointName}, purchaseDate = #{purchaseDate}, point = #{point},
+            refundYn = #{refundYn}, impUid = #{impUid}, merchantUid = #{merchantUid}
+        WHERE id = #{id}
+    </update>
+    
+    <!-- 삭제 함수 매핑 -->
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM bh_user_point
+        WHERE id = #{id}
+    </delete>
+    
+    <!-- 기본키(id)가 있는지 확인하는 조회 함수 매핑 -->
+    <select id="existById" parameterType="int" resultType="long">
+        SELECT COUNT(*)
+        FROM bh_user_point
+        WHERE id = #{id}
+    </select>
+    
+    <!-- 상세 조회(1건 조회) 함수 매핑 -->
+    <select id="findById" parameterType="int" resultType="com.library.bookhub.entity.UserPoint">
+        SELECT *
+        FROM bh_user_point
+        WHERE id = #{id}
+    </select>
+    
+    <!-- 사용자 식별자로 사용자 포인트 정보 조회 함수 매핑 -->
+    <select id="findByUserId" parameterType="String" resultType="com.library.bookhub.entity.UserPoint">
+        SELECT *
+        FROM bh_user_point
+        WHERE userId = #{userId}
+    </select>
+    
+    
+    <select id="getUser" resultType="com.library.bookhub.entity.User">
+		select * from bh_member where userName = #{userName};
+	</select>
 
 </mapper>
