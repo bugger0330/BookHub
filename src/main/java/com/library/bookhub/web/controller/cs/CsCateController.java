@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.entity.cs.CsCate1Entity;
@@ -29,7 +30,7 @@ public class CsCateController {
 
         List<CsCate1Entity> cate1list = csCateService.selectCsCate1();
         
-        model.addAttribute("cate1list",cate1list);
+        model.addAttribute("cate1list", cate1list);
 
         
         return "/pages/cs/layout/aside";
@@ -37,11 +38,11 @@ public class CsCateController {
     }
 
     
-    @GetMapping("/layout/aside/{cate1}")
+    @GetMapping("/board/subcategories/{cate1}")
     @ResponseBody
-    public List<CsCate2Entity> loadCategory2(@PathVariable int cate1) {
+    public List<CsCate2Entity> loadCategory2(@RequestParam("cate1") int cate1) {
         return csCateService.selectCsCate2(cate1);
-    }
+    } 
 
 	
 	
