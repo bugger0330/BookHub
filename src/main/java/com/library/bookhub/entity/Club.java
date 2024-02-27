@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Club {
 
+	
+	
 	private Integer id;
 	private String userName;
 	private Integer clubCate;
@@ -50,12 +52,11 @@ public class Club {
 		this.hcApply -= 1;
 	}
 	
-	
-	
 	// 개설날짜 포멧설정
 	public String formatCreatedAt() {
 		return TimeUtils.dateToString(rdate);
 	}
+	
 	
 	
 }

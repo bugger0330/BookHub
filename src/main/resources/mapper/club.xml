@@ -68,6 +68,10 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 	where bh_club.id = #{id}
 </update>
 
+<update id="updatePoint">
+	UPDATE bh_member SET point = #{point} WHERE userName = #{userName}
+</update>
+
 <delete id="deleteApplication">
 	delete from bh_club_application where id = #{id}
 </delete>

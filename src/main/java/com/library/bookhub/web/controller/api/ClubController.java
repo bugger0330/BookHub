@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.library.bookhub.handler.exception.CustomRestFulException;
@@ -26,12 +27,11 @@ public class ClubController {
 	@Autowired
 	ClubService clubService;
 	
-	
+	// 후반에 코드 수정하면서 Ajax 이용했기때문에 아래 코드 사용 안함
 	// 등록
-	@PostMapping("/save")
+	@PostMapping("/saveTest")
+	//@ResponseBody
 	public String saveProc(ClubSaveFormDto dto) {
-		
-		// 인증검사, 유효성 검사
 		
 		MultipartFile file = dto.getCustomFile();
 		
@@ -75,7 +75,9 @@ public class ClubController {
 			dto.setUploadFileName1(fileName); // ex) 8f4b467e-3a72-41d6-ac9c-ed2a00b6b5eb_bag.jpeg
 		}
 		
-		clubService.createClub(dto);
+		//clubService.createClub(dto);
+		
+		//if
 		
 		return "redirect:/club/index";
 	}

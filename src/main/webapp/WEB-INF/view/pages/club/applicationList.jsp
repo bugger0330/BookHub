@@ -24,17 +24,16 @@
 	
 	<c:forEach var="application" items= "${applicationList}">
 		<div class="card center mx-auto" style="width:450px; height: 450px">
-		  	<a href="/club/view/${application.clubId }">
-			  <img class="card-img-top" src="${application.setupClubImage()}" alt="Card image">
-			  <div class="card-body">
-			    <h4 class="card-title text-center">${application.clubName}</h4>
-	    	</a>
-		    <p class="card-text text-center">신청일 : ${application.formatCreatedAt()}</p>
-		    <!-- 사용자정의 속성 주기!!!!!!! -->
-		    <a class="btn btn-primary" data-id="${application.id}" data-clubId="${application.clubId}">
-		    신청 취소</a>
-		  </div>
-		  
+		  	<a href="/club/view/${application.clubId }" style="height: 310px;">
+			  <img class="card-img-top" src="${application.setupClubImage()}" style="max-width:100%; max-height:100%; object-fit: cover;" alt="Card image">
+			</a>  
+		  	<div class="card-body">
+		    	<h4 class="card-title text-center">${application.clubName}</h4>
+			    <p class="card-text text-center">신청일 : ${application.formatCreatedAt()}</p>
+			    <!-- 사용자정의 속성 주기!!!!!!! -->
+			    <a class="btn btn-primary" data-id="${application.id}" data-clubId="${application.clubId}">
+			    신청 취소</a>
+		  	</div>
 		</div>
 		<br>
 		<br>

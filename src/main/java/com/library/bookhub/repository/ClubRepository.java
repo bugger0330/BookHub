@@ -7,12 +7,13 @@ import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
+import com.library.bookhub.entity.User;
 
 @Mapper
 public interface ClubRepository {
 	
 	// 모임 개설
-	public int insert(Club club);
+	public boolean insert(Club club);
 	// 모임 목록
 	public List<Club> findAll();
 	// 모임 카테고리별 조회
@@ -40,6 +41,9 @@ public interface ClubRepository {
 	public List<ClubApplication> findApplicationByUserName(String userName);
 	// 신청 취소
 	public boolean deleteApplication(Integer id);
+	
+	// 포인트 수정후 회원정보 수정
+	public void updatePoint(User user);
 	
 	
 	
