@@ -50,7 +50,6 @@ public class TestController {
 		return "pages/admin/customer";
 	}
 
-
 	// 관리자페이지 - 광고설정
 	@GetMapping("/ad-setting")
 	public String adSettingPage() {
@@ -64,10 +63,16 @@ public class TestController {
 	}
 
 	// 관리자페이지 - 환불요청승인
-		@GetMapping("/refund-request")
-		public String refundRequestPage() {
-			return "pages/admin/refundRequest";
-		}
+	@GetMapping("/refund-request")
+	public String refundRequestPage() {
+		return "pages/admin/refundRequest";
+	}
+
+	// cs 카테고리 페이지 요청
+	@GetMapping("/layout/aside")
+	public String CsCateAside() {
+		return "pages/cs/layout/aside";
+	}
 }
 
 // page 패키지에는 페이지를 여는 용도로만 사용

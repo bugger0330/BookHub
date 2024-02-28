@@ -6,12 +6,12 @@
 
 	<!-- cs cate1 리스트 조회 -->
 	<select id="selectCsCate1" resultType="com.library.bookhub.entity.cs.CsCate1Entity">
-		SELECT * FROM bh_cs_cate1 WHERE cate1 >= 10
+		SELECT * FROM bh_cs_cate1;
 	</select>
 
-	<!-- cs cate2 조회 , cate1로 조회해야 연관된 cate2 리스트가 조회됨-->
+	<!-- cs cate2 리스트 조회 -->
 	<select id="selectCsCate2" resultType="com.library.bookhub.entity.cs.CsCate2Entity">
-		SELECT * FROM bh_cs_cate2 WHERE cate1 = #{cate1}
+		SELECT * FROM bh_cs_cate2;
 	</select>
 	
 

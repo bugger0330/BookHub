@@ -1,68 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-  <!-- CS aside Start -->
-  
-  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
-		<a href="/"
-			class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-			<span class="fs-4">열린공간</span>
-		</a>
-		
-		<c:forEach var="list" items="${cate1list}">
-		<ul id="category1" class="nav nav-pills flex-column mb-auto">
-			<li><a href="/board/subcategories?cate1=10" class="nav-link link-dark" data-value="10"> ${list.c1Name} </a></li>
-			<li><a href="/board/subcategories?cate1=20" class="nav-link link-dark" data-value="20"> 편의시설 </a></li>
-			<li><a href="/board/subcategories?cate1=30" class="nav-link link-dark" data-value="30"> 구독요금제 </a></li>
-			<li><a href="/board/subcategories?cate1=40" class="nav-link link-dark" id="etc" value="40"> 기타 </a></li>
-			<li class="nav-item"><a  id="category2" href="/board/subcategories?cate1=50" class="nav-link active" aria-current="page" data-value="50"> 고객서비스 </a></li>
-		</ul>
-		</c:forEach>
-		<hr>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+<!-- CS aside Start -->
+
+<div class="d-flex flex-column flex-shrink-0 p-3 bg-light">
+	<a href="/"
+		class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+		<span class="fs-4">열린공간</span>
+	</a>
+
+	<div class="main-cate1">
+		<div class="cate-header">
+			<span class="cate1-title">고객서비스</span>
+		</div>
+		<div class="cate-child">
+			<span>안내</span> <span>서비스</span> <span>주의</span>
+		</div>
 	</div>
-  
-  <!-- CS aside End -->
-  
-  <script>
-    $(document).ready(function() {
-    	
-        console.log('이벤트 감지')
-        
-        
-        $("#category1 li").click(function(event) {
-        
-        	event.preventDefault();
 
-        
-        	   // Retrieve data-value attribute value from the clicked element
-            var selectedCategory1Id = $(this).find("a").data("value");
-            
-            // Log the value to the console
-            console.log('Selected Category1 Id:', selectedCategory1Id);
-        	
-        	
-        	
-        	
-        	
-        	
+	<hr>
+</div>
 
-        	
-            $.ajax({
-                url: "/board/subcategories?cate1=" + selectedCategory1Id,
-                type: "GET",
-                
-                success: function(data) {
-                    // 받아온 데이터로 2차 카테고리 목록을 업데이트
-                    console.log('석세스 탐지 완료')
-                    $("#category2").empty();
-                    $.each(data, function(index, category2) {
-                        $("#category2").append("<option value='" + category2.id + "'>" + category2.name + "</option>");
-                    });
-                },
-                error: function() {
-                    console.error("Failed to fetch subcategories.");
-                }
-            });
-        });
+<!-- CS aside End -->
+<script>
+const innerBody = document.querySelector(".main-cate1");
+
+
+load();
+
+function load(){
+    $.ajax({
+        type : "get",
+        url : "/category",
+        success : function(data){
+            if(data != ""){
+                innerFun(data);
+            }
+        },
+        error : function(){
+            alert("에러");
+        }
     });
+}
+
+function innerFun(data){
+    let innr = "";
+    for(let i = 0; i < data.length; i++){
+        innr += 
+            <div class="cate-header">
+                <span class="cate1-title">${data[i].c1Name}</span>
+            </div>
+            <div class="cate-child"></div>
+        ;
+    }
+    innerBody.innerHTML = innr;
+
+    const cChild = document.querySelectorAll(".cate-child");
+    for(let k = 0; k < data.length; k++){
+        let innr2 = "";
+        for(let g = 0; g < data[k].respList.length; g++){
+            console.log("dddddd2", data[k].respList[g]);
+            innr2 += 
+                <span>${data[k].respList[g].c2Name}</span>
+            ;
+        }// for(let g
+        cChild[k].innerHTML = innr2;
+    }// for(let k
+
+    for(let i = 0; i < cChild.length; i++){
+        cChild[i].style.display = "none";
+    }
+    const cHeader = document.querySelectorAll(".cate-header");
+    for(let i = 0; i < cHeader.length; i++){
+        cHeader[i].onclick = () => {
+            if(cChild[i].style.display == "none"){
+            cChild[i].style.display = "flex";
+            }else{
+                cChild[i].style.display = "none";
+            }
+        }
+    }
+}
 </script>
