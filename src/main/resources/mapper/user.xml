@@ -46,6 +46,7 @@
 		SET
 		password = #{password},
 		name = #{name},
+		point = #{point},
 		role = #{role},
 		gender = #{gender},
 		phone = #{phone},

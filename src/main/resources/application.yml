@@ -74,3 +74,4 @@ mybatis:
 
 pagination:
   size: 10
+  

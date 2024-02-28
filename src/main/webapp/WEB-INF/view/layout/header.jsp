@@ -84,9 +84,9 @@
                     </div>
                 </div>
                  <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">구독상품</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">포인트샵</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="/sc-product/nopage" class="dropdown-item">구독상품 구매하기</a>
+                        <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                      
                        
                     </div>

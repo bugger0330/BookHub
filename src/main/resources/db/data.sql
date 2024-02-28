@@ -19,12 +19,6 @@ INSERT INTO bh_member (userName, password, name, gender, phone, email, role, poi
 
 
 
--- 정액권상품 
-INSERT INTO bh_subscription_product (prodName, price, period) 
-VALUES ('7일권', 3000, 7),
-('30일권', 15000, 30),
-('1년권', 35000, 365);
-
 
 -- 회원포인트 더미 데이터 삽입
 INSERT INTO bh_member_point (userName, pId, point, ptDate)
@@ -60,13 +54,14 @@ VALUES (1, 1, 'Notice 1', 'Content of Notice 1', 0, CURRENT_TIMESTAMP),
 
 
 
--- 결제 더미 데이터 삽입
-INSERT INTO bh_payment (userName, price, period, scProduct, ptProduct, rdate)
-VALUES ('user1', 10000, 12, 1, 0, CURRENT_TIMESTAMP),
-       ('user2', 20000, 6, 1, 1, CURRENT_TIMESTAMP);
-
 -- 독서모임 더미 데이터 삽입
 INSERT INTO bh_club (clubCate1, clubCate2, clubName, descript, cDate, host, headCount, hcApply, status, thumb1, thumb2, thumb3, rdate)
 VALUES (1, 1, 'Club One', 'Description of Club One', '2024-02-20 10:00:00', 'Host 1', 20, 0, 'Available', 'thumb1.jpg', 'thumb2.jpg', 'thumb3.jpg', CURRENT_TIMESTAMP),
        (2, 2, 'Club Two', 'Description of Club Two', '2024-02-21 10:00:00', 'Host 2', 15, 0, 'Available', 'thumb4.jpg', 'thumb5.jpg', 'thumb6.jpg', CURRENT_TIMESTAMP);
 
+
+-- 포인트샵 더미데이터
+INSERT INTO bh_point_shop(prodName, point, price)
+values('3000 포인트', 3000, 3500),
+      ('5000 포인트', 5000, 5500),
+      ('10000 포인트', 10000, 11000);

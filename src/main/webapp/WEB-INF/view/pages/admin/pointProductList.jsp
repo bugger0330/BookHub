@@ -81,7 +81,7 @@ th {
 						<tr class="text-center">
 							<th>No</th>
 							<th>상품명</th>
-							<th>가격</th>
+						
 							<th>포인트</th>
 							<th>상품이미지</th>
 							<th>판매여부</th>
@@ -94,9 +94,8 @@ th {
 								<td class="text-center align-middle">${ppd.id}</td>
 								<td class="text-center align-middle">${ppd.prodName}</td>
 								<td class="text-center align-middle"
-									style="word-wrap: break-word; max-width: 100px;">${ppd.formatBalance()}</td>
-								<td class="text-center align-middle">${ppd.formatBalancePoint()}</td>
-								<td class="text-center align-middle" style="width: 300px"><img
+									style="word-wrap: break-word; max-width: 100px;">${ppd.formatPoint()}</td>
+															<td class="text-center align-middle" style="width: 300px"><img
 									src="${ppd.setupPointProductImage()}" width="80%" height="80%"></td>
 								<td class="text-center align-middle"><select
 									class="form-select" id="postYn-${ppd.id}"

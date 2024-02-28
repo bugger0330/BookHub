@@ -40,7 +40,6 @@ public class PointProductService {
 		public void uploadPointProduct(PointProductFormDto dto) {
 			PointProduct pointProduct = PointProduct.builder()
 					.prodName(dto.getProdName())
-					.price(dto.getPrice())
 					.point(dto.getPoint())
 					.postYn(dto.getPostYn())
 					.originFileName(dto.getOriginFileName())
