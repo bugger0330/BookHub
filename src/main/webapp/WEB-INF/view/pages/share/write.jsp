@@ -6,16 +6,13 @@
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">Coffie & Bakery</h3>
+					<h3 class="display-5 text-white animated slideInDown">책 맡기기</h3>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Header End -->
     <div class="share--main-div">
-        <div class="share--header">
-            <span>책 맡기기</span>
-        </div>
         <div class="share--body">
             <div class="share--input-box">
                 <span>내 아이디</span>

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.library.bookhub.entity.BookShare;
 import com.library.bookhub.service.BookShareService;
+import com.library.bookhub.web.dto.share.ShareBookBorrowDto;
 import com.library.bookhub.web.dto.share.ShareWriteReqDto;
 
 @RestController
@@ -50,6 +51,11 @@ public class BookShareApiController {
 		return new ResponseEntity<BookShare>(bookShare, HttpStatus.OK);
 	}
 	
-	
+	@PostMapping("/borrow")
+	public ResponseEntity<?> shareBookBorrow(ShareBookBorrowDto dto){
+		System.out.println(dto);
+		boolean result = service.shareBookBorrow(dto);
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 
 }

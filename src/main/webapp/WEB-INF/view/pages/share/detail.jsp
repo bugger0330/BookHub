@@ -77,14 +77,23 @@
 			        </div>
 			        <div class="book--detail--order">
 			            <div class="book--detail--input-area">
-			                <input type="number" class="book--detail--order-date" value="0">
+			                <input type="number" class="book--detail--order-date" value="1">
 			                <span>일</span>
 			            </div>
 			            <div class="book--detail--price">
-			                <span class="book--detail--calc-price">111</span>
+			                <span class="book--detail--calc-price"></span>
 			                <span>P</span>
 			            </div>
-			            <button>대출</button>
+			            <button type="button" class="borrow-btn">대출</button>
+			        </div>
+			        <div class="book--detail--order">
+			            <div class="book--detail--input-area">
+			                <span>내 포인트 :</span>
+			            </div>
+			            <div class="book--detail--price">
+			                <span class="book--detail--mypoint"></span>
+			                <span>P</span>
+			            </div>
 			        </div>
 			    </div>
             </div>

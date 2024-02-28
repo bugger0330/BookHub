@@ -2,7 +2,7 @@
     border: 1px solid black;
     margin-top: 20px;
     padding: 10px;
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 400px;
 }
@@ -20,6 +20,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 30px;
 }
 
 .book--detail--input-area{
@@ -37,5 +38,9 @@
 }
 
 .book--detail--calc-price{
+    margin-right: 5px;
+}
+
+.book--detail--mypoint{
     margin-right: 5px;
 }

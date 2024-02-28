@@ -2,11 +2,19 @@ const setImg = document.querySelector(".book--detail--img");
 const bookInfos = document.querySelectorAll(".book--detail--info--content");
 const tbody = document.querySelector(".book--detail--tbody");
 const modalTable = document.querySelector(".modal--table");
+const mypoint = document.querySelector(".book--detail--mypoint");
+const calcPrice = document.querySelector(".book--detail--calc-price");
+const borrowDay = document.querySelector(".book--detail--order-date");
+let username = "ddd";
+//let username = "dddd1111";
 
 load();
 function load(){
+	calcPrice.textContent = "100";
+
 	let addressNum = location.pathname.split("/")[3];;
 	console.log(addressNum);
+	
 	$.ajax({
 		type : "get",
 		url : `/share/info/${addressNum}`,
@@ -19,6 +27,41 @@ function load(){
 			alert("에러");
 		}
 	});
+	
+	$.ajax({
+		type : "post",
+		url : "/point/get",
+		data : {
+			userName : username
+		},
+		success : function(data){
+			if(data != null){
+				mypoint.textContent = data;
+			}
+		},
+		error : function(){
+			alert("에러");
+		}
+	});
+}
+//-------------------------------------------------
+
+
+borrowDay.onchange = () => {
+	if(borrowDay.value < 0){
+		borrowDay.value = 0;
+	}
+	if(borrowDay.value > 7){
+		alert("최대 7일동안 대출 하실 수 있습니다.");
+		borrowDay.value = 7;
+	}
+	calcResult = calc(borrowDay.value);
+	calcPrice.textContent = calcResult;
+}
+
+function calc(day){
+	let calcResult = day * 100;
+	return calcResult;
 }
 
 function innerFun(data){
@@ -45,13 +88,20 @@ function innerFun(data){
 
 // 일단 로그인 된 상태로 가정하고 대출하기, 반납하기 기능 구현함.
 // 회원정보 가져와서 만약 빌린 책이면 대출하기 버튼은 숨김 - 반대도 가능해야함
-let username = "abc123";// 세션에서 유저정보 가져왔다고 가정하고
+//let username = "abc123";// 세션에서 유저정보 가져왔다고 가정하고
 
 function buttonClickEvent(bookId, bookEntity){
 	const borrowBtns = document.querySelectorAll(".book--detail--button");
-	
+	const calcDiv = document.querySelector(".book--detail--order-box");
+	const borrowBtn = document.querySelector(".borrow-btn");
 	// 대출, 반납버튼을 숨기게 되면 인덱스로 클릭이벤트 처리 할 수 없음!
-	borrowBtns[0].onclick = () => { // 대출하기
+	borrowBtns[0].onclick = () => {
+		calcDiv.style.display = "flex";
+	}
+	
+	
+	//=========================
+	borrowBtn.onclick = () => {
 		if(username != ""){
 			if(username == bookEntity.userName){
 				alert("본인의 책은 대출이 불가능합니다.");
@@ -64,12 +114,14 @@ function buttonClickEvent(bookId, bookEntity){
 					url : "/share/borrow",
 					data : {
 						bookId : bookId,
-						username : username
+						userName : username,
+						borrowDay : borrowDay.value,
 					},
 					success : function(data){
 						if(data == true){
 							alert("대출완료!");
-							location.replace = `/book/detail/${addressNum}`;
+							//location.replace = `/share/detail/${addressNum}`;
+							// 마이포인트 계산
 						}else{
 							alert("대출실패!");
 						}
@@ -81,6 +133,8 @@ function buttonClickEvent(bookId, bookEntity){
 			}
 		}
 	}
+	
+	//=========================
 	
 	borrowBtns[1].onclick = () => { // 반납하기
 		if(username != ""){

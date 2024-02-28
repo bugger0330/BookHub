@@ -118,6 +118,13 @@
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
                     </div>
                 </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">책 공유</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="/share/read" class="dropdown-item">리스트</a>
+                        <a href="/share/write" class="dropdown-item">등록</a>
+                    </div>
+                </div>
                 <!-- 이부분은 로그인 되었을 경우에만 표시되게 설정 -->
                 <sec:authorize access="isAuthenticated()">
                   <div class="nav-item dropdown">

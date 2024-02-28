@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.library.bookhub.entity.BookShare;
+import com.library.bookhub.entity.ShareBookBorrow;
 
 @Mapper
 public interface BookShareRepository {
@@ -14,5 +15,9 @@ public interface BookShareRepository {
 	List<BookShare> getShareBookALL();
 
 	BookShare getShareBook(int id);
+
+	ShareBookBorrow selectShareBookBorrow(ShareBookBorrow entity);
+	int shareBookBorrow(ShareBookBorrow entity);
+
 
 }

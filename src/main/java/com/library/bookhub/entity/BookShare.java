@@ -21,4 +21,5 @@ public class BookShare {
 	private String rdate;//등록일
 	private String wdate;//반납일
 	private String status;//대출여부
+	private int borrow;
 }
