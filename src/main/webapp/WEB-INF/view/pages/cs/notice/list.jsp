@@ -23,7 +23,7 @@ s
 		<div class="container">
 
 			<nav
-				style="--bs-breadcrumb-divider: url(&amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
+				style="--bs-breadcrumb-divider: url(&amp; amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
 				aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
@@ -73,7 +73,7 @@ s
 						<td>144</td>
 					</tr>
 					<c:forEach var="list" items="${noticeList}">
-						<tr  class="page-click" id="${list.id}">
+						<tr class="page-click" id="${list.id}">
 							<td>${list.id}</td>
 							<td class="text-left" width="50%">
 								<div class="panel-cs-container">
@@ -88,6 +88,28 @@ s
 					</c:forEach>
 				</tbody>
 			</table>
+
+			<!-- 페이징 처리 -->
+			<div class="pagination justify-content-center mb-5">
+				<c:if test="${page > 1}">
+					<a href="?page=1&size=${size}">&laquo; 첫 페이지</a>
+					<a href="?page=${page - 1}&size=${size}">&laquo; 이전</a>
+				</c:if>
+				<c:forEach begin="${startPage}" end="${endPage}" var="i">
+					<c:choose>
+						<c:when test="${i eq page}">
+							<a href="?page=${i}&size=${size}" class="active">${i}</a>
+						</c:when>
+						<c:otherwise>
+							<a href="?page=${i}&size=${size}">${i}</a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${page < totalPages}">
+					<a href="?page=${page + 1}&size=${size}">다음 &raquo;</a>
+					<a href="?page=${totalPages}&size=${size}">마지막 페이지 &raquo;</a>
+				</c:if>
+			</div>
 
 			<ul class="qna pagination">
 				<li class="page-item"><a class="page-link" href="#">Previous</a></li>

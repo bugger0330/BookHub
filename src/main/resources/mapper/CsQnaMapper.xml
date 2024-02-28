@@ -44,7 +44,7 @@
 
 	<!-- 전체 데이터 개수 쿼리 -->
 	<select id="getAllPgCount" resultType="int">
-		select count() from
+		select count(*) from
 		bh_cs_qna
 	</select>
 

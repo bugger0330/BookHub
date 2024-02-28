@@ -28,7 +28,7 @@ public interface CsQnaRepository {
 	// 전체 페이지 불러오기
 	public List<CsQnaEntity> findAllwithPasing(@Param ("offset") int offset, @Param ("limit") int limit);
 	
-	// 전체 게시물개수 계산 (product에서 가져옴) 
+	// 전체 게시물개수 계산 
 	public int getAllPgCount();
 	
 }
