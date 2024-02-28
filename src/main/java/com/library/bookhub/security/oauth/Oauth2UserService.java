@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.MemberRepository;
-import com.library.bookhub.web.dto.member.KakaoUserInfo;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -41,34 +40,38 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
         log.info("3..userNameAttributeName : "+userNameAttributeName);
         
-        OAuthAttributes attributes = OAuthAttributes.of(registrationId, oAuth2User.getAttributes());
+        OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName,oAuth2User.getAttributes());
         log.info("4..attributes : "+attributes);
+        log.info("4..attributes : "+attributes.getNameAttributeKey());
         
         User user = saveOrUpdate(attributes);
-
+        log.info("5..user : "+user);
+        
         httpSession.setAttribute("user", new SessionUser(user));
 
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRole())),
-                attributes.getAttributes(),
-                attributes.getNameAttributeKey());
+        		attributes.getAttributes(),
+        		attributes.getNameAttributeKey());
     }
 
-    // 소셜 등록 or 조회
+    /// 소셜 등록 or 조회
     private User saveOrUpdate(OAuthAttributes attributes) {
-    	log.info("saveOrUpdate - attributes : "+attributes.toString());
-        User userEntity = memberRepository.findByUsername(attributes.getEmail());
-        
-        if(userEntity == null) {
-            // 새로운 사용자 등록 로직 추가
-        	userEntity = new User();
+        log.info("saveOrUpdate - attributes : " + attributes.toString());
+        User userEntity = memberRepository.findByUsername(attributes.getUsername());
+
+        if (userEntity == null) {
+            // 새로운 사용자 등록
+            userEntity = new User();
             userEntity.setUserName(attributes.getUsername());
+            userEntity.setPassword(attributes.getPassword());
             userEntity.setName(attributes.getNickname());
             userEntity.setEmail(attributes.getEmail());
             userEntity.setRole("ROLE_USER");
-            
-        	memberRepository.insert(userEntity);
+
+            // 사용자를 등록한 후에 즉시 userEntity에 할당
+            memberRepository.insert(userEntity);
         }
-        log.info("saveOrUpdate user : "+userEntity.toString());
+        log.info("saveOrUpdate user : " + userEntity);
 
         return userEntity;
     }

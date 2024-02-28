@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -36,6 +37,22 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	private SecurityUserService service;
 	
 	private final Oauth2UserService oAuth2UserService;
+	
+	// 카카오 Rest Key
+	@Value("${spring.security.oauth2.client.registration.kakao.client-id}")
+	private String KakaoRestKey;
+
+	// 카카오 리다이렉트 uri
+	@Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
+	private String KakaoRedirectUri;
+	
+	// 네이버 client id
+	@Value("${spring.security.oauth2.client.registration.naver.client-id}")
+	private String NaverRestKey;
+	
+	// 네이버 리다이렉트 uri
+	@Value("${spring.security.oauth2.client.registration.naver.redirect-uri}")
+	private String NaverRedirectUri;
 	
 	public SecurityConfigration(Oauth2UserService oAuth2UserService) {
         this.oAuth2UserService = oAuth2UserService;
@@ -77,7 +94,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
             		.userInfoEndpoint(userInfo -> userInfo
             				.userService(oAuth2UserService))
             		.clientRegistrationRepository(clientRegistrationRepository())
-            		.successHandler(successHandler())
+            		.defaultSuccessUrl("/",true)
     	            .failureUrl("/login?success=403")
     	            .permitAll())
             // 인가 권한 설정
@@ -106,25 +123,6 @@ public class SecurityConfigration implements WebMvcConfigurer {
 			
 	}
 	
-	@Bean
-    public AuthenticationSuccessHandler successHandler() {
-        return ((request, response, authentication) -> {
-            DefaultOAuth2User defaultOAuth2User = (DefaultOAuth2User) authentication.getPrincipal();
- 
-            String id = defaultOAuth2User.getAttributes().get("id").toString();
-            String body = """
-                    {"id":"%s"}
-                    """.formatted(id);
- 
-            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            response.setCharacterEncoding(StandardCharsets.UTF_8.name());
- 
-            PrintWriter writer = response.getWriter();
-            writer.println(body);
-            writer.flush();
-        });
-    }
-	
 	
 	// 비밀번호 암호화
 	@Bean
@@ -151,9 +149,9 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	// 카카오 소셜 로그인
 	private ClientRegistration kakaoClientRegistration() {
 	    return ClientRegistration.withRegistrationId("kakao")
-	            .clientId("daa9133dd9b91f5965b4bdb82517dc70")
+	            .clientId(KakaoRestKey)
 	            .clientSecret(null)
-	            .redirectUri("http://localhost/login/oauth2/code/kakao")
+	            .redirectUri(KakaoRedirectUri)
 	            .authorizationUri("https://kauth.kakao.com/oauth/authorize")
 	            .tokenUri("https://kauth.kakao.com/oauth/token")
 	            .userInfoUri("https://kapi.kakao.com/v2/user/me")

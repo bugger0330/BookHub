@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -62,8 +64,8 @@ public class MemberController {
 	// 약관 페이지
 	@GetMapping("/join")
 	public String joinPage() {
-		
-		return "pages/user/join";
+       
+       return "pages/user/join";
 	}
 	
 	// 아이디 찾기 페이지

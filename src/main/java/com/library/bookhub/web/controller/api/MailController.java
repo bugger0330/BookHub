@@ -30,6 +30,7 @@ public class MailController {
 	private MemberService memberService;
 	
 	/* --- 회원가입 --- */
+	
 	// 이메일 전송
 	@PostMapping("/user/sendEmail/{email}")
 	public void sendEmail(@PathVariable("email")String email) {
@@ -90,4 +91,7 @@ public class MailController {
 		return result;
 		
 	}
+	
+	/* --- 비밀번호 찾기 --- */
+	
 }

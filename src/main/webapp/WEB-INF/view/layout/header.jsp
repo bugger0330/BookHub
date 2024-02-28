@@ -56,7 +56,6 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-        	<sec:authentication property="name" />
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link active">Home</a>
                  
@@ -116,7 +115,9 @@
 					    flex-direction: column;
 					    justify-content: space-around;
 					    color: #06BBCC;"
-					><sec:authentication property="principal.user.name"/></div>
+					>
+					<sec:authentication property="name"/>
+					</div>
 				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->

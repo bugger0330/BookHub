@@ -35,7 +35,7 @@ public class MailService {
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		
-		message.addRecipients(MimeMessage.RecipientType.TO, receiver); // 받은 이
+		message.addRecipients(MimeMessage.RecipientType.TO, receiver); // 받는 이
 		message.setSubject(title); // 제목 설정
 		message.setFrom(sender); // 보내는 사람 설정
 		
