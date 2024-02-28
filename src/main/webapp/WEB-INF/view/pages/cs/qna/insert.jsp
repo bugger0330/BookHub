@@ -56,7 +56,6 @@
 <script>
 	$('#content').summernote(
 			{
-				
 				tabsize : 2,
 				height : 120,
 				toolbar : [ [ 'style', [ 'style' ] ],
