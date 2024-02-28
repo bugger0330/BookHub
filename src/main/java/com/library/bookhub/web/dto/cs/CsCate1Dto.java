@@ -1,9 +1,8 @@
 package com.library.bookhub.web.dto.cs;
 
-import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -14,6 +13,8 @@ import lombok.ToString;
 @AllArgsConstructor
 public class CsCate1Dto {
 
+	List<CsCate2Dto> respList;
+	
 	private int cate1;
 	private String c1Name;
 

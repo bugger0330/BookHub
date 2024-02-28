@@ -95,4 +95,10 @@ public class CsService {
 		return false;
 	}
 
+	
+	public CsNoticeEntity noticeView(int id) {
+		
+		return csNoticeRepository.noticeView(id);
+	}
+
 }

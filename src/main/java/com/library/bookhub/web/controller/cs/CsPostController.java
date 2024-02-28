@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.library.bookhub.entity.cs.CsNoticeEntity;
 import com.library.bookhub.entity.cs.CsQnaEntity;
 import com.library.bookhub.service.CsService;
 import com.library.bookhub.web.dto.cs.CsQnaDto;
@@ -45,7 +46,7 @@ public class CsPostController {
 
 	// 문의글 상세보기 화면 띄우기
 	@GetMapping("/qna/view/{id}")
-	public String detail() {
+	public String detailQna() {
 		return "pages/cs/qna/view";
 	}
 
@@ -59,6 +60,24 @@ public class CsPostController {
 		CsQnaEntity csQnaEntity = csService.qnaView(id);
 
 		return csQnaEntity;
+	}
+	
+	// 공지사항 상세보기 화면 띄우기
+	@GetMapping("/notice/view/{id}")
+	public String detailNotice() {
+		return "pages/cs/notice/view";
+	}
+	
+	// 공지사항 상세보기
+	@PostMapping("/notice/view")
+	@ResponseBody
+	public CsNoticeEntity noticeView(int id) {
+		
+		System.out.println(id);
+		
+		CsNoticeEntity csNoticeEntity = csService.noticeView(id);
+		
+		return csNoticeEntity;
 	}
 
 	// 문의글 수정하기 화면 띄우기 

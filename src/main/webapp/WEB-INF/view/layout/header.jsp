@@ -57,6 +57,7 @@
     <!-- 로딩 스피너 끝 -->
 
 
+
     <!-- 내비바 시작 -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
@@ -83,7 +84,6 @@
                         <a href="/notice/list" class="dropdown-item">공지사항</a>
                         <a href="/qna/list" class="dropdown-item">문의하기</a>
                         <a href="/faq/list" class="dropdown-item">자주 묻는 질문</a>
-                       
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -101,8 +101,6 @@
                         <a href="/testimonial.html" class="dropdown-item">회원정보수정</a>
                        <a href="/testimonial.html" class="dropdown-item">회원탈퇴</a>
                     </div>
-                    
-                    
                 </div>
                 <!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
               <a href="/admin" class="nav-item nav-link active">관리자 페이지</a>
