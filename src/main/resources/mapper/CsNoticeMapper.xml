@@ -16,4 +16,16 @@
 		SELECT * FROM bh_cs_notice WHERE id = #{id};
 	</select>
 
+	<!-- 페이징 처리 쿼리 -->
+	<select id="findAllwithPasing"
+		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		select * from bh_cs_notice
+		limit #{limit} offset #{offset}
+	</select>
+	
+	<!-- 전체 데이터 개수 쿼리 -->
+	<select id="getAllPgCount" resultType="int">
+		select count() from bh_cs_notice
+	</select>
+
 </mapper>

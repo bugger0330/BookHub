@@ -9,6 +9,9 @@ ul, ol {
 	list-style: none;
 }
 
+ol > li {list-style: decimal inside;}
+ul > li {list-style: disc inside;}
+
 a {
 	text-decoration: none;
 	color: #111;

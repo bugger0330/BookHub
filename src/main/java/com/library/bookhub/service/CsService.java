@@ -100,5 +100,11 @@ public class CsService {
 		
 		return csNoticeRepository.noticeView(id);
 	}
-
+	
+	// 페이징 처리 - 총 게시글 수 조회
+		public int getTotalBoardCount() {
+			return csNoticeRepository.getAllPgCount();
+		}
+		
+	
 }

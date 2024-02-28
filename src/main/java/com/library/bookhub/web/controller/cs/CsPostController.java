@@ -41,6 +41,8 @@ public class CsPostController {
 			return "pages/cs/qna/list";
 		}
 
+		
+		
 		return "pages/cs/qna/insert";
 	}
 
