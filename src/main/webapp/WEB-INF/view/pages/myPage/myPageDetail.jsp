@@ -144,23 +144,26 @@
 														<th>순번</th>
 														<th>구매일자</th>
 														<th>구매상품명</th>
-														<th>환불요청<br/>여부</th>
+														<th>환불요청<br/>여부
+														</th>
 														<th>환불요청</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-
+													<!-- 데이터가 없을 때 표시될 행 -->
+													<tr id="noDataMessage" style="display: none;">
+														<td colspan="5">내역이 없습니다.</td>
+													</tr>
+													<!-- 실제 데이터 행 -->
+													<tr id="dataRow" style="display: none;">
 														<td id="id"></td>
-
 														<td id="purchaseDate"></td>
-
 														<td id="pointName"></td>
 														<td id="refundYn"></td>
 														<td><button id="refundButton" class="btn btn-primary">환불요청</button></td>
 													</tr>
-
 												</tbody>
+
 											</table>
 										</div>
 
@@ -218,54 +221,71 @@
 </script>
 
 	<script>
-	 $(document).ready(function() {
-	        var username = '${user.username}'; // 사용자 이름을 JavaScript 변수로 할당
-	        
-	        $.ajax({
-	            url: "/user-point/detail?userId=" + username,
-	            type: "GET",
-	            success: function(data) {
-	                console.log(data);
-	                
+	$(document).ready(function() {
+	    var username = '${user.username}'; // 사용자 이름을 JavaScript 변수로 할당
+
+	    $.ajax({
+	        url: "/user-point/detail?userId=" + username,
+	        type: "GET",
+	        success: function(data) {
+	            console.log(data);
+	            
+	            if (data) {
+	                // 데이터가 있을 경우 데이터를 표시하고 버튼을 활성화
 	                $("#purchaseDate").text(data.purchaseDate);
 	                $("#pointName").text(data.pointName);
 	                $("#id").text(data.id);
 	                $("#refundYn").text(data.refundYn);
+	                
+	                // 데이터가 있으면 행을 표시하고 버튼을 보이게 함
+	                $("#dataRow").show();
+	                
+	                // 환불 여부가 '환불요청'인 경우 버튼을 숨김
+                    if (data.refundYn === '환불요청') {
+                        $("#refundButton").hide();
+                    }
+	            } else {
+	                // 데이터가 없을 경우 메시지를 표시하고 버튼을 숨김
+	                $("#noDataMessage").show();
+	            }
+	        },
+	        error: function() {
+	            console.log("사용자를 찾을 수 없습니다.");
+	        }
+	    });
 
-	                // refundButton 클릭 시 실행될 함수
-	                $('#refundButton').click(function() {
-	                    // 요청에 포함될 데이터
-	                    var requestData = {
-	                        id: $("#id").text(), // #id 엘리먼트의 텍스트 값으로 할당
-	                        refundYn: '환불요청중'  // 예시: 환불 여부
-	                    };
+	    // 환불 요청 버튼 클릭 시 실행될 코드
+	    $('#refundButton').click(function() {
+	        // 요청에 포함될 데이터
+	        var requestData = {
+	            id: $("#id").text(), // #id 엘리먼트의 텍스트 값으로 할당
+	            refundYn: '환불요청'  // 환불 여부
+	        };
 
-	                    // 버튼이 클릭되면 실행될 코드
-	                    $.ajax({
-	                        type: 'PUT',
-	                        url: '/user-point/refund',
-	                        contentType: 'application/json',
-	                        data: JSON.stringify(requestData),  // 데이터를 JSON 형식으로 변환하여 요청에 포함
-	                        success: function(response) {
-	                            // 요청이 성공한 경우 실행될 코드
-	                            alert("환불 요청이 성공적으로 처리되었습니다.관리자 검토 후 환불 처리됩니다.");
+	        // 버튼이 클릭되면 실행될 코드
+	        $.ajax({
+	            type: 'PUT',
+	            url: '/user-point/refund',
+	            contentType: 'application/json',
+	            data: JSON.stringify(requestData),  // 데이터를 JSON 형식으로 변환하여 요청에 포함
+	            success: function(response) {
+	                // 요청이 성공한 경우 실행될 코드
+	                  alert("환불 요청이 성공적으로 처리되었습니다.관리자 검토 후 환불 처리됩니다.");
 	                            location.reload();
 	                            console.log('환불 요청이 성공적으로 처리되었습니다.');
-	                            // 성공 메시지를 표시하거나 필요한 작업을 수행할 수 있습니다.
-	                        },
-	                        error: function(xhr, status, error) {
-	                            // 요청이 실패한 경우 실행될 코드
-	                            console.error('환불 요청 중 오류가 발생했습니다:', error);
-	                            // 실패 메시지를 표시하거나 필요한 작업을 수행할 수 있습니다.
-	                        }
-	                    });
-	                });
+	                            // 환불 처리가 완료되면 버튼을 비활성화
+	                           
+	                // 성공 메시지를 표시하거나 필요한 작업을 수행할 수 있습니다.
 	            },
-	            error: function() {
-	                console.log("사용자를 찾을 수 없습니다.");
+	            error: function(xhr, status, error) {
+	                // 요청이 실패한 경우 실행될 코드
+	                console.error('환불 요청 중 오류가 발생했습니다:', error);
+	                // 실패 메시지를 표시하거나 필요한 작업을 수행할 수 있습니다.
 	            }
 	        });
 	    });
+	});
+
 </script>
 
 
