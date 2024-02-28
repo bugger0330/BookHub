@@ -134,8 +134,8 @@
 	<div class="container-xxl py-5">
 		<div class="container">
 			<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-				<h6 class="section-title bg-white text-center text-primary px-3">Subscribe</h6>
-				<h1 class="mb-3">BookHub 구독요금제</h1>
+				<h6 class="section-title bg-white text-center text-primary px-3">Point Shop</h6>
+				<h1 class="mb-3">BookHub 포인트 충전소</h1>
 				<h4>경제적인 가격으로 BookHub를 이용해보세요!</h4>
 			</div>
 			<div class="row g-4 justify-content-center">
@@ -145,10 +145,10 @@
 							<img class="img-fluid" src="/img/course-1.jpg" alt="">
 						</div>
 						<div class="text-center p-4">
-							<h3 class="mb-0">3,000 원</h3>
-							<h5 class="mb-4">7일권</h5>
+							<h3 class="mb-0">3,500 원</h3>
+							<h5 class="mb-4">3,000 P</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="/sc-product/nopage"
+								<a href="/point-shop"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -163,10 +163,10 @@
 
 						</div>
 						<div class="text-center p-4">
-							<h3 class="mb-0">15,000 원</h3>
-							<h5 class="mb-4">30일권</h5>
+							<h3 class="mb-0">5,500 원</h3>
+							<h5 class="mb-4">5,000 P</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="/sc-product/nopage"
+								<a href="/point-shop"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
@@ -181,10 +181,10 @@
 
 						</div>
 						<div class="text-center p-4">
-							<h3 class="mb-0">35,000 원</h3>
-							<h5 class="mb-4">1년권</h5>
+							<h3 class="mb-0">11,000 원</h3>
+							<h5 class="mb-4">10,000 P</h5>
 							<div class=" justify-content-center  bottom-0 start-0 mb-4">
-								<a href="/sc-product/nopage"
+								<a href="/point-shop"
 									class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
 									style="border-radius: 30px;">구매하기</a>
 							</div>
