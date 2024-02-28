@@ -1,15 +1,11 @@
 package com.library.bookhub.security;
 
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
@@ -20,10 +16,9 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -45,14 +40,6 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	// 카카오 리다이렉트 uri
 	@Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
 	private String KakaoRedirectUri;
-	
-	// 네이버 client id
-	@Value("${spring.security.oauth2.client.registration.naver.client-id}")
-	private String NaverRestKey;
-	
-	// 네이버 리다이렉트 uri
-	@Value("${spring.security.oauth2.client.registration.naver.redirect-uri}")
-	private String NaverRedirectUri;
 	
 	public SecurityConfigration(Oauth2UserService oAuth2UserService) {
         this.oAuth2UserService = oAuth2UserService;
@@ -95,7 +82,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
             				.userService(oAuth2UserService))
             		.clientRegistrationRepository(clientRegistrationRepository())
             		.defaultSuccessUrl("/",true)
-    	            .failureUrl("/login?success=403")
+    	            //.failureUrl("/login?success=403")
     	            .permitAll())
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
@@ -124,6 +111,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	}
 	
 	
+	
 	// 비밀번호 암호화
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -140,9 +128,10 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	@Bean
 	public ClientRegistrationRepository clientRegistrationRepository() {
 	    return new InMemoryClientRegistrationRepository(
-	        kakaoClientRegistration()
+	        kakaoClientRegistration(),
+	        naverClientRegistration()
 	        //googleClientRegistration(),
-	        //naverClientRegistration()
+	        
 	    );
 	}
 	
@@ -178,13 +167,16 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	// 네이버 소셜 로그인
 	private ClientRegistration naverClientRegistration() {
 	    return ClientRegistration.withRegistrationId("naver")
-	            .clientId("your-naver-client-id")
-	            .clientSecret("your-naver-client-secret")
-	            .redirectUri("your-naver-redirect-uri")
+	            .clientId("BIr6OZUn4vkMLYBrGi7P")
+	            .clientSecret(null)
+	            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
+	            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+	            .redirectUri("http://localhost/login/oauth2/code/naver")
+	            .scope("profile")
 	            .authorizationUri("https://nid.naver.com/oauth2.0/authorize")
 	            .tokenUri("https://nid.naver.com/oauth2.0/token")
 	            .userInfoUri("https://openapi.naver.com/v1/nid/me")
-	            .userNameAttributeName("id")
+	            .userNameAttributeName("responce")
 	            .clientName("Naver")
 	            .build();
 	}

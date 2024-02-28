@@ -109,31 +109,14 @@
 				<h5>소셜로그인</h5>
 				<div class="text-center">
 		
-		<%
-		String kakoClientId = "3f33875eb91fe402a3b0db6bf310661a";//애플리케이션 클라이언트 아이디값";
-		String kakaoRedirectURI = URLEncoder.encode("http://localhost/kakao-callback", "UTF-8");
-		String kakaoApiURL = "https://kauth.kakao.com/oauth/authorize?response_type=code";
-			kakaoApiURL += "&client_id=" + kakoClientId;
-			kakaoApiURL += "&redirect_uri=" + kakaoRedirectURI;
-		%>
 		<a
 			href="/oauth2/authorization/kakao">
 			<img alt="kakao" src="/img/kakao_login_medium_narrow.png"
 			height="38">
 		</a>
 		
-		<%
-		String naverClientId = "hVlPdCIutDDpu0e0tAA1";//애플리케이션 클라이언트 아이디값";
-		String naverRedirectURI = URLEncoder.encode("http://localhost/user/naver-callback", "UTF-8");
-		SecureRandom random = new SecureRandom();
-		String state = new BigInteger(130, random).toString();
-		String naverApiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-		naverApiURL += "&client_id=" + naverClientId;
-		naverApiURL += "&redirect_uri=" + naverRedirectURI;
-		naverApiURL += "&state=" + state;
-		session.setAttribute("state", state);
-		%>
-		<a href="<%=naverApiURL%>"><img height="38" width="154.53"
+		
+		<a href="/oauth2/authorization/naver"><img height="38" width="154.53"
 			src="/img/btnG_완성형.png" /></a>
 			
 			<a

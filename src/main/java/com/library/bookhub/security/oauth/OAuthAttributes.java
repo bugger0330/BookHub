@@ -21,22 +21,27 @@ public class OAuthAttributes {
     private String password;
     private String nickname;
     private String email;
+    private String phone;
     
     @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, 
-    						String username,String nickname, String email, String password) {
+    						String username,String nickname, String email, String password, String phone) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.username = username;
         this.password = password;
         this.nickname = nickname;
         this.email = email;
+        this.phone = phone;
     }
     
     // 소셜 구분 및 정보 분배
     public static OAuthAttributes of(String registrationId, String userNameAttributeName,Map<String, Object> attributes) {
         if ("kakao".equals(registrationId)) {
             return ofKakao(userNameAttributeName, attributes);
+        }
+        if ("naver".equals(registrationId)) {
+        	return ofNaver(userNameAttributeName, attributes);
         }
         // 다른 등록 ID를 처리할 필요가 있으면 여기서 처리합니다.
         return null;
@@ -79,6 +84,31 @@ public class OAuthAttributes {
                 .password(password)
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+    
+    // naver
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
+        log.info("=========== OAuthAttributes ===========");
+        log.info("OAuthAttributes attributes id : " + attributes);
+        log.info("=========== end ===========");
+
+        String email = (String) attributes.get("email");
+        String name = (String) attributes.get("name");
+        String phone = (String) attributes.get("phone");
+
+        String username = "naver_" + email;
+        String password = "asd13242342"; // 임시 패스워드 설정
+
+
+        return OAuthAttributes.builder()
+                .email(email)
+                .nickname(name) // 네이버에서는 이름을 닉네임으로 사용할 수 있음
+                .username(username)
+                .password(password)
+                .attributes(attributes)
+                .nameAttributeKey(userNameAttributeName)
+                .phone(phone)
                 .build();
     }
     
