@@ -32,8 +32,11 @@ public class CsCateController {
     public ResponseEntity<?> getCategory(){
 
         List<CsCate1Dto> cate1list = csCateService.selectCsCate1();
-        
-        return new ResponseEntity<List<CsCate1Entity>>(HttpStatus.OK) ; 
+
+        System.out.println(cate1list.get(0));
+
+        return new ResponseEntity<List<CsCate1Dto>>(cate1list,HttpStatus.OK) ; //동기적, 페이지로 들어가는 순간 생김
+
 
     }
 
