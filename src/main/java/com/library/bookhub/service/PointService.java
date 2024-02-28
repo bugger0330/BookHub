@@ -97,17 +97,14 @@ public class PointService {
 	public boolean myPointRefund(PointOrderRequestDto dto) {
 		User user = pointRepository.getUser(dto.getUserName());
 		if(user != null) {
-			System.out.println("6=============================================");
 			user.setPoint(user.getPoint() + dto.getAllProductPrice());
-			System.out.println("유저 포인트" + user.getPoint());
-			System.out.println("유저포인트1 "+ dto.getAllProductPrice());
-			System.out.println("------------" + user.toString());
 			int userPointUpdateResult = pointRepository.userPointUpdate(user);
 			if(userPointUpdateResult == 0) {
 				throw new RuntimeException("유저 포인트 정보 업데이트 실패!");
 			}
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	

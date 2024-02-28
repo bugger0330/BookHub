@@ -45,6 +45,11 @@
     <link href="/css/point/computer.css" rel="stylesheet">
     <link href="/css/point/orderList.css" rel="stylesheet">
     
+    <!-- book share custom css -->
+    <link href="/css/share/write.css" rel="stylesheet">
+    <link href="/css/share/read.css" rel="stylesheet">
+    <link href="/css/share/detail.css" rel="stylesheet">
+    
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -111,6 +116,13 @@
                         <a href="/point/print" class="dropdown-item">프린트/복사</a>
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">책 공유</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="/share/read" class="dropdown-item">리스트</a>
+                        <a href="/share/write" class="dropdown-item">등록</a>
                     </div>
                 </div>
                 <!-- 이부분은 로그인 되었을 경우에만 표시되게 설정 -->

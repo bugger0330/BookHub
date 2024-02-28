@@ -1,0 +1,61 @@
+.share--main-div{
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.share--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.share--header span{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.share--body{
+    width: 90%;
+    border: 1px solid black;
+}
+
+.share--book-list-box{
+    display: flex;
+    flex-flow:row wrap;
+    padding: 10px;
+}
+
+.share--book-box{
+    border: 1px solid black;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.share--img-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.share--book-img{
+    width: 200px;
+}
+
+.share--content-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
