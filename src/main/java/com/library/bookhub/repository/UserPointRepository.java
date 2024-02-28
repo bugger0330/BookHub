@@ -17,6 +17,7 @@ public interface UserPointRepository {
     
     // 수정함수
     public int update(UserPoint userPoint);
+    public int refundUpdate(UserPoint userPoint);
     
     // 삭제함수
     public int deleteById(int id);
@@ -30,10 +31,11 @@ public interface UserPointRepository {
     
     // 상세조회(1건조회)
     public Optional<UserPoint> findById(int id);
+    public Optional<UserPoint> findByUserId(String userId);
     
     
     // 전체조회, 페이징처리
-  	public List<UserPoint> findAllUserPointPaging(@Param("offset") int offset, @Param("limit") int limit);
+  	public List<UserPoint> findAllUserPointPaging(@Param("offset") int offset, @Param("limit") int limit, @Param("userId") String userId);
 
 
       // 총 데이터의 개수 조회

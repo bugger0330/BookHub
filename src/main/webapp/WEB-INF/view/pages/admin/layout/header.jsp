@@ -39,7 +39,7 @@
 						data-bs-toggle="dropdown" aria-expanded="false">회원관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="/user/list">회원조회</a></li>
-							<li><a class="dropdown-item" href="/subscriptions/list">유저 구독상품구매 조회</a></li>
+							<li><a class="dropdown-item" href="/admin/user-point/list">유저 포인트 구매목록</a></li>
 						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -53,8 +53,8 @@
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">포인트관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a class="dropdown-item" href="/sc-product/list">유저 포인트 구매목록</a></li>
-							<li><a class="dropdown-item" href="/subproduct-add">포인트 상품 추가</a></li>
+						<li><a class="dropdown-item" href="/point-shop/admin/list">포인트 상품목록</a></li>
+							<li><a class="dropdown-item" href="/point-add">포인트 상품추가</a></li>
 						</ul></li>
 						
 						<li class="nav-item dropdown"><a

@@ -133,9 +133,16 @@ th {
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="container wow fadeInUp">
-					<p class="text-center">등록된 제품이 없습니다.</p>
-				</div>
+				<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="alert alert-info" role="alert">
+                <strong>등록된 상품이 없습니다. 상품을 등록해주세요.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
 			</c:otherwise>
 		</c:choose>
 

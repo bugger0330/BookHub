@@ -74,7 +74,9 @@ img {
 }
 </style>
 <link href="/css/adminpagestyles.css" rel="stylesheet" />
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
 	<!-- Header Start -->
@@ -121,7 +123,7 @@ img {
 					<tbody>
 						<c:forEach var="user" items="${userList}">
 							<tr>
-							 
+
 								<td class="text-center align-middle">${user.id}</td>
 								<td class="text-center align-middle">${user.userName}</td>
 								<td class="text-center align-middle">${user.name}</td>
@@ -132,9 +134,10 @@ img {
 								<td class="text-center align-middle">${user.role == "USER" ? '일반계정' : '관리자'}</td>
 								<!-- 계정 유형을 한글로 표시합니다. -->
 								<td class="text-center align-middle">${user.formatBalancePoint()}</td>
-								<td class="text-center align-middle"><a href="/user/detail/${user.id}"><button type="button"
-										class="btn btn-warning">자세히보기</button></a></td>
-								
+								<td class="text-center align-middle"><a
+									href="/user/detail/${user.id}"><button type="button"
+											class="btn btn-warning">자세히보기</button></a></td>
+
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -164,19 +167,30 @@ img {
 
 			</c:when>
 			<c:otherwise>
-				<p>아직 생성된 유저가 없습니다.</p>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<div class="alert alert-info" role="alert">
+								<strong>회원내역이 없습니다.</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</c:otherwise>
 		</c:choose>
 	</div>
-<%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
+	<%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
 	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Bootstrap Bundle JS -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 	<script>
-	    $(document).ready(function(){
-	        $('.dropdown-toggle').dropdown();
-	    });
+		$(document).ready(function() {
+			$('.dropdown-toggle').dropdown();
+		});
 	</script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.PointShop;
 import com.library.bookhub.entity.User;
@@ -16,6 +17,11 @@ public interface PointShopRepository {
 	
 	// 총 데이터의 개수 조회
     public int getTotalCount();
+    
+    
+    // 전체조회, 페이징처리
+ 	public List<PointShop> findAllWithPagingAndProdName(@Param("offset") int offset, @Param("limit") int limit, @Param("prodName") String prodName);
+
     
     
     // 상세조회(1건조회)

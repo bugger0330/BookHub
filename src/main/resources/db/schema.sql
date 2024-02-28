@@ -216,7 +216,7 @@ CREATE TABLE bh_user_point (
     point_name VARCHAR(100) NOT NULL,
     purchase_date DATETIME NOT NULL,
     point INT NOT NULL,
-    refund_yn CHAR(1) DEFAULT 'N',
+    refund_yn VARCHAR(10) DEFAULT '미환불',
 	imp_uid VARCHAR(255) NOT NULL,
 	merchant_uid VARCHAR(255) NOT NULL
 	

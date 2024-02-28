@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.library.bookhub.entity.PointProduct;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.entity.UserPoint;
 import com.library.bookhub.repository.UserPointRepository;
@@ -27,29 +28,34 @@ public class UserPointService {
     
     
     
-    // 페이징된 유저 목록 조회
-    public PageRes<UserPoint> getUserPointWithPaging(PageReq pageReq) {
-        int page = pageReq.getPage();
-        int size = pageReq.getSize();
-        int offset = (page - 1) * size; // 오프셋 계산
-        
-        // 총 데이터 개수 조회
-        long totalElements = userPointRepository.getTotalCount();
-        
-        // 페이징 처리된 유저 목록 조회
-        List<UserPoint> userPoint = userPointRepository.findAllUserPointPaging(offset, size);
+ // 페이징된 배너 목록 조회
+ 	public PageRes<UserPoint> getPointWithPaging(PageReq pageReq, String userId) {
+ 		int page = pageReq.getPage();
+ 		int size = pageReq.getSize();
+ 		int offset = (page - 1) * size; // 오프셋 계산
 
-        // 페이징 결과 객체 생성
-        PageRes<UserPoint> pageRes = new PageRes<>(userPoint, page, totalElements, size);
+ 		// 총 데이터 개수 조회
+ 		long totalElements = userPointRepository.getTotalCount();
 
-        return pageRes;
-    }
+ 		// 페이징 처리된 유저 목록 조회
+ 		List<UserPoint> userPoint = userPointRepository.findAllUserPointPaging(offset, size, userId);
+
+ 		// 페이징 결과 객체 생성
+ 		PageRes<UserPoint> pageRes = new PageRes<>(userPoint, page, totalElements, size);
+
+ 		return pageRes;
+ 	}
 	
 	 // 상세조회
     public Optional<UserPoint> findById(int id) {
     	// db 상세조회 호출
     	Optional<UserPoint> optionalUserPoint = userPointRepository.findById(id);
     	
+    	return optionalUserPoint;
+    }
+    
+    public Optional<UserPoint> findByUserId(String userId){
+    	Optional<UserPoint> optionalUserPoint = userPointRepository.findByUserId(userId);
     	return optionalUserPoint;
     }
     
@@ -82,6 +88,12 @@ public class UserPointService {
 			log.debug(e.getMessage());
 		}
     	return false;
+    }
+    
+    // 유저 환불여부 변경
+    @Transactional
+    public void updateUserPoint(UserPoint userPoint) {
+        userPointRepository.refundUpdate(userPoint);
     }
 
 }

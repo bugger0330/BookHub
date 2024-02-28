@@ -70,6 +70,13 @@ public class PageController {
 	public String myPage() {
 		return "pages/myPage/myPageDetail";
 	}
+	
+	
+	// 테스트 페이지
+	@GetMapping("/test")
+	public String testPage() {
+		return "pages/admin/test";
+	}
 
 	// ---------------- 관리자 페이지 ----------------//
 
@@ -142,9 +149,9 @@ public class PageController {
 	}
 
 	// 구독상품 - (관리자)포인트 상품 추가
-	@GetMapping("/subproduct-add")
-	public String subproductAddPage() {
-		return "pages/admin/subproductAdd";
+	@GetMapping("/point-add")
+	public String pointAddPage() {
+		return "pages/admin/userPointProductBuyAdd";
 	}
 
 	// 포인트상품 - (관리자)먹거리상품추가

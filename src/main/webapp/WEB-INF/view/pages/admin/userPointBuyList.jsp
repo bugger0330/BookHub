@@ -66,6 +66,8 @@ th {
 			</div>
 		</div>
 	</div>
+	
+	
 
 	<div class="container-xxl">
 		<div class="row justify-content-end mb-3">
@@ -73,36 +75,47 @@ th {
 				<a href="/point-product-add" class="btn btn-dark">상품 추가하기</a>
 			</div>
 		</div>
-
+		
+	
 		<c:choose>
-			<c:when test="${not empty productList}">
+			<c:when test="${not empty pointList}">
+			<div class="search mb-3">
+			<form action="/admin/user-point/list" method="get">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="유저 아이디 검색"
+						name="userId">
+					<div class="input-group-append">
+						<button type="submit" class="btn btn-dark">검색</button>
+					</div>
+				</div>
+			</form>
+		</div>
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
 							<th>No</th>
-							<th>상품명</th>
-						
+							<th>구매한 유저 ID</th>
+							<th>구매 품목명</th>
 							<th>포인트</th>
-							<th>상품이미지</th>
-							<th>판매여부</th>
+							<th>구매일시</th>
+							<th>환불여부</th>
+							<th>아임포트 UID</th>
+							<th>구매번호</th>
 							<th>setting</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="ppd" items="${productList}">
+						<c:forEach var="point" items="${pointList}">
 							<tr>
-								<td class="text-center align-middle">${ppd.id}</td>
-								<td class="text-center align-middle">${ppd.prodName}</td>
-								<td class="text-center align-middle"
-									style="word-wrap: break-word; max-width: 100px;">${ppd.formatPoint()}</td>
-															<td class="text-center align-middle" style="width: 300px"><img
-									src="${ppd.setupPointProductImage()}" width="80%" height="80%"></td>
-								<td class="text-center align-middle"><select
-									class="form-select" id="postYn-${ppd.id}"
-									onchange="updatePostStatus(${ppd.id})">
-										<option value="Y" ${ppd.postYn == 'Y' ? 'selected' : ''}>판매중</option>
-										<option value="N" ${ppd.postYn == 'N' ? 'selected' : ''}>판매중단</option>
-								</select></td>
+							<td class="text-center align-middle">${point.id}</td>
+								<td class="text-center align-middle">${point.userId}</td>
+								<td class="text-center align-middle">${point.pointName}</td>
+								<td class="text-center align-middle">${point.point} P</td>
+								<td class="text-center align-middle">${point.purchaseDate}</td>
+								<td class="text-center align-middle">${point.refundYn}</td>
+								<td class="text-center align-middle">${point.impUid}</td>
+								<td class="text-center align-middle">${point.merchantUid}</td>
+								
 								<td class="text-center align-middle"><a
 									href="/point-product/update/${ppd.id}" class="btn btn-primary">수정하기</a></td>
 							</tr>
@@ -133,9 +146,16 @@ th {
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="container wow fadeInUp">
-					<p class="text-center">등록된 제품이 없습니다.</p>
-				</div>
+				<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="alert alert-info" role="alert">
+                <strong>구매내역이 없습니다.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
 			</c:otherwise>
 		</c:choose>
 

@@ -85,10 +85,10 @@ $(document).ready(function() {
                     productList += '<h5 class="card-title">' + item.prodName + '</h5>';
                     productList += '<p class="card-text">' + item.price + '원</p>';
                     productList += '<sec:authorize access="isAnonymous()">';
-                    productList += '<a href="#" class="btn btn-primary purchase-btn">로그인 후 구매하기</a>';
+                    productList += '<button class="btn btn-primary purchase-btn" data-product-id="' + item.id + '">로그인 후 구매하기</button>';
                     productList += '</sec:authorize>';
                     productList += '<sec:authorize access="isAuthenticated()">';
-                    productList += '<a href="/point-shop/detail/' + item.id + '" class="btn btn-primary purchase-btn">구매하기</a>';
+                    productList += '<a href="/point-shop/detail/' + item.id + '" class="btn btn-primary purchase-btn-buy">구매하기</a>';
                     productList += '</sec:authorize>';
                     productList += '</div>';
                     productList += '</div>';
@@ -104,15 +104,25 @@ $(document).ready(function() {
         }
     });
 
- // 구매하기 버튼 클릭 이벤트 핸들러
+    // 구매하기 버튼 클릭 이벤트 핸들러
     $(document).on('click', '.purchase-btn', function() {
+        var isLoggedIn = <%= session.getAttribute("loggedIn") != null %>;
+        if (!isLoggedIn) {
+            window.alert('로그인 후 구매가 가능합니다.');
+            window.location.href = '/login';
+            return;
+        }
         var productId = $(this).data('product-id');
         console.log('구매하기 버튼 클릭 - 상품 ID:', productId);
         // 여기에서 해당 상품을 구매하는 로직을 처리할 수 있습니다.
-        window.location.href = '/point-shop/detail?id=' + productId;
+        if ($(this).hasClass('btn-primary')) {
+            window.location.href = '/point-shop/detail/' + productId;
+        }
     });
 });
+
 </script>
+
 
 
 </body>

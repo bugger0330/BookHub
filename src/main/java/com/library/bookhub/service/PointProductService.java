@@ -31,9 +31,7 @@ public class PointProductService {
 	@Autowired
 	private PointProductRepository pointProductRepository;
 
-	public PointProductService(PointProductRepository pointProductRepository) {
-		this.pointProductRepository = pointProductRepository;
-	}
+
 	
 	// 업로드 처리
 		@Transactional

@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>광고 목록</title>
+<title>포인트상품 목록</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -61,51 +61,55 @@ th {
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">광고 목록</h3>
+					<h3 class="display-5 text-white animated slideInDown">포인트상품 목록</h3>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	
 
 	<div class="container-xxl">
 		<div class="row justify-content-end mb-3">
 			<div class="col-auto">
-				<a href="/ad-setting" class="btn btn-dark">광고 추가하기</a>
+				<a href="/point-add" class="btn btn-dark">상품 추가하기</a>
 			</div>
 		</div>
-
+		
+	
 		<c:choose>
-			<c:when test="${not empty adList}">
+			<c:when test="${not empty productList}">
+			<div class="search mb-3">
+			<form action="/point-shop/admin/list" method="get">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="상품명 검색"
+						name="prodName">
+					<div class="input-group-append">
+						<button type="submit" class="btn btn-dark">검색</button>
+					</div>
+				</div>
+			</form>
+		</div>
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
 							<th>No</th>
-							<th>제목</th>
-							<th>URL</th>
-							<th>광고주명</th>
-							<th>이미지</th>
-							<th>광고여부</th>
+							<th>상품명</th>
+							<th>포인트</th>
+							<th>가격</th>
 							<th>setting</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="ad" items="${adList}">
+						<c:forEach var="product" items="${productList}">
 							<tr>
-								<td class="text-center align-middle">${ad.id}</td>
-								<td class="text-center align-middle">${ad.title}</td>
-								<td class="text-center align-middle"
-									style="word-wrap: break-word; max-width: 200px;">${ad.content}</td>
-								<td class="text-center align-middle">${ad.writer}</td>
-								<td class="text-center align-middle" style="width: 500px"><img
-									src="${ad.setupAdImage()}" width="80%" height="80%"></td>
-								<td class="text-center align-middle"><select
-									class="form-select" id="postYn-${ad.id}"
-									onchange="updatePostStatus(${ad.id})">
-										<option value="Y" ${ad.postYn == 'Y' ? 'selected' : ''}>광고중</option>
-										<option value="N" ${ad.postYn == 'N' ? 'selected' : ''}>광고중단</option>
-								</select></td>
+							<td class="text-center align-middle">${product.id}</td>
+								<td class="text-center align-middle">${product.prodName}</td>
+								<td class="text-center align-middle">${product.point} P</td>
+								<td class="text-center align-middle">${product.price} 원</td>
+								
 								<td class="text-center align-middle"><a
-									href="/ad/update/${ad.id}" class="btn btn-primary">수정하기</a></td>
+									href="/point-shop/update/${product.id}" class="btn btn-primary">수정하기</a></td>
 							</tr>
 
 						</c:forEach>
@@ -138,7 +142,7 @@ th {
     <div class="row">
         <div class="col-md-12 text-center">
             <div class="alert alert-info" role="alert">
-                <strong>업로드 된 광고가 없습니다. 광고를 업로드해주세요</strong>
+                <strong>등록된 포인트 상품이 없습니다. 상품을 등록해주세요</strong>
             </div>
         </div>
     </div>
@@ -150,33 +154,11 @@ th {
 
 	</div>
 	<%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
+	
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.dropdown-toggle').dropdown();
-		});
-		
-		
-		 function updatePostStatus(adId) {
-		        var postYn = $("#postYn-" + adId).val();
-		        $.ajax({
-		            type: "PUT",
-		            url: "/updatepost/" + adId,
-		            contentType: "application/json",
-		            data: JSON.stringify({ "post_yn": postYn }),
-		            success: function () {
-		                // 성공적으로 업데이트됐을 때 처리할 내용
-		                alert("광고 상태가 업데이트되었습니다.");
-		            },
-		            error: function () {
-		                // 오류 발생 시 처리할 내용
-		                alert("광고 상태를 업데이트하는 중 오류가 발생했습니다.");
-		            }
-		        });
-		    }
-	</script>
+	
 </body>
 </html>

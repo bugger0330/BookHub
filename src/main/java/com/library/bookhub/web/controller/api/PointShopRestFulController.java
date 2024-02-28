@@ -46,5 +46,7 @@ public class PointShopRestFulController {
 		}
 		return new ResponseEntity<>(pointShop, HttpStatus.OK);
 	}
+	
+	
 
 }
