@@ -3,7 +3,11 @@ package com.library.bookhub.web.controller.api;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,5 +35,19 @@ public class UserRestfulController {
     @GetMapping("/getid/{userId}")
     public User getUserInfo(@PathVariable String userId) {
     	return userService.getUserId(userId);
+    }
+    
+    // 유저 상세조회
+
+    @GetMapping("/findbyuser/{id}")
+    public ResponseEntity<User> getUserId(@PathVariable int id) {
+        // 서비스 상세조회 호출
+        Optional<User> optionalUser = userService.findById(id);
+        
+        if (optionalUser.isPresent()) {
+            return ResponseEntity.ok().body(optionalUser.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

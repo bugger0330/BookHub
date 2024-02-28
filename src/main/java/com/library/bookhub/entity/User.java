@@ -39,4 +39,6 @@ public class User {
 		String formaterNumber = df.format(point);
 		return formaterNumber + " 포인트";
 	}
+	
+	
 }

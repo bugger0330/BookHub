@@ -64,6 +64,12 @@ public class PageController {
 	public String paymentFailPage() {
 		return "pages/payment/fail";
 	}
+	
+	// 마이페이지
+	@GetMapping("/mypage")
+	public String myPage() {
+		return "pages/myPage/myPageDetail";
+	}
 
 	// ---------------- 관리자 페이지 ----------------//
 

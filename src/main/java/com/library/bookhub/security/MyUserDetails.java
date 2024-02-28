@@ -46,6 +46,11 @@ public class MyUserDetails implements UserDetails {
 	public String getUsername() {
 		return user.getUserName();
 	}
+	
+	
+	public Long getId() {
+		return user.getId();
+	}
 
 
 	@Override

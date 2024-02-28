@@ -8,6 +8,8 @@ import com.library.bookhub.web.dto.common.PageRes;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -108,5 +110,15 @@ public class UserController {
         return new RedirectView("/user/list");
     }
 
+    
+    // 마이페이지
+    @GetMapping("/mypage")
+    public String myPage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        // 현재 인증된 사용자 정보를 가져와서 모델에 추가합니다.
+        model.addAttribute("user", userDetails);
+        
+        // mypage.html에 해당하는 뷰를 반환합니다.
+        return "pages/myPage/myPageDetail";
+    }
 
 }

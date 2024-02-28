@@ -118,6 +118,7 @@
                   <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이페이지</a>
                     <div class="dropdown-menu fade-down m-0">
+                    <a href="/user/mypage" class="dropdown-item">나의 정보</a>
                         <a href="team.html" class="dropdown-item">도서 찜목록</a>
                         <a href="testimonial.html" class="dropdown-item">회원정보수정</a>
                        <a href="testimonial.html" class="dropdown-item">회원탈퇴</a>

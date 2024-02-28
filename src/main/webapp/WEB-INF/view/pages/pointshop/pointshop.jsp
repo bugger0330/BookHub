@@ -85,10 +85,10 @@ $(document).ready(function() {
                     productList += '<h5 class="card-title">' + item.prodName + '</h5>';
                     productList += '<p class="card-text">' + item.price + '원</p>';
                     productList += '<sec:authorize access="isAnonymous()">';
-                    productList += '<a href="/login"><button class="btn btn-primary purchase-btn">로그인 후 구매하기</button></a>';
+                    productList += '<a href="#" class="btn btn-primary purchase-btn">로그인 후 구매하기</a>';
                     productList += '</sec:authorize>';
                     productList += '<sec:authorize access="isAuthenticated()">';
-                    productList += '<a href="/point-shop/detail/' + item.id + '"><button class="btn btn-primary purchase-btn">구매하기</button></a>';
+                    productList += '<a href="/point-shop/detail/' + item.id + '" class="btn btn-primary purchase-btn">구매하기</a>';
                     productList += '</sec:authorize>';
                     productList += '</div>';
                     productList += '</div>';
@@ -104,7 +104,7 @@ $(document).ready(function() {
         }
     });
 
-    // 구매하기 버튼 클릭 이벤트 핸들러
+ // 구매하기 버튼 클릭 이벤트 핸들러
     $(document).on('click', '.purchase-btn', function() {
         var productId = $(this).data('product-id');
         console.log('구매하기 버튼 클릭 - 상품 ID:', productId);
@@ -112,8 +112,8 @@ $(document).ready(function() {
         window.location.href = '/point-shop/detail?id=' + productId;
     });
 });
-
 </script>
+
 
 </body>
 </html>
