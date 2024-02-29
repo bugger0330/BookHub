@@ -187,10 +187,5 @@ img {
 	<!-- Bootstrap Bundle JS -->
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.dropdown-toggle').dropdown();
-		});
-	</script>
 </body>
 </html>

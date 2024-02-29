@@ -95,8 +95,8 @@
 </div>
 
 <%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
-
-<script>
+<script src="/js/admin/pointProductUpdate.js"></script>
+<!-- <script>
 $(document).ready(function() {
     // 수정 버튼 클릭 시
     $("#editBtn").click(function() {
@@ -140,6 +140,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
+ -->
 </body>
 </html>

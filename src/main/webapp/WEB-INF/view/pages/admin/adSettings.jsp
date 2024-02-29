@@ -73,8 +73,6 @@
         </div>
     </div>
     <%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
-    <script>
-        // JavaScript 코드를 추가할 수 있습니다.
-    </script>
+
 </body>
 </html>
