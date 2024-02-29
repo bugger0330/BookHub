@@ -18,7 +18,7 @@ public class ShareBookBorrowDto {
 	
 	public ShareBookBorrow toEntity() {
 		return ShareBookBorrow.builder()
-				.bookId(bookId)
+				.bookNo(bookId)
 				.userName(userName)
 				.borrowDay(borrowDay)
 				.wdate(wdate)

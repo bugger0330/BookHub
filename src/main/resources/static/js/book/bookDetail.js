@@ -189,7 +189,7 @@ function buttonClickEvent(bookId, bookEntity){
 	    setTimeout(function() {
 		    createTag.print();
 	    	//createTag.close();
-		}, 1000);
+		}, 100);
 
 
 	}

@@ -7,7 +7,7 @@ const calcPrice = document.querySelector(".book--detail--calc-price");
 const borrowDay = document.querySelector(".book--detail--order-date");
 let username = "ddd";
 //let username = "dddd1111";
-
+let masterUsername = "";
 load();
 function load(){
 	calcPrice.textContent = "100";
@@ -21,6 +21,7 @@ function load(){
 		success : function(data){
 			if(data != null){
 				innerFun(data);
+				masterUsername = data.userName;
 			}
 		},
 		error : function(){
@@ -119,9 +120,7 @@ function buttonClickEvent(bookId, bookEntity){
 					},
 					success : function(data){
 						if(data == true){
-							alert("대출완료!");
-							//location.replace = `/share/detail/${addressNum}`;
-							// 마이포인트 계산
+							payment(Number(calcPrice.textContent));
 						}else{
 							alert("대출실패!");
 						}
@@ -134,6 +133,29 @@ function buttonClickEvent(bookId, bookEntity){
 		}
 	}
 	
+	function payment(point){
+		$.ajax({
+			type : "put",
+			url : "/share/payment",
+			data : {
+				point : point,
+				masterUsername : masterUsername,
+				userName : username
+			},
+			success : function(data){
+				if(data == true){
+					alert("대출완료!");
+					window.location.replace = `/share/detail/${addressNum}`;
+				}else{
+					alert("대출실패!");
+				}
+			},
+			error : function(){
+				alert("에러");
+			}
+		});
+	}
+	
 	//=========================
 	
 	borrowBtns[1].onclick = () => { // 반납하기
@@ -142,15 +164,15 @@ function buttonClickEvent(bookId, bookEntity){
 			// 북 테이블에 상태값도 변경해야함
 			$.ajax({
 				type : "delete",
-				url : "/book/borrow",
+				url : "/share/borrow-return",
 				data : {
 					bookId : bookId,
-					username : username
+					userName : username
 				},
 				success : function(data){
 					if(data == true){
 						alert("반납완료!");
-						location.replace = `/book/detail/${addressNum}`;
+						location.replace = `/share/detail/${addressNum}`;
 					}else{
 						alert("반납실패!");
 					}
@@ -244,7 +266,7 @@ function buttonClickEvent(bookId, bookEntity){
 	    setTimeout(function() {
 		    createTag.print();
 	    	//createTag.close();
-		}, 1000);
+		}, 100);
 
 
 	}
