@@ -66,6 +66,7 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
             userEntity.setPassword(attributes.getPassword());
             userEntity.setName(attributes.getNickname());
             userEntity.setEmail(attributes.getEmail());
+            userEntity.setPhone(attributes.getPhone());
             userEntity.setRole("ROLE_USER");
 
             // 사용자를 등록한 후에 즉시 userEntity에 할당

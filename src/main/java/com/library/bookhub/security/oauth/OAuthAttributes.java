@@ -43,11 +43,13 @@ public class OAuthAttributes {
         if ("naver".equals(registrationId)) {
         	return ofNaver(userNameAttributeName, attributes);
         }
-        // 다른 등록 ID를 처리할 필요가 있으면 여기서 처리합니다.
+        if ("google".equals(registrationId)) {
+        	return ofNaver(userNameAttributeName, attributes);
+        }
         return null;
     }
     
-    // kakao
+    // kakao 데이터
     private static OAuthAttributes ofKakao(String userNameAttributeName,Map<String, Object> attributes) {
     	
     	log.info("=========== OAuthAttributes ===========");
@@ -87,29 +89,44 @@ public class OAuthAttributes {
                 .build();
     }
     
-    // naver
+    // naver 데이터
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
         log.info("=========== OAuthAttributes ===========");
         log.info("OAuthAttributes attributes id : " + attributes);
         log.info("=========== end ===========");
-
-        String email = (String) attributes.get("email");
-        String name = (String) attributes.get("name");
-        String phone = (String) attributes.get("phone");
+        
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+        
+        log.info("=========== response  ===========");
+	    log.info("response :"+response);
+	    log.info("=========== end ===========");
+        
+        String email = (String) response.get("email");
+        String name = (String) response.get("name");
+        String phone = (String) response.get("mobile");
 
         String username = "naver_" + email;
         String password = "asd13242342"; // 임시 패스워드 설정
 
-
-        return OAuthAttributes.builder()
-                .email(email)
-                .nickname(name) // 네이버에서는 이름을 닉네임으로 사용할 수 있음
-                .username(username)
-                .password(password)
-                .attributes(attributes)
-                .nameAttributeKey(userNameAttributeName)
-                .phone(phone)
-                .build();
+        log.info("=========== naver data  ===========");
+	    log.info("email :"+email);
+	    log.info("name :"+name);
+	    log.info("phone :"+phone);
+	    log.info("username :"+username);
+	    log.info("password :"+password);
+	    log.info("=========== end ===========");
+        
+        
+		  return OAuthAttributes.builder()
+				  .email(email)
+				  .nickname(name)
+				  .username(username) 
+				  .password(password) 
+				  .attributes(attributes)
+				  .nameAttributeKey(userNameAttributeName)
+				  .phone(phone) 
+				  .build();
+		 
     }
     
 }

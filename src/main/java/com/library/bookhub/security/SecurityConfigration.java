@@ -129,9 +129,8 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	public ClientRegistrationRepository clientRegistrationRepository() {
 	    return new InMemoryClientRegistrationRepository(
 	        kakaoClientRegistration(),
+	        googleClientRegistration(),
 	        naverClientRegistration()
-	        //googleClientRegistration(),
-	        
 	    );
 	}
 	
@@ -153,12 +152,14 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	// 구글 소셜 로그인
 	private ClientRegistration googleClientRegistration() {
 	    return ClientRegistration.withRegistrationId("google")
-	            .clientId("your-google-client-id")
-	            .clientSecret("your-google-client-secret")
-	            .redirectUri("your-google-redirect-uri")
+	            .clientId("683257437244-25rfuj1rvvk8tbl5tt1qa2n43in7g65u.apps.googleusercontent.com")
+	            .clientSecret("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")
+	            .redirectUri("http://localhost/login/oauth2/code/google")
+	            .scope("profile,email")
 	            .authorizationUri("https://accounts.google.com/o/oauth2/auth")
 	            .tokenUri("https://www.googleapis.com/oauth2/v4/token")
 	            .userInfoUri("https://www.googleapis.com/oauth2/v3/userinfo")
+	            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 	            .userNameAttributeName(IdTokenClaimNames.SUB)
 	            .clientName("Google")
 	            .build();
@@ -168,7 +169,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	private ClientRegistration naverClientRegistration() {
 	    return ClientRegistration.withRegistrationId("naver")
 	            .clientId("BIr6OZUn4vkMLYBrGi7P")
-	            .clientSecret(null)
+	            .clientSecret("ko5_hFFCGV")
 	            .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
 	            .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
 	            .redirectUri("http://localhost/login/oauth2/code/naver")
@@ -176,7 +177,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	            .authorizationUri("https://nid.naver.com/oauth2.0/authorize")
 	            .tokenUri("https://nid.naver.com/oauth2.0/token")
 	            .userInfoUri("https://openapi.naver.com/v1/nid/me")
-	            .userNameAttributeName("responce")
+	            .userNameAttributeName("response")
 	            .clientName("Naver")
 	            .build();
 	}
