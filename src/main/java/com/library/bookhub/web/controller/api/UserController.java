@@ -8,6 +8,8 @@ import com.library.bookhub.web.dto.common.PageRes;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -121,4 +124,13 @@ public class UserController {
         return "pages/myPage/myPageDetail";
     }
 
+    @GetMapping("/principal")
+    @ResponseBody
+    public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal UserDetails userDetails) {
+    	String username = "";
+    	if(userDetails != null) {
+    		username = userDetails.getUsername();
+    	}
+    	return new ResponseEntity<String>(username, HttpStatus.OK);
+    }
 }
