@@ -7,6 +7,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
@@ -21,7 +24,8 @@ import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
+import org.springframework.security.web.firewall.DefaultHttpFirewall;
+import org.springframework.security.web.firewall.HttpFirewall;
 import com.library.bookhub.security.oauth.Oauth2UserService;
 
 @Configuration
@@ -101,8 +105,21 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .requestMatchers("/api/**").permitAll()
                     .requestMatchers("/sc-product/**").permitAll()
                     .requestMatchers("/point-product/**").permitAll()
-                    .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll());
-		
+            	    .requestMatchers("/admin").hasRole("ADMIN") // "/admin" 경로에 대한 권한 설정
+            	    .requestMatchers("/**").permitAll() // 모든 경로에 대한 접근 허용
+            	    .requestMatchers("/h2-console/**").permitAll()
+            	    .requestMatchers(PathRequest.toH2Console()).permitAll()
+            	    .requestMatchers("/user/**").permitAll()
+            	    .requestMatchers("/club/**").permitAll()
+            	    .requestMatchers("/ad/**").permitAll()
+            	    .requestMatchers("/myPage/**").permitAll()
+            	    .requestMatchers("/payment/**").permitAll()
+            	    .requestMatchers("/product-category/**").permitAll()
+            	    .requestMatchers("/api/**").permitAll()
+            	    .requestMatchers("/sc-product/**").permitAll()
+            	    .requestMatchers("/point-product/**").permitAll()
+            	    .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll());
+
 		// 사용자 인증처리 컴포넌트 등록
 		http.userDetailsService(service);
 		
@@ -182,4 +199,21 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	            .build();
 	}
 	
+	
+	// 
+	public void configure(WebSecurity web) throws Exception {
+	    web.httpFirewall(defaultHttpFirewall());
+	}
+	 
+	// 슬래시 적용
+	@Bean
+	public HttpFirewall defaultHttpFirewall() {
+	    return new DefaultHttpFirewall();
+	    
+	}
+
+	
+	
+	
 }
+

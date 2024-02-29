@@ -7,11 +7,11 @@
 
 	<insert id="insert">
 
-		insert into bh_point_product(prodName, price, point,
+		insert into bh_point_product(prodName, point,
 		originFileName,
 		uploadFileName, post_yn, createdAt)
 		values(#{prodName},
-		#{price}, #{point}, #{originFileName}, #{uploadFileName},
+	 #{point}, #{originFileName}, #{uploadFileName},
 		#{postYn},
 		now())
 
@@ -44,7 +44,6 @@
 		UPDATE bh_point_product
 		SET
 		prodName = #{prodName},
-		price = #{price},
 		point = #{point},
 		originFileName = #{originFileName},
 		uploadFileName = #{uploadFileName},

@@ -1,0 +1,104 @@
+.book--search--main--div{
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.book--search--box{
+    border: 1px solid black;
+    display: flex;
+    justify-content:space-between;
+	padding: 10px;
+	width: 750px;
+	height: 68px;
+	font-size: 30px;
+}
+
+.book--search--select{
+    margin-right: 20px;
+    width: 125px;
+}
+
+.select option{
+    padding: 5px;
+    
+}
+
+.book--search--select--input{
+    border: none;
+    border-bottom: 1px solid black;
+    margin-right: 20px;
+    width: 445px;
+}
+
+/* ----------------------------------------------------- */
+
+.book--search--inner--box{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+	flex-flow:row wrap;
+}
+
+.book--search--book--box{
+	width: 245px;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.book--search--image--box{
+	padding: 5px;
+	margin-bottom: 10px; 
+}
+
+.book--search--book--image{
+	width: 200px;
+	border: 1px solid black;
+}
+
+.book--search--title--box{
+	text-align: center;
+	width: 220px;
+}
+
+.book--search--book--title{
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.book--search--nothing{
+	margin-top: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

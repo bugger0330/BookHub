@@ -135,9 +135,15 @@ th {
 			</c:when>
 			<c:otherwise>
 				<div class="container">
-				<img  src="/img/경고.png">
-					<p class="text-center">업로드된 광고가 없습니다.</p>
-				</div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="alert alert-info" role="alert">
+                <strong>업로드 된 광고가 없습니다. 광고를 업로드해주세요</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
 			</c:otherwise>
 		</c:choose>
 

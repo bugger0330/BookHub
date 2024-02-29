@@ -20,6 +20,10 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 포인트 상품 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class PointProductService {
@@ -27,16 +31,13 @@ public class PointProductService {
 	@Autowired
 	private PointProductRepository pointProductRepository;
 
-	public PointProductService(PointProductRepository pointProductRepository) {
-		this.pointProductRepository = pointProductRepository;
-	}
+
 	
 	// 업로드 처리
 		@Transactional
 		public void uploadPointProduct(PointProductFormDto dto) {
 			PointProduct pointProduct = PointProduct.builder()
 					.prodName(dto.getProdName())
-					.price(dto.getPrice())
 					.point(dto.getPoint())
 					.postYn(dto.getPostYn())
 					.originFileName(dto.getOriginFileName())

@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 배너 광고 RestFul 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @RestController
 public class BannerAdRestFulController {

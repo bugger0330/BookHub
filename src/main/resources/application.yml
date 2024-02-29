@@ -14,29 +14,47 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: asd1234
+  datasource:
+    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: asd1234
   
-  datasource: # DB 설정
-    url: jdbc:h2:mem:testdb;MODE=MySQL
-    driver-class-name: org.h2.Driver
-    username: user # 유저 이름
-    password: # 비밀번호 (비워두면 비밀번호 X)
-  sql:
-    init: # 초기 sql 파일 읽기
-      schema-locations: # 스키마 (테이블 생성 등)
-        - classpath:db/schema.sql
-      data-locations: # 샘플 데이터
-        - classpath:db/data.sql
-  h2:
-    console:
-      enabled: true
-  output:
-    ansi:
-      enabled: always
+#  datasource: # DB 설정
+#    url: jdbc:h2:mem:testdb;MODE=MySQL
+#    driver-class-name: org.h2.Driver
+#    username: user # 유저 이름
+#    password: # 비밀번호 (비워두면 비밀번호 X)
+#  sql:
+#    init: # 초기 sql 파일 읽기
+#      schema-locations: # 스키마 (테이블 생성 등)
+#        - classpath:db/schema.sql
+#      data-locations: # 샘플 데이터
+#        - classpath:db/data.sql
+#  h2:
+#    console:
+#      enabled: true
+#  output:
+#    ansi:
+#      enabled: always
+      
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: leeji34230@gmail.com
+    password: ylwjzhfkwyadmwfr
+    properties: 
+      mail:
+        smtp:
+          auth: true #SMTP 서버에 인증 필요한 경우 true
+          starttls: #SMTP 서버가 TLS를 사용하여 안전한 연결을 요구하는 경우 true
+            enble: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+      auth-code-expiration-millis: 1800000  # 이메일 인증 코드 만료 시간 - 30분 설정     
+ 
   profiles:
     include: oauth
   security:
@@ -71,28 +89,6 @@ spring:
             authorization-grant-type: authorization_code
             client-authentication-method: POST
             client-name: naver
-            
-            
-        
-
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: leeji34230@gmail.com
-    password: ylwjzhfkwyadmwfr
-    properties: 
-      mail:
-        smtp:
-          auth: true #SMTP 서버에 인증 필요한 경우 true
-          starttls: #SMTP 서버가 TLS를 사용하여 안전한 연결을 요구하는 경우 true
-            enble: true
-            required: true
-          connectiontimeout: 5000
-          timeout: 5000
-          writetimeout: 5000
-      auth-code-expiration-millis: 1800000  # 이메일 인증 코드 만료 시간 - 30분 설정
-
-
 mybatis:
   mapper-locations:
     - classpath:mapper/**.xml
@@ -109,5 +105,6 @@ logging:
         security.oauth2: DEBUG
 
 
+
 pagination:
-  size: 10
+  size: 10            

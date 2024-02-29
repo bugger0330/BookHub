@@ -3,6 +3,10 @@ package com.library.bookhub.web.dto;
 
 import lombok.Data;
 
+/**
+ * 유저 등록 폼 DTO
+ * @Author : 이준혁
+ */
 @Data
 public class UserFormDto {
 

@@ -8,6 +8,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 포인트 상품 엔티티(관리자)
+ * @Author : 이준혁
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +20,6 @@ public class PointProduct {
 
 	private Integer id;
 	private String prodName;
-	private Integer price;
 	private Integer point;
 	private String originFileName;
 	private String uploadFileName;
@@ -27,20 +30,12 @@ public class PointProduct {
 		return uploadFileName == null ? "이미지가 없습니다." : "/images/upload/" + uploadFileName;
 	}
 
-	// 포메터 기능(금액)
-	public String formatBalance() {
-		// 1000 -> 1,000
-		DecimalFormat df = new DecimalFormat("#,###");
-		String formaterNumber = df.format(price);
-		return formaterNumber + "원";
-	}
 	
 	// 포메터 기능(금액)
-		public String formatBalancePoint() {
-			// 1000 -> 1,000
-			DecimalFormat df = new DecimalFormat("#,###");
-			String formaterNumber = df.format(point);
-			return formaterNumber + "포인트";
-		}
-
+	public String formatPoint() {
+		// 1000 -> 1,000
+		DecimalFormat df = new DecimalFormat("#,###");
+		String formaterNumber = df.format(point);
+		return formaterNumber + " 포인트";
+	}
 }

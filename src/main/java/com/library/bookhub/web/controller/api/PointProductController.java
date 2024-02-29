@@ -21,18 +21,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.library.bookhub.entity.BannerAd;
 import com.library.bookhub.entity.PointProduct;
 import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.service.PointProductService;
 import com.library.bookhub.utils.Define;
-import com.library.bookhub.web.dto.BannerAdFormDto;
 import com.library.bookhub.web.dto.PointProductFormDto;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 포인트 상품 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @Controller
 @RequestMapping("/point-product")
@@ -56,7 +58,6 @@ public class PointProductController {
 		// 페이징된 상품 목록 가져오기
 		PageRes<PointProduct> pageRes = pointProductService.getPointProductWithPaging(pageReq, prodName);
 		List<PointProduct> ppdList = pageRes.getContent();
-		System.out.println("리스트" + ppdList);
 
 		// 페이징 정보를 모델에 추가
 		model.addAttribute("productList", ppdList);
@@ -76,9 +77,6 @@ public class PointProductController {
 		// 유효성 검사
 		if (dto.getProdName() == null || dto.getProdName().isEmpty()) {
 			throw new CustomRestFulException("상품명을 입력하세요", HttpStatus.BAD_REQUEST);
-		}
-		if (dto.getPrice() == null || dto.getPrice() < 0) {
-			throw new CustomRestFulException("정확한 금액을 입력하세요", HttpStatus.BAD_REQUEST);
 		}
 		if (dto.getProductImage() == null || dto.getProductImage().isEmpty()) {
 			throw new CustomRestFulException("이미지 업로드는 필수입니다.", HttpStatus.BAD_REQUEST);

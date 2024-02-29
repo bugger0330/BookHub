@@ -52,10 +52,7 @@
                             <div id="titleFeedback" class="invalid-feedback"></div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="content">가격</label>
-                            <input type="text" class="form-control" id="price" name="price" value="${product.price}" required>
-                        </div>
+                      
                         <div class="form-group">
                             <label for="name">포인트</label>
                             <input type="text" class="form-control" id="point" name="point" value="${product.point}" required>

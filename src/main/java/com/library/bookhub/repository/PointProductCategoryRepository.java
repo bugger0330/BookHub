@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.PointProductCategory;
 
+/**
+ * 포인트 상품 카테고리 레포지토리
+ * @Author : 이준혁
+ */
 @Mapper
 public interface PointProductCategoryRepository {
 	

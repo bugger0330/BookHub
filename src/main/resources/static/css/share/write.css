@@ -1,0 +1,52 @@
+.share--main-div{
+    width: 90%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.share--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.share--header span{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.share--body{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.share--input-box{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+.share--book-input{
+    width: 99%;
+    margin-top: 5px;
+}
+
+.share--btn{
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    background-color: gray;
+    cursor: pointer;
+}

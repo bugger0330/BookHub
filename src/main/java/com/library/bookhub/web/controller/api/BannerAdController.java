@@ -25,6 +25,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * 배너 광고 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @Controller
 @RequestMapping("/ad")

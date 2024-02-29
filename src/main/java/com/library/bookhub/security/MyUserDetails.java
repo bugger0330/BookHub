@@ -76,6 +76,11 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 	public String getUsername() {
 		return user.getUserName();
 	}
+	
+	
+	public Long getId() {
+		return user.getId();
+	}
 
 	// 계정 만료 여부
 	@Override

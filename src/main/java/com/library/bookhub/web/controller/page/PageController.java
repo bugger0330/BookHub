@@ -44,8 +44,52 @@ public class PageController {
 	public String adInquiryPage() {
 		return "pages/openArea/advertisingInquiry";
 	}
+	
+	// 포인트샵
+	@GetMapping("/point-shop")
+	public String pointShopPage() {
+		return "pages/pointshop/pointshop";
+	}
+	
+	// 포인트샵 상세페이지
+	@GetMapping("/point-shop/payment")
+	public String pointShopDetailPage() {
+		return "pages/pointshop/pointshopdetail";
+	}
+	
+	// 결제페이지 - 결제성공
+	@GetMapping("/success")
+	public String paymentSuccessPage() {
+		return "pages/payment/paymentSuccess";
+	}
+
+	// 결제페이지 - 결제실패
+	@GetMapping("/fail")
+	public String paymentFailPage() {
+		return "pages/payment/fail";
+	}
+	
+	// 마이페이지
+	@GetMapping("/mypage")
+	public String myPage() {
+		return "pages/myPage/myPageDetail";
+	}
+	
+	
+	// 테스트 페이지
+	@GetMapping("/test")
+	public String testPage() {
+		return "pages/admin/test";
+	}
 
 	// ---------------- 관리자 페이지 ----------------//
+
+	// 접근거부 페이지
+	@GetMapping("/access-denied")
+	public String deninedPage() {
+		return "pages/error/access-denied";
+	}
+
 	// 어드민 페이지
 	@GetMapping("/admin")
 	public String adminPage() {
@@ -100,31 +144,21 @@ public class PageController {
 		return "pages/payment/refund";
 	}
 
-	// 결제페이지 - 결제성공
-	@GetMapping("/success")
-	public String paymentSuccessPage() {
-		return "pages/payment/paymentSuccess";
-	}
 
-	// 결제페이지 - 결제실패
-	@GetMapping("/fail")
-	public String paymentFailPage() {
-		return "pages/payment/fail";
-	}
 
-	// 구독상품 - (관리자)구독상품전체조회
+	// 구독상품 - (관리자)포인트 상품 전체조회
 	@GetMapping("/subproduct")
 	public String subproductPage() {
 		return "pages/admin/subproductList";
 	}
 
-	// 구독상품 - (관리자)구독상품추가
-	@GetMapping("/subproduct-add")
-	public String subproductAddPage() {
-		return "pages/admin/subproductAdd";
+	// 구독상품 - (관리자)포인트 상품 추가
+	@GetMapping("/point-add")
+	public String pointAddPage() {
+		return "pages/admin/userPointProductBuyAdd";
 	}
-	
-	// 포인트상품 - (관리자)포인트상품추가
+
+	// 포인트상품 - (관리자)먹거리상품추가
 	@GetMapping("/point-product-add")
 	public String pointProductAddPage() {
 		return "pages/admin/pointProductAdd";

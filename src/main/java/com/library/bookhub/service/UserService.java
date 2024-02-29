@@ -5,14 +5,20 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.library.bookhub.entity.User;
+import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.repository.UserRepository;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 유저 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class UserService {
@@ -24,6 +30,28 @@ public class UserService {
     // 총 회원 수 조회 메서드
     public long getTotalUserCount() {
         return userRepository.getTotalCount();
+    }
+    
+    // 유저 아이디로 회원찾기
+    public User getUserId(String userId) {
+    	return userRepository.findByUserId(userId);
+    }
+    
+    
+    @Transactional
+    public void updateUserPoint(String userId, int newPoint) {
+        // 유저 정보 조회
+        User user = userRepository.findByUserId(userId);
+        if (user != null) {
+            // 유저의 포인트를 업데이트
+            user.setPoint(newPoint);
+            userRepository.update(user);
+            log.info("User point updated successfully for user with ID: {}", userId);
+        } else {
+            log.error("User with ID {} not found", userId);
+            // 유저를 찾을 수 없는 경우 예외 처리 또는 적절한 방법으로 처리
+            
+        }
     }
 
     // 페이징된 유저 목록 조회

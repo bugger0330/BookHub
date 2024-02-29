@@ -2,6 +2,8 @@ package com.library.bookhub.entity;
 
 import java.sql.Timestamp;
 
+import com.library.bookhub.utils.TimeUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +15,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Club {
 
+	
+	
 	private Integer id;
 	private String userName;
 	private Integer clubCate;
@@ -43,5 +47,16 @@ public class Club {
 		this.hcApply += 1;
 	}
 	
-	// status값 3자리 남을때 마감임박으로 변경하기
+	// 신청인원수 수정
+	public void minusHcApply() {
+		this.hcApply -= 1;
+	}
+	
+	// 개설날짜 포멧설정
+	public String formatCreatedAt() {
+		return TimeUtils.dateToString(rdate);
+	}
+	
+	
+	
 }
