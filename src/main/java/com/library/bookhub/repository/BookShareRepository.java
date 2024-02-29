@@ -23,6 +23,7 @@ public interface BookShareRepository {
 	BookShare shareBookInfo(int bookId);
 
 	int borrowShareBook(BookShare book);
+	int borrowShareBookEnd(BookShare book);
 
 	User getUser(String userName);
 

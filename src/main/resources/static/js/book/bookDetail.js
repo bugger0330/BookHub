@@ -166,6 +166,25 @@ function buttonClickEvent(boardTd, bookEntity){
 							});
 						}
 					}
+				}else{
+					// 그냥 반납기능
+					$.ajax({
+							type : "delete",
+							url : "/book/borrow",
+							data : {
+								bookId : Number(boardTd[0].textContent),
+								username : memberId
+							},
+							success : function(data){
+								if(data == true){
+									alert("반납이 완료되었습니다.");
+									location.href = `/book/detail/${addressNum}`;
+								}
+							},
+							error : function(){
+								alert("에러");
+							}
+						});
 				}
 				
 				function lateCalc(lateDays){

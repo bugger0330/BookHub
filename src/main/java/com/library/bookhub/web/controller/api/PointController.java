@@ -29,7 +29,6 @@ public class PointController {
 	@PostMapping("/get")
 	public ResponseEntity<?> getMyPoint(String userName){
 		User user = pointService.getMyPoint(userName);
-		System.out.println("내포인트===========" + user.getPoint());
 		return new ResponseEntity<Integer>(user.getPoint(), HttpStatus.OK);
 	}
 	

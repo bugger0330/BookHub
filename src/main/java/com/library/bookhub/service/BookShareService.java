@@ -166,7 +166,7 @@ public class BookShareService {
 		BookShare book = repository.shareBookInfo(dto.getBookId());
 		if(book != null) {
 			book.setStatus("대출 가능");
-			int bookResult = repository.borrowShareBook(book);
+			int bookResult = repository.borrowShareBookEnd(book);
 			if(bookResult == 0) {
 				throw new RuntimeException("bh_book_share에 대출정보 수정 실패!");
 			}

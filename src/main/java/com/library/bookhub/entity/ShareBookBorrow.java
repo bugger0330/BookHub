@@ -11,8 +11,11 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ShareBookBorrow {
 
-	private int bookNo;
+	private int id;
 	private String userName;
+	private String brComplete;
+	private String brDate;
 	private int borrowDay;
-	private String wdate;
+	private String returnDate;
+	private int bookNo;
 }

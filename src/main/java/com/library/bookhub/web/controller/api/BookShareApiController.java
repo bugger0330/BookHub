@@ -52,12 +52,14 @@ public class BookShareApiController {
 	@GetMapping("/info/{id}")
 	public ResponseEntity<?> getShareBook(@PathVariable int id){
 		BookShare bookShare = service.getShareBook(id);
+		if((bookShare.getWdate() == null)) {
+			bookShare.setWdate("");
+		}
 		return new ResponseEntity<BookShare>(bookShare, HttpStatus.OK);
 	}
 	
 	@PostMapping("/borrow")
 	public ResponseEntity<?> shareBookBorrow(ShareBookBorrowDto dto){
-		System.out.println(dto);
 		boolean result = service.shareBookBorrow(dto);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
