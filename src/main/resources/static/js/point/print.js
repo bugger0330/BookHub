@@ -4,11 +4,11 @@ const myPoint = document.querySelector(".point--print--mypoint");
 const priceAll = document.querySelector(".point--print--allpoint");
 const printBtn = document.querySelector(".point--print--print-btn");
 
-let username = "user1";
+//let username = "user1";
 
 load();
 function load(){
-	if(username == ""){
+	if(memberId == ""){
 		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
 		
 	}
@@ -19,7 +19,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
@@ -68,6 +68,10 @@ function countPlus(){
 }
 
 printBtn.onclick = () => {
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		window.location.href = "/login";
+	}
 	if(Number(myPoint.textContent) < Number(priceAll.textContent)){
 		alert("포인트가 부족합니다!");
 		return;
@@ -79,7 +83,7 @@ printBtn.onclick = () => {
 		productPrice : 60,
 		productCount : Number(printAllCount.textContent),
 		allProductPrice : Number(priceAll.textContent),
-		userName : username,
+		userName : memberId,
 		orderId : -1,
 		refund_type : "환불불가"
 	};

@@ -47,9 +47,8 @@
 
 	<update id="borrowShareBook">
 		update bh_book_share set
-			borrow = #{borrow},
 			status = #{status},
-			wdate = #{wdate}
+			wdate = null
 		where id = #{id};
 	</update>
 	

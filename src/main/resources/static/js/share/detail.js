@@ -5,8 +5,6 @@ const modalTable = document.querySelector(".modal--table");
 const mypoint = document.querySelector(".book--detail--mypoint");
 const calcPrice = document.querySelector(".book--detail--calc-price");
 const borrowDay = document.querySelector(".book--detail--order-date");
-let username = "ddd";
-//let username = "dddd1111";
 let masterUsername = "";
 load();
 function load(){
@@ -33,7 +31,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
@@ -103,8 +101,8 @@ function buttonClickEvent(bookId, bookEntity){
 	
 	//=========================
 	borrowBtn.onclick = () => {
-		if(username != ""){
-			if(username == bookEntity.userName){
+		if(memberId != ""){
+			if(memberId == bookEntity.userName){
 				alert("본인의 책은 대출이 불가능합니다.");
 				return;
 			}else{
@@ -115,7 +113,7 @@ function buttonClickEvent(bookId, bookEntity){
 					url : "/share/borrow",
 					data : {
 						bookId : bookId,
-						userName : username,
+						userName : memberId,
 						borrowDay : borrowDay.value,
 					},
 					success : function(data){
@@ -130,6 +128,9 @@ function buttonClickEvent(bookId, bookEntity){
 					}
 				});
 			}
+		}else{
+			alert("로그인이 필요한 서비스 입니다.");
+			window.location.href = "/login";
 		}
 	}
 	
@@ -140,7 +141,7 @@ function buttonClickEvent(bookId, bookEntity){
 			data : {
 				point : point,
 				masterUsername : masterUsername,
-				userName : username
+				userName : memberId
 			},
 			success : function(data){
 				if(data == true){
@@ -159,7 +160,7 @@ function buttonClickEvent(bookId, bookEntity){
 	//=========================
 	
 	borrowBtns[1].onclick = () => { // 반납하기
-		if(username != ""){
+		if(memberId != ""){
 			// 테이블명 : bh_book_borrow(대출) - 대출정보 반납
 			// 북 테이블에 상태값도 변경해야함
 			$.ajax({
@@ -167,7 +168,7 @@ function buttonClickEvent(bookId, bookEntity){
 				url : "/share/borrow-return",
 				data : {
 					bookId : bookId,
-					userName : username
+					userName : memberId
 				},
 				success : function(data){
 					if(data == true){

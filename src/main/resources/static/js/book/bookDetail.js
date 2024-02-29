@@ -2,10 +2,10 @@ const setImg = document.querySelector(".book--detail--img");
 const bookInfos = document.querySelectorAll(".book--detail--info--content");
 const tbody = document.querySelector(".book--detail--tbody");
 const modalTable = document.querySelector(".modal--table");
+let addressNum = location.pathname.split("/")[3];
 
 load();
 function load(){
-	let addressNum = location.pathname.split("/")[3];;
 	console.log(addressNum);
 	$.ajax({
 		type : "get",
@@ -49,14 +49,14 @@ function innerFun(data){
 
 // 일단 로그인 된 상태로 가정하고 대출하기, 반납하기 기능 구현함.
 // 회원정보 가져와서 만약 빌린 책이면 대출하기 버튼은 숨김 - 반대도 가능해야함
-let username = "abc123";// 세션에서 유저정보 가져왔다고 가정하고
+//let username = "abc123";// 세션에서 유저정보 가져왔다고 가정하고
 
 function buttonClickEvent(bookId, bookEntity){
 	const borrowBtns = document.querySelectorAll(".book--detail--button");
 	
 	// 대출, 반납버튼을 숨기게 되면 인덱스로 클릭이벤트 처리 할 수 없음!
 	borrowBtns[0].onclick = () => { // 대출하기
-		if(username != ""){
+		if(memberId != ""){
 			// 테이블명 : bh_book_borrow(대출) - 대출정보 등록
 			// 북 테이블에 상태값도 변경해야함
 			$.ajax({
@@ -64,7 +64,7 @@ function buttonClickEvent(bookId, bookEntity){
 				url : "/book/borrow",
 				data : {
 					bookId : bookId,
-					username : username
+					username : memberId
 				},
 				success : function(data){
 					if(data == true){
@@ -78,11 +78,14 @@ function buttonClickEvent(bookId, bookEntity){
 					alert("에러");
 				}
 			});
+		}else{
+			alert("로그인이 필요한 서비스 입니다.");
+			window.location.href = "/login";
 		}
 	}
 	
 	borrowBtns[1].onclick = () => { // 반납하기
-		if(username != ""){
+		if(memberId != ""){
 			// 테이블명 : bh_book_borrow(대출) - 대출정보 반납
 			// 북 테이블에 상태값도 변경해야함
 			$.ajax({
@@ -90,7 +93,7 @@ function buttonClickEvent(bookId, bookEntity){
 				url : "/book/borrow",
 				data : {
 					bookId : bookId,
-					username : username
+					username : memberId
 				},
 				success : function(data){
 					if(data == true){
@@ -104,6 +107,9 @@ function buttonClickEvent(bookId, bookEntity){
 					alert("에러");
 				}
 			});
+		}else{
+			alert("로그인이 필요한 서비스 입니다.");
+			window.location.href = "/login";
 		}
 	}
 	
