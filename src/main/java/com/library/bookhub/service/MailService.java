@@ -1,5 +1,7 @@
 package com.library.bookhub.service;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class MailService {
 	
 	// 인증 번호
 	private static String generatedCode;
+	
+	// 타이머 객체 생성
+    private static Timer timer = new Timer();
 	
 	// 메일 발송
 	public void sendCodeByEmail(String receiver) throws Exception {
@@ -67,5 +72,6 @@ public class MailService {
             return 0;
         }
 	}
+	
 	
 }

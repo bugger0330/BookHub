@@ -23,7 +23,7 @@ public interface MemberRepository {
 	public List<String> findEmailByUsername(String email);
 	
 	// 아이디, 이메일로 계정찾기
-	public int findIdAndEmailByUser(String id, String email);
+	public int findIdAndEmailByUser(String userName, String email);
 	
 	// 비밀번호 변경
 	public int updatePassword(String username, String password);

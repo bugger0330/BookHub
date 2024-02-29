@@ -134,7 +134,7 @@
 					<label for="authNumber">인증번호</label> <input type="text" id="auth-number"
 						name="authNumber" placeholder="Enter number" class="input-authNumber" required>
 						<button type="button" class="btn-complete" onclick="EnterNumber()">완료</button>
-						<p class="p-timer">03:00</p>
+						<p class="p-timer">3:00</p>
 				</div>
 			</form>
 		</div>
@@ -271,7 +271,7 @@
 		
 		// 이메일 전송 버튼 클릭 후 time
 		btnEmail.addEventListener("click", function() {
-			time(10);
+			time(179);
 		});
 	</script>
 

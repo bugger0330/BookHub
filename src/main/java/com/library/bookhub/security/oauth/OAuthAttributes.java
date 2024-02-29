@@ -44,7 +44,7 @@ public class OAuthAttributes {
         	return ofNaver(userNameAttributeName, attributes);
         }
         if ("google".equals(registrationId)) {
-        	return ofNaver(userNameAttributeName, attributes);
+        	return ofGoogle(userNameAttributeName, attributes);
         }
         return null;
     }
@@ -126,6 +126,31 @@ public class OAuthAttributes {
 				  .nameAttributeKey(userNameAttributeName)
 				  .phone(phone) 
 				  .build();
+		 
+    }
+    
+    // google 데이터
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
+        
+    	String email = (String) attributes.get("email");
+        String name = (String) attributes.get("name");
+    	
+        log.info("=========== naver data  ===========");
+	    log.info("email :"+email);
+	    log.info("name :"+name);
+	    log.info("=========== end ===========");
+        
+    	String username = "google_" + email;
+        String password = "asd13242342"; // 임시 패스워드 설정
+        
+        return OAuthAttributes.builder()
+               .nickname(name)
+               .email(email)
+               .username(username)
+               .password(password)
+               .attributes(attributes)
+               .nameAttributeKey(userNameAttributeName)
+               .build();
 		 
     }
     

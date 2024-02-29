@@ -28,7 +28,7 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 	
 	private boolean isOAuthUser;
 	
-	// 일반 로그인
+	// 일반 로그인 생성자
 	public MyUserDetails(User user) {
         this.user = user;
         this.isOAuthUser = false;

@@ -142,18 +142,6 @@
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
 					<a href="/admin" class="nav-item nav-link active">관리자 페이지</a>
 				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_USER')">
-					<div class="navbar-nav" style="
-					    display: flex;
-					    width: 170px;
-					    text-align: center;
-					    flex-direction: column;
-					    justify-content: space-around;
-					    color: #06BBCC;"
-					>
-					<sec:authentication property="name"/>
-					</div>
-				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->
             <sec:authorize access="isAnonymous()">

@@ -94,4 +94,39 @@ public class MailController {
 	
 	/* --- 비밀번호 찾기 --- */
 	
+	// 이메일 전송
+	@PostMapping("/findPwd/sendEmail")
+	@ResponseBody
+	public String findPwdEmail(@RequestBody Map<String, String> Data) {
+		log.info("받는 자 : "+Data);
+		
+		String email = Data.get("email");
+		String username = Data.get("username");
+		
+		int result = memberService.findPassword(username, email);
+		log.info("result : "+result);
+		
+		if(result > 1) {
+			throw new CustomRestFulException("이메일 혹은 아이디를 다시 확인해주세요.", HttpStatus.UNAUTHORIZED);
+		}
+		
+		
+		
+		return result+"";
+	}
+	
+	// 인증 번호
+	@GetMapping("/findPwd/authNumber")
+	@ResponseBody
+	public int findPwdNumber(@RequestParam("number") String number) {
+		log.info("입력한 번호 : "+number);
+		
+		int result = mailService.confirmCodeByEmail(number);
+		log.info("결과 값 : "+result);
+		
+		
+		return result;
+		
+	}
+	
 }

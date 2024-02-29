@@ -78,4 +78,11 @@ public class MemberService {
 		return uids;
 	}
 	
+	// 아이디, 이메일로 계정 찾기
+	@Transactional
+	public int findPassword(String userName, String email) {
+		int result = memberRepository.findIdAndEmailByUser(userName, email);
+		return result;
+	}
+	
 }

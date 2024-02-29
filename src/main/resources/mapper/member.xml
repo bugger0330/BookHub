@@ -22,8 +22,8 @@
 		SELECT `userName`,`email` FROM bh_member WHERE `email`=#{email}
 	</select>
 	
-	<select id="findIdAndEmailByUser">
-		SELECT `userName`,`email` FROM `bh_member` WHERE `userName`=#{userName} AND `email`=#{email}
+	<select id="findIdAndEmailByUser" resultType="int">
+		SELECT COUNT(*) FROM bh_member WHERE `userName`=#{userName} AND `email`=#{email}
 	</select>
 	
 	<update id="updatePassword">

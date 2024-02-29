@@ -85,6 +85,23 @@
 	text-align: center;
 }
 
+/*
+.email-auth-form > form:nth-last-of-type(1) > .log-form-group {
+	display: none;
+}
+*/
+.log-form-group:nth-last-child(1) {
+	position: relative;
+}
+.result-email {
+	margin-top: 10px;
+}
+.p-timer {
+	position: absolute;
+    right: 37px;
+    top: 40px;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -112,7 +129,7 @@
 				<div class="log-form-group">
 					<label for="email">이메일 인증</label> <input type="email" id="email"
 						name="email" placeholder="Enter email" class="input-email" required>
-					<button type="button" class="auth-email">인증하기</button>
+					<button type="button" class="auth-email" onclick="authEmail()">인증하기</button>
 				</div>
 			</form>
 			<!-- 인증 확인 -->
@@ -121,6 +138,7 @@
 					<label for="authNumber">인증번호</label> <input type="text" id="authNumber"
 						name="authNumber" placeholder="Enter number" class="input-authNumber" required>
 						<button type="submit" class="btn-complete">완료</button>
+						<p class="p-timer">3:00</p>
 				</div>
 			</form>
 		</div>
@@ -130,7 +148,81 @@
 		</div>
 	</div>
 
-
+	<script>
+		// 이메일 초기화
+		localStorage.removeItem("email");
+		
+		// 이메일 인증
+		const inputUid = document.getElementById('uid');
+		const inputEmail = document.getElementById('email');
+		const authNumber = document.getElementById('auth-number');
+		const btnEmail = document.getElementsByClassName('auth-email')[0];
+		const btnNum = document.getElementsByClassName('btn-complete')[0];
+		const divNum = document.getElementsByClassName('log-form-group')[2];
+		const resultEmail = document.getElementsByClassName('result-email')[0];
+		const emailTime = document.getElementsByClassName('p-timer')[0];
+		
+		// 시간 변수
+		let countTime = 0;
+		let intervalCall;
+	
+		// 이메일 인증
+		function authEmail() {
+			const email = inputEmail.value;
+			const uid = inputUid.value;
+			
+			console.log("email : "+email+", uid : "+uid);
+			
+			
+			fetch('/findPwd/sendEmail',{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json;charset=UTF-8",
+				},
+				body: JSON.stringify({
+				    email: email,
+				    username: uid,
+				}),
+			}).then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				
+				alert('전송!');
+			})
+			.catch((error) => {
+				alert('이메일 인증을 실패했습니다.');
+				console.log(error);
+			});
+			
+		}
+		
+		// 인증 코드 입력
+		function EnterNumber() {
+			const num = authNumber.value;
+	
+			fetch(`/findPwd/authNumber?number=`+num,{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json;charset=UTF-8",
+				},
+			}).then((response) => response.text())
+			.then((data) => {
+				console.log('number : '+data);
+				if(data <= 0){
+					alert("인증 코드를 다시 입력해주세요.");
+				} else {
+					alert("인증되었습니다.");
+					closeTime();
+					window.location.href='/user/findIdResult';
+				}
+			})
+			.catch((error) => {
+				alert('인증 번호에 문제가 발생했습니다.');
+				window.localStorage.removeItem('email');
+				console.log(error);
+			});
+		}
+	</script>
 </body>
 </html>
 
