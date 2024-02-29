@@ -61,6 +61,18 @@
 select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by id desc
 </select>
 
+<select id="findApplicationByClubId" resultType="com.library.bookhub.entity.ClubApplication">
+	SELECT * FROM bh_club_application WHERE clubId=#{clubId}
+</select>
+
+<select id="findUserByUserName" resultType="com.library.bookhub.entity.User">
+	SELECT * FROM bh_member WHERE userName = #{userName}
+</select>
+
+<select id="findByUserNameAndId" resultType="com.library.bookhub.entity.Club">
+	SELECT * FROM bh_club WHERE userName = #{userName} AND id = #{id}
+</select>
+
 <update id="updateByApplication">
 	update bh_club set
 	`hcApply` = #{hcApply},
@@ -75,6 +87,15 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 <delete id="deleteApplication">
 	delete from bh_club_application where id = #{id}
 </delete>
+
+<delete id="delete">
+	DELETE FROM bh_club WHERE id=#{id}
+</delete>
+
+<!-- 블록 주석 : ctrl shfit / -->
+<!-- <delete id="deleteApplicationByClubId">
+	DELETE FROM bh_club_application WHERE clubId="6";
+</delete> -->
 
 
 
