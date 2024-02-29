@@ -29,7 +29,7 @@
 	<select id="findById"
 		resultType="com.library.bookhub.entity.BannerAd">
 		SELECT ID ,UPLOAD_FILE_NAME, CONTENT FROM BH_BANNER
-		WHERE POST_YN = 'Y'
+		WHERE POST_YN = 'N'
 	</select>
 
 
