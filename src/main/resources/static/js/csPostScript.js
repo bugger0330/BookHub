@@ -3,6 +3,15 @@ const content = $("#content"); // jQuery로 태그 선택
 
 let addressNum = window.location.pathname.split("/")[3]; // 업데이트 페이지에도 쓰기 위해서 위로 올림
 
+// qna list에서 등록 위한 클릭 이벤트
+function loadInsert() {
+    const insertClick = $("#btnInsert"); // jQuery로 태그 선택
+    insertClick.on("click", function() {
+        window.location.href = "/qna/insert"; // jQuery로 현재 요소의 id 속성 값 가져오기
+    });
+}
+loadInsert();
+
 // qna list에서 상세보기 위한 클릭 이벤트
 function load() {
     const pageClick = $(".page-click"); // jQuery로 태그 선택

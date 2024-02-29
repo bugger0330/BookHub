@@ -18,10 +18,10 @@ public class CsQnaEntity {
 	private Integer cate2;
 	private String title;
 	private String content;
-	private String file1 ;
-	private String file2 ;
-	private String file3 ;
-	private String file4 ;
+	private String ofile1 ;
+	private String ofile2 ;
+	private String sfile1 ;
+	private String sfile2 ;
 	private String writer;
 	private Integer answerComplete;
 	private Timestamp rdate;

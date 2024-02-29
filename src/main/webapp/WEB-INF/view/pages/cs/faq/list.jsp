@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
+
 
 
 
@@ -20,19 +23,9 @@
 
 	<div class="csMainContainer">
 
-		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
+		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
 
 		<div class="container">
-
-			<nav
-				style="--bs-breadcrumb-divider: url(&amp; amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
-				aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
-					<li class="breadcrumb-item active" aria-current="page"
-						style="color: #0596a3;">자주 묻는 질문</li>
-				</ol>
-			</nav>
 
 			<div>
 				<h2>자주 묻는 질문</h2>
@@ -57,7 +50,7 @@
 								<div class="panel-cs-container">
 									<p class="panel-cs-title">${list.title}</p>
 									<div class="panel-cs-answer">
-										<p>${list.content}</p>
+										<p>${fn:replace(list.content, '\\n', '<br/>')}</p>
 									</div>
 								</div>
 							</td>
@@ -66,20 +59,12 @@
 						</tr>
 						</c:forEach>
 						<tr class="info">
-							<td colspan=3 class="text-left">자주 묻는 질문 총 합계</td>
-							<td>429</td>
+							<td colspan=6 class="text-left">더 궁금한 사항은 1:1문의하기를 이용해주세요.</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<ul class="qna pagination"
-					style="display: flex; justify-content: center; align-content: center;">
-					<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item active"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
-				</ul>
+				
 			</div>
 		</div>
 	</div>

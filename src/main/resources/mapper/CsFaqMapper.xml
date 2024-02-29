@@ -4,11 +4,10 @@
 <mapper
 	namespace="com.library.bookhub.repository.cs.CsFaqRepository">
 
-	<!-- 공지사항 리스트 조회  -->
+	<!-- 공지사항 리스트 조회 -->
 	<select id="selectCsFaqList"
 		resultType="com.library.bookhub.entity.cs.CsFaqEntity">
 		select * from bh_cs_faq order by #{id} desc;
 	</select>
-
 
 </mapper>

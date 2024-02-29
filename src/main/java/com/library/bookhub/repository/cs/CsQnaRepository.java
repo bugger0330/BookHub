@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.cs.CsQnaEntity;
+import com.library.bookhub.web.dto.cs.CsQnaDto;
 
 @Mapper
 public interface CsQnaRepository {
@@ -30,5 +31,8 @@ public interface CsQnaRepository {
 	
 	// 전체 게시물개수 계산 
 	public int getAllPgCount();
+
+	// 파일업로드
+	public int saveFiledb(CsQnaDto csQnaDto);
 	
 }
