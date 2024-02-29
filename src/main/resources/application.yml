@@ -4,6 +4,7 @@ server:
     encoding:
       charset: utf-8
       force: true
+
 spring:
   mvc:
     view:
@@ -14,12 +15,6 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: asd1234
-#  
   datasource: # DB 설정
     url: jdbc:h2:mem:testdb;MODE=MySQL
     driver-class-name: org.h2.Driver
@@ -55,23 +50,11 @@ spring:
           writetimeout: 5000
       auth-code-expiration-millis: 1800000  # 이메일 인증 코드 만료 시간 - 30분 설정
 
+  impKey: "0841453800077355"
+  impSecretKey: "ipQe2Y6MGOwusDOos8IG7KyICvl7bR6OSFNUveEOKgLTkAYQV02voGuJMLzDf2gYwZbBwFcVHCmAkYYf"
 
 mybatis:
   mapper-locations:
     - classpath:mapper/**.xml
   configuration:
     map-underscore-to-camel-case: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#logging:
-#  level:
-#    org:
-#    mybatis: DEBUG
-#    hibernate: info
-#    springframework:
-#        security: info
-
-
-
-pagination:
-  size: 10
-  

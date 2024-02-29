@@ -25,44 +25,61 @@ $(document).ready(function() {
     $.ajax({
         url: "/user-point/detail?userId=" + username,
         type: "GET",
-        success: function(data) {
-            if (data) {
-                $("#purchaseDate").text(data.purchaseDate);
-                $("#pointName").text(data.pointName);
-                $("#id").text(data.id);
-                $("#refundYn").text(data.refundYn);
-                $("#dataRow").show();
-                if (data.refundYn === '환불요청') {
-                    $("#refundButton").hide();
-                }
-            } else {
-                $("#noDataMessage").show();
+success: function(data) {
+    if (data.length > 0) {
+        var tbody = $("table tbody");
+
+        data.forEach(function(item, index) {
+            var newRow = $("<tr>").attr("id", "dataRow_" + index);
+
+            newRow.append("<td>" + item.id + "</td>");
+            newRow.append("<td>" + item.purchaseDate + "</td>");
+            newRow.append("<td>" + item.pointName + "</td>");
+            newRow.append("<td>" + item.refundYn + "</td>");
+
+            var refundButton = $("<button>")
+                                .addClass("btn btn-primary refundButton")
+                                .attr("id", "refundButton_" + index)
+                                .text("환불요청");
+            if (item.refundYn === '환불요청') {
+                refundButton.hide();
             }
-        },
+            newRow.append($("<td>").append(refundButton));
+
+            tbody.append(newRow);
+        });
+
+        $("#noDataMessage").hide();
+    } else {
+        $("#noDataMessage").show();
+    }
+},
+
         error: function() {
             console.log("사용자를 찾을 수 없습니다.");
         }
     });
 
-    // 환불 요청 버튼 클릭 시 실행
-    $('#refundButton').click(function() {
-        var requestData = {
-            id: $("#id").text(),
-            refundYn: '환불요청'
-        };
+$(document).on("click", ".refundButton", function() {
+    var index = $(this).attr("id").split("_")[1];
+    var requestData = {
+        id: $("#dataRow_" + index + " td:nth-child(1)").text(),
+        refundYn: '환불요청'
+    };
 
-        $.ajax({
-            type: 'PUT',
-            url: '/user-point/refund',
-            contentType: 'application/json',
-            data: JSON.stringify(requestData),
-            success: function(response) {
-                alert("환불 요청이 성공적으로 처리되었습니다. 관리자 검토 후 환불 처리됩니다.");
-                location.reload();
-            },
-            error: function(xhr, status, error) {
-                console.error('환불 요청 중 오류가 발생했습니다:', error);
-            }
-        });
+    $.ajax({
+        type: 'PUT',
+        url: '/user-point/refund',
+        contentType: 'application/json',
+        data: JSON.stringify(requestData),
+        success: function(response) {
+            alert("환불 요청이 성공적으로 처리되었습니다. 관리자 검토 후 환불 처리됩니다.");
+            location.reload();
+        },
+        error: function(xhr, status, error) {
+            console.error('환불 요청 중 오류가 발생했습니다:', error);
+        }
     });
+});
+
 });

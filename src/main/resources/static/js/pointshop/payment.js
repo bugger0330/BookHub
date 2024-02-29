@@ -15,9 +15,11 @@ function requestPay(productId) {
 	// payment_script.js에서
 	var productName = "BookHub 포인트 " + prodName;
 	var amount = price;
-	var point = point;
+	var points = point;
 	var usernames = username;
 	var product = prodName;
+	
+	console.log(points);
 
 
 	console.log(username);
@@ -61,6 +63,7 @@ function requestPay(productId) {
 						"pointName": product,
 						"purchaseDate": new Date().toISOString(),
 						"point": point,
+						"price": amount,
 						"impUid": rsp.imp_uid,
 						"merchantUid": rsp.merchant_uid
 					};

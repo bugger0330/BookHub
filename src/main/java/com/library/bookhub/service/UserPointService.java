@@ -54,9 +54,9 @@ public class UserPointService {
     	return optionalUserPoint;
     }
     
-    public Optional<UserPoint> findByUserId(String userId){
-    	Optional<UserPoint> optionalUserPoint = userPointRepository.findByUserId(userId);
-    	return optionalUserPoint;
+    public List<UserPoint> findByUserId(String userId){
+    	List<UserPoint> userPoint = userPointRepository.findByUserId(userId);
+    	return userPoint;
     }
     
     
@@ -94,6 +94,11 @@ public class UserPointService {
     @Transactional
     public void updateUserPoint(UserPoint userPoint) {
         userPointRepository.refundUpdate(userPoint);
+    }
+    
+    
+    public List<UserPoint> refundReq(){
+    	return userPointRepository.refundReq();
     }
 
 }

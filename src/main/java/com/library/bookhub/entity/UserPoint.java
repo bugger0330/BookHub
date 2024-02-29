@@ -22,6 +22,7 @@ public class UserPoint {
     private String pointName; // 포인트 식별자
     private LocalDateTime purchaseDate; // 구매일시
     private int point; // 포인트
+    private int price; // 가격
     private String refundYn; // 환불여부
     private String impUid; // 결제 고유번호
     private String merchantUid; // 주문번호

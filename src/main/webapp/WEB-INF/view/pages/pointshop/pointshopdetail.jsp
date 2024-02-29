@@ -155,6 +155,8 @@
     let price = `${list.price}`;
     let point = `${list.point}`;
     let username = `${username}`;
+    
+    console.log("포인트", point);
 </script>
 <script src="/js/pointshop/payment.js"></script>
 	

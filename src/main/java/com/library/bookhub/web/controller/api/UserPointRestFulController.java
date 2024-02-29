@@ -1,5 +1,6 @@
 package com.library.bookhub.web.controller.api;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class UserPointRestFulController {
 	// 상세조회 컨트롤러
 		@GetMapping("/detail")
 		public ResponseEntity<?> findByUserId(@RequestParam(required = false) String userId){
-			Optional<UserPoint> userPoint = userPointService.findByUserId(userId);
+			List<UserPoint> userPoint = userPointService.findByUserId(userId);
 			
 			if(userPoint == null) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
