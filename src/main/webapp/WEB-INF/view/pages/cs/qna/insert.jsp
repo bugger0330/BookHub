@@ -36,7 +36,7 @@
 							<div class="file_input"
 								style="display: inline-block; ">
 								<label for="formFileMultiple" class="form-label">File: </label>
-								<input class="form-control" type="file" id="formFileMultiple" multiple name="files" onchange="selectFile(this);"
+								<input class="form-control" type="file" id="formFileMultiple" multiple name="filepath" onchange="selectFile(this);"
 									style="background-color: white;" />
 							</div>
 							<button type="button" onclick="removeFile(this);" class="btn btn-outline-danger">
@@ -95,7 +95,7 @@ function addFile() {
         	<div class="file_input" style="display: inline-block; ">
 			<label for="formFileMultiple" class="form-label">File: </label> <input
 			class="form-control" type="file" id="formFileMultiple" multiple
-			name="files" onchange="selectFile(this);" style="background-color: white;" />
+			name="filepath" onchange="selectFile(this);" style="background-color: white;" />
 		</div>
         <button type="button" onclick="removeFile(this);" class="btn btn-outline-danger"><span>삭제</span></button>
         `;
@@ -136,7 +136,7 @@ function removeFile(element) {
 						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
 			});
 </script>
-<script src="/js/csPostScript.js">
+<!-- <script src="/js/csPostScript.js"> -->
 	
 </script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

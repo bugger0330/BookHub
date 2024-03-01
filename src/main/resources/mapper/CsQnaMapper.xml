@@ -13,8 +13,8 @@
 
 	<!-- 문의하기 작성하기 -->
 	<insert id="qnaInsert">
-		INSERT INTO bh_cs_qna (cate1, cate2, title, content, ofile1, ofile2, sfile1, sfile2, writer, answerComplete, rdate)
-		VALUES (#{cate1},#{cate2},#{title},#{content},#{ofile1},#{ofile2},#{sfile1},#{sfile2},#{writer}, #{answerComplete}, now());
+		INSERT INTO bh_cs_qna (cate1, cate2, title, content, filepath , writer, answerComplete, rdate)
+		VALUES (#{cate1},#{cate2},#{title},#{content}, #{filepath}, #{writer}, #{answerComplete}, now());
 	</insert>
 
 	<!-- 문의하기 상세보기 -->

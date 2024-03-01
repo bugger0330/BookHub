@@ -1,5 +1,7 @@
 const title = $("#title"); // jQuery로 태그 선택
 const content = $("#content"); // jQuery로 태그 선택
+const filepath = $("#formFileMultiple"); 
+
 
 let addressNum = window.location.pathname.split("/")[3]; // 업데이트 페이지에도 쓰기 위해서 위로 올림
 
@@ -51,6 +53,7 @@ let postObject = {
         // 사용자가 입력한 제목과 내용을 가져옵니다.
         const titleValue = title.val(); // jQuery 메서드로 값 가져오기
         const contentValue = content.summernote('code'); // summernote에서 HTML 코드를 가져옵니다.
+		const filepathValue = filepath.val(); 
 
         // AJAX 요청을 보냅니다.
         $.ajax({
@@ -58,7 +61,8 @@ let postObject = {
             url: "/qna/insert",
             data: {
                 title: titleValue,
-                content: contentValue
+                content: contentValue,
+                filepath: filepathValue
             },
             success: function(data) {
                 if (data === true) {

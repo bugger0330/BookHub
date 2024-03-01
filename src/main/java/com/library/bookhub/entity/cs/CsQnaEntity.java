@@ -1,6 +1,9 @@
 package com.library.bookhub.entity.cs;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,10 +21,7 @@ public class CsQnaEntity {
 	private Integer cate2;
 	private String title;
 	private String content;
-	private String ofile1 ;
-	private String ofile2 ;
-	private String sfile1 ;
-	private String sfile2 ;
+	private String filepath;
 	private String writer;
 	private Integer answerComplete;
 	private Timestamp rdate;

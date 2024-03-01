@@ -1,6 +1,9 @@
 package com.library.bookhub.entity.cs;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +22,9 @@ public class CsNoticeEntity {
 	private String title;
 	private String content;
 	private Integer hit;
-	private Timestamp rdate;
-	private String ofile;
-	private String sfile;
 	private String writer;
+	private List<MultipartFile> filepath;
+	private Timestamp rdate;
+
+	
 }

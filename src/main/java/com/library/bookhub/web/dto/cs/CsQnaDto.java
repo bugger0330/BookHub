@@ -23,13 +23,9 @@ public class CsQnaDto {
 	private int cate2;
 	private String title;
 	private String content;
-	private String ofiles ;
-	private String sfiles ;
-	private String fileData ;
+	private List<MultipartFile> filepath;
 	private String writer;
 	private int answerComplete;
 	private Timestamp rdate;
-
-
 
 }

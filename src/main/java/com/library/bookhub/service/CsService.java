@@ -48,44 +48,16 @@ public class CsService {
 		return csFaqRepository.selectCsFaqList();
 	}
 	
-	/*
-	 * // 다중 파일업로드??????????????????? public String saveFiles(List<MultipartFile>
-	 * files) { if (files.isEmpty()) {
-	 * 
-	 * String filePath = ""; // filePath 에 넣을 String 값
-	 * 
-	 * for (MultipartFile file : files) { try {
-	 * 
-	 * // 저장 실행 // 1) DB에 이미지 저장 // 2) DB에 이미지를 다운로드 할 수 있는 url 저장 (다운로드 URL 만들기 필요)
-	 * // 3) 파일명(중복이 안되는) : uuid(기본키) 사용(유일값)
-	 * 
-	 * // TODO : 1) uuid 만들기 String tmpUuid =
-	 * UUID.randomUUID().toString().replace("-", "");
-	 * 
-	 * // TODO : 2) 다운로드 url 만들기 String fileDownloadUri =
-	 * ServletUriComponentsBuilder.fromCurrentContextPath().path("/images/upload/")
-	 * .path(tmpUuid).toUriString(); // 최종 url 예 :
-	 * localhost/filedb/get-file/xxxxiiiii
-	 * 
-	 * // TODO : 3) 위의 정보를 파일 객체에 저장 후 DB save 함수 실행 CsQnaDto csQnaDto=
-	 * CsQnaDto.builder().sfiles(tmpUuid).ofiles(file.getOriginalFilename())
-	 * .build();
-	 * 
-	 * // 저장하기 int result = csQnaRepository.saveFiledb(csQnaDto);
-	 * 
-	 * filePath += fileDownloadUri + ","; } catch (Exception e) {
-	 * log.debug(e.getMessage());
-	 * 
-	 * } }
-	 * 
-	 * filePath = filePath.substring(0, filePath.length() - 1); // 마지막 , 제거 return
-	 * filePath; } }
-	 */
 	// 문의하기 작성하기
-	public boolean qnaInsert(CsQnaDto dto) {
-		CsQnaEntity csQnaEntity = new CsQnaEntity();
-		csQnaEntity.setTitle(dto.getTitle());
-		csQnaEntity.setContent(dto.getContent());
+	public boolean qnaInsert(CsQnaDto dto , String filepath) {
+		
+		System.out.println("ksjfdklsjflsjfdlskfjsdlk 인서트 서비스"+ dto.getFilepath());
+		
+		CsQnaEntity csQnaEntity = CsQnaEntity.builder()
+				.title(dto.getTitle())
+				.content(dto.getContent())
+				.filepath(filepath)
+				.build();
 
 		int result = csQnaRepository.qnaInsert(csQnaEntity);
 
