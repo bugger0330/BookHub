@@ -154,7 +154,7 @@ public class BookShareService {
 
 	public boolean shareBookBorrowEnd(ShareBookBorrowDto dto) {
 		ShareBookBorrow borrowEntity = repository.selectShareBookBorrow(dto.toEntity());
-		if(borrowEntity != null) {
+		if(borrowEntity == null) {
 			return false;
 		}
 		// 대출내역이 있으면 반납기능 수행

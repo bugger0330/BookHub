@@ -28,7 +28,7 @@
 	</select>
 
 	<select id="selectShareBookBorrow" resultType="com.library.bookhub.entity.ShareBookBorrow">
-		select * from bh_book_borrow where bookNo = #{bookNo} and userName = #{userName}; 
+		select * from bh_book_share_borrow where bookNo = #{bookNo} and userName = #{userName}; 
 	</select>
 
 	<insert id="shareBookBorrow">
@@ -50,7 +50,8 @@
 	<update id="borrowShareBook">
 		update bh_book_share set
 			status = #{status},
-			wdate = #{wdate}
+			wdate = #{wdate},
+			borrow = #{borrow}
 		where id = #{id};
 	</update>
 

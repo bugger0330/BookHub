@@ -120,7 +120,7 @@ function buttonClickEvent(boardTd, bookEntity){
 						if(data == true){
 							payment(Number(calcPrice.textContent));
 						}else{
-							alert("대출실패!1");
+							alert("대출실패!");
 						}
 					},
 					error : function(){
@@ -148,7 +148,7 @@ function buttonClickEvent(boardTd, bookEntity){
 					alert("대출완료!");
 					window.location.href = `/share/detail/${addressNum}`;
 				}else{
-					alert("대출실패!2");
+					alert("대출실패!");
 				}
 			},
 			error : function(){
@@ -173,7 +173,7 @@ function buttonClickEvent(boardTd, bookEntity){
 				let latePoint = lateCalc(lateDays);// 연체금액
 				if(now.getTime() > comTime.getTime()){
 					if(confirm(`책이 연체되었습니다. 연체금 ${latePoint} P 를 지불하시겠습니까?`)){
-						if(myPoint < latePoint){
+						if(Number(mypoint.textContent) < latePoint){
 							alert("포인트가 부족하여 책 반납을 할 수 없습니다.");
 							if(confirm("포인트 결제 페이지로 이동하시겠습니까?")){
 								window.location.href = "/point-shop";
@@ -323,7 +323,7 @@ function buttonClickEvent(boardTd, bookEntity){
 function orderUpdate(lateDays, latePoint){
 	const orderArray = new Array();
 	const orders = {
-		productName : "책 연체료",
+		productName : "공유 책 연체료",
 		productPrice : 100,
 		productCount : lateDays,
 		allProductPrice : latePoint,
