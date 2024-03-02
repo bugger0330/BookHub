@@ -36,13 +36,18 @@
 				<h2>문의글 상세보기</h2>
 				<form>
 					<div class="mb-3">
-						<label for="title">Title:</label> <input type="text"
+						<label for="title">Title :</label> <input type="text"
 							class="form-control" id="title" name="title"
 							readonly>
 					</div>
 					<div class="mb-3">
-						<label for="content">Content:</label>
+						<label for="content">Content :</label>
 						<textarea id="content" name="content" readonly></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="filepath">File :</label>
+						<input type="text"
+							 id="file" name="filepath">
 					</div>
 				</form>
 			</div>

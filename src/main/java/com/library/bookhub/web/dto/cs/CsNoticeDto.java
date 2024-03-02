@@ -21,7 +21,6 @@ public class CsNoticeDto {
 	private Integer cate2;
 	private String title;
 	private String content;
-	private int hit;
 	private String writer;
 	private List<MultipartFile> filepath;
 	private Timestamp rdate;

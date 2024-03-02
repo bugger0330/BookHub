@@ -18,6 +18,7 @@ public class CsFaqDto {
 	private int cate2;
 	private String title;
 	private String content;
+	private String writer;
 	private Timestamp rdate;
 
 }

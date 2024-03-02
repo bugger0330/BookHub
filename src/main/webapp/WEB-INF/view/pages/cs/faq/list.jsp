@@ -4,9 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 
-
-
-
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -36,10 +33,9 @@
 					class="table table-hover">
 					<thead class="thead-light text-center">
 						<tr>
-							<th>No</th>
-							<th>FAQ Title</th>
-							<th>Category</th>
-							<th>Date</th>
+							<th style="font-weight: bold;">No</th>
+							<th style="font-weight: bold;">FAQ Title</th>
+							<th style="font-weight: bold;">Date</th>
 						</tr>
 					</thead>
 					<tbody class="text-center">
@@ -54,7 +50,6 @@
 									</div>
 								</div>
 							</td>
-							<td>${list.cate2}</td>
 							<td>${list.rdate}</td>
 						</tr>
 						</c:forEach>
@@ -70,7 +65,7 @@
 	</div>
 </section>
 
-<script src="/js/csScript.js"></script>
+<script src="/js/cs/csFaq.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 

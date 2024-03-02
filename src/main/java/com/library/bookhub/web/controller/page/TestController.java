@@ -67,7 +67,11 @@ public class TestController {
 	public String refundRequestPage() {
 		return "pages/admin/refundRequest";
 	}
-
+	
+	
+	// ---------------- CS 페이지 ----------------//
+	
+	
 	// cs 카테고리 페이지 요청
 	@GetMapping("/layout/aside")
 	public String CsCateAside() {

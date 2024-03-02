@@ -16,14 +16,13 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CsNoticeEntity {
 
-	private Integer id;
-	private Integer cate1;
-	private Integer cate2;
+	private int id;
+	private int cate1;
+	private int cate2;
 	private String title;
 	private String content;
-	private Integer hit;
 	private String writer;
-	private List<MultipartFile> filepath;
+	private String filepath;
 	private Timestamp rdate;
 
 	
