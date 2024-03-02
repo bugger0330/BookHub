@@ -1,17 +1,18 @@
 const tbody = document.querySelector(".point--order--tbody");
 const refundTrueCheck = document.querySelectorAll(".point--order--check");
-let username = "user1";
+//let username = "user1";
 
 load();
 function load(){
-	if(username == ""){
-		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		window.location.href = "/login";
 	}
 	$.ajax({
 		type : "get",
 		url : "/point/my-order-list",
 		data : {
-			username : username
+			username : memberId
 		},
 		success : function(data){
 			if(data != ""){
@@ -144,7 +145,7 @@ function mypointUpdate(data){
 		type : "post",
 		url : "/point/mypoint/refund",
 		data : {
-			userName : username,
+			userName : memberId,
 			allProductPrice : data.allProductPrice
 		},
 		success : function(data){

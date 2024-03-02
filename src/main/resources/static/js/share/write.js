@@ -6,7 +6,7 @@ const fileInput = document.querySelector(".share--book-input-file");
 const imgViewBox = document.querySelector(".share--img-box");
 const btn = document.querySelector(".share--btn");
 
-const username = "dddd1111";
+//const username = "dddd1111";
 let fileValue = "";
 
 load();
@@ -14,19 +14,19 @@ function load(){
 	myPoint.textContent = 0;
 	
 	//myPoint.textContent = 0;
-	if(username == ""){
-		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
-		
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		window.location.href = "/login";
 	}
 	$.ajax({
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
-				shareUsername.textContent = username;
+				shareUsername.textContent = memberId;
 				myPoint.textContent = data;
 			}
 		},
@@ -46,6 +46,10 @@ function load(){
  */
 
 btn.onclick = () => {
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		window.location.href = "/login";
+	}
 	if(inputs[0].value == ""){
 		alert("도서명을 입력하세요!");
 		inputs[0].focus();
@@ -75,7 +79,7 @@ btn.onclick = () => {
 		company : inputs[1].value,
 		writer : inputs[2].value,
 		descript : textarea.value,
-		userName : username
+		userName : memberId
 	}
 	
 	
@@ -140,7 +144,7 @@ function myPointOrder(){
 		type : "post",
 		url : "/share/mypoint",
 		data : {
-			userName : username,
+			userName : memberId,
 			price : 1000
 		},
 		success : function(data){

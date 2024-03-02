@@ -8,7 +8,7 @@ let play = 0;
 
 let statusData = null;
 
-let username = "user1";
+//let username = "user1";
 let myPoint = 0;
 
 const now = new Date();
@@ -22,7 +22,7 @@ load();
 function load(){
 	
 	//myPoint.textContent = 0;
-	if(username == ""){
+	if(memberId == ""){
 		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
 		
 	}
@@ -30,7 +30,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
@@ -154,6 +154,10 @@ function calc(num){
 }
 
 orderBtn.onclick = () => {
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		window.location.href = "/login";
+	}
 	if( Number(mypointSpan.textContent) < Number(orderPrice.textContent) ){
 		alert("포인트가 부족합니다.");
 		return;
@@ -209,7 +213,7 @@ function myOrderUpdate(){
 		productPrice : 500,
 		productCount : play,
 		allProductPrice : Number(orderPrice.textContent),
-		userName : username,
+		userName : memberId,
 		orderId : -1,
 		refund_type : "환불불가"
 	};

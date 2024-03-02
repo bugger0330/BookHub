@@ -32,12 +32,14 @@
 	</select>
 
 	<insert id="shareBookBorrow">
-		insert into bh_book_share_borrow(userName, brDate, returnDate, bookNo)
+		insert into bh_book_share_borrow(userName, brComplete, brDate, returnDate, bookNo, borrowDay)
 		values(
 			#{userName},
+			1,
 			now(),
-			#{wdate},
-			#{bookId}
+			#{returnDate},
+			#{bookNo},
+			#{borrowDay}
 		);
 	</insert>
 
@@ -47,9 +49,15 @@
 
 	<update id="borrowShareBook">
 		update bh_book_share set
-			borrow = #{borrow},
 			status = #{status},
 			wdate = #{wdate}
+		where id = #{id};
+	</update>
+
+	<update id="borrowShareBookEnd">
+		update bh_book_share set
+			status = #{status},
+			wdate = null
 		where id = #{id};
 	</update>
 	

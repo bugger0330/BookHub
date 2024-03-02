@@ -21,7 +21,7 @@ public class ShareBookBorrowDto {
 				.bookNo(bookId)
 				.userName(userName)
 				.borrowDay(borrowDay)
-				.wdate(wdate)
+				.returnDate(wdate)
 				.build();
 	}
 }

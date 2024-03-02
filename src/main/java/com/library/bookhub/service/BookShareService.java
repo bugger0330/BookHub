@@ -153,11 +153,6 @@ public class BookShareService {
 	}
 
 	public boolean shareBookBorrowEnd(ShareBookBorrowDto dto) {
-		LocalDateTime now = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String returnDate = now.format(formatter);
-		dto.setWdate(returnDate);
-		
 		ShareBookBorrow borrowEntity = repository.selectShareBookBorrow(dto.toEntity());
 		if(borrowEntity != null) {
 			return false;
@@ -171,9 +166,7 @@ public class BookShareService {
 		BookShare book = repository.shareBookInfo(dto.getBookId());
 		if(book != null) {
 			book.setStatus("대출 가능");
-			book.setBorrow(book.getBorrow());
-			book.setWdate(returnDate);
-			int bookResult = repository.borrowShareBook(book);
+			int bookResult = repository.borrowShareBookEnd(book);
 			if(bookResult == 0) {
 				throw new RuntimeException("bh_book_share에 대출정보 수정 실패!");
 			}

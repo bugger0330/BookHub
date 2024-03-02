@@ -5,15 +5,15 @@ const modalTable = document.querySelector(".modal--table");
 const mypoint = document.querySelector(".book--detail--mypoint");
 const calcPrice = document.querySelector(".book--detail--calc-price");
 const borrowDay = document.querySelector(".book--detail--order-date");
-let username = "ddd";
-//let username = "dddd1111";
+
+let addressNum = location.pathname.split("/")[3];
+
 let masterUsername = "";
 load();
 function load(){
 	calcPrice.textContent = "100";
 
-	let addressNum = location.pathname.split("/")[3];;
-	console.log(addressNum);
+	
 	
 	$.ajax({
 		type : "get",
@@ -33,7 +33,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
@@ -82,8 +82,8 @@ function innerFun(data){
 		`;
 		tbody.innerHTML = innr;
 		// 대출, 반납 버튼 숨김 기능 추가해야함
-		const boardId = document.querySelectorAll(".book--detail--td");
-		buttonClickEvent(boardId[0].textContent, data);
+		const boardTd = document.querySelectorAll(".book--detail--td");
+		buttonClickEvent(boardTd, data);
 	}
 }
 
@@ -91,7 +91,7 @@ function innerFun(data){
 // 회원정보 가져와서 만약 빌린 책이면 대출하기 버튼은 숨김 - 반대도 가능해야함
 //let username = "abc123";// 세션에서 유저정보 가져왔다고 가정하고
 
-function buttonClickEvent(bookId, bookEntity){
+function buttonClickEvent(boardTd, bookEntity){
 	const borrowBtns = document.querySelectorAll(".book--detail--button");
 	const calcDiv = document.querySelector(".book--detail--order-box");
 	const borrowBtn = document.querySelector(".borrow-btn");
@@ -99,12 +99,10 @@ function buttonClickEvent(bookId, bookEntity){
 	borrowBtns[0].onclick = () => {
 		calcDiv.style.display = "flex";
 	}
-	
-	
 	//=========================
 	borrowBtn.onclick = () => {
-		if(username != ""){
-			if(username == bookEntity.userName){
+		if(memberId != ""){
+			if(memberId == bookEntity.userName){
 				alert("본인의 책은 대출이 불가능합니다.");
 				return;
 			}else{
@@ -114,15 +112,15 @@ function buttonClickEvent(bookId, bookEntity){
 					type : "post",
 					url : "/share/borrow",
 					data : {
-						bookId : bookId,
-						userName : username,
+						bookId : Number(boardTd[0].textContent),
+						userName : memberId,
 						borrowDay : borrowDay.value,
 					},
 					success : function(data){
 						if(data == true){
 							payment(Number(calcPrice.textContent));
 						}else{
-							alert("대출실패!");
+							alert("대출실패!1");
 						}
 					},
 					error : function(){
@@ -130,6 +128,9 @@ function buttonClickEvent(bookId, bookEntity){
 					}
 				});
 			}
+		}else{
+			alert("로그인이 필요한 서비스 입니다.");
+			window.location.href = "/login";
 		}
 	}
 	
@@ -140,14 +141,14 @@ function buttonClickEvent(bookId, bookEntity){
 			data : {
 				point : point,
 				masterUsername : masterUsername,
-				userName : username
+				userName : memberId
 			},
 			success : function(data){
 				if(data == true){
 					alert("대출완료!");
-					window.location.replace = `/share/detail/${addressNum}`;
+					window.location.href = `/share/detail/${addressNum}`;
 				}else{
-					alert("대출실패!");
+					alert("대출실패!2");
 				}
 			},
 			error : function(){
@@ -159,28 +160,74 @@ function buttonClickEvent(bookId, bookEntity){
 	//=========================
 	
 	borrowBtns[1].onclick = () => { // 반납하기
-		if(username != ""){
-			// 테이블명 : bh_book_borrow(대출) - 대출정보 반납
-			// 북 테이블에 상태값도 변경해야함
-			$.ajax({
-				type : "delete",
-				url : "/share/borrow-return",
-				data : {
-					bookId : bookId,
-					userName : username
-				},
-				success : function(data){
-					if(data == true){
-						alert("반납완료!");
-						location.replace = `/share/detail/${addressNum}`;
-					}else{
-						alert("반납실패!");
+		if(memberId != ""){
+			if(boardTd[2].textContent != ""){
+				const now = new Date();
+				const comTime = new Date(bookEntity.wdate);
+				const dayTime = 60 * 60 * 24;
+				
+				console.log("지금", now.getTime());
+				console.log("반납", comTime.getTime());
+				
+				let lateDays = Math.floor(+ now / 1000 / dayTime) - Math.floor(+ comTime / 1000 / dayTime) + 1;
+				let latePoint = lateCalc(lateDays);// 연체금액
+				if(now.getTime() > comTime.getTime()){
+					if(confirm(`책이 연체되었습니다. 연체금 ${latePoint} P 를 지불하시겠습니까?`)){
+						if(myPoint < latePoint){
+							alert("포인트가 부족하여 책 반납을 할 수 없습니다.");
+							if(confirm("포인트 결제 페이지로 이동하시겠습니까?")){
+								window.location.href = "/point-shop";
+							}
+						}
+						$.ajax({
+							type : "delete",
+							url : "/share/borrow-return",
+							data : {
+								bookId : Number(boardTd[0].textContent),
+								userName : memberId
+							},
+							success : function(data){
+								if(data == true){
+									orderUpdate(lateDays, latePoint);
+								}else{
+									alert("반납실패!");
+								}
+							},
+							error : function(){
+								alert("에러");
+							}
+						});
 					}
-				},
-				error : function(){
-					alert("에러");
+				}else{
+					$.ajax({
+						type : "delete",
+						url : "/share/borrow-return",
+						data : {
+							bookId : Number(boardTd[0].textContent),
+							userName : memberId
+						},
+						success : function(data){
+							if(data == true){
+								alert("반납이 완료되었습니다.");
+								location.href = `/share/detail/${addressNum}`;
+							}else{
+								alert("반납실패!");
+							}
+						},
+						error : function(){
+							alert("에러");
+						}
+					});
 				}
-			});
+				//========================================================
+				function lateCalc(lateDays){
+					let latePoint = lateDays * 100;
+					return latePoint;
+				}
+			}else{
+				alert("반납할 책이 없습니다.");
+				return;
+			}
 		}
 	}
 	
@@ -273,8 +320,36 @@ function buttonClickEvent(bookId, bookEntity){
 	
 }
 
-
-
+function orderUpdate(lateDays, latePoint){
+	const orderArray = new Array();
+	const orders = {
+		productName : "책 연체료",
+		productPrice : 100,
+		productCount : lateDays,
+		allProductPrice : latePoint,
+		userName : memberId,
+		orderId : -1,
+		refundType : "환불불가"
+	};
+	orderArray.push(orders);
+	$.ajax({
+		type : "post",
+		url : "/point/order",
+		contentType : "application/json",
+		data : JSON.stringify(orderArray),
+		success : function(data){
+			if(data == true){
+				alert("반납이 완료되었습니다.");
+				location.href = `/share/detail/${addressNum}`;
+			}else{
+				alert("반납 실패!");
+			}
+		},
+		error : function(){
+			alert("에러");
+		}
+	});
+}
 
 
 
