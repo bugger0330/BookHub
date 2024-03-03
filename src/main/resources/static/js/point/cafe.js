@@ -6,7 +6,7 @@ const priceAll = document.querySelector(".price--all");
 const orderBtn = document.querySelector(".order--btn");
 const productName = document.querySelectorAll(".product--name");
 
-//const username = "user1";
+const username = "user1";
 /**
  * 페이지 로드시 내 포인트 들고옴
  * 
@@ -24,7 +24,7 @@ load();
 function load(){
 	
 	//myPoint.textContent = 0;
-	if(memberId == ""){
+	if(username == ""){
 		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
 		
 	}
@@ -32,7 +32,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : memberId
+			userName : username
 		},
 		success : function(data){
 			if(data != null){
@@ -79,10 +79,6 @@ function checkTrue(){
 }
 
 orderBtn.onclick = () => {
-	if(memberId == ""){
-		alert("로그인이 필요한 서비스 입니다.");
-		window.location.href = "/login";
-	}
 	let flag = 0;
 	for(let i = 0; i < coffieCheck.length; i++){
 		if(coffieCheck[i].checked == true && coffieCount[i].value != 0){
@@ -107,7 +103,7 @@ orderBtn.onclick = () => {
 				productPrice : Number(coffiePrice[i].textContent),
 				productCount : coffieCount[i].value,
 				allProductPrice : (Number(coffiePrice[i].textContent) * Number(coffieCount[i].value)),
-				userName : memberId,
+				userName : username,
 				orderId : -1,
 				refund_type : "환불가능"
 			};

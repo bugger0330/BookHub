@@ -71,5 +71,16 @@ public class UserPointController {
 		
 		
 		
+		// 환불요청 조회
+		@GetMapping("/refund")
+		public String getRefund(Model model) {
+			List<UserPoint> list = userPointService.refundReq();
+			
+			model.addAttribute("list", list);
+			
+			return "/pages/admin/refundList";
+		}
+		
+		
 
 }

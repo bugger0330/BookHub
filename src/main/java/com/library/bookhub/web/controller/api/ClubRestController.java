@@ -2,7 +2,6 @@ package com.library.bookhub.web.controller.api;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.Principal;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class ClubRestController {
 	// clubController에도 /save 같은 url로 설정되어있으면 프로젝트 실행 안되고 '사이트에 연결안됨' 오류뜸
 	// 모임 개설
 	@PostMapping("/save")
-	public ResponseEntity<?> save(@AuthenticationPrincipal MyUserDetails myUserDetails, ClubSaveFormDto dto) {
+	public ResponseEntity<?> saveProc(@AuthenticationPrincipal MyUserDetails user, ClubSaveFormDto dto) {
 		
 		MultipartFile file = dto.getCustomFile();
 		
@@ -105,19 +104,12 @@ public class ClubRestController {
 		}
 		
 		// MyUserDetails @ToString 어노테이션 있어서 log로 확인가능
-		boolean result = clubService.createClub(myUserDetails, dto);
+		log.info("user : " + user);
+		boolean result = clubService.createClub(user, dto);
 		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
 
-	// 모임 개설취소
-	@DeleteMapping("/save")
-	public ResponseEntity<?> deleteClub(Principal principal, Integer id) {
-		
-		boolean result = clubService.deleteClub(principal, id);
-		
-		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
-	}
 	
 	
 }

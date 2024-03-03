@@ -28,54 +28,26 @@
 	</select>
 
 	<select id="selectShareBookBorrow" resultType="com.library.bookhub.entity.ShareBookBorrow">
-		select * from bh_book_share_borrow where bookNo = #{bookNo} and userName = #{userName}; 
+		select * from bh_book_borrow where bookNo = #{bookId} and userName = #{userName}; 
 	</select>
 
 	<insert id="shareBookBorrow">
-		insert into bh_book_share_borrow(userName, brComplete, brDate, returnDate, bookNo, borrowDay)
+		insert into bh_book_share_borrow(userName, brDate, returnDate, bookNo)
 		values(
 			#{userName},
-			1,
 			now(),
-			#{returnDate},
-			#{bookNo},
-			#{borrowDay}
+			#{wdate},
+			#{bookId}
 		);
 	</insert>
 
-	<select id="shareBookInfo" resultType="com.library.bookhub.entity.BookShare">
-		select * from bh_book_share where id = #{bookId};
-	</select>
 
-	<update id="borrowShareBook">
-		update bh_book_share set
-			status = #{status},
-			wdate = #{wdate},
-			borrow = #{borrow}
-		where id = #{id};
-	</update>
 
-	<update id="borrowShareBookEnd">
-		update bh_book_share set
-			status = #{status},
-			wdate = null
-		where id = #{id};
-	</update>
-	
-	<select id="getUser" resultType="com.library.bookhub.entity.User">
-		select * from bh_member where userName = #{userName};
-	</select>
 
-	<update id="pointPayment">
-		update bh_member set
-			point = #{point}
-		where id = #{id};
-	</update>
 
-	<delete id="shareBookBorrowEnd">
-		delete from bh_book_share_borrow
-		where userName = #{userName} and bookNo = #{bookNo};
-	</delete>
+
+
+
 
 
 </mapper>

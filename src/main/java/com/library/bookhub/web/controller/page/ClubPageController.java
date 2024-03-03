@@ -180,6 +180,16 @@ public class ClubPageController {
 	
 	
 	
+	
+	
+	
+	
+	
+	// 결제완료
+	@GetMapping("/test")
+	public String testPage() {
+		return "pages/club/test";
+	}
 }
 
 

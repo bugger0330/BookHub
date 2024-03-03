@@ -49,10 +49,8 @@
     <link href="/css/share/write.css" rel="stylesheet">
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
-    <link href="/css/share/introduce.css" rel="stylesheet">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="/js/principal.js"></script>
 </head>
 
 <body>
@@ -85,14 +83,7 @@
                         <a href="/book/search" class="dropdown-item">통합검색</a>
                     </div>
                 </div>
-                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">포인트샵</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
-                     
-                       
-                    </div>
-                </div>
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">
@@ -117,13 +108,13 @@
                         <a href="/point/cafe" class="dropdown-item">카페</a>
                         <a href="/point/print" class="dropdown-item">프린트/복사</a>
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
+                         <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">책 공유</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="/share/introduce" class="dropdown-item">소개</a>
                         <a href="/share/read" class="dropdown-item">리스트</a>
                         <a href="/share/write" class="dropdown-item">등록</a>
                     </div>
@@ -153,9 +144,7 @@
 					    flex-direction: column;
 					    justify-content: space-around;
 					    color: #06BBCC;"
-					>
-					<sec:authentication property="name"/>
-					</div>
+					><sec:authentication property="principal.user.name"/></div>
 				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->

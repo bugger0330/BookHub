@@ -1,5 +1,6 @@
 package com.library.bookhub.web.controller.api;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,21 @@ public class UserPointRestFulController {
 
 		 userPointService.save(userPoint);
 	    }
-	
-	 
+
+
+		// 환불 - 포인트 차감
+
+		@PostMapping("/refund-point")
+		public void refund(@RequestBody UserPoint userPoint) {
+			 userPointService.refund(userPoint);
+		}
+
+
 	 
 	// 상세조회 컨트롤러
 		@GetMapping("/detail")
 		public ResponseEntity<?> findByUserId(@RequestParam(required = false) String userId){
-			Optional<UserPoint> userPoint = userPointService.findByUserId(userId);
+			List<UserPoint> userPoint = userPointService.findByUserId(userId);
 			
 			if(userPoint == null) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -47,7 +56,9 @@ public class UserPointRestFulController {
 			return new ResponseEntity<>(userPoint, HttpStatus.OK);
 		}
 		
-		
+
+
+		// 유저 환불 여부 상태변경
 		 @PutMapping("/refund")
 		    public ResponseEntity<?> updateUserPoint(@RequestBody UserPoint userPoint) {
 		        userPointService.updateUserPoint(userPoint);

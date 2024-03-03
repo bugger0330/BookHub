@@ -19,12 +19,12 @@ DROP TABLE IF EXISTS bh_point_shop;
 
 
 CREATE TABLE bh_member (
-  id int NOT NULL AUTO_INCREMENT primary KEY,
-  userName varchar(40) NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(20) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
-  gender tinyint,
-  phone char(13),
+  gender tinyint NOT NULL,
+  phone char(13) NOT NULL,
   email varchar(100) NOT NULL,
   role varchar(20) DEFAULT 'USER',
   point int DEFAULT '0',
@@ -216,6 +216,7 @@ CREATE TABLE bh_user_point (
     point_name VARCHAR(100) NOT NULL,
     purchase_date DATETIME NOT NULL,
     point INT NOT NULL,
+    price INT NOT NULL,
     refund_yn VARCHAR(10) DEFAULT '미환불',
 	imp_uid VARCHAR(255) NOT NULL,
 	merchant_uid VARCHAR(255) NOT NULL

@@ -34,27 +34,16 @@ public interface ClubRepository {
 	public ClubApplication findApplicationByIdAndUserName(
 			@Param("clubId") Integer clubId, 
 			@Param("userName") String userName);
-	// 보류
-	// 모임 신청시 자신이 개설한 모임인지 확인
-	public void findByUserNameAndId();
 	
-	// 개설내역
+	// 개설 내역
 	public List<Club> findByUserName(String userName);
-	// 신청내역
+	// 신청 내역
 	public List<ClubApplication> findApplicationByUserName(String userName);
-	
-	// 신청취소
+	// 신청 취소
 	public boolean deleteApplication(Integer id);
 	
-	// 회원정보 조회(포인트 수정하기 위함)
-	public User findUserByUserName(String userName);
 	// 포인트 수정후 회원정보 수정
 	public void updatePoint(User user);
-	
-	// 개설취소(신청 내역없으면 취소 가능, 신청 내역 있으면 관리자 승인)
-	public boolean delete(Integer id);
-	// 개설취소할 때 해당 독서모임 신청내역 있는지 조회
-	public List<ClubApplication> findApplicationByClubId(Integer clubId);
 	
 	
 	

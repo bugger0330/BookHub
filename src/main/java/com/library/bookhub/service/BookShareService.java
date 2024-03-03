@@ -10,11 +10,8 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.library.bookhub.entity.Book;
-import com.library.bookhub.entity.BookBorrow;
 import com.library.bookhub.entity.BookShare;
 import com.library.bookhub.entity.ShareBookBorrow;
 import com.library.bookhub.entity.User;
@@ -108,91 +105,11 @@ public class BookShareService {
 		if(borrowEntity != null) {
 			return false;
 		}
-		int userResult = repository.shareBookBorrow(dto.toEntity());
-		if(userResult == 0) {
-			throw new RuntimeException("bh_book_share_borrow에 대출정보 등록 실패!");
-		}
-		
-		BookShare book = repository.shareBookInfo(dto.getBookId());
-
-		// 북에 대출건수 +1 하고, 대출여부 수정해야함
-		if(book != null) {
-			book.setBorrow(book.getBorrow() + 1);
-			book.setStatus("대출 불가");
-			book.setWdate(returnDate);
-			int bookResult = repository.borrowShareBook(book);
-			if(bookResult == 0) {
-				throw new RuntimeException("bh_book에 대출정보 수정 실패!");
-			}
-			return true;
-		}
-		return false;
-	}
-
-	@Transactional
-	public boolean pointPayment(int point, String masterUsername, String userName) {
-		// 마스터 - 빌려주는 쪽
-		// 유저정보 둘 다 들고와서 각각 + - 포인트 처리
-		User masterUser = repository.getUser(masterUsername);
-		User borrowUser = repository.getUser(userName);
-		masterUser.setPoint(masterUser.getPoint() + point);
-		borrowUser.setPoint(borrowUser.getPoint() - point);
-		
-		if(masterUser != null && borrowUser != null) {
-			int masterResult = repository.pointPayment(masterUser);
-			if(masterResult == 0) {
-				throw new RuntimeException("계정 포인트 수정 실패!");
-			}
-			int borrowUserResult = repository.pointPayment(borrowUser);
-			if(borrowUserResult == 0) {
-				throw new RuntimeException("계정 포인트 수정 실패!");
-			}
-			return true;
-		}
-		return false;
-	}
-
-	public boolean shareBookBorrowEnd(ShareBookBorrowDto dto) {
-		ShareBookBorrow borrowEntity = repository.selectShareBookBorrow(dto.toEntity());
-		if(borrowEntity == null) {
-			return false;
-		}
-		// 대출내역이 있으면 반납기능 수행
-		int borrowEndresult = repository.shareBookBorrowEnd(dto.toEntity());
-		if(borrowEndresult == 0) {
-			throw new RuntimeException("bh_book_share_borrow 테이블에 대출기록 삭제 실패!");
-		}
-		// book 정보 수정
-		BookShare book = repository.shareBookInfo(dto.getBookId());
-		if(book != null) {
-			book.setStatus("대출 가능");
-			int bookResult = repository.borrowShareBookEnd(book);
-			if(bookResult == 0) {
-				throw new RuntimeException("bh_book_share에 대출정보 수정 실패!");
-			}
-			return true;
-		}
-		return false;
+		int result = repository.shareBookBorrow(dto.toEntity());
+		return result != 0;
 	}
 	
 	
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

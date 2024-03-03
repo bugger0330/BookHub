@@ -109,11 +109,7 @@
 
 
 
-	<script>
-		let obj = "${user}";
-		console.log(obj);
-	</script>
-
+	
 	<%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
 
 </body>

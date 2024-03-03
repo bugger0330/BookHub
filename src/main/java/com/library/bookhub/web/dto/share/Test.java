@@ -7,7 +7,7 @@ public class Test {
 	public static void main(String[] args) {
 		
 		BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
-		String test = bc.encode("dddd1111");
+		String test = bc.encode("ddd");
 		System.out.println(test);
 	}
 }

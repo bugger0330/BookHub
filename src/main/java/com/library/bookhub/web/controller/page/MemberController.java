@@ -1,11 +1,8 @@
 package com.library.bookhub.web.controller.page;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -13,7 +10,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -64,8 +60,8 @@ public class MemberController {
 	// 약관 페이지
 	@GetMapping("/join")
 	public String joinPage() {
-       
-       return "pages/user/join";
+		
+		return "pages/user/join";
 	}
 	
 	// 아이디 찾기 페이지
@@ -100,7 +96,7 @@ public class MemberController {
 	// 아이디 중복 확인
 	@PostMapping("/confirmId/{uid}")
 	@ResponseBody
-	public int checkUid(@PathVariable("uid") String uid) {
+	public int checkuid(@PathVariable("uid") String uid) {
 		log.info("uid : "+uid);
 		
 		int num = memberService.confirmUid(uid);
@@ -108,18 +104,7 @@ public class MemberController {
 		return num;
 	}
 	
-	// 아이디 찾기 결과
-	@PostMapping("/findUids")
-	@ResponseBody
-	public List<String> findResult(@RequestBody Map<String, String> email) {
-		log.info("findResult...1");
-		String email1 = email.get("email");
-		log.info("받는 자 : "+email1);
-		
-		List<String> uids = memberService.findUid(email1);
-		log.info("uids : "+uids);
-		
-		return uids;
-	}
+	
+	
 	
 }
