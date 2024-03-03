@@ -23,6 +23,17 @@ public class MemberService {
 	@Autowired
 	private PasswordEncoder encoder;
 	
+	// 사용자 조회
+	public User readUserByUserName(String userName) {
+		log.info("readUserByUserName...1"+userName);
+		User user = memberRepository.findByUsername(userName);
+
+		log.info("readUserByUserName...2");
+		log.info("user : "+user);
+		
+		return user;
+	}
+	
 	// 회원가입 기능
 	@Transactional
 	public void createUser(SignUpFormDto dto) {
@@ -48,6 +59,7 @@ public class MemberService {
 		
 	}
 	
+	
 	// 아이디 중복확인
 	public int confirmUid(String uid) {
 		
@@ -56,6 +68,7 @@ public class MemberService {
 		
 		return result;
 	}
+	
 	
 	// 아이디 찾기
 	public List<String> findUid(String email) {

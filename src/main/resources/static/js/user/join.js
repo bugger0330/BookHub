@@ -26,6 +26,7 @@ function selectAll(all) {
 
 // 페이지 이동
 btnNext.addEventListener('click', function(e){
+	// 현재 체크된 체크란
 	const checkedbox = document.querySelectorAll('input[name="termbox"]:checked');
 	if(checkboxes.length !== checkedbox.length){
 		alert('모든 약관에 동의해주세요.')

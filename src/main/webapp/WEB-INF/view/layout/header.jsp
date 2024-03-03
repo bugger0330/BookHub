@@ -49,8 +49,10 @@
     <link href="/css/share/write.css" rel="stylesheet">
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
+    <link href="/css/share/introduce.css" rel="stylesheet">
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/principal.js"></script>
 </head>
 
 <body>
@@ -121,6 +123,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">책 공유</a>
                     <div class="dropdown-menu fade-down m-0">
+                        <a href="/share/introduce" class="dropdown-item">소개</a>
                         <a href="/share/read" class="dropdown-item">리스트</a>
                         <a href="/share/write" class="dropdown-item">등록</a>
                     </div>
@@ -150,7 +153,9 @@
 					    flex-direction: column;
 					    justify-content: space-around;
 					    color: #06BBCC;"
-					><sec:authentication property="principal.user.name"/></div>
+					>
+					<sec:authentication property="name"/>
+					</div>
 				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->

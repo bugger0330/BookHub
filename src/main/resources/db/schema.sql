@@ -19,12 +19,12 @@ DROP TABLE IF EXISTS bh_point_shop;
 
 
 CREATE TABLE bh_member (
-  id int NOT NULL AUTO_INCREMENT,
-  userName varchar(20) NOT NULL,
+  id int NOT NULL AUTO_INCREMENT primary KEY,
+  userName varchar(40) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
-  gender tinyint NOT NULL,
-  phone char(13) NOT NULL,
+  gender tinyint,
+  phone char(13),
   email varchar(100) NOT NULL,
   role varchar(20) DEFAULT 'USER',
   point int DEFAULT '0',

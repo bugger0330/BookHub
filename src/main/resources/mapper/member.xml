@@ -21,4 +21,12 @@
 	<select id="findEmailByUsername">
 		SELECT `userName`,`email` FROM bh_member WHERE `email`=#{email}
 	</select>
+	
+	<select id="findIdAndEmailByUser">
+		SELECT `userName`,`email` FROM `bh_member` WHERE `userName`=#{userName} AND `email`=#{email}
+	</select>
+	
+	<update id="updatePassword">
+		UPDATE bh_member SET `password` = #{password} WHERE `userName` = #{userName}
+	</update>
 </mapper>

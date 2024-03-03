@@ -20,4 +20,8 @@ public class BookSharePageController {
 	public String shareBookDetail() {
 		return "pages/share/detail";
 	}
+	@GetMapping("/introduce")
+	public String introduce() {
+		return "pages/share/introduce";
+	}
 }

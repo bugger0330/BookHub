@@ -70,7 +70,8 @@
 							<div class="form-floating date" id="date3"
 								data-target-input="nearest">
 								<!-- type 변경으로 달력 출력함!!! -->
-								<input type="datetime-local" step="1800" class="datepicker-input form-control bg-white border-0"
+								<!-- 최솟값 주기 위해 min 설정 -->
+								<input type="datetime-local" min="" class="datepicker-input form-control bg-white border-0"
 									id="datetime" placeholder="Date & Time" data-target="#date3"
 									data-toggle="datetimepicker" name="cDate" /> <label for="datetime">모임날짜</label>
 							</div>
@@ -91,10 +92,10 @@
 						</div>
 						<div class="col-md-6">
 							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="customFile"
-									name="customFile"> <label class="custom-file-label"
-									for="customFile">이미지</label>
+								<input type="file" class="custom-file-input" id="customFile" name="customFile" style="margin-top: 10px;"> 
 							</div>
+							<!-- 미리보기 -->
+							 <img src="" alt="미리보기" id="preview" style="display: none; max-width: 100%; margin-top: 10px;">
 						</div>
 						<div class="col-md-6">
 							<div class="form-floating">

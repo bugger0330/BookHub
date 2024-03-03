@@ -78,14 +78,12 @@ public class BookService {
 		}
 		// 대출내역이 있으면 반납기능 수행
 		int borrowEndresult = bookRepository.borrowUserEnd(bookBorrowEntity.getId());
-		System.out.println("대출기록 삭제 아이디 : " + bookBorrowEntity.getId());
 		if(borrowEndresult == 0) {
 			throw new RuntimeException("bh_book_borrow 테이블에 대출기록 삭제 실패!");
 		}
 		// book 정보 수정
 		Book book = bookRepository.bookInfo(bookId);
 		if(book != null) {
-			System.out.println("===========================실행완료?" + book);
 			book.setStatus("대출 가능");
 			int bookResult = bookRepository.borrowBookEnd(book);
 			if(bookResult == 0) {

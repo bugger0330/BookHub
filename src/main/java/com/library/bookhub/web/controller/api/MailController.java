@@ -1,17 +1,22 @@
 package com.library.bookhub.web.controller.api;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.service.MailService;
+import com.library.bookhub.service.MemberService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -20,6 +25,11 @@ public class MailController {
 	
 	@Autowired
 	private MailService mailService;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	/* --- 회원가입 --- */
 	
 	// 이메일 전송
 	@PostMapping("/user/sendEmail/{email}")
@@ -48,4 +58,40 @@ public class MailController {
 		return result;
 		
 	}
+	
+	/* --- 아이디 찾기 --- */
+	
+	// 이메일 전송
+	@PostMapping("/findId/sendEmail")
+	@ResponseBody
+	public String findIdEmail(@RequestBody Map<String, String> email) {
+		String email1 = email.get("email");
+		
+		log.info("받는 자 : "+email1);
+		
+		try {
+			mailService.sendCodeByEmail(email1);
+		} catch (Exception e) { 
+			throw new CustomRestFulException("이메일 전송에 실패했습니다.",HttpStatus.BAD_REQUEST); 
+		}
+		
+		return email1;
+	}
+	
+	// 인증 번호
+	@GetMapping("/findId/authNumber")
+	@ResponseBody
+	public int findIdNumber(@RequestParam("number") String number) {
+		log.info("입력한 번호 : "+number);
+		
+		int result = mailService.confirmCodeByEmail(number);
+		log.info("결과 값 : "+result);
+		
+		
+		return result;
+		
+	}
+	
+	/* --- 비밀번호 찾기 --- */
+	
 }

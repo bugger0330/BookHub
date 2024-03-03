@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.library.bookhub.entity.BookShare;
 import com.library.bookhub.entity.ShareBookBorrow;
+import com.library.bookhub.entity.User;
 
 @Mapper
 public interface BookShareRepository {
@@ -18,6 +19,17 @@ public interface BookShareRepository {
 
 	ShareBookBorrow selectShareBookBorrow(ShareBookBorrow entity);
 	int shareBookBorrow(ShareBookBorrow entity);
+
+	BookShare shareBookInfo(int bookId);
+
+	int borrowShareBook(BookShare book);
+	int borrowShareBookEnd(BookShare book);
+
+	User getUser(String userName);
+
+	int pointPayment(User user);
+
+	int shareBookBorrowEnd(ShareBookBorrow entity);
 
 
 }

@@ -28,10 +28,9 @@ public class User {
     private String zip;
     private String addr1;
     private String addr2;
+    private int status;
     private LocalDateTime wDate;
     private LocalDateTime rDate;
-    
-    
 	// 포메터 기능(금액)
 	public String formatBalancePoint() {
 		// 1000 -> 1,000
@@ -40,5 +39,5 @@ public class User {
 		return formaterNumber + " 포인트";
 	}
 	
-	
+
 }
