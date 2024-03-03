@@ -216,6 +216,11 @@
 		// 인증 코드 입력
 		function EnterNumber() {
 			const num = authNumber.value;
+			
+			if(emailTime.textContent === '0:00') {
+				alert('입력 시간이 지났습니다. 다시 코드를 발급해주세요.');
+				return;
+			}
 
 			fetch(`/findId/authNumber?number=`+num,{
 				method: "GET",
@@ -240,7 +245,6 @@
 			});
 		}
 	    
-		
 		
 		// 타이머 시작
 		function time(time) {

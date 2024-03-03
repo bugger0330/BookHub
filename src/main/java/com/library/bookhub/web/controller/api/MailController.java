@@ -1,9 +1,11 @@
 package com.library.bookhub.web.controller.api;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,111 +24,118 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RestController
 public class MailController {
-	
+
 	@Autowired
 	private MailService mailService;
-	
+
 	@Autowired
 	private MemberService memberService;
-	
+
 	/* --- 회원가입 --- */
-	
+
 	// 이메일 전송
 	@PostMapping("/user/sendEmail/{email}")
-	public void sendEmail(@PathVariable("email")String email) {
-		log.info("받는 자 : "+email);
-		
+	public void sendEmail(@PathVariable("email") String email) {
+		log.info("받는 자 : " + email);
+
 		try {
 			mailService.sendCodeByEmail(email);
 		} catch (Exception e) {
 			log.error(e);
 			throw new CustomRestFulException("전송에 문제가 발생했습니다. 고객센터로 문의해주세요.", HttpStatus.BAD_REQUEST);
 		}
-		
+
 	}
-	
+
 	// 인증 번호
 	@GetMapping("/user/authNumber")
 	@ResponseBody
 	public int authEmail(@RequestParam("number") String number) {
-		log.info("입력한 번호 : "+number);
-		
+		log.info("입력한 번호 : " + number);
+
 		int result = mailService.confirmCodeByEmail(number);
-		log.info("결과 값 : "+result);
-		
-		
+		log.info("결과 값 : " + result);
+
 		return result;
-		
+
 	}
-	
+
 	/* --- 아이디 찾기 --- */
-	
+
 	// 이메일 전송
 	@PostMapping("/findId/sendEmail")
 	@ResponseBody
 	public String findIdEmail(@RequestBody Map<String, String> email) {
 		String email1 = email.get("email");
-		
-		log.info("받는 자 : "+email1);
-		
+
+		log.info("받는 자 : " + email1);
+
 		try {
 			mailService.sendCodeByEmail(email1);
-		} catch (Exception e) { 
-			throw new CustomRestFulException("이메일 전송에 실패했습니다.",HttpStatus.BAD_REQUEST); 
+		} catch (Exception e) {
+			throw new CustomRestFulException("이메일 전송에 실패했습니다.", HttpStatus.BAD_REQUEST);
 		}
-		
+
 		return email1;
 	}
-	
+
 	// 인증 번호
 	@GetMapping("/findId/authNumber")
 	@ResponseBody
 	public int findIdNumber(@RequestParam("number") String number) {
-		log.info("입력한 번호 : "+number);
-		
+		log.info("입력한 번호 : " + number);
+
 		int result = mailService.confirmCodeByEmail(number);
-		log.info("결과 값 : "+result);
-		
-		
+		log.info("결과 값 : " + result);
+
 		return result;
-		
+
 	}
-	
+
 	/* --- 비밀번호 찾기 --- */
-	
+
 	// 이메일 전송
 	@PostMapping("/findPwd/sendEmail")
 	@ResponseBody
-	public String findPwdEmail(@RequestBody Map<String, String> Data) {
-		log.info("받는 자 : "+Data);
-		
+	public Map<String, Object> findPwdEmail(@RequestBody Map<String, String> Data) {
+		log.info("받는 자 : " + Data);
+
 		String email = Data.get("email");
 		String username = Data.get("username");
-		
+
 		int result = memberService.findPassword(username, email);
-		log.info("result : "+result);
-		
-		if(result > 1) {
-			throw new CustomRestFulException("이메일 혹은 아이디를 다시 확인해주세요.", HttpStatus.UNAUTHORIZED);
+		log.info("result : " + result);
+
+		try {
+			mailService.sendCodeByEmail(email);
+		} catch (Exception e) {
+			log.error(e);
+			result = 0;
 		}
-		
-		
-		
-		return result+"";
+
+		Map<String, Object> responseData = new HashMap<>();
+		responseData.put("result", result);
+		responseData.put("username", username);
+
+		return responseData;
 	}
-	
+
 	// 인증 번호
 	@GetMapping("/findPwd/authNumber")
 	@ResponseBody
-	public int findPwdNumber(@RequestParam("number") String number) {
-		log.info("입력한 번호 : "+number);
-		
-		int result = mailService.confirmCodeByEmail(number);
+	public int findPwdNumber(@RequestParam("num") String num, @RequestParam("username") String username,
+			HttpSession session) {
+		log.info("findPwdNumber data : " + num + username);
+
+		int result = mailService.confirmCodeByEmail(num);
 		log.info("결과 값 : "+result);
 		
-		
+		if(result >= 1) {
+			session.setAttribute("findByUsername", username);
+		}
+
 		return result;
-		
+
 	}
-	
+
 }

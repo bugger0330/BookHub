@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.library.bookhub.handler.exception.CustomPageException;
+import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.service.MemberService;
 import com.library.bookhub.web.dto.member.SignUpFormDto;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -120,6 +124,28 @@ public class MemberController {
 		log.info("uids : "+uids);
 		
 		return uids;
+	}
+	
+	// 비밀번호 변경
+	@PostMapping("/findPwdChange")
+	@ResponseBody
+	public int changePassword(@RequestBody Map<String, String> password, HttpSession session) {
+		
+		String newPassword = password.get("password");
+		String username = (String) session.getAttribute("findByUsername");
+		
+		log.info("changePassword : "+newPassword+", "+username);
+		
+		if(username == null || username.isEmpty() || username == "") {
+			throw new CustomRestFulException("변경할 비밀번호의 아이디가 존재하지 않습니다", HttpStatus.BAD_REQUEST);
+		}
+		
+		int result = memberService.modifyPassword(username, newPassword);
+		log.info("result : "+result);
+		
+	    session.removeAttribute("findByUsername");
+		
+		return result;
 	}
 	
 }

@@ -123,10 +123,8 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 	// OAuth2 사용자의 이름
 	@Override
 	public String getName() {
-        Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
-        String email = (String) kakaoAccount.get("email");
 		
-		return email;
+		return null;
 	}
 
 }

@@ -32,7 +32,8 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	@Autowired
 	private SecurityUserService service;
 	
-	private final Oauth2UserService oAuth2UserService;
+	@Autowired
+	private Oauth2UserService oAuth2UserService;
 	
 	// 카카오 Rest Key
 	@Value("${spring.security.oauth2.client.registration.kakao.client-id}")
@@ -41,10 +42,6 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	// 카카오 리다이렉트 uri
 	@Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
 	private String KakaoRedirectUri;
-	
-	public SecurityConfigration(Oauth2UserService oAuth2UserService) {
-        this.oAuth2UserService = oAuth2UserService;
-    }
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -87,13 +84,12 @@ public class SecurityConfigration implements WebMvcConfigurer {
     	            .permitAll())
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
-                    .requestMatchers("/**").permitAll()
+            		.requestMatchers("/**").permitAll()
+            		.requestMatchers("/home").permitAll()
+            		.requestMatchers("/login").permitAll()
                     .requestMatchers("/h2-console/**").permitAll()
                     .requestMatchers(PathRequest.toH2Console()).permitAll()
                     .requestMatchers("/user/**").permitAll()
-                    .requestMatchers("/kakao/token/**").permitAll()
-                    .requestMatchers("/kakao/**").permitAll()
-                    .requestMatchers("/oauth2/**").permitAll()
                     .requestMatchers("/club/**").permitAll()
                     .requestMatchers("/ad/**").permitAll()
                     .requestMatchers("/myPage/**").permitAll()
@@ -102,19 +98,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .requestMatchers("/api/**").permitAll()
                     .requestMatchers("/sc-product/**").permitAll()
                     .requestMatchers("/point-product/**").permitAll()
-            	    .requestMatchers("/admin").hasRole("ADMIN") // "/admin" 경로에 대한 권한 설정
-            	    .requestMatchers("/**").permitAll() // 모든 경로에 대한 접근 허용
-            	    .requestMatchers("/h2-console/**").permitAll()
-            	    .requestMatchers(PathRequest.toH2Console()).permitAll()
-            	    .requestMatchers("/user/**").permitAll()
-            	    .requestMatchers("/club/**").permitAll()
-            	    .requestMatchers("/ad/**").permitAll()
-            	    .requestMatchers("/myPage/**").permitAll()
-            	    .requestMatchers("/payment/**").permitAll()
-            	    .requestMatchers("/product-category/**").permitAll()
-            	    .requestMatchers("/api/**").permitAll()
-            	    .requestMatchers("/sc-product/**").permitAll()
-            	    .requestMatchers("/point-product/**").permitAll()
+            	    .requestMatchers("/admin").hasAuthority("ADMIN") // "/admin" 경로에 대한 권한 설정
             	    .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll());
 
 		// 사용자 인증처리 컴포넌트 등록
