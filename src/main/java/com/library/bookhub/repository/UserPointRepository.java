@@ -43,4 +43,6 @@ public interface UserPointRepository {
 
 	// 환불 요청된 데이터 조회
 	public List<UserPoint> refundReq();
+
+	public UserPoint findByImpUid(String impUid);
 }

@@ -62,6 +62,13 @@
 	WHERE id = #{id}
 	</update>
 
+
+	<update id="updatePoint" parameterType="com.library.bookhub.entity.UserPoint">
+		UPDATE bh_user_point
+		SET point = #{point}
+		WHERE id = #{id}s
+	</update>
+
 	<!-- 삭제 함수 매핑 -->
 	<delete id="deleteById" parameterType="int">
 		DELETE FROM bh_user_point

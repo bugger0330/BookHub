@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import com.library.bookhub.repository.UserPointRepository;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -49,6 +51,10 @@ public class PayService {
 	
 	@Autowired
 	private UserService userService;
+
+
+	@Autowired
+	private UserPointRepository userPointRepository;
 	
 	  public ResponseEntity<String> getToken() {
 	        // IAMPORT API의 엑세스 키와 시크릿 키
@@ -74,71 +80,52 @@ public class PayService {
 	        log.info("토큰 값: {}", responseEntity.getBody());
 	        return responseEntity;
 	    }
-	  
-	  
-	  public ResponseEntity<String> cancelPayment(UserPoint userPoint, String accessToken) {
-		  
-		  
-		  List<UserPoint> list = userPointService.refundReq();
-		    
-		  String impUid = null;
-		  Integer price = null;
-
-		  // 환불 요청 목록에서 필요한 정보 추출
-		  if (!list.isEmpty()) {
-		      // 리스트의 첫 번째 요소를 사용
-		      UserPoint firstUserPoint = list.get(0);
-		      impUid = firstUserPoint.getImpUid();
-		      price = firstUserPoint.getPrice();
-		  }
-
-		  System.out.println("ImpUid: " + impUid);
-		  System.out.println("Price: " + price);
-		  
-		    String apiUrl = "https://api.iamport.kr/payments/cancel";
-		    RestTemplate restTemplate = new RestTemplate();
-		    HttpHeaders headers = new HttpHeaders();
-		    headers.setContentType(MediaType.APPLICATION_JSON);
-		    headers.set("Authorization",  accessToken);
-		    log.info("취소 요청 imp_uid: {}", userPoint.getId()); // imp_uid 로그 추가
-		    System.out.println(headers);
-		    System.out.println("엑세스 토큰" + accessToken);
-
-		    ObjectMapper objectMapper = new ObjectMapper();
-		    String requestData;
-		    try {
-		        Map<String, Object> requestBody = new HashMap<>();
-		        requestBody.put("reason", "고객 요청 환불");
-		        requestBody.put("imp_uid", impUid);
-		        requestBody.put("amount", price);
-		        requestBody.put("checksum", price);
-		        requestData = objectMapper.writeValueAsString(requestBody);
-		    } catch (JsonProcessingException e) {
-		        // JSON 변환 오류 처리
-		        e.printStackTrace(); // 또는 로깅 등의 적절한 처리
-		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to process request.");
-		    }
-		    HttpEntity<String> requestEntity = new HttpEntity<>(requestData, headers);
 
 
-		    try {
-		        ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.POST, requestEntity, String.class);
-		        System.out.println("Response Body: " + response.getBody()); // 로그 추가
-		        return response;
-		    } catch (HttpClientErrorException e) {
-		        // HttpClientErrorException 처리
-		        HttpStatus statusCode = (HttpStatus) e.getStatusCode();
-		        // 에러 상태 코드와 응답 본문을 로깅
-		        String responseBody = e.getResponseBodyAsString();
-		        System.out.println("HTTP 오류 코드: " + statusCode);
-		        System.out.println("응답 본문: " + responseBody);
-		        // 클라이언트에게 HTTP 오류 코드와 응답 본문을 반환
-		        if (responseBody != null) {
-		            return new ResponseEntity<>(responseBody, statusCode);
-		        } else {
-		            return new ResponseEntity<>(statusCode);
-		        }
-		    }
+		// 환불요청
+		@Transactional
+		public ResponseEntity<String> cancelPayment(String impUid, int price, String accessToken) {
+
+		   UserPoint userPoint = new UserPoint();
+
+			String apiUrl = "https://api.iamport.kr/payments/cancel";
+			RestTemplate restTemplate = new RestTemplate();
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			headers.set("Authorization", accessToken);
+
+			ObjectMapper objectMapper = new ObjectMapper();
+			String requestData;
+			try {
+				Map<String, Object> requestBody = new HashMap<>();
+				requestBody.put("reason", "고객 요청 환불");
+				requestBody.put("imp_uid", impUid);
+				requestBody.put("amount", price);
+				requestBody.put("checksum", price);
+				requestData = objectMapper.writeValueAsString(requestBody);
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+				return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to process request.");
+			}
+			HttpEntity<String> requestEntity = new HttpEntity<>(requestData, headers);
+
+			try {
+				ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.POST, requestEntity, String.class);
+				System.out.println("Response Body: " + response.getBody()); // 로그 추가
+
+
+				return response;
+			} catch (HttpClientErrorException e) {
+				HttpStatus statusCode = (HttpStatus) e.getStatusCode();
+				String responseBody = e.getResponseBodyAsString();
+				System.out.println("HTTP 오류 코드: " + statusCode);
+				System.out.println("응답 본문: " + responseBody);
+				if (responseBody != null) {
+					return new ResponseEntity<>(responseBody, statusCode);
+				} else {
+					return new ResponseEntity<>(statusCode);
+				}
+			}
 		}
 
 }

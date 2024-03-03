@@ -83,14 +83,7 @@
                         <a href="/book/search" class="dropdown-item">통합검색</a>
                     </div>
                 </div>
-                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">포인트샵</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
-                     
-                       
-                    </div>
-                </div>
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">
@@ -115,6 +108,7 @@
                         <a href="/point/cafe" class="dropdown-item">카페</a>
                         <a href="/point/print" class="dropdown-item">프린트/복사</a>
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
+                         <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
                     </div>
                 </div>

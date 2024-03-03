@@ -37,10 +37,10 @@ dependencies {
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	
 	// H2
-    //runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2'
     
     // mySQL
-    runtimeOnly 'com.mysql:mysql-connector-j'
+//    runtimeOnly 'com.mysql:mysql-connector-j'
     
     
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
@@ -61,6 +61,9 @@ dependencies {
   	
   	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
 	implementation 'org.springframework.security:spring-security-taglibs:6.2.2'   
+	
+	
+	 implementation 'org.springframework.security:spring-security-oauth2-client:5.5.0' 
 }
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'
