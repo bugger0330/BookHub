@@ -22,41 +22,36 @@ public class CsCateService {
 	private CsCateRepository csCateRepository;
 
 	public List<CsCate1Dto> selectCsCate1() {
-		List<CsCate1Entity> list1 = csCateRepository.selectCsCate1();
-		List<CsCate2Entity> list2 = csCateRepository.selectCsCate2();
+		List<CsCate1Entity> csCateList1 = csCateRepository.selectCsCate1();
+		List<CsCate2Entity> csCateList2 = csCateRepository.selectCsCate2();
 		
-		System.out.println("list1" + list1);
-		System.out.println("list2" + list2);
+		System.out.println("csCateList1" + csCateList1);
+		System.out.println("csCateList2" + csCateList2);
 		
-		List<CsCate1Dto> dto1 = new ArrayList<>();
-		for(int i = 0; i < list1.size(); i++) {
-			CsCate1Dto respList = new CsCate1Dto();
-			respList.setCate1(list1.get(i).getCate1());
-			respList.setC1Name(list1.get(i).getC1Name());
-			dto1.add(respList); // cate1 담기
+		List<CsCate1Dto> csCate1Dto = new ArrayList<>();
+		for(int i = 0; i < csCateList1.size(); i++) {
+			CsCate1Dto respCsCate1List = new CsCate1Dto();
+			respCsCate1List.setCate1(csCateList1.get(i).getCate1());
+			respCsCate1List.setC1Name(csCateList1.get(i).getC1Name());
+			csCate1Dto.add(respCsCate1List); // entity -> dto : cate1 담기
 		}
 		
-		for(int i = 0; i < list1.size(); i++) {
-		List<CsCate2Dto> dto2 = new ArrayList<>();
+		for(int i = 0; i < csCateList1.size(); i++) {
+		List<CsCate2Dto> csCate2Dto = new ArrayList<>();
 		
-			for(int k = 0; k < list2.size(); k++){
-				if(dto1.get(i).getCate1() == list2.get(k).getCate1()) {
-					CsCate2Dto respList2 = new CsCate2Dto();
-					respList2.setCate1(list2.get(k).getCate1());
-					respList2.setCate2(list2.get(k).getCate2());
-					respList2.setC2Name(list2.get(k).getC2Name());
-					dto2.add(respList2);
-					dto1.get(i).setRespList(dto2);
+			for(int k = 0; k < csCateList2.size(); k++){
+				if(csCate1Dto.get(i).getCate1() == csCateList2.get(k).getCate1()) {
+					CsCate2Dto respCsCate2List = new CsCate2Dto();
+					respCsCate2List.setCate1(csCateList2.get(k).getCate1());
+					respCsCate2List.setCate2(csCateList2.get(k).getCate2());
+					respCsCate2List.setC2Name(csCateList2.get(k).getC2Name());
+					csCate2Dto.add(respCsCate2List); // entity -> dto : cate2 담기
+					csCate1Dto.get(i).setRespList(csCate2Dto);
 				}// if문
 				}// 2중for문
 		}
 		
-		
-		
-		return dto1;
+		return csCate1Dto; //최종적으로 CsCate2Dto 객체를 포함한 CsCate1Dto 객체의 리스트를 반환
 	}
 
-	
-
-	
 }

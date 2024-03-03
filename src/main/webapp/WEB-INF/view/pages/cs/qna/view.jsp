@@ -82,7 +82,7 @@
 						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
 			});
 </script>
-<script src="/js/csViewScript.js"></script>
+<script src="/js/cs/csQna.js"> 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

@@ -1,26 +1,32 @@
-/*!
-    * Start Bootstrap - SB Admin v7.0.7 (https://startbootstrap.com/template/sb-admin)
-    * Copyright 2013-2023 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
-    */
-    // 
-// Scripts
-// 
+// Notice list에서 View 위한 클릭 이벤트
+function load() {
+	const pageClick = $(".page-click");
+	pageClick.on("click", function() {
+		window.location.href = "/notice/view/" + $(this).attr("id");
+	});
+}
 
-window.addEventListener('DOMContentLoaded', event => {
+load();
 
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    if (sidebarToggle) {
-        // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sb-sidenav-toggled');
-        // }
-        sidebarToggle.addEventListener('click', event => {
-            event.preventDefault();
-            document.body.classList.toggle('sb-sidenav-toggled');
-            localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-        });
-    }
+// Notice list에서 View Id 넘겨주기
+function loadId() {
+	const title = $("#title");
+	const content = $("#content");
+	const addressNum = window.location.pathname.split("/")[3];
+	$.ajax({
+		type: "post",
+		url: "/notice/view",
+		data: {
+			id: Number(addressNum)
+		},
+		success: function(data) {
+			title.value = data.title;
+			content.value = data.content;
+		},
+		error: function() {
+			alert("error!!!");
+		}
+	});
+}
 
-});
+loadId();// 실행

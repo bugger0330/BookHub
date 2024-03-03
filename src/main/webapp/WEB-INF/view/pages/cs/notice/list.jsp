@@ -47,33 +47,24 @@
 						<th>File</th>
 						<th>Writer</th>
 						<th>Date</th>
-						<th>Hit</th>
 					</tr>
 				</thead>
 				<tbody class="text-center">
-					<!-- 가장 조회수가 높은 게시글 상위 노출 -->
-					<tr>
-						<td><i class="bi bi-megaphone-fill text-danger"></i></td>
-						<td>설날 중앙도서관 휴관 안내</td>
-						<td><i class="bi bi-file-earmark-text-fill"></i></td>
-						<td>관리자</td>
-						<td>2024-02-01</td>
-						<td>144</td>
-					</tr>
+					
 					<c:forEach var="list" items="${noticeList}">
 						<tr class="page-click" id="${list.id}">
-							<td>${list.id}</td>
+							<td><i class="bi bi-megaphone-fill text-danger">${list.id}</i></td>
 							<td class="text-left" width="50%">
 								<div class="panel-cs-container">
 									<p class="panel-cs-title">${list.title}</p>
 								</div>
 							</td>
-							<td><i class="bi bi-file-earmark-text-fill">${list.ofile}</i></td>
+							<td><i class="bi bi-file-earmark-text-fill">${list.filepath}</i></td>
 							<td>${list.writer}</td>
 							<td>${list.rdate}</td>
-							<td>${list.hit}</td>
 						</tr>
 					</c:forEach>
+					
 				</tbody>
 			</table>
 
@@ -110,7 +101,7 @@
 	</div>
 </section>
 
-<script src="/js/csPostScript.js"></script>
+<script src="/js/cs/csNotice.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

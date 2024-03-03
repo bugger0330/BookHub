@@ -69,14 +69,7 @@ public class TestController {
 	}
 	
 	
-	// ---------------- CS 페이지 ----------------//
 	
-	
-	// cs 카테고리 페이지 요청
-	@GetMapping("/layout/aside")
-	public String CsCateAside() {
-		return "pages/cs/layout/aside";
-	}
 }
 
 // page 패키지에는 페이지를 여는 용도로만 사용

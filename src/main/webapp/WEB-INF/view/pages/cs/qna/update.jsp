@@ -76,7 +76,7 @@
 						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
 			});
 </script>
-<script src="/js/csUpdateScript.js">
+<script src="/js/cs/csQna.js"> 
 
 </script>
 

@@ -5,44 +5,44 @@
 <mapper
 	namespace="com.library.bookhub.repository.cs.CsQnaRepository">
 
-	<!-- 문의하기 리스트 조회 -->
+	<!-- Qna 리스트 조회 -->
 	<select id="selectCsQnaList"
 		resultType="com.library.bookhub.entity.cs.CsQnaEntity">
 		select * from bh_cs_qna order by #{id} desc;
 	</select>
 
-	<!-- 문의하기 작성하기 -->
+	<!-- Qna 작성하기 -->
 	<insert id="qnaInsert">
 		INSERT INTO bh_cs_qna (cate1, cate2, title, content, filepath , writer, answerComplete, rdate)
 		VALUES (#{cate1},#{cate2},#{title},#{content}, #{filepath}, #{writer}, #{answerComplete}, now());
 	</insert>
 
-	<!-- 문의하기 상세보기 -->
+	<!-- Qna 상세보기 -->
 	<select id="qnaView"
 		resultType="com.library.bookhub.entity.cs.CsQnaEntity">
 		SELECT * FROM bh_cs_qna WHERE id = #{id};
 	</select>
 
-	<!-- 문의하기 수정하기 -->
+	<!-- Qna 수정하기 -->
 	<update id="qnaUpdate">
 		update bh_cs_qna set title = #{title}, content = #{content} where id =
 		#{id};
 	</update>
 
 
-	<!-- 문의하기 삭제하기 -->
+	<!-- Qna 삭제하기 -->
 	<delete id="qnaDelete">
 		delete from bh_cs_qna where id = #{id};
 	</delete>
 
-	<!-- 페이징 처리 쿼리 -->
+	<!-- 페이징 처리 -->
 	<select id="findAllwithPasing"
 		resultType="com.library.bookhub.entity.cs.CsQnaEntity">
 		select * from bh_cs_qna
 		limit #{limit} offset #{offset}
 	</select>
 
-	<!-- 전체 데이터 개수 쿼리 -->
+	<!-- 전체 데이터 개수 -->
 	<select id="getAllPgCount" resultType="int">
 		select count(*) from
 		bh_cs_qna

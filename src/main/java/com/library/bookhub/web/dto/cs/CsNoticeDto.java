@@ -16,9 +16,9 @@ import lombok.ToString;
 @AllArgsConstructor
 public class CsNoticeDto {
 
-	private Integer id;
-	private Integer cate1;
-	private Integer cate2;
+	private int id;
+	private int cate1;
+	private int cate2;
 	private String title;
 	private String content;
 	private String writer;
