@@ -34,13 +34,16 @@ public class ClubRestController {
 	// 독서모임 신청
 	// Ajax로 보낸 데이터 아래와 같이 파라미터로 받음
 	@PostMapping("/apply")
-	public ResponseEntity<?> Apply(Integer clubId, String userName) {
+	public ResponseEntity<?> apply(Principal principal, Integer clubId) {
 		
-		//boolean result = bookService.bookBorrow(bookId, username);
+		// 인증검사
+		// alert를 띄우고 신청하시겠습니까? 확인 클릭했을 때, Ajax 전송이 되서 여기 컨트롤러로 들어오는데
+		// 로그인 안되었을 때는 신청 버튼 클릭하자마자 로그인 화면으로 이동해야하므로 스크립트 처리로 하는 게 맞다!!!
+		
 		log.info("clubId : " + clubId);
-		log.info("userName : " + userName);
+		log.info("userName : " + principal.getName());
 		
-		boolean result = clubService.createApplication(clubId, userName);
+		boolean result = clubService.createApplication(principal, clubId);
 		
 		
 		// ResponseEntity는 제네릭이라 모든 타입을 받을 수 있음
@@ -119,5 +122,36 @@ public class ClubRestController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
 	
+	// 찜하기
+	@PostMapping("/wish")
+	public ResponseEntity<?> wish(Principal principal, Integer clubId) {
+		
+		// 인증검사
+		// alert를 띄우고 신청하시겠습니까? 확인 클릭했을 때, Ajax 전송이 되서 여기 컨트롤러로 들어오는데
+		// 로그인 안되었을 때는 신청 버튼 클릭하자마자 로그인 화면으로 이동해야하므로 스크립트 처리로 하는 게 맞다!!!
+		
+		boolean result = clubService.createWishList(principal, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 	
+	// 찜하기 취소
+	@DeleteMapping("/wish")
+	public ResponseEntity<?> deleteWishList(Principal principal, Integer clubId) {
+	
+		boolean result = clubService.deleteWishList(principal, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+	
+	// 찜하기 여부에 따라 다르게 표시 / PostMapping 쓰자
+	@PostMapping("/checkWish")
+	public ResponseEntity<?> checkWish(Principal principal, Integer clubId) {
+		
+		
+		
+		boolean result = clubService.readClubWishListByClubIdAndUserName(principal, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 }

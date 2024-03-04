@@ -107,6 +107,7 @@
                         <a href="/club/save" class="dropdown-item">모임 개설하기</a>
                         <a href="/club/saveList" class="dropdown-item">모임 개설내역</a>
                         <a href="/club/applicationList" class="dropdown-item">모임 신청내역</a>
+                        <a href="/club/wishList" class="dropdown-item">찜</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

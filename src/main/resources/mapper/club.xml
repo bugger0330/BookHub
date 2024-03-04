@@ -30,6 +30,13 @@
 	`rdate`= now()
 </insert>
 
+<insert id="insertWishList">
+	INSERT INTO bh_club_wish_list SET
+	`clubId` = #{clubId},
+	`userName` = #{userName},
+	`rdate` = now()
+</insert>
+
 <select id="findAll" resultType="com.library.bookhub.entity.Club">
 	select * from bh_club order by id desc
 </select>
@@ -73,6 +80,17 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 	SELECT * FROM bh_club WHERE userName = #{userName} AND id = #{id}
 </select>
 
+<select id="findWishListByUserName" resultType="com.library.bookhub.entity.ClubWishList">
+	SELECT a.*, b.clubName, b.descript, b.cDate, b.uploadFileName1 
+	from bh_club_wish_list AS a
+	JOIN bh_club AS b ON a.clubId = b.id
+	WHERE a.userName = #{userName}
+</select>
+
+<select id="findWishListByClubIdAndUserName" resultType="com.library.bookhub.entity.ClubWishList">
+	SELECT * FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
+</select>
+
 <update id="updateByApplication">
 	update bh_club set
 	`hcApply` = #{hcApply},
@@ -90,6 +108,10 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 
 <delete id="delete">
 	DELETE FROM bh_club WHERE id=#{id}
+</delete>
+
+<delete id="deleteWishList">
+	DELETE FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
 </delete>
 
 <!-- 블록 주석 : ctrl shfit / -->

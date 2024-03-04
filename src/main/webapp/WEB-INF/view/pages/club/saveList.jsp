@@ -20,14 +20,14 @@
 <!-- Main Start -->
 <!-- empty 키워드는 변수가 null이거나 비어있는 경우를 확인 -->
    <c:if test="${empty clubList}">
-   	<h1>개설한 모임이 없습니다</h1>
+   	<h1 style="margin-left: 40%;">개설한 모임이 없습니다</h1>
    </c:if>
 
 <c:forEach var="club" items= "${clubList}">
-	<div class="card center mx-auto" style="width:450px; height: 450px">
-		<a href="/club/view/${club.id }" style="height: 310px;">
+	<div class="card center mx-auto" style="width: 40%;">
+		<a href="/club/view/${club.id }">
 		<!-- max속성으로 너비, 높이 100%로 꽉차도록 함 / object-fit: cover; 하면 이미지 안에 개체도 꽉참 -->
-		  <img class="card-img-top" src="${club.setupClubImage()}" style="max-width:100%; max-height:100%; object-fit: cover;" alt="Card image">
+		  <img class="card-img-top" src="${club.setupClubImage()}" style="width:100%; height:100%;" alt="Card image">
 		</a>	  
 	  	<div class="card-body">
 		    <h4 class="card-title text-center">${club.clubName}</h4>

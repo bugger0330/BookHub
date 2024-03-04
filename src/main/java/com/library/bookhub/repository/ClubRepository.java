@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
+import com.library.bookhub.entity.ClubWishList;
 import com.library.bookhub.entity.User;
 
 @Mapper
@@ -25,9 +26,7 @@ public interface ClubRepository {
 	
 	// 모임 신청
 	// RequestParam이 아니라 그냥 Param!
-	public boolean insertApplication(
-			@Param("clubId") Integer clubId, 
-			@Param("userName") String userName);
+	public boolean insertApplication(ClubApplication clubApplication);
 	// 모임 정보수정
 	public void updateByApplication(Club club);
 	// 모임 신청시 같은 아이디로 신청한 내역 있는지 조회
@@ -56,8 +55,12 @@ public interface ClubRepository {
 	// 개설취소할 때 해당 독서모임 신청내역 있는지 조회
 	public List<ClubApplication> findApplicationByClubId(Integer clubId);
 	
-	
-	
-	
-
+	// 찜하기
+	public boolean insertWishList(ClubWishList clubWishList);
+	// 찜하기 취소
+	public boolean deleteWishList(Integer clubId, String userName);
+	// 찜하기 목록
+	public List<ClubWishList> findWishListByUserName(String userName);
+	// 찜하기 목록에 있는지 조회
+	public ClubWishList findWishListByClubIdAndUserName(Integer clubId, String userName);
 }

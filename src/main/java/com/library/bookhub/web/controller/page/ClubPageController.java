@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
+import com.library.bookhub.entity.ClubWishList;
 import com.library.bookhub.handler.exception.UnAuthorizedException;
 import com.library.bookhub.security.MyUserDetails;
 import com.library.bookhub.service.ClubService;
@@ -156,7 +157,7 @@ public class ClubPageController {
 		return "pages/club/applicationList";
 	}
 	
-	// 검색
+	// 검색결과 목록
 	@GetMapping("/searchList")
 	public String searchListPage(ClubSearchFormDto dto, Model model) {
 		
@@ -176,8 +177,25 @@ public class ClubPageController {
 		return "/pages/club/searchList";
 	}
 	
-	
-	
+	// 찜하기 목록
+	@GetMapping("/wishList")
+	public String wishListPage(Principal principal, Model model) {
+		
+		// 인증검사
+		if(principal == null) {
+			throw new UnAuthorizedException("로그인 정보가 없습니다", HttpStatus.UNAUTHORIZED);
+		}
+		
+		List<ClubWishList> clubWishList = clubService.readClubWishListByUserName(principal);
+		
+		if(clubWishList.isEmpty()) {
+			model.addAttribute("clubWishList", null);
+		}else {
+			model.addAttribute("clubWishList", clubWishList);
+		}
+		
+		return "/pages/club/wishList";
+	}
 	
 	
 }

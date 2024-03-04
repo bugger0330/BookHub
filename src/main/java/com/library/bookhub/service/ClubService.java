@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
+import com.library.bookhub.entity.ClubWishList;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.ClubRepository;
 import com.library.bookhub.security.MyUserDetails;
@@ -94,10 +95,10 @@ public class ClubService {
 	
 	// 모임 신청
 	@Transactional // Transactional이 정확히 뭔뎅
-	public boolean createApplication(Integer clubId, String userName) {
+	public boolean createApplication(Principal principal, Integer clubId) {
 		
 		// 같은 아이디로 신청한 내역 있는지 조회
-		ClubApplication clubApplication = clubRepository.findApplicationByIdAndUserName(clubId, userName);
+		ClubApplication clubApplication = clubRepository.findApplicationByIdAndUserName(clubId, principal.getName());
 		
 		// 같은 아이디로 신청한 내역이 없을 때
 		if(clubApplication == null) {
@@ -111,11 +112,15 @@ public class ClubService {
 			if(club.getHcApply() >= club.getHeadCount() - 5) {
 				club.setStatus("마감임박");
 			}
-			
+			// 신청하는 모임 정보 수정
 			clubRepository.updateByApplication(club);
-			// ClubApplication 객체 새로 만들어서 clubId, userName set 한 후 객체로 insert 하려고 했는데, 신청 내역 조회할때도 ClubApplication 객체 쓸 일 있어서 헷갈릴까봐
-			//그냥 파라미터로 insert 한다!
-			return clubRepository.insertApplication(clubId, userName);
+			
+			ClubApplication clubApplication2 = ClubApplication.builder()
+										.clubId(clubId)
+										.userName(principal.getName())
+										.build();
+			
+			return clubRepository.insertApplication(clubApplication2);
 			
 		} else {
 			// 같은 아이디로 신청한 내역 이미 있음
@@ -182,5 +187,43 @@ public class ClubService {
 		return clubRepository.delete(id);
 	}
 	
+	// 찜하기
+	public boolean createWishList(Principal principal, Integer clubId) {
+		
+		ClubWishList clubWishList = ClubWishList.builder()
+								.clubId(clubId)
+								.userName(principal.getName())
+								.build();
+		
+		return clubRepository.insertWishList(clubWishList);
+	}
 	
+	// 찜하기 취소
+	public boolean deleteWishList(Principal principal, Integer clubId) {
+		
+		return clubRepository.deleteWishList(clubId, principal.getName());
+	}
+	
+	// 찜하기 목록
+	public List<ClubWishList> readClubWishListByUserName(Principal principal) {
+		
+		return clubRepository.findWishListByUserName(principal.getName());
+	}
+	
+	// 찜하기 여부에 따라 다르게 표시
+	public boolean readClubWishListByClubIdAndUserName(Principal principal, Integer clubId) {
+		
+		log.info("clubId : " + clubId);
+		log.info("userName : " + principal.getName());
+		
+		ClubWishList clubWishList = clubRepository.findWishListByClubIdAndUserName(clubId, principal.getName());
+		log.info("clubWishList : " + clubWishList);
+		
+		// 찜하기 내역에 없으면
+		if(clubWishList == null) { 
+			return false;
+		}
+		
+		return true;
+	}
 }
