@@ -115,7 +115,7 @@
                                     <c:forEach var="club" items= "${clubList}">
                                     	<!-- 한줄에 4개씩 차지해서 2개씩 차지도록 부트스트랩 클래스명 바꿈 -->
                                     	<!-- <div class="col-md-6 col-lg-4 col-xl-3"> -->
-                                    	<div class="col-md-6 col-lg-6 col-xl-6">
+                                    	<div class="col-md-6 col-lg-4 col-xl-4">
                                     		<a href="/club/view/${club.id}">
 	                                           <div class="rounded position-relative fruite-item">
 	                                               <div class="fruite-img">
@@ -128,7 +128,7 @@
 	                                                   <div class="d-flex justify-content-between flex-lg-wrap">
 	                                                   		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
 						                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
-						                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>찜하기</a>
+						                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px"></i>
 	                                                   </div>
 	                                               </div>
 	                                           </div>
@@ -159,6 +159,6 @@
 	
 	<!-- Main End -->
 	
-
+<script src="/js/club/wishlist.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

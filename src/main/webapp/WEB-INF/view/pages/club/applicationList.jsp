@@ -24,7 +24,7 @@
 	
 	<c:forEach var="application" items= "${applicationList}">
 		<!-- width로 크기 조정 -->
-		<div class="card center mx-auto" style="width:40%;">
+		<div class="card center mx-auto" style="width:30%;">
 		  	<a href="/club/view/${application.clubId }" >
   			  <!-- 이미자는 width, height 100%로 설정 -->
 			  <img class="card-img-top" src="${application.setupClubImage()}" style="width: 100%; height: 100%;""  alt="Card image">

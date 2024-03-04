@@ -203,7 +203,7 @@
                                    <!-- 반복문 시작 -->
                                    <c:forEach var="club" items= "${clubList}">
                                    <!-- 한줄에 4개씩 차지해서 col-xl-3을 수정 -->
-                       			   <div class="col-md-6 col-lg-4 col-xl-4">
+                       			   <div class="col-md-6 col-lg-4 col-xl-3">
                               			<a href="/club/view/${club.id}">
                                            <div class="rounded position-relative fruite-item">
                                                <div class="fruite-img">
@@ -216,13 +216,11 @@
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
 					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
-					                                    <!-- userName 값 없으면 자바스크립트로 바로 로그인 화면으로 이동시키기 -->
-					                                    <input hidden>
+					                                    <!-- principal 값 null이면 자바스크립트로 바로 로그인 화면으로 이동시키기 -->
 					                                    <!-- name 속성 줘서 getElementsByName 이용 -->
 					                                    <!-- button안에 i태그 있으니까 클릭할 때 e.target으로 data-id값을 잘 못 가져오더라, 버튼태그 빼니까 해결 -->
 					                                    <!-- i태그에 클릭 이벤트 하기 -->
-					                                    <!-- 사용자 정보에 따라 하트 모양 다르게 -->
-					                                    <i data-id="${club.id}" name="wishButton" class="bi-heart" style="font-size: 40px"></i>
+					                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px"></i>
                                                    </div>
                                                </div>
                                            </div>
@@ -451,8 +449,7 @@
   </div>
 </div>
 <!-- 모달 끝 -->
-	
+<!--  스크립트 경로는 하나만 적용할 수 있음!!!! -->	
 <script src="/js/club/index.js"></script>
-<script src="/js/club/wishlist.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

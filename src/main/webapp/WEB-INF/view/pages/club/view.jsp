@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <!-- padding 속성으로 텍스트 배치하기 -->
-                            <div class="col-lg-6" style="padding-left: 10%; padding-top: 5%;">
+                            <div class="col-lg-6" style="padding-left: 10%;">
                             	<!-- javascript 이용하기 위해 hidden 태그 사용하기 -->
                                 <input id="club--id" value="${club.id}" hidden>
                                 
@@ -44,17 +44,11 @@
                                 <h5 class="fw-bold mb-3">인원 : ${club.hcApply} / ${club.headCount}</h5>
                                 <input id="club--hcapply" value="${club.hcApply}" hidden>
                                 <input id="club--headcount" value="${club.headCount}" hidden>
-                                <div class="d-flex mb-4">
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
+                                
                                 <p class="mb-4">모임날짜 ${club.formatCDate()}</p>
                                 
-                                <!-- 신청하기 버튼 -->
-                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 찜하기</a>
+                                <!-- 찜하기 -->
+                                <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; color: #06BBCC !important"></i>
                                 <!-- 사용자 아이디값 가져오기 -->
                                 <a id="apply--button" data-username="${userName}" href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">신청하기</a>
                             </div>
@@ -123,45 +117,12 @@
                                 </div>
                             </div>
                             <form action="#">
-                                <h4 class="mb-5 fw-bold">Leave a Reply</h4>
-                                <div class="row g-4">
-                                    <div class="col-lg-6">
-                                        <div class="border-bottom rounded">
-                                            <input type="text" class="form-control border-0 me-4" placeholder="Yur Name *">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="border-bottom rounded">
-                                            <input type="email" class="form-control border-0" placeholder="Your Email *">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="border-bottom rounded my-4">
-                                            <textarea name="" id="" class="form-control border-0" cols="30" rows="8" placeholder="Your Review *" spellcheck="false"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="d-flex justify-content-between py-3 mb-5">
-                                            <div class="d-flex align-items-center">
-                                                <p class="mb-0 me-3">Please rate:</p>
-                                                <div class="d-flex align-items-center" style="font-size: 12px;">
-                                                    <i class="fa fa-star text-muted"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</a>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </form>
                         </div>
                     </div>
                     
                 </div>
-                <h1 class="fw-bold mb-0">Related products</h1>
                 
             </div>
        	</div>
@@ -170,9 +131,9 @@
 	
 	
 	<!-- main end -->
-<script src="/js/club/view.js">
+<!-- 스크립트 경로 2개 설정하면 하나 적용 안되네!!! -->
+<script src="/js/club/view.js"></script>
 
-</script>
 
 
 

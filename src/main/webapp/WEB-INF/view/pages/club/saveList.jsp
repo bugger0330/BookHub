@@ -24,7 +24,7 @@
    </c:if>
 
 <c:forEach var="club" items= "${clubList}">
-	<div class="card center mx-auto" style="width: 40%;">
+	<div class="card center mx-auto" style="width: 30%;">
 		<a href="/club/view/${club.id }">
 		<!-- max속성으로 너비, 높이 100%로 꽉차도록 함 / object-fit: cover; 하면 이미지 안에 개체도 꽉참 -->
 		  <img class="card-img-top" src="${club.setupClubImage()}" style="width:100%; height:100%;" alt="Card image">
@@ -47,7 +47,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button id="close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         개설 취소하시겠습니까?
