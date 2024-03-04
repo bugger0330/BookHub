@@ -14,6 +14,9 @@ DROP TABLE IF EXISTS bh_club;
 DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
 DROP TABLE IF EXISTS bh_point_shop;
+DROP TABLE IF EXISTS bh_club_wish_list;
+DROP TABLE IF EXISTS bh_club_application;
+DROP TABLE IF EXISTS bh_club_cate;
 
 
 
@@ -164,32 +167,6 @@ CREATE TABLE bh_payment (
     rdate DATETIME NOT NULL
 );
 
--- 독서모임
-CREATE TABLE bh_club (
-  id INT NOT NULL AUTO_INCREMENT   PRIMARY KEY,
-  userName VARCHAR(20) NOT NULL,
-  clubCate TINYINT NULL,
-  clubName VARCHAR(100) NOT NULL,
-  descript VARCHAR(100) NOT NULL,
-  detail VARCHAR(1000) NULL,
-  cDate DATETIME NOT NULL,
-  host VARCHAR(20) NOT NULL,
-  headCount INT NOT NULL,
-  hcApply INT NULL DEFAULT 0,
-  status VARCHAR(20) NULL DEFAULT '신청가능',
-  originFileName1 VARCHAR(255) NULL,
-  originFileName2 VARCHAR(255) NULL,
-  originFileName3 VARCHAR(255) NULL,
-  uploadFileName1 VARCHAR(255) NULL,
-  uploadFileName2 VARCHAR(255) NULL,
-  uploadFileName3 VARCHAR(255) NULL,
-  rdate DATETIME NOT NULL,
-  wdate DATETIME NULL
-);
-
-
-
-
 
 -- 포인트 상품
 CREATE TABLE bh_point_product (
@@ -227,3 +204,51 @@ CREATE TABLE bh_user_point (
 	
 );
 
+
+
+
+
+CREATE TABLE bh_club_application (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  clubId INT NOT NULL,
+  userName VARCHAR(20) NOT NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
+);
+
+
+CREATE TABLE bh_club_wish_list (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  clubId INT NOT NULL,
+  userName VARCHAR(20) NOT NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
+);
+
+
+CREATE TABLE bh_club_cate (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  cate INT NULL,
+  cateName VARCHAR(20) NULL
+);
+CREATE TABLE bh_club (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  userName VARCHAR(20) NOT NULL,
+  clubCate TINYINT NULL,
+  clubName VARCHAR(100) NOT NULL,
+  descript VARCHAR(100) NOT NULL,
+  detail VARCHAR(1000) NULL,
+  cDate DATETIME NOT NULL,
+  host VARCHAR(20) NOT NULL,
+  headCount INT NOT NULL,
+  hcApply INT NULL DEFAULT 0,
+  status VARCHAR(20) NULL DEFAULT '신청가능',
+  originFileName1 VARCHAR(255) NULL,
+  originFileName2 VARCHAR(255) NULL,
+  originFileName3 VARCHAR(255) NULL,
+  uploadFileName1 VARCHAR(255) NULL,
+  uploadFileName2 VARCHAR(255) NULL,
+  uploadFileName3 VARCHAR(255) NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
+);
