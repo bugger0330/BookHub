@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -119,6 +120,12 @@ public class UserController {
         
         // mypage.html에 해당하는 뷰를 반환합니다.
         return "pages/myPage/myPageDetail";
+    }
+    
+    @GetMapping("/principal")
+    @ResponseBody
+    public String getPrincipal(@AuthenticationPrincipal UserDetails userDetails) {
+    	return userDetails.getUsername();
     }
 
 }

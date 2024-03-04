@@ -36,9 +36,11 @@
 		where id = #{id};
 	</update>
 	
-	<delete id="borrowUserEnd">
-		delete from bh_book_borrow where id = #{id};
-	</delete>
+	<update id="borrowUserEnd">
+		update bh_book_borrow set
+			flag = 1
+		where id = #{id};
+	</update>
 
 	<update id="borrowBookEnd">
 		update bh_book set

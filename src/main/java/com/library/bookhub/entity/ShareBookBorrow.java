@@ -15,4 +15,5 @@ public class ShareBookBorrow {
 	private String userName;
 	private int borrowDay;
 	private String wdate;
+	private int flag;
 }

@@ -17,4 +17,5 @@ public class BookBorrow {
 	private String brDate;
 	private String returnDate;
 	private int bookNo;
+	private int flag;
 }
