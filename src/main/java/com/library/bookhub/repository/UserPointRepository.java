@@ -9,6 +9,11 @@ import org.apache.ibatis.annotations.Param;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.entity.UserPoint;
 
+
+/**
+ * 유저 포인트 레파지토리
+ * @Author : 이준혁
+ */
 @Mapper
 public interface UserPointRepository {
 

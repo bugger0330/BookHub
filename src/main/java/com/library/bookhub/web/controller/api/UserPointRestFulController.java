@@ -20,6 +20,11 @@ import com.library.bookhub.service.UserPointService;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+ * 유저 포인트 RestFul 컨트롤러(관리자)
+ * @Author : 이준혁
+ */
 @Slf4j
 @RestController
 @RequestMapping("/user-point")

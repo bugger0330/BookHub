@@ -16,6 +16,11 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+ * 포인트샵 서비스
+ * @Author : 이준혁
+ */
 @Service
 @Slf4j
 public class PointShopService {
