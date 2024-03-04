@@ -116,7 +116,7 @@
 	</div>
 </section>
 
-<script src="/js/cs/csQna.js"> 
+<script src="/js/cs/csQna.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

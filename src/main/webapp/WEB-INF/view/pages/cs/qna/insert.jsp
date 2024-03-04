@@ -133,7 +133,8 @@ function removeFile(element) {
 						[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
 						[ 'table', [ 'table' ] ],
 						[ 'insert', [ 'link', 'picture', 'video' ] ],
-						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
+						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ],
+				
 			});
 </script>
 <script src="/js/cs/csQna.js"> 

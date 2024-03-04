@@ -23,18 +23,17 @@
 		<div class="container">
 
 			<div class="container mt-3">
+
 				<h2>공지사항 상세보기</h2>
-				<form>
-					<div class="mb-3">
-						<label for="title">Title:</label> <input type="text"
-							class="form-control" id="title" name="title"
-							readonly>
-					</div>
-					<div class="mb-3">
-						<label for="content">Content:</label>
-						<textarea id="content" name="content" readonly></textarea>
-					</div>
-				</form>
+				<div class="mb-3">
+					<label for="title">Title:</label> <span id="title-display"></span>
+				</div>
+				<div class="mb-3">
+					<label for="content">Content:</label> <span id="content-display"></span>
+				</div>
+				<div class="mb-3">
+					<label for="filepath">File :</label> <span id="file-display"></span>
+				</div>
 			</div>
 
 			<div>
@@ -42,26 +41,13 @@
 			</div>
 
 
-			</div>
-
-
 		</div>
+
+
+	</div>
 	</div>
 </section>
-<script>
-	$('#content').summernote(
-			{
-				tabsize : 2,
-				height : 120,
-				toolbar : [ [ 'style', [ 'style' ] ],
-						[ 'font', [ 'bold', 'underline', 'clear' ] ],
-						[ 'color', [ 'color' ] ],
-						[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-						[ 'table', [ 'table' ] ],
-						[ 'insert', [ 'link', 'picture', 'video' ] ],
-						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
-			});
-</script>
+
 <script src="/js/cs/csNotice.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 

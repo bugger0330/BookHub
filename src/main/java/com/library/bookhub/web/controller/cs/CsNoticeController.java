@@ -42,9 +42,10 @@ public class CsNoticeController {
 		PageRes<CsNoticeEntity> pageRes = csNoticeService.getNoticeUsingPage(pageReq); // 페이징 처리함
 		List<CsNoticeEntity> noticeList = pageRes.getContent(); // 내용을 보여줄거다
 		System.out.println("noticeList" + noticeList.size());
+		System.out.println("noticeList" + noticeList.toString());
 
 		// 페이징 정보를 모델에 추가
-		model.addAttribute("noticeList", noticeList); // 프로젝트 마다 다른 코드
+		model.addAttribute("noticeList" , noticeList); // 프로젝트 마다 다른 코드
 		// 공통 코드
 		model.addAttribute("page", pageReq.getPage());
 		model.addAttribute("size", pageRes.getSize());
@@ -52,6 +53,7 @@ public class CsNoticeController {
 		model.addAttribute("startPage", pageRes.getStartPage());
 		model.addAttribute("endPage", pageRes.getEndPage());
 
+		
 		System.out.println("CsNoticeEntity" + "여기까지오나");
 
 		return "pages/cs/notice/list";
@@ -60,6 +62,7 @@ public class CsNoticeController {
 	// 공지사항 상세보기 화면 띄우기
 	@GetMapping("/notice/view/{id}")
 	public String detailNotice() {
+		
 		return "pages/cs/notice/view";
 	}
 

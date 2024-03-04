@@ -84,11 +84,13 @@ public class CsQnaController {
 
 		boolean result = csQnaService.qnaInsert(dto, filepath);
 
+		System.out.println(result);
+		
 		if (result == true) {
 			return "pages/cs/qna/list";
 		}
 
-		return "pages/cs/qna/insert";
+		return "pages/cs/qna/list";
 	}
 
 	// Qna 상세보기 화면 띄우기

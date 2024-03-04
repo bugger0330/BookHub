@@ -101,7 +101,14 @@
 	</div>
 </section>
 
-<script src="/js/cs/csNotice.js"></script>
+<script>
+function loadView() {
+	const pageClick = $(".page-click");
+	pageClick.on("click", function() {
+		window.location.href = "/notice/view/" + $(this).attr("id");
+	});
+}
+
+loadView();
+</script> 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
-
-
