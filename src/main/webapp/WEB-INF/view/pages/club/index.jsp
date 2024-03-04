@@ -452,8 +452,4 @@
 <!--  스크립트 경로는 하나만 적용할 수 있음!!!! -->	
 <script src="/js/club/index.js"></script>
 
-<<<<<<< HEAD
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
-=======
-<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
->>>>>>> dev

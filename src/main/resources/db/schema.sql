@@ -227,3 +227,12 @@ CREATE TABLE bh_user_point (
 	
 );
 
+
+CREATE TABLE bh_club_wish_list (
+  id INT NOT NULL AUTO_INCREMENT,
+  clubId INT NOT NULL,
+  userName VARCHAR(20) NOT NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL,
+  PRIMARY KEY (id));
+
