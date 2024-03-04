@@ -18,33 +18,22 @@
 
 	<div class="csMainContainer">
 
-		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
+		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
 
 		<div class="container">
 
-			<nav
-				style="--bs-breadcrumb-divider: url(&amp; amp; amp; amp; amp; amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;"
-				aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
-					<li class="breadcrumb-item active" aria-current="page"
-						style="color: #0596a3;">공지사항</li>
-				</ol>
-			</nav>
-
 			<div class="container mt-3">
+
 				<h2>공지사항 상세보기</h2>
-				<form>
-					<div class="mb-3">
-						<label for="title">Title:</label> <input type="text"
-							class="form-control" id="title" name="title"
-							readonly>
-					</div>
-					<div class="mb-3">
-						<label for="content">Content:</label>
-						<textarea id="content" name="content" readonly></textarea>
-					</div>
-				</form>
+				<div class="mb-3">
+					<label for="title">Title:</label> <span id="title-display"></span>
+				</div>
+				<div class="mb-3">
+					<label for="content">Content:</label> <span id="content-display"></span>
+				</div>
+				<div class="mb-3">
+					<label for="filepath">File :</label> <span id="file-display"></span>
+				</div>
 			</div>
 
 			<div>
@@ -52,30 +41,14 @@
 			</div>
 
 
-			</div>
-
-
 		</div>
+
+
+	</div>
 	</div>
 </section>
 
-
-<script>
-	$('#content').summernote(
-			{
-				
-				tabsize : 2,
-				height : 120,
-				toolbar : [ [ 'style', [ 'style' ] ],
-						[ 'font', [ 'bold', 'underline', 'clear' ] ],
-						[ 'color', [ 'color' ] ],
-						[ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-						[ 'table', [ 'table' ] ],
-						[ 'insert', [ 'link', 'picture', 'video' ] ],
-						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
-			});
-</script>
-<script src="/js/csViewScript.js"></script>
+<script src="/js/cs/csNotice.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

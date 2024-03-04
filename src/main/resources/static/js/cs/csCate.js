@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/main/webapp/WEB-INF/view/pages/cs/layout/aside.jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 <<<<<<< HEAD
     pageEncoding="UTF-8"%>
@@ -81,6 +82,8 @@
 
 <!-- CS aside End -->
 <script>
+=======
+>>>>>>> 74b4708f013900a2bacaeae30b9207cceff59460:src/main/resources/static/js/cs/csCate.js
 const innerBody = document.querySelector(".main-cate1");
 
 
@@ -89,7 +92,7 @@ load();
 function load(){
     $.ajax({
         type : "get",
-        url : "/category",
+        url : "/csCategory",
         success : function(data){
             if(data != ""){
                 innerFun(data);
@@ -105,10 +108,7 @@ function innerFun(data){
     let innr = "";
     for(let i = 0; i < data.length; i++){
         innr += 
-            <div class="cate-header">
-                <span class="cate1-title">${data[i].c1Name}</span>
-            </div>
-            <div class="cate-child"></div>
+            newFunction(data, i)
         ;
     }
     innerBody.innerHTML = innr;
@@ -139,5 +139,14 @@ function innerFun(data){
         }
     }
 }
+<<<<<<< HEAD:src/main/webapp/WEB-INF/view/pages/cs/layout/aside.jsp
 </script>
 >>>>>>> 52b11f096ae75444a26f841dd3900f1238d37f59
+=======
+
+function newFunction(data, i) {
+    return <div class="cate-header">
+        <span class="cate1-title">${data[i].c1Name}</span>
+    </div>, <div class="cate-child"></div>;
+}
+>>>>>>> 74b4708f013900a2bacaeae30b9207cceff59460:src/main/resources/static/js/cs/csCate.js

@@ -18,19 +18,9 @@
 
 	<div class="csMainContainer">
 
-		<%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%>
+		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
 
 		<div class="container">
-
-			<nav
-				style="--bs-breadcrumb-divider: url(&amp; amp; #34; data: image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&amp;amp;#34;);"
-				aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">열린공간</a></li>
-					<li class="breadcrumb-item active" aria-current="page"
-						style="color: #0596a3;">문의하기</li>
-				</ol>
-			</nav>
 
 			<div>
 				<h2>문의하기</h2>
@@ -50,8 +40,8 @@
 				</div>
 				<div class="btn-group" role="group"
 					aria-label="Basic outlined example" style="display: flex;">
-					<button type="button" class="btn btn-outline-primary"
-						style="flex: none;">등록</button>
+					<button type="button" class="btn btn-outline-primary" id="btnInsert"
+						style="flex: none;"></a>등록</button>
 					<button type="button" class="btn btn-outline-primary"
 						style="flex: none;">나의 문의내역</button>
 					<button type="button" class="btn btn-outline-primary"
@@ -91,19 +81,42 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<ul class="qna pagination">
-				<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item active"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
-			</ul>
+			
+			<!-- 페이징 처리 -->
+			<div class="qna pagination">
+				<c:if test="${page > 1}">
+					<li class="page-item"><a href="?page=1&size=${size}"
+						class="page-link">&laquo; 첫 페이지</a></li>
+					<li class="page-item"><a href="?page=${page - 1}&size=${size}"
+						class="page-link">&laquo; Prev</a></li>
+				</c:if>
+				<c:forEach begin="${startPage}" end="${endPage}" var="i">
+					<c:choose>
+						<c:when test="${i eq page}">
+							<li class="page-item active"><a
+								href="?page=${i}&size=${size}" class="page-link">${i}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a href="?page=${i}&size=${size}"
+								class="page-link">${i}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:if test="${page < totalPages}">
+					<li class="page-item"><a href="?page=${page + 1}&size=${size}"
+						class="page-link">Next &raquo;</a></li>
+					<li class="page-item"><a
+						href="?page=${totalPages}&size=${size}" class="page-link">마지막
+							페이지 &raquo;</a></li>
+				</c:if>
+			</div>
+
 		</div>
 	</div>
 	</div>
 </section>
 
-<script src="/js/csPostScript.js"></script>
+<script src="/js/cs/csQna.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 
