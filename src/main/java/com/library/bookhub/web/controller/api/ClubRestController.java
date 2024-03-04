@@ -76,7 +76,7 @@ public class ClubRestController {
 			}
 			
 			// 서버 컴퓨터에 파일 넣을 디렉토리가 있는지 검사
-			String saveDirectory = "/images/upload/";
+			String saveDirectory = "C:\\work_spring\\BookHub_upload";
 			// 폴더가 없다면 오류 발생(파일 생성시)
 			File dir = new File(saveDirectory);
 			if(dir.exists() == false) {
@@ -90,7 +90,7 @@ public class ClubRestController {
 			log.info("fileName : " + fileName);
 			
 			// C:\\work_spring\\upload\ab.png
-			String uploadPath = "/images/upload/" + File.separator + fileName; // File.separator는 \ 를 나타낸다
+			String uploadPath = "C:\\work_spring\\BookHub_upload" + File.separator + fileName; // File.separator는 \ 를 나타낸다
 			//System.out.println("uploadPath : " + uploadPath);
 			log.info("uploadPath : " + uploadPath);
 			File destination = new File(uploadPath);
