@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/* 모달 스타일 */
+.modal-chat {
+	position: fixed; /* 모달을 화면에 고정시킵니다. */
+	display: none; /* 기본적으로 모달을 숨깁니다. */
+	justify-content: center; /* 내용을 수평으로 정렬합니다. */
+	align-items: center; /* 내용을 수직으로 정렬합니다. */
+	width: 500px; /* 모달의 너비를 설정합니다. */
+	height: 700px; /* 모달의 높이를 설정합니다. */
+	margin-bottom: 20px; /* 모달과 하단 여백을 설정합니다. */
+	margin-right: 20px; /* 모달과 우측 여백을 설정합니다. */
+	background-color: white; /* 흰색 배경을 적용합니다. */
+	border-radius: 10px; /* 둥근 테두리를 적용합니다. */
+	overflow: hidden; /* 스크롤링을 비활성화합니다. */
+	/* 화면 중앙으로 이동하는 코드 추가 */
+	top: 47%;
+	left: 81%;
+	transform: translate(-50%, -50%);
+}
+
+/* 모달 본문 스타일 */
+.modal_body-chat {
+	position: absolute; /* 모달 본문을 절대적으로 위치시킵니다. */
+	flex-direction: column; /* 내용을 수직으로 정렬합니다. */
+	justify-content: center; /* 내용을 수직으로 정렬합니다. */
+	width: 100%; /* 모달 본문의 너비를 100%로 설정합니다. */
+	height: 100%; /* 모달 본문의 높이를 100%로 설정합니다. */
+	padding: 20px; /* 모달 본문 내부에 여백을 추가합니다. */
+	text-align: left; /* 텍스트를 가운데 정렬합니다. */
+	overflow-y: auto; /* 수직 스크롤링을 활성화합니다. */
+}
+
+#connectForm {
+	margin-bottom: 20px;
+	margin-top: 20px;
+	position: relative;
+}
+
+#sendMessageForm {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+#msg {
+	width: calc(100% - 70px);
+	margin-right: 10px;
+}
+
+#send {
+	width: 50px;
+	height: 38px;
+	font-size: 14px;
+	background-color: transparent;
+	border: none;
+	padding: 0;
+}
+
+#send .bi {
+	font-size: 26px;
+}
+
+.search-bar, .chat-room {
+	display: flex;
+	align-items: center;
+}
+
+.chat-room {
+	margin-right: auto;
+	margin-left: 0;
+}
+.form-inline {
+    /* 부모 요소에 대해 텍스트 가운데 정렬 */
+    text-align: center;
+}
+
+.form-group {
+    /* 부모 요소에 대해 텍스트 가운데 정렬 */
+    text-align: center;
+    width: 400px; /* 적절한 너비로 조정 */
+}
+
+#connect {
+	display: none;
+}
+
+#disconnect {
+    /* 닫기 버튼에 대해 좌우 마진을 자동으로 설정하여 중앙 정렬 */
+    margin: 0 auto;
+    color: white;
+}
+
+.chat {
+	margin-bottom: 500px;
+}
+#sendMessageForm{
+    position: fixed;
+    bottom: 75px; /* 원하는 위치로 조정 */
+    left: 50%; /* 가운데 정렬을 위해 왼쪽으로 이동 */
+    transform: translateX(-50%); /* 가운데 정렬을 위해 다시 왼쪽으로 이동한 만큼 되돌리기 */
+    z-index: 1000; /* 다른 요소 위에 올라가도록 설정 */
+} #connectForm {
+    position: fixed;
+    bottom: 15px; /* 원하는 위치로 조정 */
+    left: 50%; /* 가운데 정렬을 위해 왼쪽으로 이동 */
+    transform: translateX(-50%); /* 가운데 정렬을 위해 다시 왼쪽으로 이동한 만큼 되돌리기 */
+    z-index: 1000; /* 다른 요소 위에 올라가도록 설정 */
+}
+
+/* 테이블을 스크롤 가능하도록 설정 */
+#conversation {
+    max-height: calc(100vh - 100px); /* 화면 높이에서 검색 입력 폼과 닫기 버튼의 높이 제외 */
+    overflow-y: auto; /* 수직 스크롤 활성화 */
+}
