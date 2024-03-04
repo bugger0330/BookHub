@@ -6,6 +6,7 @@ const exit = document.querySelector(".exit");
 // 전송
 check.onclick = () => {
     const checkToday = ulElement.querySelector('.today');
+    console.log('currentDay : '+currentDay);
     
     // 중복 체크
     if(checkToday && checkToday.classList.contains('ch_on')){
@@ -46,7 +47,7 @@ check.onclick = () => {
 			alert(point+"를 적립 받았습니다!");
 		}
 		
-		window.location.href= '/';
+		// window.location.href= '/';
 		
 	})
 	.catch((error) => {

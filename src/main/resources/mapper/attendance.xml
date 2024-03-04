@@ -20,7 +20,7 @@
 	
 	<update id="updateByAttendanceDays">
 		UPDATE bh_attendance SET 
-			`attendanceDays`=`attendanceDays`+ #{attendanceDays} WHERE `userId`=#{userId}
+			`attendanceDays`=CONCAT(`attendanceDays`, #{attendanceDays}) WHERE `userId`=#{userId}
 	</update>
 	
 </mapper>

@@ -53,7 +53,7 @@ public class CalendarPointService {
 	
 	// 출석일 증가
 	public int modifyAttendanceDays(String today, String userId) {
-		int result = attendanceRepository.updateByAttendanceDays(today, userId);
+		int result = attendanceRepository.updateByAttendanceDays(today+", ", userId);
 		return 0;
 	}
 	

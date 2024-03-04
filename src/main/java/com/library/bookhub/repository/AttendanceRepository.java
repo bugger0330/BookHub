@@ -18,5 +18,5 @@ public interface AttendanceRepository {
 	public int updateByNewMonth(@Param("lastMonth") int lastMonth,@Param("userId") String userId);
 	
 	// 출석일수 추가
-	public int updateByAttendanceDays(String attendanceDays, String userId);
+	public int updateByAttendanceDays(@Param("attendanceDays") String attendanceDays,@Param("userId") String userId);
 }

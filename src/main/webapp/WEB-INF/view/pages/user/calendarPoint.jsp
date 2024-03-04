@@ -147,26 +147,16 @@
 		    // 현재 날짜 월 넣기
 		    title.textContent = ''+month;
 			
-			 // 클래스 부여 로직
-		    const lis = ulElement.getElementsByTagName('li');
-		    for(let li of lis) {
-		    	
-		    	// 오늘인 경우 today 클래스 추가
-		        if(li.textContent.trim() === days.toString()) {
-		            li.classList.add('today');
-		        }
-		        
-		     	// 출석된 날짜인 경우 ch_on 클래스 추가
-			    if (attendance.includes(parseInt(li.textContent))) {
-			        li.classList.toggle('ch_on', true);
-			    }
-		    }
 
 		    // 저장
 		    currentMonth = month;
 		    currentDay = days;
 		    
+		    // 달력 출력
 		    dateCalculator(currentMonth, currentDay);
+		    
+		    addClassTag(days, attendance);
+		    
 		    // 7일 여부
 		    if(attendance.length === 7){
 		    	window.location.href = '/';
@@ -179,7 +169,7 @@
         
      	
      	// 날짜 계산기 예) 2월 -> 28일
-     	function dateCalculator(currentMonth, currentDay){
+     	function dateCalculator(currentMonth){
      		
      		 // 클래스 추가하여 날짜 출력
             for (let i = 1; i <= 31; i++) {
@@ -209,7 +199,24 @@
             }
      	}
      	
-       
+     	// 클래스 부여
+     	function addClassTag(days, attendance) {
+     		// 클래스 부여 로직
+		    const lis = ulElement.getElementsByTagName('li');
+		    for(let li of lis) {
+		    	
+		    	// 오늘인 경우 today 클래스 추가
+		        if(li.textContent.trim() === days.toString()) {
+		            li.classList.add('today');
+		        }
+		        
+		     	// 출석된 날짜인 경우 ch_on 클래스 추가
+			    if (attendance.includes(parseInt(li.textContent))) {
+			        li.classList.toggle('ch_on', true);
+			    }
+		    }
+     		
+     	}
     </script>
     <script src="/js/calendar/event.js"></script>
     

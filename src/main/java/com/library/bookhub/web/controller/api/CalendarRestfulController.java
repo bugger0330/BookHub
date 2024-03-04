@@ -75,13 +75,13 @@ public class CalendarRestfulController {
 	// 포인트 적립, 출석 일수
 	@PostMapping("/calendar/attendance")
 	@ResponseBody
-	public Map<String, Integer> attendanceCheck(@RequestBody Map<String, Object> date,
+	public Map<String, Integer> attendanceCheck(@RequestBody Map<String, String> date,
 												@AuthenticationPrincipal UserDetails user, 
 												HttpSession session) {
 		int addPoint = 0;
 		String userId = user.getUsername();
 		String today = (String) date.get("today");
-		int month = (Integer) date.get("month");
+		int month =  Integer.parseInt(date.get("month"));
 		
 		log.info("today : "+today);
 		log.info("month : "+month);
@@ -91,6 +91,7 @@ public class CalendarRestfulController {
 		
         // 첫 출석체크 등록자
         if(attendanceEntity == null) {
+        	log.info("createAttendance...1");
         	calendarPointService.createAttendance(userId, month, today);
         }
 		
@@ -98,14 +99,17 @@ public class CalendarRestfulController {
         String attendanceDays = attendanceEntity.getAttendanceDays();
         List<Integer> days = arrayConverter(attendanceDays);
         int size = days.size();
+        log.info("size : "+size);
         
         // 출석일수 추가
         if(size < 7) {
+        	log.info("modifyAttendanceDays...1");
         	calendarPointService.modifyAttendanceDays(today, userId);
         }
         
 		// 7일이 되면 적립
 		if(size == 7) {
+			log.info("completePoint...1");
 			addPoint = calendarPointService.completePoint(userId);
 			log.info("addPoint : "+addPoint);
 		}
