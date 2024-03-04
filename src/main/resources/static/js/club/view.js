@@ -16,8 +16,7 @@ window.onload = function(){
 	const clubHeadCount = document.getElementById('club--headcount').value;
 	const clubStatus = document.getElementById('club-status');
 	
-	// 문자열이므로 숫자 비교하려면 Number 이용
-	if(Number(clubHcApply) == Number(clubHeadCount)) {
+	if(clubHcApply == clubHeadCount) {
 		applyBtn.innerText = "마감";
 		clubStatus.hidden = true;
 	}
@@ -40,8 +39,8 @@ window.onload = function(){
 		
 		if(userName != "") {
 			
-			/*console.log('clubHcApply : ' + clubHcApply);
-			console.log('clubHeadCount : ' + clubHeadCount);*/
+			console.log('clubHcApply : ' + clubHcApply);
+			console.log('clubHeadCount : ' + clubHeadCount);
 			
 			// 신청인원수가 정원보다 적을 때
 			// 자바스크립트의 변수는 기본적으로 String이므로 숫자로 변환해줘야함!!!!!
@@ -55,9 +54,8 @@ window.onload = function(){
 							type : "post",
 							url : "/club/apply",
 							data : {
-								clubId : clubId
-								// userName 굳이 안 보내도 됨
-								/*userName : userName*/
+								clubId : clubId,
+								userName : userName
 							},
 							
 							// controller 에서 리턴한 값 data로

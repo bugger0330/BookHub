@@ -49,12 +49,23 @@
 	</div>
 
 	<!-- Call to Action-->
-	<div class="card text-white bg-secondary my-5 py-4 text-center">
-		<div class="card-body">
-			<p class="text-white m-0">메인화면에 뭐넣지</p>
-		</div>
-	</div>
-	<!-- Content Row-->
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-md-12 mx-auto"> <!-- 중간(md) 화면에서 8개의 열을 차지 -->
+        <div class="card bg-dark text-white shadow rounded-3 py-5">
+            <div class="card-body">
+                <h2 class="fs-4 fw-bold">📚BookHub 포인트 거래 수익</h2>
+                <h1 class="display-5" id="totalPointText">Loading...</h1>
+
+                <!-- 회원 관리 바로 가기 버튼 -->
+                <a href="ad/list"
+                    class="btn btn-primary btn-sm mt-3"
+                    style="position: absolute; bottom: 10px; right: 10px; padding: 10px;">포인트 관리 바로가기</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 </div>
 
@@ -73,9 +84,7 @@
 				console.error("Error fetching total users:", error);
 			}
 		});
-	});
-
-	$(document).ready(function() {
+		
 		$.ajax({
 			url : "/totalad",
 			type : "GET",
@@ -86,5 +95,30 @@
 				console.error("Error fetching total ads:", error);
 			}
 		});
+		
+		
+		$.ajax({
+		    url: "/user-point/getprice",
+		    type: "GET",
+		    success: function(data) {
+		        // data가 null이면 0으로 설정
+		        data = data || 0;
+		        // 금액을 '#,###' 형식으로 변환하여 표시
+		        let formattedAmount = numberWithCommas(data);
+		        $('#totalPointText').text(formattedAmount + "원");
+		    },
+		    error: function(xhr, status, error) {
+		        console.error("Error fetching total ads:", error);
+		    }
+		});
+
+
+		// 숫자를 '#,###' 형식으로 변환하는 함수
+		function numberWithCommas(x) {
+		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+
 	});
+
+	
 </script>

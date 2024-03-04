@@ -89,7 +89,7 @@
                     <div class="dropdown-menu fade-down m-0">
                         <a href="team.html" class="dropdown-item">공지사항</a>
                         <a href="testimonial.html" class="dropdown-item">고객센터</a>
-                        <a href="/ad-inquiry" class="dropdown-item">광고문의</a>
+                       
                        
                     </div>
                 </div>

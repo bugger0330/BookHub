@@ -1,5 +1,5 @@
 
-window.onload = function() {
+window.onload  = function() {
 	
  // ClassName이라 클래스 구분하는 . 안붙여도 됨		
  const buttons = document.getElementsByClassName('btn btn-primary'); 
