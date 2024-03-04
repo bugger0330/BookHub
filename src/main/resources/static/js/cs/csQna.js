@@ -38,20 +38,20 @@ let replyObject = {
 	insertReply: function() {
 		
 		alert("댓글 등록 요청됨");
+			
+		const replyContent  = $("#reply-content").val(); 
 		
-		let reply = {
-			content : $("#reply-content").val()
-		}
-	
 		// AJAX 요청을 보냅니다.
 		$.ajax({
 			type: "POST",
 			url: "/qna/reply/" + addressNum,
-			data: {
+			contentType: "application/json",  // Content-Type을 JSON으로 설정
+            data: JSON.stringify({
 				id: Number(addressNum),
-				reply: JSON.stringify(reply)
-			},
+                content: replyContent
+            }),
 			success: function(data) {
+				console.log(data);
 				if (data === true) {
 					// 성공적으로 데이터가 저장되었을 때, 목록 페이지로 이동합니다.
 					window.location.href = "/qna/list";
