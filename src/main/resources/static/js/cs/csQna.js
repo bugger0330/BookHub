@@ -4,7 +4,7 @@ const filepath = $("#formFileMultiple");
 const updateBtn = $("#btn-update");
 const deleteBtn = $("#btn-delete");
 
-// 수정완료, 삭제하기, 리스트 alert창
+// 수정완료, 삭제하기, 리스트 alert창, 등록버튼
 
 let addressNum = window.location.pathname.split("/")[3];
 
@@ -26,6 +26,49 @@ function loadView() {
 }
 loadView();
 
+
+// qna 문의글 답글 작성
+let replyObject = {
+	init: function() {
+		$("#btn-save-reply").on("click", () => {
+			this.insertReply();
+		});
+	},
+
+	insertReply: function() {
+		
+		alert("댓글 등록 요청됨");
+		
+		let reply = {
+			content : $("#reply-content").val()
+		}
+	
+		// AJAX 요청을 보냅니다.
+		$.ajax({
+			type: "POST",
+			url: "/qna/reply/" + addressNum,
+			data: {
+				id: Number(addressNum),
+				reply: JSON.stringify(reply)
+			},
+			success: function(data) {
+				if (data === true) {
+					// 성공적으로 데이터가 저장되었을 때, 목록 페이지로 이동합니다.
+					window.location.href = "/qna/list";
+				} else {
+					// 실패했을 때 처리할 내용을 작성하세요.
+					alert("데이터 저장에 실패했습니다.");
+				}
+			},
+			error: function() {
+				// 에러가 발생했을 때 처리할 내용을 작성하세요.
+				alert("서버와의 통신 중 에러가 발생했습니다.");
+			}
+		});
+	}
+};
+
+replyObject.init();
 /*// qna 문의글 작성
 let postObject = {
 	init: function() {
@@ -70,10 +113,10 @@ postObject.init();*/
 
 
 
-// 수정하기 (상세페이지에서 클릭하면 업데이트페이지로 이동함)
-//updateBtn.onclick = () => {
-//	window.location.href = "/qna/update/" + addressNum;
-//}
+ //수정하기 (상세페이지에서 클릭하면 업데이트페이지로 이동함)
+updateBtn.on("click", function() {
+    window.location.href = "/qna/update/" + addressNum;
+});
 
 function loadViewId() {
 	$.ajax({
@@ -93,10 +136,10 @@ function loadViewId() {
 			$("#file-display").html(data.filepath);
 
 			// 수정 버튼 클릭 시 데이터 전달
-			$("#btn-update").on("click", function() {
+			//$("#btn-update").on("click", function() {
 				// 수정 페이지로 이동
-				window.location.href = "/qna/update/" + data.id + "?title=" + encodeURIComponent(data.title) + "&content=" + encodeURIComponent(data.content);
-			});
+				//window.location.href = "/qna/update/" + data.id + "?title=" + encodeURIComponent(data.title) + "&content=" + encodeURIComponent(data.content);
+			//});
 		},
 		error: function() {
 			alert("Error fetching data!");

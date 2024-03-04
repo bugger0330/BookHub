@@ -39,16 +39,14 @@
 
 			<div class="container mt-5">
 				<h2>댓글 등록 폼</h2>
-				<form id="commentForm">
 					<div class="form-group">
 						<label for="commentContent">댓글 내용</label>
-						<textarea class="form-control" id="commentContent" rows="3"
+						<textarea class="form-control" id="reply-content" rows="3"
 							placeholder="댓글 내용을 입력하세요"></textarea>
 					</div>
 					<button type="button" class="btn btn-primary"
-						onclick="submitComment()">댓글 등록</button>
-				</form>
-
+						id="btn-save-reply">댓글 등록</button>
+				
 				<div id="commentList" class="mt-4">
 					<!-- 여기에 댓글 목록이 나열될 것입니다. -->
 				</div>
