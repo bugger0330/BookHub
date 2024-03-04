@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.entity.ClubApplication;
+import com.library.bookhub.entity.ClubWishList;
+import com.library.bookhub.entity.User;
 import com.library.bookhub.repository.ClubRepository;
 import com.library.bookhub.security.MyUserDetails;
 import com.library.bookhub.web.dto.ClubSaveFormDto;
@@ -25,31 +27,35 @@ public class ClubService {
 	
 	// 모임 개설
 	@Transactional
-	public boolean createClub(@AuthenticationPrincipal MyUserDetails user, ClubSaveFormDto dto) {
+	public boolean createClub(@AuthenticationPrincipal MyUserDetails myUserDetails, ClubSaveFormDto dto) {
 		
 		// 포인트 조회
-		int point = user.getUser().getPoint();
-		log.info("point : " + point);
-		
+		// DB에 포인트 값 수정해도 처음 로그인 시 포인트 값으로 계속 로그찍힘
+		// userName으로 DB에서 조회해서 포인트 가져오자
+		log.info("userName : " + myUserDetails.getUsername());
+		User user = clubRepository.findUserByUserName(myUserDetails.getUsername());
+		log.info("user : " + user);
+		int point = user.getPoint();
 		
 		// 사용자 포인트 부족시 등록불가 -> alert 띄우거나 포인트 결제창으로 이동!
 		if(point < 5000) {
+			// return false 먼저 나오는 게 더 간결하고 직관적
 			return false; // 메서드 즉시 종료, 이후 코드로 안 넘어감
 		}
 		
 		// 포인트 사용 후 회원정보 수정
 		point -= 5000;
-		user.getUser().setPoint(point);
-		log.info("User : " + user.getUser());
-		clubRepository.updatePoint(user.getUser());
+		user.setPoint(point);
+		clubRepository.updatePoint(user);
 		
 		Club club = Club.builder()
-				.userName(user.getUsername()) // 일단 이렇게 저장, 나중에 session에 저장된 정보 컨트롤러에서 가져오기
+				.userName(user.getUserName()) // 일단 이렇게 저장, 나중에 session에 저장된 정보 컨트롤러에서 가져오기
 				.clubCate(dto.getClubCate())
 				.clubName(dto.getClubName())
 				.descript(dto.getDescript())
 				.detail(dto.getDetail())
-				.cDate(dto.getCDate())
+				// dto의 cDate 타입이 String이므로 toTimestamp() 메서드 실행
+				.cDate(dto.toTimestamp())
 				.host(dto.getHost())
 				.headCount(dto.getHeadCount())
 				.originFileName1(dto.getOriginFileName1()) 
@@ -69,13 +75,13 @@ public class ClubService {
 		return clubRepository.findAll();
 	}
 	
-	// 카테고리별 목록
+	// 카테고리별 모임 목록
 	public List<Club> readByClubCate(Integer clubCate) {
 		
 		return clubRepository.findByClubCate(clubCate);
 	}
 	
-	// 검색 기능
+	// 모임 검색 기능
 	public List<Club> readByKeyword(String keyword) {
 		
 		return clubRepository.findByKeyword(keyword);
@@ -89,10 +95,10 @@ public class ClubService {
 	
 	// 모임 신청
 	@Transactional // Transactional이 정확히 뭔뎅
-	public boolean createApplication(Integer clubId, String userName) {
+	public boolean createApplication(Principal principal, Integer clubId) {
 		
 		// 같은 아이디로 신청한 내역 있는지 조회
-		ClubApplication clubApplication = clubRepository.findApplicationByIdAndUserName(clubId, userName);
+		ClubApplication clubApplication = clubRepository.findApplicationByIdAndUserName(clubId, principal.getName());
 		
 		// 같은 아이디로 신청한 내역이 없을 때
 		if(clubApplication == null) {
@@ -106,11 +112,15 @@ public class ClubService {
 			if(club.getHcApply() >= club.getHeadCount() - 5) {
 				club.setStatus("마감임박");
 			}
-			
+			// 신청하는 모임 정보 수정
 			clubRepository.updateByApplication(club);
-			// ClubApplication 객체 새로 만들어서 clubId, userName set 한 후 객체로 insert 하려고 했는데, 신청 내역 조회할때도 ClubApplication 객체 쓸 일 있어서 헷갈릴까봐
-			//그냥 파라미터로 insert 한다!
-			return clubRepository.insertApplication(clubId, userName);
+			
+			ClubApplication clubApplication2 = ClubApplication.builder()
+										.clubId(clubId)
+										.userName(principal.getName())
+										.build();
+			
+			return clubRepository.insertApplication(clubApplication2);
 			
 		} else {
 			// 같은 아이디로 신청한 내역 이미 있음
@@ -118,19 +128,19 @@ public class ClubService {
 		}
 	}
 	
-	// 모임개설내역
+	// 모임 개설내역
 	public List<Club> readClubListByUserName(String userName) {
 		
 		return clubRepository.findByUserName(userName);
 	}
 	
-	// 모임신청내역
+	// 모임 신청내역
 	public List<ClubApplication> readApplicationListByUserName(String userName) {
 		
 		return clubRepository.findApplicationByUserName(userName);
 	}
 	
-	// 모임신청취소
+	// 모임 신청취소
 	@Transactional
 	public boolean deleteApplication(Integer id, Integer clubId) {
 		
@@ -151,8 +161,69 @@ public class ClubService {
 		return clubRepository.deleteApplication(id);
 	}
 	
+	// 모임 개설취소
+	// 모임 개설은 @AuthenticationPrincipal 이용했고, 여기선 Principal 이용해보기
+	@Transactional
+	public boolean deleteClub(Principal principal, Integer id) {
+		
+		// 모임 신청내역 있는지 조회
+		List<ClubApplication> ApplicationList = clubRepository.findApplicationByClubId(id);
+		
+		// 신청내역 있으면 개설취소 바로 안되고 관리자승인 받기
+		if(!ApplicationList.isEmpty()) {
+			// return false 먼저 나오는게 더 간결하고 직관적이다
+			return false;
+		}
+		
+		// 포인트 환불
+		log.info("userName : " + principal.getName());
+		User user = clubRepository.findUserByUserName(principal.getName());
+		log.info("user : " + user);
+		int point = user.getPoint();
+		point += 5000;
+		user.setPoint(point);
+		clubRepository.updatePoint(user);
+		
+		return clubRepository.delete(id);
+	}
 	
+	// 찜하기
+	public boolean createWishList(Principal principal, Integer clubId) {
+		
+		ClubWishList clubWishList = ClubWishList.builder()
+								.clubId(clubId)
+								.userName(principal.getName())
+								.build();
+		
+		return clubRepository.insertWishList(clubWishList);
+	}
 	
+	// 찜하기 취소
+	public boolean deleteWishList(Principal principal, Integer clubId) {
+		
+		return clubRepository.deleteWishList(clubId, principal.getName());
+	}
 	
+	// 찜하기 목록
+	public List<ClubWishList> readClubWishListByUserName(Principal principal) {
+		
+		return clubRepository.findWishListByUserName(principal.getName());
+	}
 	
+	// 찜하기 여부에 따라 다르게 표시
+	public boolean readClubWishListByClubIdAndUserName(Principal principal, Integer clubId) {
+		
+		log.info("clubId : " + clubId);
+		log.info("userName : " + principal.getName());
+		
+		ClubWishList clubWishList = clubRepository.findWishListByClubIdAndUserName(clubId, principal.getName());
+		log.info("clubWishList : " + clubWishList);
+		
+		// 찜하기 내역에 없으면
+		if(clubWishList == null) { 
+			return false;
+		}
+		
+		return true;
+	}
 }
