@@ -29,7 +29,7 @@
                            		<!-- class에 있는 border rounded 빼기 -->
                                 <div class="">
                                     <a href="#">
-                                        <img src="${club.setupClubImage()}" class="img-fluid rounded" alt="Image">
+                                        <img src="/images/upload/${club.uploadFileName1 }" class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
                             </div>
