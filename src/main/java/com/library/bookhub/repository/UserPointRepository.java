@@ -44,5 +44,10 @@ public interface UserPointRepository {
 	// 환불 요청된 데이터 조회
 	public List<UserPoint> refundReq();
 
+	// 포트원 ImpUid 가져오기
 	public UserPoint findByImpUid(String impUid);
+	
+	// 총 거래액 가져오기
+	public long findByPrice();
+	
 }
