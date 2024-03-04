@@ -52,3 +52,40 @@ VALUES ('user1', 10000, 12, 1, 0, CURRENT_TIMESTAMP),
 INSERT INTO bh_club (clubCate1, clubCate2, clubName, descript, cDate, host, headCount, hcApply, status, thumb1, thumb2, thumb3, rdate)
 VALUES (1, 1, 'Club One', 'Description of Club One', '2024-02-20 10:00:00', 'Host 1', 20, 0, 'Available', 'thumb1.jpg', 'thumb2.jpg', 'thumb3.jpg', CURRENT_TIMESTAMP),
        (2, 2, 'Club Two', 'Description of Club Two', '2024-02-21 10:00:00', 'Host 2', 15, 0, 'Available', 'thumb4.jpg', 'thumb5.jpg', 'thumb6.jpg', CURRENT_TIMESTAMP);
+
+
+INSERT INTO bh_cs_cate1 (c1Name) VALUES
+	 ('고객서비스'),
+	 ('도서'),
+	 ('독서모임'),
+	 ('편의시설'),
+	 ('구독요금제'),
+	 ('위탁도서'),
+	 ('기타');
+
+
+INSERT INTO bh_cs_cate2 (cate1,c2Name) VALUES
+	 (10,'안내'),
+	 (10,'서비스'),
+	 (10,'주의'),
+	 (20,'대출/반납'),
+	 (20,'자료이용'),
+	 (20,'도서추천/인기도서'),
+	 (20,'도서관리/재교'),
+	 (30,'모임일정/참여신청'),
+	 (30,'독서모임주제/진행방식'),
+	 (30,'회원관리');
+INSERT INTO bh_cs_cate2 (cate1,c2Name) VALUES
+	 (30,'이용안내/장소대여'),
+	 (40,'메뉴/주문'),
+	 (40,'좌석/이용안내'),
+	 (40,'이벤트/할인혜택'),
+	 (50,'요금제종류/혜택'),
+	 (50,'구독신청/해지'),
+	 (50,'요금제변경/결제'),
+	 (60,'가입/등록절차'),
+	 (60,'이용안내'),
+	 (60,'포인트/정산');
+INSERT INTO bh_cs_cate2 (cate1,c2Name) VALUES
+	 (70,'칭찬/불만/제안'),
+	 (70,'오류제보');
