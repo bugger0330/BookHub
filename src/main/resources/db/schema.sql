@@ -166,21 +166,25 @@ CREATE TABLE bh_payment (
 
 -- 독서모임
 CREATE TABLE bh_club (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    clubCate1 TINYINT NOT NULL,
-    clubCate2 TINYINT NOT NULL,
-    clubName VARCHAR(100) NOT NULL,
-    descript VARCHAR(100) NOT NULL,
-    cDate DATETIME NOT NULL,
-    host VARCHAR(20) NOT NULL,
-    headCount INT NOT NULL,
-    hcApply INT DEFAULT 0,
-    status VARCHAR(20),
-    thumb1 VARCHAR(255) NOT NULL,
-    thumb2 VARCHAR(255) NOT NULL,
-    thumb3 VARCHAR(255) NOT NULL,
-    rdate DATETIME NOT NULL,
-    wdate DATETIME
+  id INT NOT NULL AUTO_INCREMENT   PRIMARY KEY,
+  userName VARCHAR(20) NOT NULL,
+  clubCate TINYINT NULL,
+  clubName VARCHAR(100) NOT NULL,
+  descript VARCHAR(100) NOT NULL,
+  detail VARCHAR(1000) NULL,
+  cDate DATETIME NOT NULL,
+  host VARCHAR(20) NOT NULL,
+  headCount INT NOT NULL,
+  hcApply INT NULL DEFAULT 0,
+  status VARCHAR(20) NULL DEFAULT '신청가능',
+  originFileName1 VARCHAR(255) NULL,
+  originFileName2 VARCHAR(255) NULL,
+  originFileName3 VARCHAR(255) NULL,
+  uploadFileName1 VARCHAR(255) NULL,
+  uploadFileName2 VARCHAR(255) NULL,
+  uploadFileName3 VARCHAR(255) NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
 );
 
 
