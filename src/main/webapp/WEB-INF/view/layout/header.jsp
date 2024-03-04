@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,6 +52,15 @@
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
     
+       <!-- CS CSS -->
+<!-- <!--     <link href="/css/csStyle.css" rel="stylesheet">  --> -->
+	
+	<!-- 서머노트 -->
+   
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    
+    
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
@@ -87,10 +98,9 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">공지사항</a>
-                        <a href="testimonial.html" class="dropdown-item">고객센터</a>
-                       
-                       
+                        <a href="/notice/list" class="dropdown-item">공지사항</a>
+                        <a href="/qna/list" class="dropdown-item">문의하기</a>
+                        <a href="/faq/list" class="dropdown-item">자주 묻는 질문</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
