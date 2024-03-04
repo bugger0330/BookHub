@@ -21,32 +21,14 @@
 <div class="container-fluid booking py-5">
 	<div class="container py-5">
 		<div class="row g-5 align-items-center">
-			<div class="col-lg-6">
-				<h5 class="section-booking-title pe-3">Booking</h5>
-				<h1 class="text mb-4">Online Booking</h1>
-				<p class="text mb-4">Lorem ipsum dolor sit amet consectetur
-					adipisicing elit. Aspernatur maxime ullam esse fuga blanditiis
-					accusantium pariatur quis sapiente, veniam doloribus praesentium?
-					Repudiandae iste voluptatem fugiat doloribus quasi quo iure
-					officia.</p>
-				<p class="text mb-4">Lorem ipsum dolor sit amet consectetur
-					adipisicing elit. Aspernatur maxime ullam esse fuga blanditiis
-					accusantium pariatur quis sapiente, veniam doloribus praesentium?
-					Repudiandae iste voluptatem fugiat doloribus quasi quo iure
-					officia.</p>
-				<a href="#"
-					class="btn btn-light text-primary rounded-pill py-3 px-5 mt-2">Read
-					More</a>
-			</div>
-			<div class="col-lg-6">
-				<h1 class="text mb-3">Book A Tour Deals</h1>
-				<p class="text mb-4">
-					Get <span class="text-warning">50% Off</span> On Your First
-					Adventure Trip With Travela. Get More Deal Offers Here.
-				</p>
+			<!-- mx-auto로 수평 가운데 정렬 -->
+			<div class="col-lg-6 mx-auto" style="width: 80%;">
+				<h1 class="text mb-3"><span class="text-warning">5000포인트 </span>필요</h1>
+				<p class="text mb-4"></p>
 				<!-- 독서모임 신청 form -->
 				<!-- Ajax로 데이터 보낼거니까 url이랑 전송방식 form에 설정할 필요없다 -->
-				<form enctype="multipart/form-data">
+				<!-- 텍스트 크기 설정 -->
+				<form enctype="multipart/form-data" style="font-size: 20px">
 					<div class="row g-3">
 						<div class="col-md-6">
 							<div class="form-floating">
@@ -70,7 +52,8 @@
 							<div class="form-floating date" id="date3"
 								data-target-input="nearest">
 								<!-- type 변경으로 달력 출력함!!! -->
-								<input type="datetime-local" step="1800" class="datepicker-input form-control bg-white border-0"
+								<!-- 최솟값 주기 위해 min 설정 -->
+								<input type="datetime-local" min="" class="datepicker-input form-control bg-white border-0"
 									id="datetime" placeholder="Date & Time" data-target="#date3"
 									data-toggle="datetimepicker" name="cDate" /> <label for="datetime">모임날짜</label>
 							</div>
@@ -86,14 +69,7 @@
 									<option value="4">영화와 책</option>
 									<option value="5">과학과 철학</option>
 									<option value="6">기타</option>
-								</select> <label for="CategoriesSelect">카테고리</label>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="customFile"
-									name="customFile"> <label class="custom-file-label"
-									for="customFile">이미지</label>
+								</select> <label for="CategoriesSelect" style="margin-bottom: 5px">카테고리</label>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -112,8 +88,18 @@
 								<label for="message">모임내용</label>
 							</div>
 						</div>
+						<div class="col-md-6">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="customFile" name="customFile" style="margin-top: 10px;"> 
+							</div>
+							<!-- 미리보기 -->
+							 <img src="" alt="미리보기" id="preview" style="display: none; max-width: 100%; margin-top: 10px;">
+						</div>
+						<br/>
+						<br/>
+						<br/>
 						<div class="col-12">
-							<button id="form--button" class="btn btn-primary text w-100 py-3" type="submit">개설하기</button>
+							<button id="form--button" class="btn btn-primary text w-100 py-3" type="submit" style="font-size: 30px">개설하기</button>
 						</div>
 					</div>
 				</form>
