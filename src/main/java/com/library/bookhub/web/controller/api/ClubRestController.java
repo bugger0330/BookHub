@@ -148,8 +148,6 @@ public class ClubRestController {
 	@PostMapping("/checkWish")
 	public ResponseEntity<?> checkWish(Principal principal, Integer clubId) {
 		
-		
-		
 		boolean result = clubService.readClubWishListByClubIdAndUserName(principal, clubId);
 		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
