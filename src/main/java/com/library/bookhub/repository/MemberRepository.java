@@ -30,5 +30,5 @@ public interface MemberRepository {
 	
 	
 	// 출석체크 포인트 적립
-	public int updateAttendanceByPoint(@Param("addPoint") int point,@Param("username") String username);
+	public int updateAttendanceByPoint(@Param("point") int point,@Param("userName") String username);
 }

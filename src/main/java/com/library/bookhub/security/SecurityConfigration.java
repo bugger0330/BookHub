@@ -65,7 +65,8 @@ public class SecurityConfigration implements WebMvcConfigurer {
                     .logoutUrl("/logout")
                     .invalidateHttpSession(true)
                     .clearAuthentication(true)
-                    .logoutSuccessUrl("/login?success=200"))
+                    .logoutSuccessUrl("/login?success=200")
+                    .deleteCookies("JSESSIONID"))
             // 자동 로그인 설정
             .rememberMe(remember -> remember
                     .rememberMeParameter("remember")

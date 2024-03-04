@@ -207,6 +207,7 @@ b{
     padding: 30px 80px; 
     box-sizing: border-box; 
     width: 1200px; 
+    min-height: 890px;
     border-radius: 10px; 
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 30px 0px;
     background: white;

@@ -32,6 +32,6 @@
 	
 	<!-- 이동될 수도 있는 태그 -->
 	<update id="updateAttendanceByPoint">
-		UPDATE bh_member SET `point`=`point` + #{addPoint} WHERE `userName` = #{userName}
+		UPDATE bh_member SET `point`= point + #{point} WHERE `userName` = #{userName}
 	</update>
 </mapper>
