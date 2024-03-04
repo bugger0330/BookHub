@@ -56,7 +56,7 @@
 
 <div id="productList" class="container wow fadeInUp">
     <div class="row">
-        <!-- 포인트 상품 목록이 동적으로 추가됩니다 -->
+       
     </div>
 </div>
 
@@ -79,7 +79,7 @@ $(document).ready(function() {
         dataType: 'json',
         success: function(data) {
             if (data.length > 0) {
-                var productList = '';
+                let productList = '';
                 $.each(data, function(index, item) {
                     productList += '<div class="col-md-4">';
                     productList += '<div class="card mb-3">';
@@ -108,13 +108,13 @@ $(document).ready(function() {
 
     // 구매하기 버튼 클릭 이벤트 핸들러
     $(document).on('click', '.purchase-btn', function() {
-        var isLoggedIn = <%= session.getAttribute("loggedIn") != null %>;
+        let isLoggedIn = <%= session.getAttribute("loggedIn") != null %>;
         if (!isLoggedIn) {
             window.alert('로그인 후 구매가 가능합니다.');
             window.location.href = '/login';
             return;
         }
-        var productId = $(this).data('product-id');
+        let productId = $(this).data('product-id');
         console.log('구매하기 버튼 클릭 - 상품 ID:', productId);
         // 여기에서 해당 상품을 구매하는 로직을 처리할 수 있습니다.
         if ($(this).hasClass('btn-primary')) {

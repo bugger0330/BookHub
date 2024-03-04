@@ -9,6 +9,11 @@ import org.apache.ibatis.annotations.Param;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.entity.UserPoint;
 
+
+/**
+ * 유저 포인트 레파지토리
+ * @Author : 이준혁
+ */
 @Mapper
 public interface UserPointRepository {
 
@@ -44,5 +49,10 @@ public interface UserPointRepository {
 	// 환불 요청된 데이터 조회
 	public List<UserPoint> refundReq();
 
+	// 포트원 ImpUid 가져오기
 	public UserPoint findByImpUid(String impUid);
+	
+	// 총 거래액 가져오기
+	public long findByPrice();
+	
 }

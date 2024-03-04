@@ -104,5 +104,11 @@
 		resultType="com.library.bookhub.entity.User">
 		select * from bh_member where userName = #{userName};
 	</select>
+	
+	
+	<select id="findByPrice" resultType="long">
+	select sum(price) from BH_USER_POINT
+	where refund_yn = '미환불'
+	</select>
 
 </mapper>

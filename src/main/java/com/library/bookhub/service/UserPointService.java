@@ -16,6 +16,11 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+ * 유저포인트 서비스
+ * @Author : 이준혁
+ */
 @Service
 @Slf4j
 public class UserPointService {
@@ -115,13 +120,21 @@ public class UserPointService {
     }
     
     
+    
+    // 환불 요청 상태 변경
     public List<UserPoint> refundReq(){
     	return userPointRepository.refundReq();
     }
 
-
+    
+    // 포트원 거래번호 가져오기
     public UserPoint findByImpUid(String impUid) {
     	return userPointRepository.findByImpUid(impUid);
+    }
+    
+    // 총 거래액 가져오기
+    public long findByPrice() {
+    	return userPointRepository.findByPrice();
     }
 
 }
