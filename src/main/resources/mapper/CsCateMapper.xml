@@ -9,15 +9,11 @@
 		SELECT * FROM bh_cs_cate1;
 	</select>
 
-<<<<<<< HEAD
-	<!-- cs cate2 조회 , cate1로 조회해야 연관된 cate2 리스트가 조회됨-->
-	<select id="selectCsCate2" parameterType="int" resultType="com.library.bookhub.entity.cs.CsCate2Entity">
-		SELECT * FROM bh_cs_cate2 WHERE `cate1` = #{cate1}
-=======
+
 	<!-- cs cate2 리스트 조회 -->
 	<select id="selectCsCate2" resultType="com.library.bookhub.entity.cs.CsCate2Entity">
 		SELECT * FROM bh_cs_cate2;
->>>>>>> 52b11f096ae75444a26f841dd3900f1238d37f59
+
 	</select>
 	
 

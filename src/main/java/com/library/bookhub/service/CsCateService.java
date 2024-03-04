@@ -1,6 +1,7 @@
 package com.library.bookhub.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,7 @@ public class CsCateService {
 	@Autowired
 	private CsCateRepository csCateRepository;
 
-<<<<<<< HEAD
-	public List<CsCate1Entity> selectCsCate1() {
-		return csCateRepository.selectCsCate1();
-	}
 
-	public List<CsCate2Entity> selectCsCate2(int entity) {
-		return csCateRepository.selectCsCate2(entity);
-=======
 	public List<CsCate1Dto> selectCsCate1() {
 		List<CsCate1Entity> csCateList1 = csCateRepository.selectCsCate1();
 		List<CsCate2Entity> csCateList2 = csCateRepository.selectCsCate2();
@@ -59,14 +53,9 @@ public class CsCateService {
 				}// 2중for문
 		}
 		
-<<<<<<< HEAD
-		
-		
-		return dto1;
->>>>>>> 52b11f096ae75444a26f841dd3900f1238d37f59
-=======
+
 		return csCate1Dto; //최종적으로 CsCate2Dto 객체를 포함한 CsCate1Dto 객체의 리스트를 반환
->>>>>>> 74b4708f013900a2bacaeae30b9207cceff59460
+
 	}
 
 }

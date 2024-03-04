@@ -15,6 +15,6 @@ public interface CsCateRepository {
 		
 	// 2차 카테고리 리스트
 
-	public List<CsCate2Entity> selectCsCate2(int entity);
+	public List<CsCate2Entity> selectCsCate2();
 
 }
