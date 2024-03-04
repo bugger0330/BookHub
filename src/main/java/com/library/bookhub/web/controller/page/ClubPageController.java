@@ -35,7 +35,10 @@ public class ClubPageController {
 	
 	// 목록
 	@GetMapping(value={"/", "/index"})
-	public String indexPage(Model model) {
+	public String indexPage(Principal principal, Model model) {
+		
+		// 인증검사 자바스크립트로 처리하기 위함
+		model.addAttribute("principal", principal);
 		
 		List<Club> clubList = clubService.readClubList();
 		log.info("clubList : " + clubList);
@@ -51,7 +54,10 @@ public class ClubPageController {
 	
 	// 카테고리별 목록
 	@GetMapping("/list/{clubCate}")
-	public String ListPage(@PathVariable Integer clubCate, Model model) {
+	public String ListPage(Principal principal, @PathVariable Integer clubCate, Model model) {
+		
+		// 인증검사 자바스크립트로 처리하기 위함
+		model.addAttribute("principal", principal);
 		
 		List<Club> clubList = clubService.readByClubCate(clubCate);
 		model.addAttribute("clubList", clubList);
@@ -65,17 +71,20 @@ public class ClubPageController {
 	@GetMapping("/view/{id}")
 	public String viewPage(@PathVariable Integer id, Principal principal, Model model) {
 		
+		// 인증검사 자바스크립트로 처리하기 위함
+		model.addAttribute("principal", principal);
+		
 		Club club = clubService.readByClubId(id);
 		model.addAttribute("club", club);
 		
 		// security 방식이라 UserController에서 session 속성으로 저장하는 코드 없음
 		//User principal = (User) session.getAttribute(Define.PRINCIPAL);
 		
-		// 로그인 안되어있으면 principal 객체 null이므로 실행오류 난다
 		if(principal == null) {
 			model.addAttribute("userName", null);
 		}else {
 			// 사용자 아이디 나타내기
+			// 아래 코드만 있었을 때, 로그인 안되어있으면 principal 객체 null이므로 getName()메서드 실행오류 남
 			model.addAttribute("userName", principal.getName());
 		}
 		
@@ -158,8 +167,10 @@ public class ClubPageController {
 	
 	// 검색
 	@GetMapping("/searchList")
-	public String searchListPage(ClubSearchFormDto dto, Model model) {
+	public String searchListPage(Principal principal, ClubSearchFormDto dto, Model model) {
 		
+		// 인증검사 자바스크립트로 처리하기 위함
+		model.addAttribute("principal", principal);
 	
 		List<Club> clubList = clubService.readByKeyword(dto.getKeyword());
 		

@@ -210,7 +210,7 @@ public class ClubService {
 		return clubRepository.findWishListByUserName(principal.getName());
 	}
 	
-	// 찜하기 여부에 따라 다르게 표시
+	// 찜하기 여부에 따라 하트 다르게 표시
 	public boolean readClubWishListByClubIdAndUserName(Principal principal, Integer clubId) {
 		
 		log.info("clubId : " + clubId);
@@ -224,6 +224,7 @@ public class ClubService {
 			return false;
 		}
 		
+		// 찜하기 내역에 있으면
 		return true;
 	}
 }
