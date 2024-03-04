@@ -73,7 +73,7 @@ window.onload = function() {
 	// 포인트 사용 확인 버튼 클릭 시 폼 제출
 	confirmBtn.addEventListener('click', function() {
 		
-		alert('확인클릭');
+		//alert('확인클릭');
 		// 모달 닫기
 		$('#pointModal').modal('hide');
 		
@@ -115,7 +115,7 @@ window.onload = function() {
 					location.replace("/club/saveList");
 				} else {
 					// 안되노!!! -> falseModal.style.display = 'block';
-					alert('포인트가 부족합니다');
+					//alert('포인트가 부족합니다');
 					$('#falseModal').modal('show');
 				}
 			},

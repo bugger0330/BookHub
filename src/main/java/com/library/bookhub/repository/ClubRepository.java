@@ -58,9 +58,9 @@ public interface ClubRepository {
 	// 찜하기
 	public boolean insertWishList(ClubWishList clubWishList);
 	// 찜하기 취소
-	public boolean deleteWishList(Integer clubId, String userName);
+	public boolean deleteWishList(@Param("clubId") Integer clubId, @Param("userName") String userName);
 	// 찜하기 목록
 	public List<ClubWishList> findWishListByUserName(String userName);
-	// 찜하기 목록에 있는지 조회
-	public ClubWishList findWishListByClubIdAndUserName(Integer clubId, String userName);
+	// 찜하기 목록에 있는지 조회 / 파라미터 두 개 일땐 @Param!!!!
+	public ClubWishList findWishListByClubIdAndUserName(@Param("clubId") Integer clubId, @Param("userName") String userName);
 }

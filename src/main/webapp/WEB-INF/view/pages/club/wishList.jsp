@@ -52,7 +52,8 @@
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
 					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${clubWishItem.formatCDate()}</p>
-					                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>찜하기</a>
+					                                    <!-- 찜 페이지는 하트 채워진 상태로 표시 -->
+					                                    <i data-id="${clubWishItem.clubId}" name="wishButton" class="bi-heart-fill" style="font-size: 50px"></i>
                                                    </div>
                                                </div>
                                            </div>
@@ -76,8 +77,8 @@
         
 	
 <!-- Main End -->
-	
-<script src="/js/club/wishlist.js"></script>	
+
+<script src="/js/club/wishlistpage.js"></script>	
 
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

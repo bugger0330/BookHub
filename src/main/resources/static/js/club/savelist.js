@@ -21,7 +21,7 @@ window.onload = function() {
 				$('#deleteModal').modal('hide');
 	
 				// id값 받기 위해서 deleteBtn이벤트가 button[]이벤트 안에 있어야함
-				alert('id : ' + id);
+				//alert('id : ' + id);
 				
 				$.ajax({
 					url : '/club/save',
@@ -50,10 +50,16 @@ window.onload = function() {
 	}
 	
 	// 모달 취소버튼 누르고 다른 독서모임 삭제하려고 하면 id 값 이전 꺼 자꾸 뜸
-	// 모달 취소버튼 클릭시 reload해서 해결
+	// 모달 취소버튼 클릭시 reload해서 해결(닫기 버튼도 똑같이 적용)
 	const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+	const close = document.getElementById('close');
 	
 	cancelDeleteBtn.addEventListener('click', function() {
+		
+		location.reload();
+	})
+	 
+	close.addEventListener('click', function() {
 		
 		location.reload();
 	})
