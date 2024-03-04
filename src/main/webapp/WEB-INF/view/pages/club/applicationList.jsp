@@ -19,15 +19,13 @@
 	
 	<!-- Main Start -->
 	<c:if test="${empty applicationList}">
-    	<h1 style="margin-left: 40%;">신청한 모임이 없습니다</h1>
+    	<h1>신청한 모임이 없습니다</h1>
     </c:if>
 	
 	<c:forEach var="application" items= "${applicationList}">
-		<!-- width로 크기 조정 -->
-		<div class="card center mx-auto" style="width:40%;">
-		  	<a href="/club/view/${application.clubId }" >
-  			  <!-- 이미자는 width, height 100%로 설정 -->
-			  <img class="card-img-top" src="${application.setupClubImage()}" style="width: 100%; height: 100%;""  alt="Card image">
+		<div class="card center mx-auto" style="width:450px; height: 450px">
+		  	<a href="/club/view/${application.clubId }" style="height: 310px;">
+			  <img class="card-img-top" src="${application.setupClubImage()}" style="max-width:100%; max-height:100%; object-fit: cover;" alt="Card image">
 			</a>  
 		  	<div class="card-body">
 		    	<h4 class="card-title text-center">${application.clubName}</h4>

@@ -90,11 +90,15 @@ success: function(data) {
     });
 
 $(document).on("click", ".refundButton", function() {
-    let index = $(this).attr("id").split("_")[1];
+    
+  	let id = $(this).closest("tr").find("td:nth-child(1)").text(); // 해당 행의 ID 값을 가져옵니다.
     let requestData = {
-        id: $("#dataRow_" + index + " td:nth-child(1)").text(),
+        id: id,
         refundYn: '환불요청'
     };
+    
+    console.log(requestData);
+    
 
     $.ajax({
         type: 'PUT',

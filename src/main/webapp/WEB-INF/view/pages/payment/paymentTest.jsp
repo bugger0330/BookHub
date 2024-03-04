@@ -11,16 +11,52 @@
     <!-- Favicon -->
     <link href="/img/favicon.ico" rel="icon">
 <head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <!-- PortOne SDK -->
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+<script>
+	var IMP = window.IMP;
+	IMP.init("imp60780607");
 
+	function generateMerchantUid() {
+		// 랜덤한 10자리 숫자 생성
+		return Math.floor(Math.random() * 10000000000).toString();
+	}
 
+	function requestPay(productId) {
+        var merchant_uid = generateMerchantUid(); // 랜덤한 merchant_uid 생성
+        var productName = "BookHub 구독상품 ${product.prodName}";
+        var amount = "${product.price}";
 
+        // 결제 요청 시 productId도 함께 전달
+        IMP.request_pay({
+            pg: "html5_inicis",
+            pay_method: "card",
+            merchant_uid: merchant_uid,
+            name: productName,
+            amount: amount,
+            buyer_email: "Iamport@chai.finance",
+            buyer_name: "포트원 기술지원팀",
+            buyer_tel: "010-1234-5678",
+            buyer_addr: "서울특별시 강남구 삼성동",
+            buyer_postcode: "123-456",
+            // productId도 결제 정보에 추가
+            custom_data: {
+                productId: productId
+            }
+        }, function(rsp) {
+            // 결제 성공 시 페이지 이동
+            if (rsp.success) {
+                window.location.href = "/payment/success/" + rsp.custom_data.productId; // 성공 페이지 URL로 이동
+            } else {
+                // 결제 실패 시 처리 로직
+                alert(`결제에 실패했습니다.`);
+                window.location.href = "/sc-product/nopage"
+            }
+        });
+    }
 
-
-
-
+</script>
 <style>
 .product-details {
 	border: 1px solid #ccc;
@@ -87,7 +123,6 @@
     <div class="period"><strong>기간:</strong> ${product.period}일</div>
 </div>
 
-
         </div>
         
     </div>
@@ -103,84 +138,4 @@
 
 	<%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 </body>
-
-<script>
-
-
-	var IMP = window.IMP;
-	IMP.init("imp60780607");
-
-	function generateMerchantUid() {
-		// 랜덤한 10자리 숫자 생성
-		return Math.floor(Math.random() * 10000000000).toString();
-	}
-	
-	
-
-
-
-	function requestPay(productId) {
-	    var merchant_uid = generateMerchantUid(); // 랜덤한 merchant_uid 생성
-	    var productName = "BookHub 구독상품 ${product.prodName}";
-	    var amount = "${product.price}";
-	    var username = "${username}";
-	    
-	    console.log(username);
-	    
-	    $.ajax({
-	        url: "/getid/" + username,
-	        type: "GET",
-	        success: function(response) {
-	            // 요청이 성공하면 받은 회원 정보를 화면에 표시
-	            var buyer_name = response.name; // response에서 userName을 가져와서 buyer_name에 대입
-	            var buyer_email = response.email;
-	            var buyer_phone = response.phone;
-	            var buyer_addr1 = response.addr1;
-	            var buyer_addr2 = response.addr2;
-	            var buyer_zip = response.zip;
-	            
-	            console.log("buyer_name", buyer_name);
-	            console.log("buyer_email", buyer_email);
-	            console.log("buyer_phone", buyer_phone);
-	            console.log("buyer_addr1", buyer_addr1);
-	            console.log("buyer_addr2", buyer_addr2);
-	            console.log("buyer_zip", buyer_zip);
-	            
-	            
-	            // 결제 요청 시 productId와 함께 결제 정보에 추가
-	            IMP.request_pay({
-	                pg: "html5_inicis",
-	                pay_method: "card",
-	                merchant_uid: username + "_" + merchant_uid,
-	                name: productName,
-	                amount: amount,
-	                buyer_email: buyer_email,
-	                buyer_name: buyer_name, 
-	                buyer_tel: buyer_phone,
-	                buyer_addr: buyer_addr1 + buyer_addr2,
-	                buyer_postcode: buyer_zip,
-	                // productId도 결제 정보에 추가
-	                custom_data: {
-	                    productId: productId
-	                }
-	            }, function(rsp) {
-	                // 결제 성공 시 페이지 이동
-	                if (rsp.success) {
-	                    window.location.href = "/payment/success/" + rsp.custom_data.productId; // 성공 페이지 URL로 이동
-	                } else {
-	                    // 결제 실패 시 처리 로직
-	                    alert(`결제에 실패했습니다.`);
-	                    window.location.href = "/sc-product/nopage"
-	                }
-	            });
-	        },
-	        error: function(xhr, status, error) {
-	            // 요청이 실패하면 에러 메시지 출력
-	            alert("오류: " + xhr.responseText);
-	        }
-	    });
-	}
-
-
-</script>
 </html>

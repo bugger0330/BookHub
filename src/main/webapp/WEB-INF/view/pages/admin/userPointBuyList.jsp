@@ -99,9 +99,9 @@ th {
 							<th>포인트</th>
 							<th>구매일시</th>
 							<th>환불여부</th>
-							<th>포트원 거래번호</th>
+							<th>아임포트 UID</th>
 							<th>구매번호</th>
-					
+							<th>setting</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -116,6 +116,8 @@ th {
 								<td class="text-center align-middle">${point.impUid}</td>
 								<td class="text-center align-middle">${point.merchantUid}</td>
 								
+								<td class="text-center align-middle"><a
+									href="/point-product/update/${ppd.id}" class="btn btn-primary">수정하기</a></td>
 							</tr>
 
 						</c:forEach>

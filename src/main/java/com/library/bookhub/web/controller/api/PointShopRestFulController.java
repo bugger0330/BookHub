@@ -17,11 +17,6 @@ import com.library.bookhub.service.PointShopService;
 
 import lombok.extern.slf4j.Slf4j;
 
-
-/**
- * 포인트샵 RestFul 컨트롤러
- * @Author : 이준혁
- */
 @Slf4j
 @RestController
 @RequestMapping("/point-shop")

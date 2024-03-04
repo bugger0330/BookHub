@@ -66,7 +66,7 @@ public class UserPointRestFulController {
 	}
 	
 	
-	// 총 거래엑 가져오기
+	// 총 거래액 가져오기
 	@GetMapping("/getprice")
 	 public long getTotalPrice() {
         return userPointService.findByPrice();

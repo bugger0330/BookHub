@@ -33,11 +33,6 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
-
-/**
- * 유저 포인트 컨트롤러(관리자)
- * @Author : 이준혁
- */
 @Slf4j
 @Controller
 @RequestMapping("/admin/user-point")
