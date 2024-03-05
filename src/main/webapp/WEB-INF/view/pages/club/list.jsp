@@ -131,7 +131,7 @@
 	                                                   <p>${club.descript}</p>
 	                                                   <div class="d-flex justify-content-between flex-lg-wrap">
 	                                                   		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
-						                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
+						                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${club.formatCDate()}</p>
 						                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; cursor: default;"></i>
 	                                                   </div>
 	                                               </div>

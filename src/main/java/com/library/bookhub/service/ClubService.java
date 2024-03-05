@@ -184,7 +184,8 @@ public class ClubService {
 		user.setPoint(point);
 		clubRepository.updatePoint(user);
 		
-		// 개설 취소하려는 모임에 찜한 내역이 있으면 그것도 삭제
+		// 모임 개설 취소하면서 찜한 내역도 삭제
+		clubRepository.deleteWishListByClubId(id);
 		
 		return clubRepository.delete(id);
 	}
@@ -260,5 +261,11 @@ public class ClubService {
 	public int clubWishListCountByUserName(Principal principal) {
 		
 		return clubRepository.clubWishListCountByUserName(principal.getName());
+	}
+	
+	// 모임 인기순 목록
+	public List<Club> readClubListOrderByHcApply() {
+		
+		return clubRepository.findAllOrderByHcApply();
 	}
 }

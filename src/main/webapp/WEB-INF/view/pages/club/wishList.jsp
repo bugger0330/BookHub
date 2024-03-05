@@ -54,7 +54,7 @@
                                                    <p>${clubWishItem.descript}</p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
-					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${clubWishItem.formatCDate()}</p>
+					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${clubWishItem.formatCDate()}</p>
 					                                    <!-- 찜 페이지는 하트 채워진 상태로 표시 -->
 					                                    <i data-id="${clubWishItem.clubId}" name="wishButton" class="bi-heart-fill" style="font-size: 50px; cursor: default;"></i>
                                                    </div>
