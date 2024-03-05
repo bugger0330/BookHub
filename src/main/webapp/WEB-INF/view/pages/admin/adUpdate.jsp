@@ -27,15 +27,15 @@
 	<%@ include file="/WEB-INF/view/pages/admin/layout/header.jsp"%>
 
 	<!-- Header Start -->
-    	<div class="container-fluid bg-dark py-5 mb-5 page-header">
-    		<div class="container py-5">
-    			<div class="row justify-content-center">
-    				<div class="col-lg-10 text-center">
-    					<h3 class="display-5 text-white animated slideInDown">배너광고 수정</h3>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+	<div class="container-fluid bg-dark py-5 mb-5 page-header">
+		<div class="container py-5">
+			<div class="row justify-content-center">
+				<div class="col-lg-10 text-center">
+					<h3 class="display-5 text-white animated slideInDown">배너광고 수정</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="container mt-5 mb-5">
 		<div class="row justify-content-center">
@@ -51,7 +51,7 @@
 
 							<div class="form-group">
 								<label for="username">제목</label> <input type="text"
-									class="form-control" id="title" name="title" 
+									class="form-control" id="title" name="title"
 									value="${banner.title}" required>
 								<div id="titleFeedback" class="invalid-feedback"></div>
 							</div>
@@ -72,10 +72,24 @@
 								<div class="card mt-3">
 									<div class="card-header bg-warning">현재 이미지</div>
 									<div class="card-body">
-									
+
 										<div class="text-center">
-										<img src="/images/upload/${banner.uploadFileName}" style="width:70%; height:70%;">
+											<img src="/images/upload/${banner.uploadFileName}"
+												style="width: 70%; height: 70%;">
 										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 수정된 이미지 미리보기 -->
+							<div class="card mt-3" id="updatedImagePreview"
+								style="display: none;">
+								<div class="card-header bg-success text-white">수정된 이미지
+									미리보기</div>
+								<div class="card-body">
+									<div class="text-center">
+										<img id="updatedImage" src="#"
+											style="max-width: 100%; max-height: 200px;">
 									</div>
 								</div>
 							</div>
@@ -123,5 +137,18 @@
 
 </body>
 
-
+<script>
+$(document).ready(function() {
+    $('#bannerImage').change(function() {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#updatedImage').attr('src', e.target.result); // 이미지 미리보기 업데이트
+                $('#updatedImagePreview').show(); // 수정된 이미지 미리보기 표시
+            }
+            reader.readAsDataURL(this.files[0]); // 파일을 읽어서 데이터 URL로 변환하여 이미지 미리보기에 삽입
+        }
+    });
+});
+</script>
 </html>

@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS bh_point_shop;
 DROP TABLE IF EXISTS bh_club_wish_list;
 DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;
+DROP TABLE IF EXISTS bh_book_share;
+DROP TABLE IF EXISTS bh_book_share_borrow;
 
 
 
@@ -49,20 +51,7 @@ CREATE TABLE bh_member_point (
     ptDate DATETIME NOT NULL
 );
 
--- 도서
-CREATE TABLE `bh_book` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `bookName` varchar(100) NOT NULL,
-  `descript` varchar(1000) NOT NULL,
-  `company` varchar(100) NOT NULL,
-  `writer` varchar(20) NOT NULL,
-  `borrow` int DEFAULT '0',
-  `img` varchar(255) NOT NULL,
-  `status` varchar(20) DEFAULT '대출가능',
-  `rdate` datetime NOT NULL,
-  `wdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+
 
 -- 도서 대출 장바구니
 CREATE TABLE bh_product_cart (
@@ -72,39 +61,6 @@ CREATE TABLE bh_product_cart (
     rdate DATETIME NOT NULL
 );
 
--- 도서 대출
-CREATE TABLE `bh_book_borrow` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userName` varchar(20) NOT NULL,
-  `brComplete` tinyint NOT NULL,
-  `brDate` datetime NOT NULL,
-  `returnDate` datetime DEFAULT NULL,
-  `bookNo` int NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-
-CREATE TABLE `bh_point_computer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `com_number` int NOT NULL,
-  `time` int DEFAULT NULL,
-  `end_time` datetime DEFAULT NULL,
-  `status` int DEFAULT NULL,
-  PRIMARY KEY (`id`,`com_number`)
-);
-
-CREATE TABLE `bh_point_order` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `orderId` int NOT NULL,
-  `productName` varchar(45) NOT NULL,
-  `productPrice` int NOT NULL,
-  `productCount` int NOT NULL,
-  `AllProductPrice` int NOT NULL,
-  `userName` varchar(45) NOT NULL,
-  `rdate` datetime NOT NULL,
-  `refund_type` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
 
 -- 문의
 CREATE TABLE bh_cs_qna (
@@ -135,13 +91,15 @@ CREATE TABLE bh_cs_faq (
 -- 공지사항
 CREATE TABLE bh_cs_notice (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT NOT NULL,
-    cate2 INT NOT NULL,
+    cate1 INT,
+    cate2 INT,
     title VARCHAR(255) NOT NULL,
     content LONGTEXT NOT NULL,
-    hit INT DEFAULT 0,
+    writer VARCHAR(255),
+    filepath VARCHAR(255),
     rdate DATETIME NOT NULL
 );
+
 
 
 -- 광고
@@ -252,3 +210,87 @@ CREATE TABLE bh_club (
   rdate DATETIME NOT NULL,
   wdate DATETIME NULL
 );
+
+CREATE TABLE `bh_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bookName` varchar(100) NOT NULL,
+  `descript` varchar(1000) NOT NULL,
+  `company` varchar(100) NOT NULL,
+  `writer` varchar(20) NOT NULL,
+  `borrow` int DEFAULT '0',
+  `img` varchar(255) NOT NULL,
+  `status` varchar(20) DEFAULT '대출가능',
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_book_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(20) NOT NULL,
+  `brComplete` tinyint NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  `flag` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_book_share` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `book_name` varchar(100) NOT NULL,
+  `company` varchar(45) NOT NULL,
+  `writer` varchar(45) NOT NULL,
+  `descript` varchar(450) NOT NULL,
+  `user_name` varchar(45) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `borrow` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_book_share_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) NOT NULL,
+  `brComplete` int NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  `borrowDay` int DEFAULT NULL,
+  `flag` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_point_computer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `com_number` int NOT NULL,
+  `time` int DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  PRIMARY KEY (`id`,`com_number`)
+);
+
+
+CREATE TABLE `bh_point_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `orderId` int NOT NULL,
+  `productName` varchar(45) NOT NULL,
+  `productPrice` int NOT NULL,
+  `productCount` int NOT NULL,
+  `AllProductPrice` int NOT NULL,
+  `userName` varchar(45) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `refund_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+
+
+

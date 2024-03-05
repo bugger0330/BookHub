@@ -56,10 +56,7 @@
                 <h2 class="fs-4 fw-bold">📚BookHub 포인트 거래 수익</h2>
                 <h1 class="display-5" id="totalPointText">Loading...</h1>
 
-                <!-- 회원 관리 바로 가기 버튼 -->
-                <a href="ad/list"
-                    class="btn btn-primary btn-sm mt-3"
-                    style="position: absolute; bottom: 10px; right: 10px; padding: 10px;">포인트 관리 바로가기</a>
+                
             </div>
         </div>
     </div>
