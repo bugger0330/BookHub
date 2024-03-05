@@ -252,3 +252,87 @@ CREATE TABLE bh_club (
   rdate DATETIME NOT NULL,
   wdate DATETIME NULL
 );
+
+CREATE TABLE `bh_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bookName` varchar(100) NOT NULL,
+  `descript` varchar(1000) NOT NULL,
+  `company` varchar(100) NOT NULL,
+  `writer` varchar(20) NOT NULL,
+  `borrow` int DEFAULT '0',
+  `img` varchar(255) NOT NULL,
+  `status` varchar(20) DEFAULT '대출가능',
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=587 DEFAULT CHARSET=utf8mb3
+
+
+CREATE TABLE `bh_book_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(20) NOT NULL,
+  `brComplete` tinyint NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  `flag` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb3
+
+
+CREATE TABLE `bh_book_share` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `book_name` varchar(100) NOT NULL,
+  `company` varchar(45) NOT NULL,
+  `writer` varchar(45) NOT NULL,
+  `descript` varchar(450) NOT NULL,
+  `user_name` varchar(45) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `borrow` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3
+
+
+CREATE TABLE `bh_book_share_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) NOT NULL,
+  `brComplete` int NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  `borrowDay` int DEFAULT NULL,
+  `flag` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3
+
+
+CREATE TABLE `bh_point_computer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `com_number` int NOT NULL,
+  `time` int DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  PRIMARY KEY (`id`,`com_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3
+
+
+CREATE TABLE `bh_point_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `orderId` int NOT NULL,
+  `productName` varchar(45) NOT NULL,
+  `productPrice` int NOT NULL,
+  `productCount` int NOT NULL,
+  `AllProductPrice` int NOT NULL,
+  `userName` varchar(45) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `refund_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb3
+
+
+
+
+
