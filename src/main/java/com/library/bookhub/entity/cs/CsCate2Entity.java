@@ -14,5 +14,5 @@ public class CsCate2Entity {
 	private int cate2;
 	private int cate1;
 	private String c2Name;
-
+	private String address;
 }

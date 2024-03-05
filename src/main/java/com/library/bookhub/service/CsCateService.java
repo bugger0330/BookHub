@@ -27,8 +27,6 @@ public class CsCateService {
 		List<CsCate1Entity> csCateList1 = csCateRepository.selectCsCate1();
 		List<CsCate2Entity> csCateList2 = csCateRepository.selectCsCate2();
 		
-		System.out.println("csCateList1" + csCateList1);
-		System.out.println("csCateList2" + csCateList2);
 		
 		List<CsCate1Dto> csCate1Dto = new ArrayList<>();
 		for(int i = 0; i < csCateList1.size(); i++) {
@@ -47,10 +45,11 @@ public class CsCateService {
 					respCsCate2List.setCate1(csCateList2.get(k).getCate1());
 					respCsCate2List.setCate2(csCateList2.get(k).getCate2());
 					respCsCate2List.setC2Name(csCateList2.get(k).getC2Name());
+					respCsCate2List.setAddress(csCateList2.get(k).getAddress());
 					csCate2Dto.add(respCsCate2List); // entity -> dto : cate2 담기
 					csCate1Dto.get(i).setRespList(csCate2Dto);
 				}// if문
-				}// 2중for문
+			}// 2중for문
 		}
 		
 

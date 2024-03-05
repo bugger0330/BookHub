@@ -210,7 +210,7 @@ function myOrderUpdate(){
 		allProductPrice : Number(orderPrice.textContent),
 		userName : memberId,
 		orderId : -1,
-		refund_type : "환불불가"
+		refundType : "환불불가"
 	};
 	orderArray.push(orders);
 	

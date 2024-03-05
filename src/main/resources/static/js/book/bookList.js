@@ -6,6 +6,7 @@ function load(firstPage){
 	$.ajax({
 		type : "get",
 		url : `/book/all/${firstPage}`,
+		async : false,
 		success : function(data){
 			if(data != null){
 				innerFun(data);

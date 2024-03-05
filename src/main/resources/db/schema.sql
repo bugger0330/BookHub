@@ -301,7 +301,6 @@ CREATE TABLE `bh_point_order` (
   PRIMARY KEY (`id`)
 );
 
-
 CREATE TABLE `bh_cs_cate1` (
   `cate1` int NOT NULL,
   `c1Name` varchar(25) DEFAULT NULL,
