@@ -35,6 +35,10 @@ public class BannerAdService {
 	public long getTotalAdCount() {
 		return bannerAdRepository.getAdTotalCount();
 	}
+	
+	public int getTotalPrice() {
+		return bannerAdRepository.getTotalPrice();
+	}
 
 	public List<BannerAd> findById(Integer id) {
 		return bannerAdRepository.findById(id);
@@ -114,5 +118,16 @@ public class BannerAdService {
 	// 광고상태여부 변경
 	 public void updatePostStatus(Long id, String postYn) {
 	        bannerAdRepository.updatePostStatus(id, postYn);
+	    }
+	 
+	 
+	 // 배너 클릭수 증가
+	 public void increaseClicks(Long id) {
+	        bannerAdRepository.increaseClicks(id);
+	    }
+	 
+	 // 배너 광고 수익 
+	 public int getBannerAdPriceById(int id) {
+	        return bannerAdRepository.getBannerAdPriceById(id);
 	    }
 }

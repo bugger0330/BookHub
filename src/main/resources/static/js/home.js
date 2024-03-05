@@ -42,3 +42,14 @@ $(document).ready(function() {
         });
     }
 });
+
+
+function handleBannerClick(id) {
+       
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/click/" + id, true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.send();
+
+        
+    }
