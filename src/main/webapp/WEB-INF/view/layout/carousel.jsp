@@ -22,7 +22,7 @@
 								당신의 독서 여정을 새롭게 시작해보세요. 책의 세계로 오신 것을 환영합니다. <br />함께하는 독서의 즐거움과
 								지식의 보물을 만나보세요.
 							</p>
-							<a href=""
+							<a href="/book/list-all"
 								class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">도서
 								구경하기 </a>
 						</div>
@@ -45,7 +45,7 @@
 							</h1>
 							<p class="fs-5 text-white mb-4 pb-2">책을 읽는 것은 혼자 하는 여행이지만,
 								그것을 나누는 것은 함께하는 모험입니다.</p>
-							<a href=""
+							<a href="/club/index"
 								class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">모임
 								개설하기 </a>
 						</div>
@@ -62,16 +62,16 @@
 					<div class="row justify-content-start">
 						<div class="col-sm-10 col-lg-8">
 							<h5 class="text-primary text-uppercase mb-3 animated slideInDown">도서
-								기부로 환경 보호하기</h5>
+								공유로 환경 보호하기</h5>
 							<h1 class="display-3 text-white animated slideInDown">
-								책을 기부하고, <br />지구를 사랑하세요.
+								책을 공유하고, <br />지구를 사랑하세요.
 							</h1>
-							<p class="fs-5 text-white mb-4 pb-2">책을 기부하는 것은 우리의 소중한 자원을
+							<p class="fs-5 text-white mb-4 pb-2">책을 공유하는 것은 우리의 소중한 자원을
 								재활용하고 지구의 자연을 보호하는 작은 일입니다. 함께 나눔의 가치를 실천하며 우리의 지구를 지켜나가는 여정에
 								동참해보세요.</p>
-							<a href=""
+							<a href="/share/read"
 								class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">책
-								기부하기 </a>
+								공유하기 </a>
 						</div>
 					</div>
 				</div>
