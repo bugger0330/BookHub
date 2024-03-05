@@ -122,6 +122,9 @@
 													<p id="rdate"></p>
 												</div>
 											</div>
+											<button>
+											<a href="/myPage/update/${user.id}">수정/탈퇴</a>
+											</button>
 										</div>
 									</div>
 								</div>
@@ -164,6 +167,7 @@
 
 									</div>
 								</div>
+								
 							</div>
 						</div>
 					</div>
