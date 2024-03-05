@@ -122,9 +122,9 @@
 													<p id="rdate"></p>
 												</div>
 											</div>
-											<button>
-											<a href="/myPage/update/${user.id}">수정/탈퇴</a>
-											</button>
+											
+											<a href="/myPage/update/${user.id}"><button class="btn btn-primary">회원정보수정</button></a>
+											
 										</div>
 									</div>
 								</div>
