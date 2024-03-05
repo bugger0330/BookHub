@@ -59,6 +59,8 @@ public interface ClubRepository {
 	public boolean insertWishList(ClubWishList clubWishList);
 	// 찜하기 취소
 	public boolean deleteWishList(@Param("clubId") Integer clubId, @Param("userName") String userName);
+	// 개설 취소하면서 찜한 내역도 삭제
+	public void deleteWishListByClubId(Integer clubId);
 	// 찜하기 목록
 	public List<ClubWishList> findWishListByUserName(String userName);
 	// 찜하기 목록에 있는지 조회 / 파라미터 두 개 일땐 @Param!!!!
@@ -76,5 +78,8 @@ public interface ClubRepository {
 	public int clubApplicationCountByUserName(String userName);
 	// 모임 찜하기 개수
 	public int clubWishListCountByUserName(String userName);
+	
+	// 모임 인기순 목록
+	public List<Club> findAllOrderByHcApply();
 	
 }

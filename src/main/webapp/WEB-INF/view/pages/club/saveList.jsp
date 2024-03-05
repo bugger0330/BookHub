@@ -37,7 +37,7 @@
 		    <h4 class="card-title text-center">${club.clubName}</h4>
 		    <p class="card-text text-center">개설일 : ${club.formatCreatedAt()}</p>
 	    <!--  data-toggle="modal" data-target="#deleteModal" 추가 -->
-		    <a data-id="${club.id }" href="#" class="btn btn-primary" >개설 취소</a>
+		    <a data-id="${club.id }" name="deleteButton" href="#" class="btn btn-primary" >개설 취소</a>
 	  	</div>
 	</div>
 	<br>
@@ -64,7 +64,7 @@
   </div>
 </div>
 <!-- 모달 끝 -->
-	
+
 <script src="/js/club/savelist.js"></script>	
 	
 

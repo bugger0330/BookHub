@@ -121,6 +121,10 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 	SELECT COUNT(*) FROM bh_club_wish_list WHERE userName = #{userName}
 </select>
 
+<select id="findAllOrderByHcApply" resultType="com.library.bookhub.entity.Club">
+	SELECT * FROM bh_club ORDER BY hcApply DESC
+</select>
+
 <update id="updateByApplication">
 	update bh_club set
 	`hcApply` = #{hcApply},
@@ -143,6 +147,12 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 <delete id="deleteWishList">
 	DELETE FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
 </delete>
+
+<delete id="deleteWishListByClubId">
+	DELETE FROM bh_club_wish_list WHERE clubId = #{clubId}
+</delete>
+
+
 
 <!-- 블록 주석 : ctrl shfit / -->
 <!-- <delete id="deleteApplicationByClubId">
