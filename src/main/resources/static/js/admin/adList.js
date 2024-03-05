@@ -1,3 +1,27 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var adRows = document.querySelectorAll("tbody > tr");
+    adRows.forEach(function(row) {
+        var adId = row.querySelector(".text-center.align-middle").innerText;
+
+        fetch(`/ad-price/${adId}`)
+            .then(response => response.json())
+            .then(data => {
+                // 결과값을 가져와서 해당 span 엘리먼트에 추가합니다.
+                var resultSpan = document.getElementById(`result-${adId}`);
+                // 결과값을 #,### 형식으로 형식화합니다.
+                var formattedPrice = new Intl.NumberFormat().format(data);
+                // 결과값에 "원"을 붙여서 출력합니다.
+                resultSpan.innerText = formattedPrice + "원";
+            })
+            .catch(error => {
+                console.error("Error fetching banner ad price for Ad ID", adId, ":", error);
+            });
+    });
+});
+
+
+
+
 
 		 function updatePostStatus(adId) {
 		        let postYn = $("#postYn-" + adId).val();
@@ -16,3 +40,5 @@
 		            }
 		        });
 		    }
+		    
+		    

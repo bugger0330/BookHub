@@ -62,6 +62,19 @@
     </div>
 </div>
 
+<div class="row gx-4 gx-lg-5 align-items-center my-5">
+    <div class="col-md-12 mx-auto"> <!-- 중간(md) 화면에서 8개의 열을 차지 -->
+        <div class="card bg-dark text-white shadow rounded-3 py-5">
+            <div class="card-body">
+                <h2 class="fs-4 fw-bold">📚BookHub 배너광고수익</h2>
+                <h1 class="display-5" id="totalPriceText">Loading...</h1>
+
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 </div>
@@ -103,6 +116,22 @@
 		        // 금액을 '#,###' 형식으로 변환하여 표시
 		        let formattedAmount = numberWithCommas(data);
 		        $('#totalPointText').text(formattedAmount + "원");
+		    },
+		    error: function(xhr, status, error) {
+		        console.error("Error fetching total ads:", error);
+		    }
+		});
+		
+		
+		$.ajax({
+		    url: "/getPrice",
+		    type: "GET",
+		    success: function(data) {
+		        // data가 null이면 0으로 설정
+		        data = data || 0;
+		        // 금액을 '#,###' 형식으로 변환하여 표시
+		        let formattedAmount = numberWithCommas(data);
+		        $('#totalPriceText').text(formattedAmount + "원");
 		    },
 		    error: function(xhr, status, error) {
 		        console.error("Error fetching total ads:", error);

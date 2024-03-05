@@ -38,3 +38,4 @@ out/
 
 # 추가
 *.yml
+*.gradle

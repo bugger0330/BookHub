@@ -73,9 +73,10 @@ th {
 				<a href="/ad-setting" class="btn btn-dark">광고 추가하기</a>
 			</div>
 		</div>
-
+		<h5>광고 수익 : 클릭 횟수 * 550원</h5>
 		<c:choose>
 			<c:when test="${not empty adList}">
+			
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
@@ -85,13 +86,15 @@ th {
 							<th>광고주명</th>
 							<th>이미지</th>
 							<th>광고여부</th>
+							<th>광고 클릭수</th>
+							<th>광고수익</th>
 							<th>setting</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="ad" items="${adList}">
 							<tr>
-								<td class="text-center align-middle">${ad.id}</td>
+								<td class="text-center align-middle" >${ad.id}</td>
 								<td class="text-center align-middle">${ad.title}</td>
 								<td class="text-center align-middle"
 									style="word-wrap: break-word; max-width: 200px;">${ad.content}</td>
@@ -104,6 +107,9 @@ th {
 										<option value="Y" ${ad.postYn == 'Y' ? 'selected' : ''}>광고중</option>
 										<option value="N" ${ad.postYn == 'N' ? 'selected' : ''}>광고중단</option>
 								</select></td>
+								<td class="text-center align-middle">${ad.clicks}</td>
+								<td class="text-center align-middle" id="result-${ad.id}"></td>
+
 								<td class="text-center align-middle"><a
 									href="/ad/update/${ad.id}" class="btn btn-primary">수정하기</a></td>
 							</tr>

@@ -20,6 +20,8 @@ DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;
 DROP TABLE IF EXISTS bh_book_share;
 DROP TABLE IF EXISTS bh_book_share_borrow;
+DROP TABLE IF EXISTS bh_cs_cate1;
+DROP TABLE IF EXISTS bh_cs_cate2;
 
 
 
@@ -112,6 +114,7 @@ CREATE TABLE bh_banner (
     origin_file_name VARCHAR(255) NOT NULL,
     upload_file_name VARCHAR(255) NOT NULL,
     post_yn VARCHAR(2) DEFAULT 'N',
+    clicks INT DEFAULT 0,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
