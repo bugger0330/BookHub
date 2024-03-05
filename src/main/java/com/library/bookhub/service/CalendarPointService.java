@@ -1,5 +1,7 @@
 package com.library.bookhub.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,15 +48,20 @@ public class CalendarPointService {
 	
 	// 다음 달로 변경
 	@Transactional
-	public int modifyLastMonth(int lastMonth, String userId) {
-		int result = attendanceRepository.updateByNewMonth(lastMonth, userId);
-		return result;
+	public List<Integer> modifyLastMonth(int lastMonth, String userId) {
+		attendanceRepository.updateByNewMonth(lastMonth, userId);
+		
+		// 출석일수 초기화
+		Attendance attendance = attendanceRepository.selectByUserId(userId);
+		List<Integer> days = arrayConverter(attendance.getAttendanceDays());
+		
+		return days;
 	}
 	
 	// 출석일 증가
 	public int modifyAttendanceDays(String today, String userId) {
 		int result = attendanceRepository.updateByAttendanceDays(today+", ", userId);
-		return 0;
+		return result;
 	}
 	
 	// 포인트 적립
@@ -77,5 +84,21 @@ public class CalendarPointService {
 
         // 선택된 인덱스에 해당하는 값 반환
         return randoms[index];
+	}
+	
+	// attendanceDays(String) -> 배열(int[]) 전환 
+	public List<Integer> arrayConverter(String attendanceDays) {
+		List<Integer> days = new ArrayList<>();
+        
+        if(attendanceDays != null) {
+            String[] splitDays = attendanceDays.split(", ");
+            
+            for (String day : splitDays) {
+                days.add(Integer.parseInt(day));
+            }
+        }
+        log.info("days : "+days);
+		
+		return days;
 	}
 }

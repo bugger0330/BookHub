@@ -51,7 +51,7 @@ public class CalendarRestfulController {
         
         // 날짜 불러오기
         String attendanceDays = attendanceEntity.getAttendanceDays();
-        List<Integer> days = arrayConverter(attendanceDays);
+        List<Integer> days = calendarPointService.arrayConverter(attendanceDays);
         
         // 지난 달(혹은 현재 월)
         Integer lastMonth = attendanceEntity.getLastMonth();
@@ -59,8 +59,9 @@ public class CalendarRestfulController {
         
         // 다음 달이 된 경우
         if (lastMonth == null || lastMonth != currentMonth) {
+        	log.info("modifyLastMonth...1");
             // 출석일 초기화
-        	calendarPointService.modifyLastMonth(currentMonth,userId);
+        	days = calendarPointService.modifyLastMonth(currentMonth,userId);
         }
         
         Map<String, Object> result = new HashMap<>();
@@ -97,7 +98,7 @@ public class CalendarRestfulController {
 		
         // 날짜 불러오기
         String attendanceDays = attendanceEntity.getAttendanceDays();
-        List<Integer> days = arrayConverter(attendanceDays);
+        List<Integer> days = calendarPointService.arrayConverter(attendanceDays);
         int size = days.size();
         log.info("size : "+size);
         
@@ -121,21 +122,5 @@ public class CalendarRestfulController {
 		return result;
 	}
 	
-	
-	// attendanceDays(String) -> 배열(int[]) 전환 
-	public List<Integer> arrayConverter(String attendanceDays) {
-		List<Integer> days = new ArrayList<>();
-        
-        if(attendanceDays != null) {
-            String[] splitDays = attendanceDays.split(", ");
-            
-            for (String day : splitDays) {
-                days.add(Integer.parseInt(day));
-            }
-        }
-        log.info("days : "+days);
-		
-		return days;
-	}
 	
 }
