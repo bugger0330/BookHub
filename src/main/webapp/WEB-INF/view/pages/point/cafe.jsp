@@ -268,7 +268,7 @@
 <!-- 메인 컨텐츠 끝 -->
 
 
-
+<script src="/js/point/cafe.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
 

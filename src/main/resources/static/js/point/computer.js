@@ -8,7 +8,6 @@ let play = 0;
 
 let statusData = null;
 
-let username = "user1";
 let myPoint = 0;
 
 const now = new Date();
@@ -22,7 +21,7 @@ load();
 function load(){
 	
 	//myPoint.textContent = 0;
-	if(username == ""){
+	if(memberId == ""){
 		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
 		
 	}
@@ -30,7 +29,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
@@ -209,7 +208,7 @@ function myOrderUpdate(){
 		productPrice : 500,
 		productCount : play,
 		allProductPrice : Number(orderPrice.textContent),
-		userName : username,
+		userName : memberId,
 		orderId : -1,
 		refund_type : "환불불가"
 	};
@@ -223,6 +222,7 @@ function myOrderUpdate(){
 		success : function(data){
 			if(data == true){
 				alert("주문이 완료되었습니다.");
+				location.href = "/point/computer";
 			}else{
 				alert("주문 실패!");
 			}

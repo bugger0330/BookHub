@@ -25,7 +25,7 @@
 	</insert>
 	
 	<select id="selectBorrow" resultType="com.library.bookhub.entity.BookBorrow">
-		select * from bh_book_borrow where userName = #{username} and bookNo = #{bookId};
+		select * from bh_book_borrow where userName = #{username} and bookNo = #{bookId} and flag = 0;
 	</select>
 	
 	<update id="borrowBook">
