@@ -55,21 +55,19 @@
 	<!-- 광고 끝 -->
 
 	<!-- BookHub 둘러보기 시작 -->
-	<div style="display: flex; align-items: center;">
-		<h2 style="margin-right: auto;">
-			<i class="fa-solid fa-flag me-3"></i>Book Hub 소식
-		</h2>
+<div style="display: flex; align-items: center;">
+    <h2 style="margin-right: auto;">
+        <i class="fa-solid fa-flag me-3"></i>Book Hub 소식
+    </h2>
+    <a href="/notice/list" class="btn btn-primary">공지사항 바로가기</a> <!-- 공지사항 바로가기 버튼 -->
+</div>
 
-
-	</div>
-
-	<div class="container">
+<div class="container">
     <table id="notice-table" class="table table-hover" style="margin-top: 30px; margin-bottom: 30px;">
         <thead class="thead-light text-center">
             <tr>
                 <th>번호</th>
                 <th>제목</th>
-               
                 <th>작성자</th>
                 <th>작성일</th>
             </tr>
@@ -78,8 +76,8 @@
         </tbody>
     </table>
 </div>
+<!-- BookHub 둘러보기 끝 -->
 
-	<!-- BookHub 둘러보기 끝 -->
 
 
 
@@ -98,14 +96,17 @@
 							<a class="position-relative d-block overflow-hidden"
 								href="/about"> <img class="img-fluid" src="/img/cat-1.jpg"
 								alt="">
-								<div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
+								<div
+									class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
+									style="margin: 1px;">
 									<h5 class="m-0">BookHub 소개</h5>
 								</div>
 							</a>
 						</div>
 						<div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-							<a class="position-relative d-block overflow-hidden" href="/book/list-all">
-								<img class="img-fluid" src="/img/cat-2.jpg" alt="">
+							<a class="position-relative d-block overflow-hidden"
+								href="/book/list-all"> <img class="img-fluid"
+								src="/img/cat-2.jpg" alt="">
 								<div
 									class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
 									style="margin: 1px;">
@@ -114,8 +115,9 @@
 							</a>
 						</div>
 						<div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-							<a class="position-relative d-block overflow-hidden" href="/club/save">
-								<img class="img-fluid" src="/img/cat-3.jpg" alt="">
+							<a class="position-relative d-block overflow-hidden"
+								href="/club/save"> <img class="img-fluid"
+								src="/img/cat-3.jpg" alt="">
 								<div
 									class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
 									style="margin: 1px;">
@@ -127,8 +129,9 @@
 				</div>
 				<div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s"
 					style="min-height: 350px;">
-					<a class="position-relative d-block h-100 overflow-hidden" href="/share/write">
-						<img class="img-fluid position-absolute w-100 h-100"
+					<a class="position-relative d-block h-100 overflow-hidden"
+						href="/share/write"> <img
+						class="img-fluid position-absolute w-100 h-100"
 						src="/img/cat-4.jpg" alt="" style="object-fit: cover;">
 						<div
 							class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
@@ -149,7 +152,8 @@
 	<div class="container-xxl py-5">
 		<div class="container">
 			<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-				<h6 class="section-title bg-white text-center text-primary px-3">Point Shop</h6>
+				<h6 class="section-title bg-white text-center text-primary px-3">Point
+					Shop</h6>
 				<h1 class="mb-3">BookHub 포인트 충전소</h1>
 				<h4>경제적인 가격으로 BookHub를 이용해보세요!</h4>
 			</div>
@@ -213,7 +217,7 @@
 	<!-- Courses End -->
 
 
-	
+
 
 
 
@@ -224,7 +228,7 @@
 
 
 <script src="/js/home.js">
-
+	
 </script>
 
 
