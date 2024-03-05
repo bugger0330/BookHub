@@ -63,7 +63,21 @@
 
 	</div>
 
-	<h4>공지사항 부분</h4>
+	<div class="container">
+    <table id="notice-table" class="table table-hover" style="margin-top: 30px; margin-bottom: 30px;">
+        <thead class="thead-light text-center">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+               
+                <th>작성자</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+        </tbody>
+    </table>
+</div>
 
 	<!-- BookHub 둘러보기 끝 -->
 
@@ -90,7 +104,7 @@
 							</a>
 						</div>
 						<div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-							<a class="position-relative d-block overflow-hidden" href="">
+							<a class="position-relative d-block overflow-hidden" href="/book/list-all">
 								<img class="img-fluid" src="/img/cat-2.jpg" alt="">
 								<div
 									class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
@@ -100,7 +114,7 @@
 							</a>
 						</div>
 						<div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-							<a class="position-relative d-block overflow-hidden" href="">
+							<a class="position-relative d-block overflow-hidden" href="/club/save">
 								<img class="img-fluid" src="/img/cat-3.jpg" alt="">
 								<div
 									class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
@@ -113,13 +127,13 @@
 				</div>
 				<div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s"
 					style="min-height: 350px;">
-					<a class="position-relative d-block h-100 overflow-hidden" href="">
+					<a class="position-relative d-block h-100 overflow-hidden" href="/share/write">
 						<img class="img-fluid position-absolute w-100 h-100"
 						src="/img/cat-4.jpg" alt="" style="object-fit: cover;">
 						<div
 							class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"
 							style="margin: 1px;">
-							<h5 class="m-0">책 기부하기</h5>
+							<h5 class="m-0">책 공유하기</h5>
 						</div>
 					</a>
 				</div>
@@ -199,119 +213,7 @@
 	<!-- Courses End -->
 
 
-	<!-- Team Start -->
-	<div class="container-xxl py-5">
-		<div class="container">
-			<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-				<h6 class="section-title bg-white text-center text-primary px-3">Best
-					Author</h6>
-				<h1 class="mb-5">베스트셀러 작가를 소개합니다.</h1>
-			</div>
-			<div class="row g-4">
-				<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-					<div class="team-item bg-light">
-						<div class="overflow-hidden">
-							<img class="img-fluid" src="/img/team-1.jpg" alt="">
-						</div>
-						<div class="position-relative d-flex justify-content-center"
-							style="margin-top: -23px;"></div>
-						<div class="text-center p-4 mt-3">
-							<h5 class="mb-0">버지니아 사티어</h5>
-							<small>아이는 무엇으로 자라는가</small>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-					<div class="team-item bg-light">
-						<div class="overflow-hidden">
-							<img class="img-fluid" src="/img/team-2.jpg" alt="">
-						</div>
-						<div class="position-relative d-flex justify-content-center"
-							style="margin-top: -23px;"></div>
-						<div class="text-center p-4 mt-3">
-							<h5 class="mb-0">버지니아 사티어</h5>
-							<small>아이는 무엇으로 자라는가</small>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-					<div class="team-item bg-light">
-						<div class="overflow-hidden">
-							<img class="img-fluid" src="img/team-3.jpg" alt="">
-						</div>
-						<div class="position-relative d-flex justify-content-center"
-							style="margin-top: -23px;"></div>
-						<div class="text-center p-4 mt-3">
-							<h5 class="mb-0">버지니아 사티어</h5>
-							<small>아이는 무엇으로 자라는가</small>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-					<div class="team-item bg-light">
-						<div class="overflow-hidden">
-							<img class="img-fluid" src="/img/team-4.jpg" alt="">
-						</div>
-						<div class="position-relative d-flex justify-content-center"
-							style="margin-top: -23px;"></div>
-						<div class="text-center p-4 mt-3">
-							<h5 class="mb-0">버지니아 사티어</h5>
-							<small>아이는 무엇으로 자라는가</small>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Team End -->
-
-
-	<!-- Testimonial Start -->
-	<div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-		<div class="container">
-			<div class="text-center">
-				<h6 class="section-title bg-white text-center text-primary px-3">Best
-					Review</h6>
-				<h1 class="mb-5">이용고객님들의 솔직후기 입니다!</h1>
-			</div>
-			<div class="owl-carousel testimonial-carousel position-relative">
-				<div class="testimonial-item text-center">
-					<img class="border rounded-circle p-2 mx-auto mb-3"
-						src="/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-					<h5 class="mb-4">김철수 고객님</h5>
-					<div class="testimonial-text bg-light text-center p-4">
-						<p class="mb-0">BookHub 추천추천!</p>
-					</div>
-				</div>
-				<div class="testimonial-item text-center">
-					<img class="border rounded-circle p-2 mx-auto mb-3"
-						src="/img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-					<h5 class="mb-4">김철수 고객님</h5>
-					<div class="testimonial-text bg-light text-center p-4">
-						<p class="mb-0">BookHub 추천추천!</p>
-					</div>
-				</div>
-				<div class="testimonial-item text-center">
-					<img class="border rounded-circle p-2 mx-auto mb-3"
-						src="/img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-					<h5 class="mb-4">김철수 고객님</h5>
-					<div class="testimonial-text bg-light text-center p-4">
-						<p class="mb-0">BookHub 추천추천!</p>
-					</div>
-				</div>
-				<div class="testimonial-item text-center">
-					<img class="border rounded-circle p-2 mx-auto mb-3"
-						src="/img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-					<h5 class="mb-4">김철수 고객님</h5>
-					<div class="testimonial-text bg-light text-center p-4">
-						<p class="mb-0">BookHub 추천추천!</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Testimonial End -->
-
+	
 
 
 
@@ -321,7 +223,9 @@
 <!-- 메인 컨텐츠부분 끝 -->
 
 
+<script src="/js/home.js">
 
+</script>
 
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
