@@ -17,6 +17,8 @@ DROP TABLE IF EXISTS bh_point_shop;
 DROP TABLE IF EXISTS bh_club_wish_list;
 DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;
+DROP TABLE IF EXISTS bh_book_share;
+DROP TABLE IF EXISTS bh_book_share_borrow;
 
 
 
@@ -49,20 +51,7 @@ CREATE TABLE bh_member_point (
     ptDate DATETIME NOT NULL
 );
 
--- 도서
-CREATE TABLE `bh_book` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `bookName` varchar(100) NOT NULL,
-  `descript` varchar(1000) NOT NULL,
-  `company` varchar(100) NOT NULL,
-  `writer` varchar(20) NOT NULL,
-  `borrow` int DEFAULT '0',
-  `img` varchar(255) NOT NULL,
-  `status` varchar(20) DEFAULT '대출가능',
-  `rdate` datetime NOT NULL,
-  `wdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+
 
 -- 도서 대출 장바구니
 CREATE TABLE bh_product_cart (
@@ -72,39 +61,6 @@ CREATE TABLE bh_product_cart (
     rdate DATETIME NOT NULL
 );
 
--- 도서 대출
-CREATE TABLE `bh_book_borrow` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userName` varchar(20) NOT NULL,
-  `brComplete` tinyint NOT NULL,
-  `brDate` datetime NOT NULL,
-  `returnDate` datetime DEFAULT NULL,
-  `bookNo` int NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-
-CREATE TABLE `bh_point_computer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `com_number` int NOT NULL,
-  `time` int DEFAULT NULL,
-  `end_time` datetime DEFAULT NULL,
-  `status` int DEFAULT NULL,
-  PRIMARY KEY (`id`,`com_number`)
-);
-
-CREATE TABLE `bh_point_order` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `orderId` int NOT NULL,
-  `productName` varchar(45) NOT NULL,
-  `productPrice` int NOT NULL,
-  `productCount` int NOT NULL,
-  `AllProductPrice` int NOT NULL,
-  `userName` varchar(45) NOT NULL,
-  `rdate` datetime NOT NULL,
-  `refund_type` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
 
 -- 문의
 CREATE TABLE bh_cs_qna (
@@ -265,7 +221,7 @@ CREATE TABLE `bh_book` (
   `rdate` datetime NOT NULL,
   `wdate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=587 DEFAULT CHARSET=utf8mb3
+);
 
 
 CREATE TABLE `bh_book_borrow` (
@@ -277,7 +233,7 @@ CREATE TABLE `bh_book_borrow` (
   `bookNo` int NOT NULL,
   `flag` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb3
+);
 
 
 CREATE TABLE `bh_book_share` (
@@ -293,7 +249,7 @@ CREATE TABLE `bh_book_share` (
   `status` varchar(45) DEFAULT NULL,
   `borrow` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3
+);
 
 
 CREATE TABLE `bh_book_share_borrow` (
@@ -306,7 +262,7 @@ CREATE TABLE `bh_book_share_borrow` (
   `borrowDay` int DEFAULT NULL,
   `flag` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb3
+);
 
 
 CREATE TABLE `bh_point_computer` (
@@ -316,7 +272,7 @@ CREATE TABLE `bh_point_computer` (
   `end_time` datetime DEFAULT NULL,
   `status` int DEFAULT NULL,
   PRIMARY KEY (`id`,`com_number`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3
+);
 
 
 CREATE TABLE `bh_point_order` (
@@ -330,7 +286,7 @@ CREATE TABLE `bh_point_order` (
   `rdate` datetime NOT NULL,
   `refund_type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb3
+);
 
 
 
