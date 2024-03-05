@@ -50,6 +50,10 @@ public class ClubPageController {
 			model.addAttribute("clubList", clubList);
 		}
 		
+		// 모임 전체 개수
+		int clubCount = clubService.clubCount();
+		model.addAttribute("clubCount", clubCount);
+		
 		return "pages/club/index";
 	}
 	
@@ -64,6 +68,10 @@ public class ClubPageController {
 		model.addAttribute("clubList", clubList);
 		// 카테고리번호 이용해서 카테고리 타이틀 제목, 이미지 다르게 표시하기 위함
 		model.addAttribute("clubCate", clubCate);
+		
+		// 카테고리별 모임 개수
+		int clubCount = clubService.clubCountByClubCate(clubCate);
+		model.addAttribute("clubCount", clubCount);
 		
 		return "/pages/club/list";
 	}
@@ -84,7 +92,8 @@ public class ClubPageController {
 		if(principal == null) {
 			model.addAttribute("userName", null);
 		}else {
-			// 사용자 아이디 나타내기
+			// ★이렇게 안 해도 되고 그냥 위에 인증검사처럼 principal로 저장해서, 신청하기 버튼 누를때 인증검사 처리하면됨!
+			// 사용자 아이디 나타내기 
 			// 아래 코드만 있었을 때, 로그인 안되어있으면 principal 객체 null이므로 getName()메서드 실행오류 남
 			model.addAttribute("userName", principal.getName());
 		}
@@ -137,31 +146,37 @@ public class ClubPageController {
 			model.addAttribute("clubList", clubList);
 		}
 		
+		// 모임 개설 개수
+		int clubCount = clubService.clubCountByUserName(principal);
+		model.addAttribute("clubCount", clubCount);
+		
 		return "pages/club/saveList";
 	}
 	
 	// 신청내역
 	@GetMapping("/applicationList")
-	public String applicationListPage(@AuthenticationPrincipal MyUserDetails user, Model model) {
+	public String applicationListPage(@AuthenticationPrincipal MyUserDetails myUserDetails, Model model) {
 		
-		if(user == null) {
+		if(myUserDetails == null) {
 			throw new UnAuthorizedException("로그인 정보가 없습니다", HttpStatus.UNAUTHORIZED);
 		}
 		
 		
 		// 로그인한 사용자 아이디값 가져오기
-		// 1. MyUserDetails의 메서드로 바로 가져오기
-		log.info(user.getUsername());
-		// 2. MyUserDetails에 생성자 주입한 User를 가져와서 User의 속성 이용하기
-		log.info(user.getUser().getUserName());
+		// MyUserDetails의 메서드로 바로 가져오기
+		log.info(myUserDetails.getUsername());
 		
-		List<ClubApplication> applicationList = clubService.readApplicationListByUserName(user.getUsername());
+		List<ClubApplication> applicationList = clubService.readApplicationListByUserName(myUserDetails.getUsername());
 		
 		if(applicationList.isEmpty()) {
 			model.addAttribute("applicationList", null);
 		}else {
 			model.addAttribute("applicationList", applicationList);
 		}
+		
+		// 모임 신청 개수
+		int clubApplicationCount = clubService.clubApplicationCountByUserName(myUserDetails);
+		model.addAttribute("clubApplicationCount", clubApplicationCount);
 		
 		return "pages/club/applicationList";
 	}
@@ -185,6 +200,10 @@ public class ClubPageController {
 		// 검색어 입력했던 값 그대로 검색창에 띄우기
 		model.addAttribute("keyword", dto.getKeyword());
 		
+		// 키워드별 모임 개수
+		int clubCount = clubService.clubCountByKeyword(dto.getKeyword());
+		model.addAttribute("clubCount", clubCount);
+		
 		return "/pages/club/searchList";
 	}
 	
@@ -204,6 +223,10 @@ public class ClubPageController {
 		}else {
 			model.addAttribute("clubWishList", clubWishList);
 		}
+		
+		// 모임 찜하기 개수
+		int clubWishListCount = clubService.clubWishListCountByUserName(principal);
+		model.addAttribute("clubWishListCount", clubWishListCount);
 		
 		return "/pages/club/wishList";
 	}

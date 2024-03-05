@@ -37,6 +37,7 @@ window.onload = function() {
 							location.reload();
 						}else {
 							alert('신청인원이 있으므로 관리자 승인이 필요합니다');
+							location.reload();
 						}
 					},
 					error : function() {

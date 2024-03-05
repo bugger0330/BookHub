@@ -117,7 +117,11 @@
 #zip {
 	width: 30%;
 }
-
+#zip, #addr1 {
+	outline-color: #ccc;
+	outline-style: none;
+	cursor: default;
+}
 .result-uid, .result-pass, .result-name, .result-hp, .result-gender {
 	display: none;
 }
@@ -178,7 +182,7 @@
 			</div>
 			<div class="log-form-group">
 				<label for="hp"><span class="essential">*</span> 휴대폰 번호</label> <input type="text" id="hp"
-					name="hp" placeholder="Enter hp" onblur="valiHp()" required>
+					name="hp" placeholder="Enter hp" oninput="hypenTel(this)" onblur="valiHp()" maxlength="13" required>
 				<p class="result-hp"></p>
 			</div>
 			<div class="log-form-group">
@@ -199,7 +203,8 @@
 				<div class="log-form-group">
 					<label for="zip">우편번호</label> <input type="text" id="zip"
 						name="zip" placeholder="우편주소" readonly>
-					<button type="button" class="find-zip">조회</button>
+					<button type="button" class="find-zip" 
+						id="find-address-btn">조회</button>
 				</div>
 				<div class="log-form-group">
 					<label for="addr1">기본 주소</label> <input type="text" id="addr1"
@@ -216,7 +221,30 @@
 		</form>
 	</div>
 	
-	<script src="/js/user/signUp.js"></script>
+	<script src="/js/user/signup.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		$(document).ready(function() {
+			// 이하 생략
+			new daum.Postcode({
+				oncomplete : function(data) {
+					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+					// 예제를 참고하여 다양한 활용법을 확인해 보세요.
+				}
+			});
+			// 주소찾기 버튼 클릭 이벤트 핸들러
+			$('#find-address-btn').on('click', function() {
+				new daum.Postcode({
+					oncomplete : function(data) {
+						// 주소 검색 결과가 선택되었을 때 실행되는 부분
+						// 검색 결과를 사용자가 선택한 값을 입력 폼에 채워넣는 등의 동작을 여기에 추가할 수 있습니다.
+						$('#zip').val(data.zonecode); // 우편번호 입력 폼에 우편번호 값 채우기
+						$('#addr1').val(data.address); // 주소 입력 폼에 주소 값 채우기
+					}
+				}).open();
+			});
+		});
+	</script>
 </body>
 </html>
 

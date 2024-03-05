@@ -14,6 +14,7 @@ DROP TABLE IF EXISTS bh_club;
 DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
 DROP TABLE IF EXISTS bh_point_shop;
+DROP TABLE IF EXISTS  bh_attendance;
 DROP TABLE IF EXISTS bh_club_wish_list;
 DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;
@@ -162,6 +163,13 @@ CREATE TABLE bh_user_point (
 	
 );
 
+-- 출석체크
+CREATE TABLE bh_attendance (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	userId VARCHAR(30) NOT NULL,
+    lastMonth INT DEFAULT 0,
+    attendanceDays VARCHAR(30) DEFAULT NULL
+);
 
 
 
@@ -289,14 +297,4 @@ CREATE TABLE `bh_point_order` (
   `refund_type` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
-
--- 출석체크
-CREATE TABLE bh_attendance (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    userId VARCHAR(30) NOT NULL,
-    lastMonth INT DEFAULT 0,
-    attendanceDays VARCHAR(30) DEFAULT NULL
-);
-
-
 

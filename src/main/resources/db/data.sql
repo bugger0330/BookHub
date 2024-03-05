@@ -68,3 +68,8 @@ INSERT INTO bh_point_shop(prodName, point, price)
 values('3000 포인트', 3000, 3500),
       ('5000 포인트', 5000, 5500),
       ('10000 포인트', 10000, 11000);
+
+-- 출석체크 더미 데이터
+insert into bh_attendance (userId, lastMonth, attendanceDays) 
+	values ('admin', 3, '3, 4, 11'),
+	('user1', 2, '5, 11, 13, 22, 27');
