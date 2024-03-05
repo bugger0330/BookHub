@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/calendar")
+@RequestMapping("/point")
 public class CalendarPointPageController {
 	
 	// 출석체크 페이지

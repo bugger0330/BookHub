@@ -17,6 +17,9 @@ public interface AttendanceRepository {
 	// 달 갱신
 	public int updateByNewMonth(@Param("lastMonth") int lastMonth,@Param("userId") String userId);
 	
+	// 출석일수 조회
+	public int selectByDays(@Param("attendanceDays") String attendanceDays,@Param("userId") String userId);
+	
 	// 출석일수 추가
 	public int updateByAttendanceDays(@Param("attendanceDays") String attendanceDays,@Param("userId") String userId);
 }

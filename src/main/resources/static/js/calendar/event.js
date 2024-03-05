@@ -6,6 +6,7 @@ const exit = document.querySelector(".exit");
 // 전송
 check.onclick = () => {
     const checkToday = ulElement.querySelector('.today');
+    const chOn = document.querySelectorAll('.ch_on');
     console.log('currentDay : '+currentDay);
     
     // 중복 체크
@@ -13,8 +14,13 @@ check.onclick = () => {
 		alert("이미 출석되었습니다.");
 		return;
 	}
+	
+	// 일주일 마감
+	if(chOn.length <= 7) {
+		alert("이번 달 출석체크는 끝나셨습니다.");
+		return;
+	}
     
-    alert("출석되었습니다.");
     
     // 월, 현재 날짜
 	fetch('/calendar/attendance',{
@@ -42,12 +48,10 @@ check.onclick = () => {
 		
 		// 일수, 포인트 체크
 		if(days != 7) {
-			alert("현재 "+days+"일 출석되었습니다.");
+			alert("출석되었습니다.");
 		} else {
 			alert(point+"를 적립 받았습니다!");
 		}
-		
-		// window.location.href= '/';
 		
 	})
 	.catch((error) => {
