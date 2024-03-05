@@ -104,7 +104,7 @@ orderBtn.onclick = () => {
 				allProductPrice : (Number(coffiePrice[i].textContent) * Number(coffieCount[i].value)),
 				userName : memberId,
 				orderId : -1,
-				refund_type : "환불가능"
+				refundType : "환불가능"
 			};
 			orderArray.push(orders);
 		}
