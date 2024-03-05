@@ -15,11 +15,14 @@
 			</div>
 		</div>
 	</div>
-	<!-- Header End -->
+<!-- Header End -->
 	
 	<!-- Main Start -->
+	<div class="col-lg-4 text-start">
+        <h4 style="margin-left: 70%;">총 ${clubApplicationCount}개<h4>
+    </div>
+	
 	<c:if test="${empty applicationList}">
-	<h3>${applicationList }</h3>
     	<h1 style="margin-left: 40%;">신청한 모임이 없습니다</h1>
     </c:if>
 	
@@ -28,7 +31,7 @@
 		<div class="card center mx-auto" style="width:30%;">
 		  	<a href="/club/view/${application.clubId }" >
   			  <!-- 이미자는 width, height 100%로 설정 -->
-			  <img class="card-img-top" src="/images/upload/${application.uploadFileName1 }" style="width: 100%; height: 100%;""  alt="Card image">
+			  <img class="card-img-top" src="${application.setupClubImage()}" style="width: 100%; height: 100%;""  alt="Card image">
 			</a>  
 		  	<div class="card-body">
 		    	<h4 class="card-title text-center">${application.clubName}</h4>

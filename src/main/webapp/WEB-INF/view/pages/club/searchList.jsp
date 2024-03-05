@@ -54,7 +54,10 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
-                                <div class="col-lg-12">
+                            	<div class="col-lg-4 text-start">
+		                           <h4>총 ${clubCount}개<h4>
+		                       </div>
+                               <div class="col-lg-12">
                                     <div class="row g-4">
                                     
                                     <!-- empty 키워드는 변수가 null이거나 비어있는 경우를 확인 -->
@@ -70,15 +73,16 @@
                                            <div class="rounded position-relative fruite-item">
                                                <div class="fruite-img">
                                                		<!-- 첨부 파일에 따라 이미지 크기가 달라져서 height 값 고정함 -->
-                                                   <img src="/images/upload/${club.uploadFileName1 }" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
+                                                   <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
                                                </div>
                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                    <h4>${club.clubName}</h4>
+                                                   <h6>${club.host}</h6>
                                                    <p>${club.descript}</p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
 					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
-					                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px"></i>
+					                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; cursor: default;"></i>
                                                    </div>
                                                </div>
                                            </div>
