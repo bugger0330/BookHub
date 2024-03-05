@@ -35,13 +35,6 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	@Autowired
 	private Oauth2UserService oAuth2UserService;
 	
-	// 카카오 Rest Key
-	@Value("${spring.security.oauth2.client.registration.kakao.client-id}")
-	private String KakaoRestKey;
-
-	// 카카오 리다이렉트 uri
-	@Value("${spring.security.oauth2.client.registration.kakao.redirect-uri}")
-	private String KakaoRedirectUri;
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -130,9 +123,9 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	// 카카오 소셜 로그인
 	private ClientRegistration kakaoClientRegistration() {
 	    return ClientRegistration.withRegistrationId("kakao")
-	            .clientId(KakaoRestKey)
+	            .clientId("daa9133dd9b91f5965b4bdb82517dc70")
 	            .clientSecret(null)
-	            .redirectUri(KakaoRedirectUri)
+	            .redirectUri("http://localhost/login/oauth2/code/kakao")
 	            .authorizationUri("https://kauth.kakao.com/oauth/authorize")
 	            .tokenUri("https://kauth.kakao.com/oauth/token")
 	            .userInfoUri("https://kapi.kakao.com/v2/user/me")

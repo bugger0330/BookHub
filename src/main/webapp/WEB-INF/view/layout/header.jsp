@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +52,17 @@
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
     
+       <!-- CS CSS -->
+<!-- <!--     <link href="/css/csStyle.css" rel="stylesheet">  --> 
+	
+	<!-- 서머노트 -->
+   
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/principal.js"></script>
+    
 </head>
 
 <body>
@@ -83,21 +95,13 @@
                         <a href="/book/search" class="dropdown-item">통합검색</a>
                     </div>
                 </div>
-                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">포인트샵</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
-                     
-                       
-                    </div>
-                </div>
+
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">열린공간</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">공지사항</a>
-                        <a href="testimonial.html" class="dropdown-item">고객센터</a>
-                        <a href="/ad-inquiry" class="dropdown-item">광고문의</a>
-                       
+                        <a href="/notice/list" class="dropdown-item">공지사항</a>
+                        <a href="/qna/list" class="dropdown-item">문의하기</a>
+                        <a href="/faq/list" class="dropdown-item">자주 묻는 질문</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -107,6 +111,7 @@
                         <a href="/club/save" class="dropdown-item">모임 개설하기</a>
                         <a href="/club/saveList" class="dropdown-item">모임 개설내역</a>
                         <a href="/club/applicationList" class="dropdown-item">모임 신청내역</a>
+                        <a href="/club/wishList" class="dropdown-item">찜</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -115,6 +120,7 @@
                         <a href="/point/cafe" class="dropdown-item">카페</a>
                         <a href="/point/print" class="dropdown-item">프린트/복사</a>
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
+                         <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
                     </div>
                 </div>
@@ -141,6 +147,16 @@
                 <!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
 					<a href="/admin" class="nav-item nav-link active">관리자 페이지</a>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<div class="navbar-nav" style="
+					    display: flex;
+					    width: 170px;
+					    text-align: center;
+					    flex-direction: column;
+					    justify-content: space-around;
+					    color: #06BBCC;"
+					><sec:authentication property="principal.user.name"/></div>
 				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->

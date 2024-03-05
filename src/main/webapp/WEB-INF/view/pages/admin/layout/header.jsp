@@ -55,15 +55,16 @@
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<li><a class="dropdown-item" href="/point-shop/admin/list">포인트 상품목록</a></li>
 							<li><a class="dropdown-item" href="/point-add">포인트 상품추가</a></li>
+								<li><a class="dropdown-item" href="/admin/user-point/refund">환불요청목록</a></li>
 						</ul></li>
 						
-						<li class="nav-item dropdown"><a
+						<!-- <li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">먹거리상품관리</a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<li><a class="dropdown-item" href="/point-product/list">상품목록</a></li>
 							<li><a class="dropdown-item" href="/point-product-add">상품추가</a></li>
-						</ul></li>
+						</ul></li> -->
 
 				</ul>
 			</div>

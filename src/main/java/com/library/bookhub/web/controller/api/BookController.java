@@ -54,7 +54,6 @@ public class BookController {
 	
 	@GetMapping("/all/{pageNum}")
 	public ResponseEntity<?> bookListAll(@PathVariable int pageNum){
-		System.out.println("=================페이지 " + pageNum);
 		List<Book> list = bookService.bookListAll(pageNum);
 		return new ResponseEntity<List<Book>>(list, HttpStatus.OK);
 	}

@@ -23,6 +23,12 @@
 		SELECT COUNT(*) FROM
 		bh_user_point
 	</select>
+	
+	
+	<select id="refundReq" resultType="com.library.bookhub.entity.UserPoint">
+	
+	select * from BH_USER_POINT where refund_yn like '환불요청';
+	</select>
 
 
 
@@ -31,10 +37,10 @@
 	<insert id="save"
 		parameterType="com.library.bookhub.entity.UserPoint">
 		INSERT INTO bh_user_point (user_id, point_name,
-		purchase_date, point,
+		purchase_date, point, price,
 		imp_uid, merchant_uid)
 		VALUES (#{userId},
-		#{pointName}, #{purchaseDate}, #{point}, #{impUid},
+		#{pointName}, #{purchaseDate}, #{point}, #{price}, #{impUid},
 		#{merchantUid})
 	</insert>
 
@@ -54,6 +60,13 @@
 	UPDATE bh_user_point
 		SET refund_yn = #{refundYn}
 	WHERE id = #{id}
+	</update>
+
+
+	<update id="updatePoint" parameterType="com.library.bookhub.entity.UserPoint">
+		UPDATE bh_user_point
+		SET point = #{point}
+		WHERE id = #{id}s
 	</update>
 
 	<!-- 삭제 함수 매핑 -->
@@ -79,7 +92,7 @@
 	</select>
 
 	<!-- 사용자 식별자로 사용자 포인트 정보 조회 함수 매핑 -->
-	<select id="findByUserId" parameterType="String"
+	<select id="findByUserId" 
 		resultType="com.library.bookhub.entity.UserPoint">
 		SELECT *
 		FROM bh_user_point
@@ -90,6 +103,12 @@
 	<select id="getUser"
 		resultType="com.library.bookhub.entity.User">
 		select * from bh_member where userName = #{userName};
+	</select>
+	
+	
+	<select id="findByPrice" resultType="long">
+	select sum(price) from BH_USER_POINT
+	where refund_yn = '미환불'
 	</select>
 
 </mapper>

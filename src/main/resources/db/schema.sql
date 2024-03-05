@@ -15,17 +15,22 @@ DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
 DROP TABLE IF EXISTS bh_point_shop;
 DROP TABLE IF EXISTS  bh_attendance;
+DROP TABLE IF EXISTS bh_club_wish_list;
+DROP TABLE IF EXISTS bh_club_application;
+DROP TABLE IF EXISTS bh_club_cate;
+DROP TABLE IF EXISTS bh_book_share;
+DROP TABLE IF EXISTS bh_book_share_borrow;
 
 
 
 
 CREATE TABLE bh_member (
-  id int NOT NULL AUTO_INCREMENT primary KEY,
-  userName varchar(40) NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
+  userName varchar(20) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
-  gender tinyint,
-  phone char(13),
+  gender tinyint NOT NULL,
+  phone char(13) NOT NULL,
   email varchar(100) NOT NULL,
   role varchar(20) DEFAULT 'USER',
   point int DEFAULT '0',
@@ -47,20 +52,7 @@ CREATE TABLE bh_member_point (
     ptDate DATETIME NOT NULL
 );
 
--- 도서
-CREATE TABLE `bh_book` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `bookName` varchar(100) NOT NULL,
-  `descript` varchar(1000) NOT NULL,
-  `company` varchar(100) NOT NULL,
-  `writer` varchar(20) NOT NULL,
-  `borrow` int DEFAULT '0',
-  `img` varchar(255) NOT NULL,
-  `status` varchar(20) DEFAULT '대출가능',
-  `rdate` datetime NOT NULL,
-  `wdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
+
 
 -- 도서 대출 장바구니
 CREATE TABLE bh_product_cart (
@@ -70,39 +62,6 @@ CREATE TABLE bh_product_cart (
     rdate DATETIME NOT NULL
 );
 
--- 도서 대출
-CREATE TABLE `bh_book_borrow` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `userName` varchar(20) NOT NULL,
-  `brComplete` tinyint NOT NULL,
-  `brDate` datetime NOT NULL,
-  `returnDate` datetime DEFAULT NULL,
-  `bookNo` int NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-
-CREATE TABLE `bh_point_computer` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `com_number` int NOT NULL,
-  `time` int DEFAULT NULL,
-  `end_time` datetime DEFAULT NULL,
-  `status` int DEFAULT NULL,
-  PRIMARY KEY (`id`,`com_number`)
-);
-
-CREATE TABLE `bh_point_order` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `orderId` int NOT NULL,
-  `productName` varchar(45) NOT NULL,
-  `productPrice` int NOT NULL,
-  `productCount` int NOT NULL,
-  `AllProductPrice` int NOT NULL,
-  `userName` varchar(45) NOT NULL,
-  `rdate` datetime NOT NULL,
-  `refund_type` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-);
 
 -- 문의
 CREATE TABLE bh_cs_qna (
@@ -133,13 +92,15 @@ CREATE TABLE bh_cs_faq (
 -- 공지사항
 CREATE TABLE bh_cs_notice (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT NOT NULL,
-    cate2 INT NOT NULL,
+    cate1 INT,
+    cate2 INT,
     title VARCHAR(255) NOT NULL,
     content LONGTEXT NOT NULL,
-    hit INT DEFAULT 0,
-    rdate DATETIME NOT NULL
+    writer VARCHAR(255),
+    filepath VARCHAR(255),
+    rdate VARCHAR(20)
 );
+
 
 
 -- 광고
@@ -164,28 +125,6 @@ CREATE TABLE bh_payment (
     ptProduct INT,
     rdate DATETIME NOT NULL
 );
-
--- 독서모임
-CREATE TABLE bh_club (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    clubCate1 TINYINT NOT NULL,
-    clubCate2 TINYINT NOT NULL,
-    clubName VARCHAR(100) NOT NULL,
-    descript VARCHAR(100) NOT NULL,
-    cDate DATETIME NOT NULL,
-    host VARCHAR(20) NOT NULL,
-    headCount INT NOT NULL,
-    hcApply INT DEFAULT 0,
-    status VARCHAR(20),
-    thumb1 VARCHAR(255) NOT NULL,
-    thumb2 VARCHAR(255) NOT NULL,
-    thumb3 VARCHAR(255) NOT NULL,
-    rdate DATETIME NOT NULL,
-    wdate DATETIME
-);
-
-
-
 
 
 -- 포인트 상품
@@ -217,6 +156,7 @@ CREATE TABLE bh_user_point (
     point_name VARCHAR(100) NOT NULL,
     purchase_date DATETIME NOT NULL,
     point INT NOT NULL,
+    price INT NOT NULL,
     refund_yn VARCHAR(10) DEFAULT '미환불',
 	imp_uid VARCHAR(255) NOT NULL,
 	merchant_uid VARCHAR(255) NOT NULL
@@ -230,3 +170,131 @@ CREATE TABLE bh_attendance (
     lastMonth INT DEFAULT 0,
     attendanceDays VARCHAR(30) DEFAULT NULL
 );
+
+
+
+
+CREATE TABLE bh_club_application (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  clubId INT NOT NULL,
+  userName VARCHAR(20) NOT NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
+);
+
+
+CREATE TABLE bh_club_wish_list (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  clubId INT NOT NULL,
+  userName VARCHAR(20) NOT NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
+);
+
+
+CREATE TABLE bh_club_cate (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  cate INT NULL,
+  cateName VARCHAR(20) NULL
+);
+CREATE TABLE bh_club (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  userName VARCHAR(20) NOT NULL,
+  clubCate TINYINT NULL,
+  clubName VARCHAR(100) NOT NULL,
+  descript VARCHAR(100) NOT NULL,
+  detail VARCHAR(1000) NULL,
+  cDate DATETIME NOT NULL,
+  host VARCHAR(20) NOT NULL,
+  headCount INT NOT NULL,
+  hcApply INT NULL DEFAULT 0,
+  status VARCHAR(20) NULL DEFAULT '신청가능',
+  originFileName1 VARCHAR(255) NULL,
+  originFileName2 VARCHAR(255) NULL,
+  originFileName3 VARCHAR(255) NULL,
+  uploadFileName1 VARCHAR(255) NULL,
+  uploadFileName2 VARCHAR(255) NULL,
+  uploadFileName3 VARCHAR(255) NULL,
+  rdate DATETIME NOT NULL,
+  wdate DATETIME NULL
+);
+
+CREATE TABLE `bh_book` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bookName` varchar(100) NOT NULL,
+  `descript` varchar(1000) NOT NULL,
+  `company` varchar(100) NOT NULL,
+  `writer` varchar(20) NOT NULL,
+  `borrow` int DEFAULT '0',
+  `img` varchar(255) NOT NULL,
+  `status` varchar(20) DEFAULT '대출가능',
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_book_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(20) NOT NULL,
+  `brComplete` tinyint NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  `flag` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_book_share` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `book_name` varchar(100) NOT NULL,
+  `company` varchar(45) NOT NULL,
+  `writer` varchar(45) NOT NULL,
+  `descript` varchar(450) NOT NULL,
+  `user_name` varchar(45) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `wdate` datetime DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `borrow` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_book_share_borrow` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userName` varchar(45) NOT NULL,
+  `brComplete` int NOT NULL,
+  `brDate` datetime NOT NULL,
+  `returnDate` datetime DEFAULT NULL,
+  `bookNo` int NOT NULL,
+  `borrowDay` int DEFAULT NULL,
+  `flag` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_point_computer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `com_number` int NOT NULL,
+  `time` int DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  PRIMARY KEY (`id`,`com_number`)
+);
+
+
+CREATE TABLE `bh_point_order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `orderId` int NOT NULL,
+  `productName` varchar(45) NOT NULL,
+  `productPrice` int NOT NULL,
+  `productCount` int NOT NULL,
+  `AllProductPrice` int NOT NULL,
+  `userName` varchar(45) NOT NULL,
+  `rdate` datetime NOT NULL,
+  `refund_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+

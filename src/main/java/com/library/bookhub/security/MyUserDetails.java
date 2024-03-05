@@ -93,7 +93,7 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 	public boolean isAccountNonLocked() {
 		
 		// 탈퇴된 계정
-		if(user.getWDate() != null || user.getStatus() > 1) {
+		if(user.getWDate() != null) {
 			return false;
 		}
 		

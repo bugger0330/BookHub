@@ -21,28 +21,28 @@
 	width: 100%;
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
 	<%@ include file="/WEB-INF/view/pages/admin/layout/header.jsp"%>
 
 	<!-- Header Start -->
-    	<div class="container-fluid bg-dark py-5 mb-5 page-header">
-    		<div class="container py-5">
-    			<div class="row justify-content-center">
-    				<div class="col-lg-10 text-center">
-    					<h3 class="display-5 text-white animated slideInDown">배너광고 수정</h3>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+	<div class="container-fluid bg-dark py-5 mb-5 page-header">
+		<div class="container py-5">
+			<div class="row justify-content-center">
+				<div class="col-lg-10 text-center">
+					<h3 class="display-5 text-white animated slideInDown">배너광고 수정</h3>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="container mt-5 mb-5">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-header bg-dark text-white">광고 정보 수정</div>
+					<input type="hidden" id="bannerid" value="${banner.id}">
 					<div class="card-body">
 						<form action="/ad/edit/${banner.id}" id="edit-btn" method="post"
 							enctype="multipart/form-data">
@@ -51,7 +51,7 @@
 
 							<div class="form-group">
 								<label for="username">제목</label> <input type="text"
-									class="form-control" id="title" name="title" 
+									class="form-control" id="title" name="title"
 									value="${banner.title}" required>
 								<div id="titleFeedback" class="invalid-feedback"></div>
 							</div>
@@ -72,10 +72,24 @@
 								<div class="card mt-3">
 									<div class="card-header bg-warning">현재 이미지</div>
 									<div class="card-body">
-									
+
 										<div class="text-center">
-										<img src="/images/upload/${banner.uploadFileName}" style="width:70%; height:70%;">
+											<img src="/images/upload/${banner.uploadFileName}"
+												style="width: 70%; height: 70%;">
 										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- 수정된 이미지 미리보기 -->
+							<div class="card mt-3" id="updatedImagePreview"
+								style="display: none;">
+								<div class="card-header bg-success text-white">수정된 이미지
+									미리보기</div>
+								<div class="card-body">
+									<div class="text-center">
+										<img id="updatedImage" src="#"
+											style="max-width: 100%; max-height: 200px;">
 									</div>
 								</div>
 							</div>
@@ -118,74 +132,23 @@
 	</div>
 
 	<%@ include file="/WEB-INF/view/pages/admin/layout/footer.jsp"%>
-
-	<script>
-	$(document).ready(function() {
-	    $('#edit-btn').submit(function(event) {
-	        event.preventDefault();
-	        
-	        // 이미지를 선택하지 않은 경우
-	        if ($('#bannerImage').val() == '') {
-	            alert('이미지를 선택해주세요.');
-	            return false; // 폼 제출 취소
-	        }
-
-	        // FormData 객체 생성
-	        var formData = new FormData();
-	        formData.append('title', $('#title').val());
-	        formData.append('content', $('#content').val());
-	        formData.append('writer', $('#writer').val());
-	        formData.append('postYn', $('input[name=postYn]:checked').val());
-	        formData.append('bannerImage', $('#bannerImage')[0].files[0]); // 파일 추가
-
-	        // AJAX를 사용하여 수정 요청 전송
-	        $.ajax({
-	            type: 'PUT',
-	            url: '/ad/edit/${banner.id}',
-	            data: formData,
-	            processData: false,
-	            contentType: false,
-	            success: function(response) {
-	                // 수정 성공 시 처리
-	                alert('수정되었습니다.');
-	                window.location.href = '/ad/list';
-	            },
-	            error: function(xhr, status, error) {
-	                // 오류 처리
-	                console.error(xhr.responseText);
-	            }
-	        });
-	    });
-
-	    // 삭제 버튼 클릭 시 얼럿창 표시
-	    $('#delete-btn').submit(function(event) {
-	        event.preventDefault();
-
-	        var confirmation = confirm("광고를 삭제하시겠습니까?");
-
-	        if (confirmation) {
-	            // 확인을 눌렀을 때
-	            $.ajax({
-	                type: 'DELETE',
-	                url: '/ad/delete/${banner.id}',
-	                success: function(response) {
-	                    alert('삭제되었습니다.');
-	                    window.location.href = '/ad/list';
-	                },
-	                error: function(xhr, status, error) {
-	                    console.error(xhr.responseText);
-	                }
-	            });
-	        } else {
-	            // 취소를 눌렀을 때
-	            return false;
-	        }
-	    });
-	});
-
-	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="/js/admin/adUpdate.js"></script>
 
 </body>
 
-
+<script>
+$(document).ready(function() {
+    $('#bannerImage').change(function() {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#updatedImage').attr('src', e.target.result); // 이미지 미리보기 업데이트
+                $('#updatedImagePreview').show(); // 수정된 이미지 미리보기 표시
+            }
+            reader.readAsDataURL(this.files[0]); // 파일을 읽어서 데이터 URL로 변환하여 이미지 미리보기에 삽입
+        }
+    });
+});
+</script>
 </html>

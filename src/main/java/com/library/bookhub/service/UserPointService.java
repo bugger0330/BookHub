@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.library.bookhub.entity.PointProduct;
 import com.library.bookhub.entity.User;
 import com.library.bookhub.entity.UserPoint;
 import com.library.bookhub.repository.UserPointRepository;
@@ -16,6 +16,11 @@ import com.library.bookhub.web.dto.common.PageRes;
 
 import lombok.extern.slf4j.Slf4j;
 
+
+/**
+ * 유저포인트 서비스
+ * @Author : 이준혁
+ */
 @Service
 @Slf4j
 public class UserPointService {
@@ -54,9 +59,9 @@ public class UserPointService {
     	return optionalUserPoint;
     }
     
-    public Optional<UserPoint> findByUserId(String userId){
-    	Optional<UserPoint> optionalUserPoint = userPointRepository.findByUserId(userId);
-    	return optionalUserPoint;
+    public List<UserPoint> findByUserId(String userId){
+    	List<UserPoint> userPoint = userPointRepository.findByUserId(userId);
+    	return userPoint;
     }
     
     
@@ -73,6 +78,24 @@ public class UserPointService {
         
         // 유저 포인트 정보 저장
         userPointRepository.save(userPoint);
+        log.info("User point saved successfully for user with ID: {}", userPoint.getUserId());
+    }
+
+
+    // 환불처리 - 유저 포인트 차감
+    @Transactional
+    public void refund(UserPoint userPoint) {
+        // 유저의 현재 포인트 가져오기
+        User user = userService.getUserId(userPoint.getUserId());
+        int currentPoint = user.getPoint();
+
+        // 새로운 포인트 계산 및 업데이트
+        int updatedPoint = currentPoint - userPoint.getPoint();
+        user.setPoint(updatedPoint);
+        userService.save(user);
+
+        // 유저 포인트 정보 저장
+        userPointRepository.refundUpdate(userPoint);
         log.info("User point saved successfully for user with ID: {}", userPoint.getUserId());
     }
     
@@ -94,6 +117,24 @@ public class UserPointService {
     @Transactional
     public void updateUserPoint(UserPoint userPoint) {
         userPointRepository.refundUpdate(userPoint);
+    }
+    
+    
+    
+    // 환불 요청 상태 변경
+    public List<UserPoint> refundReq(){
+    	return userPointRepository.refundReq();
+    }
+
+    
+    // 포트원 거래번호 가져오기
+    public UserPoint findByImpUid(String impUid) {
+    	return userPointRepository.findByImpUid(impUid);
+    }
+    
+    // 총 거래액 가져오기
+    public long findByPrice() {
+    	return userPointRepository.findByPrice();
     }
 
 }

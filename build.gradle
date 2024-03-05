@@ -59,12 +59,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail'
   	testImplementation 'org.springframework.boot:spring-boot-starter-test'
   	
-  	// taglib sec
-	implementation 'org.springframework.security:spring-security-taglibs:6.2.2'
+  	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs
+	implementation 'org.springframework.security:spring-security-taglibs:6.2.2' 
+	
+	// chatbot 을 위한 websocket 라이브러리 추가
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'  
 	
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2'
- 
 }
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'

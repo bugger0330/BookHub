@@ -108,6 +108,9 @@
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row g-4">
+	                            <div class="col-lg-4 text-start">
+		                           <h4>총 ${clubCount}개<h4>
+		                       </div>
                                 <div class="col-lg-12">
                                     <div class="row g-4">
                                     
@@ -115,22 +118,25 @@
                                     <c:forEach var="club" items= "${clubList}">
                                     	<!-- 한줄에 4개씩 차지해서 2개씩 차지도록 부트스트랩 클래스명 바꿈 -->
                                     	<!-- <div class="col-md-6 col-lg-4 col-xl-3"> -->
-                                    	<div class="col-md-6 col-lg-6 col-xl-6">
+                                    	<div class="col-md-6 col-lg-4 col-xl-4">
                                     		<a href="/club/view/${club.id}">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>${club.clubName}</h4>
-                                                    <p>${club.descript}</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">${club.hcApply} / ${club.headCount}</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </a>
+	                                           <div class="rounded position-relative fruite-item">
+	                                               <div class="fruite-img">
+	                                               		<!-- 첨부 파일에 따라 이미지 크기가 달라져서 height 값 고정함 -->
+	                                                   <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
+	                                               </div>
+	                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+	                                                   <h4>${club.clubName}</h4>
+	                                                   <h6>${club.host}</h6>
+	                                                   <p>${club.descript}</p>
+	                                                   <div class="d-flex justify-content-between flex-lg-wrap">
+	                                                   		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
+						                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
+						                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; cursor: default;"></i>
+	                                                   </div>
+	                                               </div>
+	                                           </div>
+	                                       	</a>
                                         </div>
                                     </c:forEach>
                                     
@@ -138,38 +144,7 @@
                                        <!-- 반복문 끝 -->
                                         
                                         
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="/img/club/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Grapes</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-4 col-xl-3">
-                                            <div class="rounded position-relative fruite-item">
-                                                <div class="fruite-img">
-                                                    <img src="/img/club/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                                </div>
-                                                <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                    <h4>Grapes</h4>
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                        <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         
                                         
                                     </div>
@@ -188,6 +163,6 @@
 	
 	<!-- Main End -->
 	
-
+<script src="/js/club/wishlist.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

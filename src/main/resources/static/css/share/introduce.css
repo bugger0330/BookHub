@@ -1,0 +1,92 @@
+.book--share--main-div{
+    margin: 100px auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.book--share--body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.book--share--col-box{
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book--share--text-box{
+    width: 400px;
+    height: 400px;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.book--share--img-box{
+    width: 400px;
+    height: 400px;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.book--share--title1{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.book--share--title2{
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.book--share--title3{
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.book--share--jum{
+    font-weight: 900;
+    margin-right: 5px;
+    color: green;
+}
+
+.book--share--btn-box{
+    padding: 10px;
+
+}
+
+.book--share--btn1{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background-color: #50ec5b;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.book--share--btn2{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    background-color: #50ec5b;
+    font-size: 20px;
+    cursor: pointer;
+}

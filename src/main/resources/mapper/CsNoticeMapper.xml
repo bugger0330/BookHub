@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.library.bookhub.repository.cs.CsNoticeRepository">
+
+	<!-- 공지사항 리스트 조회 -->
+	<select id="selectCsNoticeList"
+		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		select * from bh_cs_notice order by #{id} desc;
+	</select>
+
+	<!-- 공지사항 상세보기 -->
+	<select id="noticeView"
+		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		SELECT * FROM bh_cs_notice WHERE id = #{id};
+	</select>
+
+	<!-- 페이징 처리 -->
+	<select id="findAllwithPasing"
+		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		select * from bh_cs_notice
+		limit #{limit} offset #{offset}
+	</select>
+
+	<!-- 전체 데이터 개수 -->
+	<select id="getAllPgCount" resultType="int">
+		select count(*) from
+		bh_cs_notice
+	</select>
+
+
+	<!-- 공지사항 등록 -->
+	<insert id="insertCsNotice"
+		parameterType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		INSERT INTO bh_cs_notice (cate1, cate2, title, content, writer, filepath,
+		rdate)
+		VALUES (#{cate1}, #{cate2}, #{title}, #{content}, #{writer}, #{filepath},
+		#{rdate});
+	</insert>
+
+	<!-- 공지사항 수정 -->
+	<update id="updateCsNotice"
+		parameterType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		UPDATE bh_cs_notice
+		SET cate1 = #{cate1}, cate2 = #{cate2}, title = #{title}, content =
+		#{content}, writer = #{writer}, filepath = #{filepath}, rdate =
+		#{rdate}
+		WHERE id = #{id};
+	</update>
+
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteCsNotice" parameterType="int">
+		DELETE FROM bh_cs_notice WHERE id = #{id};
+	</delete>
+
+
+</mapper>

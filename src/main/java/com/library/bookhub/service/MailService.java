@@ -34,7 +34,7 @@ public class MailService {
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		
-		message.addRecipients(MimeMessage.RecipientType.TO, receiver); // 받는 이
+		message.addRecipients(MimeMessage.RecipientType.TO, receiver); // 받은 이
 		message.setSubject(title); // 제목 설정
 		message.setFrom(sender); // 보내는 사람 설정
 		
@@ -42,11 +42,10 @@ public class MailService {
 		String msgOfEmail= "";
 		msgOfEmail += "<div style='margin:20px;'>";
         msgOfEmail += "<br>";
-        msgOfEmail += "<div  align='center' style='border:1px solid #ccc; border-radius: 5px;  ";
-        msgOfEmail += "box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-family:verdana';>";
-        msgOfEmail += "<h3 style='color: #06BBCC;'>BookHub 인증 코드</h3>";
+        msgOfEmail += "<div  align='center' style='border:1px solid black; font-family:verdana';>";
+        msgOfEmail += "<h3 style='color:blue;'>이메일 인증 번호입니다.</h3>";
         msgOfEmail += "<div style='font-size:130%'>";
-        msgOfEmail += "<p>"+ generatedCode + "</p><div><br/> ";
+        msgOfEmail += "<strong>"+ generatedCode + "</strong><div><br/> ";
         msgOfEmail += "</div>";
 		
 		message.setText(msgOfEmail, "utf-8", "html");

@@ -1,6 +1,7 @@
 package com.library.bookhub.entity;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import com.library.bookhub.utils.TimeUtils;
 
@@ -57,6 +58,21 @@ public class Club {
 		return TimeUtils.dateToString(rdate);
 	}
 	
+//	// 모임날짜 포멧설정
+//	public String formatCDate() {
+//		return TimeUtils.timestampToString(cDate);
+//	}
 	
+	// 모임날짜 포멧설정
+	public String formatCDate() {
+		
+		// 원하는 날짜 형식을 지정 ex) 03-01(금) 10:00
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd(E) HH:mm");
+		
+		// 날짜를 원하는 형식으로 변환
+		String formattedDate = sdf.format(cDate);
+		
+		return formattedDate;
+	}
 	
 }

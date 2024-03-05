@@ -28,16 +28,18 @@
 	</select>
 
 	<select id="selectShareBookBorrow" resultType="com.library.bookhub.entity.ShareBookBorrow">
-		select * from bh_book_borrow where bookNo = #{bookNo} and userName = #{userName}; 
+		select * from bh_book_share_borrow where bookNo = #{bookNo} and userName = #{userName} and flag = 0; 
 	</select>
 
 	<insert id="shareBookBorrow">
-		insert into bh_book_share_borrow(userName, brDate, returnDate, bookNo)
+		insert into bh_book_share_borrow(userName, brComplete, brDate, returnDate, bookNo, borrowDay)
 		values(
 			#{userName},
+			1,
 			now(),
-			#{wdate},
-			#{bookId}
+			#{returnDate},
+			#{bookNo},
+			#{borrowDay}
 		);
 	</insert>
 
@@ -47,9 +49,16 @@
 
 	<update id="borrowShareBook">
 		update bh_book_share set
-			borrow = #{borrow},
 			status = #{status},
-			wdate = #{wdate}
+			wdate = #{wdate},
+			borrow = #{borrow}
+		where id = #{id};
+	</update>
+
+	<update id="borrowShareBookEnd">
+		update bh_book_share set
+			status = #{status},
+			wdate = null
 		where id = #{id};
 	</update>
 	
@@ -63,10 +72,10 @@
 		where id = #{id};
 	</update>
 
-	<delete id="shareBookBorrowEnd">
-		delete from bh_book_share_borrow
-		where userName = #{userName} and bookNo = #{bookNo};
-	</delete>
-
+	<update id="shareBookBorrowEnd">
+		update bh_book_share_borrow set
+			flag = 1
+		where userName = #{userName} and id = #{id};
+	</update>
 
 </mapper>

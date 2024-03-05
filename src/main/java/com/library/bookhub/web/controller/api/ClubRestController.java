@@ -2,6 +2,7 @@ package com.library.bookhub.web.controller.api;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,16 @@ public class ClubRestController {
 	// 독서모임 신청
 	// Ajax로 보낸 데이터 아래와 같이 파라미터로 받음
 	@PostMapping("/apply")
-	public ResponseEntity<?> Apply(Integer clubId, String userName) {
+	public ResponseEntity<?> apply(Principal principal, Integer clubId) {
 		
-		//boolean result = bookService.bookBorrow(bookId, username);
+		// 인증검사
+		// alert를 띄우고 신청하시겠습니까? 확인 클릭했을 때, Ajax 전송이 되서 여기 컨트롤러로 들어오는데
+		// 로그인 안되었을 때는 신청 버튼 클릭하자마자 로그인 화면으로 이동해야하므로 스크립트 처리로 하는 게 맞다!!!
+		
 		log.info("clubId : " + clubId);
-		log.info("userName : " + userName);
+		log.info("userName : " + principal.getName());
 		
-		boolean result = clubService.createApplication(clubId, userName);
+		boolean result = clubService.createApplication(principal, clubId);
 		
 		
 		// ResponseEntity는 제네릭이라 모든 타입을 받을 수 있음
@@ -59,7 +63,7 @@ public class ClubRestController {
 	// clubController에도 /save 같은 url로 설정되어있으면 프로젝트 실행 안되고 '사이트에 연결안됨' 오류뜸
 	// 모임 개설
 	@PostMapping("/save")
-	public ResponseEntity<?> saveProc(@AuthenticationPrincipal MyUserDetails user, ClubSaveFormDto dto) {
+	public ResponseEntity<?> save(@AuthenticationPrincipal MyUserDetails myUserDetails, ClubSaveFormDto dto) {
 		
 		MultipartFile file = dto.getCustomFile();
 		
@@ -72,7 +76,7 @@ public class ClubRestController {
 			}
 			
 			// 서버 컴퓨터에 파일 넣을 디렉토리가 있는지 검사
-			String saveDirectory = "C:\\work_spring\\BookHub_upload";
+			String saveDirectory = Define.UPLOAD_FILE_DERECTORY;
 			// 폴더가 없다면 오류 발생(파일 생성시)
 			File dir = new File(saveDirectory);
 			if(dir.exists() == false) {
@@ -86,7 +90,7 @@ public class ClubRestController {
 			log.info("fileName : " + fileName);
 			
 			// C:\\work_spring\\upload\ab.png
-			String uploadPath = "C:\\work_spring\\BookHub_upload" + File.separator + fileName; // File.separator는 \ 를 나타낸다
+			String uploadPath = Define.UPLOAD_FILE_DERECTORY + File.separator + fileName; // File.separator는 \ 를 나타낸다
 			//System.out.println("uploadPath : " + uploadPath);
 			log.info("uploadPath : " + uploadPath);
 			File destination = new File(uploadPath);
@@ -104,12 +108,48 @@ public class ClubRestController {
 		}
 		
 		// MyUserDetails @ToString 어노테이션 있어서 log로 확인가능
-		log.info("user : " + user);
-		boolean result = clubService.createClub(user, dto);
+		boolean result = clubService.createClub(myUserDetails, dto);
 		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
 
+	// 모임 개설취소
+	@DeleteMapping("/save")
+	public ResponseEntity<?> deleteClub(Principal principal, Integer id) {
+		
+		boolean result = clubService.deleteClub(principal, id);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 	
+	// 찜하기
+	@PostMapping("/wish")
+	public ResponseEntity<?> wish(Principal principal, Integer clubId) {
+		
+		// 인증검사
+		// alert를 띄우고 신청하시겠습니까? 확인 클릭했을 때, Ajax 전송이 되서 여기 컨트롤러로 들어오는데
+		// 로그인 안되었을 때는 신청 버튼 클릭하자마자 로그인 화면으로 이동해야하므로 스크립트 처리로 하는 게 맞다!!!
+		
+		boolean result = clubService.createWishList(principal, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 	
+	// 찜하기 취소
+	@DeleteMapping("/wish")
+	public ResponseEntity<?> deleteWishList(Principal principal, Integer clubId) {
+	
+		boolean result = clubService.deleteWishList(principal, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+	
+	// 찜하기 여부에 따라 다르게 표시 / PostMapping 쓰자
+	@PostMapping("/checkWish")
+	public ResponseEntity<?> checkWish(Principal principal, Integer clubId) {
+		
+		boolean result = clubService.readClubWishListByClubIdAndUserName(principal, clubId);
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
 }

@@ -49,8 +49,8 @@
                     <div class="service-item text-center pt-3">
                         <div class="p-4">
                             <i class="fa fa-3x fa-bookmark text-primary mb-4"></i>
-                            <h5 class="mb-3">BookHub 구독제 운영</h5>
-                            <p>경제적인 가격으로 <br/> BookHub를 구독하세요!</p>
+                            <h5 class="mb-3">BookHub 포인트샵 운영</h5>
+                            <p>경제적인 가격으로 <br/> BookHub를 이용하세요!</p>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
                     <h1 class="mb-4">Welcome to BookHub!</h1>
                     <p class="mb-4">친환경 도서관 BookHub에 오신것을 환영합니다.</p>
-                    <p class="mb-4">BookHub 회원이 되시면<br/> 도서대출, 독서모임활동, 기부 등 많은 기능을 이용하실 수 있습니다.</p>
+                    <p class="mb-4">BookHub 회원이 되시면<br/> 도서대출, 독서모임활동, 책 공유 등 많은 기능을 이용하실 수 있습니다.</p>
                     <div class="row gy-2 gx-4 mb-4">
                         <div class="col-sm-6">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>도서 대출/반납</p>
@@ -81,14 +81,9 @@
                         <div class="col-sm-6">
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>독서 모임 개설</p>
                         </div>
+       
                         <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>도서관 자리지정</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>독서 토론</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>도서 기부</p>
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>도서 공유</p>
                         </div>
                        
                     </div>

@@ -19,51 +19,37 @@
 	
 	<!-- Main Start -->
 	<!-- Single Product Start -->
-        <div class="container-fluid py-5 mt-5">
+		<!-- 가운데로 배치하기 위해 margin-left 이용 -->
+        <div class="container-fluid py-5 mt-5" style="margin-left: 10%;">
             <div class="container py-5">
                 <div class="row g-4 mb-5">
                     <div class="col-lg-8 col-xl-9">
                         <div class="row g-4">
                             <div class="col-lg-6">
-                                <div class="border rounded">
+                           		<!-- class에 있는 border rounded 빼기 -->
+                                <div class="">
                                     <a href="#">
                                         <img src="${club.setupClubImage()}" class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <!-- padding 속성으로 텍스트 배치하기 -->
+                            <div class="col-lg-6" style="padding-left: 10%;">
                             	<!-- javascript 이용하기 위해 hidden 태그 사용하기 -->
                                 <input id="club--id" value="${club.id}" hidden>
                                 
                                 <h4 class="fw-bold mb-3">${club.clubName}</h4>
-                                <p class="mb-3">Category: Vegetables</p>
+                                <h6>${club.host}</h6>
+                                <p class="mb-3">${club.descript}</p>
                                 <h5 id="club-status" class="fw-bold mb-3">${club.status}</h5>
-                                <h5 class="fw-bold mb-3">${club.hcApply} / ${club.headCount}</h5>
+                                <h5 class="fw-bold mb-3">인원 : ${club.hcApply} / ${club.headCount}</h5>
                                 <input id="club--hcapply" value="${club.hcApply}" hidden>
                                 <input id="club--headcount" value="${club.headCount}" hidden>
-                                <div class="d-flex mb-4">
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <p class="mb-4">${club.descript}</p>
-                                <div class="input-group quantity mb-5" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <!-- 신청하기 버튼 -->
-                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> 찜하기</a>
+                                
+                                <p class="mb-4">모임날짜 ${club.formatCDate()}</p>
+                                
+                                <!-- 찜하기 -->
+                                <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; color: #06BBCC !important; cursor: default;"></i>
                                 <!-- 사용자 아이디값 가져오기 -->
                                 <a id="apply--button" data-username="${userName}" href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">신청하기</a>
                             </div>
@@ -72,7 +58,7 @@
                                     <div class="nav nav-tabs mb-3">
                                         <button class="nav-link active border-white border-bottom-0" type="button" role="tab"
                                             id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
-                                            aria-controls="nav-about" aria-selected="true">상세설명</button>
+                                            aria-controls="nav-about" aria-selected="true">모임내용</button>
                                         <button class="nav-link border-white border-bottom-0" type="button" role="tab"
                                             id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission"
                                             aria-controls="nav-mission" aria-selected="false">Reviews</button>
@@ -80,7 +66,8 @@
                                 </nav>
                                 <div class="tab-content mb-5">
                                     <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p>${club.detail}</p>
+                                        <!-- DB에 입력된 것처럼 줄바꿈 허용하는 기능! -->
+                                        <p style="white-space: pre-wrap;">${club.detail}</p>
                                         
                                         
                                     </div>
@@ -131,171 +118,23 @@
                                 </div>
                             </div>
                             <form action="#">
-                                <h4 class="mb-5 fw-bold">Leave a Reply</h4>
-                                <div class="row g-4">
-                                    <div class="col-lg-6">
-                                        <div class="border-bottom rounded">
-                                            <input type="text" class="form-control border-0 me-4" placeholder="Yur Name *">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="border-bottom rounded">
-                                            <input type="email" class="form-control border-0" placeholder="Your Email *">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="border-bottom rounded my-4">
-                                            <textarea name="" id="" class="form-control border-0" cols="30" rows="8" placeholder="Your Review *" spellcheck="false"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="d-flex justify-content-between py-3 mb-5">
-                                            <div class="d-flex align-items-center">
-                                                <p class="mb-0 me-3">Please rate:</p>
-                                                <div class="d-flex align-items-center" style="font-size: 12px;">
-                                                    <i class="fa fa-star text-muted"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</a>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                             </form>
                         </div>
                     </div>
                     
                 </div>
-                <h1 class="fw-bold mb-0">Related products</h1>
-                <div class="vesitable">
-                    <div class="owl-carousel vegetable-carousel justify-content-center">
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Parsely</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$4.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Parsely</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$4.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-3.png" class="img-fluid w-100 rounded-top bg-light" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Banana</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-4.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Bell Papper</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Potatoes</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Parsely</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Potatoes</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="border border-primary rounded position-relative vesitable-item">
-                            <div class="vesitable-img">
-                                <img src="/img/clubvegetable-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
-                            </div>
-                            <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                            <div class="p-4 pb-0 rounded-bottom">
-                                <h4>Parsely</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                <div class="d-flex justify-content-between flex-lg-wrap">
-                                    <p class="text-dark fs-5 fw-bold">$7.99 / kg</p>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 py-1 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
-        </div>
+       	</div>
         <!-- Single Product End -->
 	
 	
 	
 	<!-- main end -->
-<script src="/js/club/view.js">
+<!-- 스크립트 경로 2개 설정하면 하나 적용 안되네!!! -->
+<script src="/js/club/view.js"></script>
 
-</script>
 
 
 

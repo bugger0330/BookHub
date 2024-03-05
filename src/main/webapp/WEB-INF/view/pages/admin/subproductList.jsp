@@ -93,7 +93,7 @@ img {
 	
 		<div class="row justify-content-end mb-3">
 			<div class="col-auto">
-				<a href="/subproduct-add" class="btn btn-primary">상품 추가하기</a>
+				<a href="/subproduct-add" class="btn btn-dark">상품 추가하기</a>
 			</div>
 		</div>
 	

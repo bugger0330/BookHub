@@ -40,6 +40,14 @@
 }
 
 
+.btn--chatbot {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 100px;
+    z-index: 99;
+}
+
 /*** Button ***/
 .btn {
     font-family: 'Nunito', sans-serif;

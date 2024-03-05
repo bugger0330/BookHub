@@ -2,6 +2,7 @@ package com.library.bookhub.entity;
 
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,9 +29,10 @@ public class User {
     private String zip;
     private String addr1;
     private String addr2;
-    private int status;
     private LocalDateTime wDate;
     private LocalDateTime rDate;
+    
+    
 	// 포메터 기능(금액)
 	public String formatBalancePoint() {
 		// 1000 -> 1,000
@@ -38,6 +40,12 @@ public class User {
 		String formaterNumber = df.format(point);
 		return formaterNumber + " 포인트";
 	}
-	
 
+
+    // 포메터 기능(날짜)
+    public String formatDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
+        return wDate.format(formatter);
+    }
+	
 }

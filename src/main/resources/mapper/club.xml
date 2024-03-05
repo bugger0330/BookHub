@@ -30,6 +30,13 @@
 	`rdate`= now()
 </insert>
 
+<insert id="insertWishList">
+	INSERT INTO bh_club_wish_list SET
+	`clubId` = #{clubId},
+	`userName` = #{userName},
+	`rdate` = now()
+</insert>
+
 <select id="findAll" resultType="com.library.bookhub.entity.Club">
 	select * from bh_club order by id desc
 </select>
@@ -61,6 +68,59 @@
 select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by id desc
 </select>
 
+<select id="findApplicationByClubId" resultType="com.library.bookhub.entity.ClubApplication">
+	SELECT * FROM bh_club_application WHERE clubId=#{clubId}
+</select>
+
+<select id="findUserByUserName" resultType="com.library.bookhub.entity.User">
+	SELECT * FROM bh_member WHERE userName = #{userName}
+</select>
+
+<select id="findByUserNameAndId" resultType="com.library.bookhub.entity.Club">
+	SELECT * FROM bh_club WHERE userName = #{userName} AND id = #{id}
+</select>
+
+<select id="findWishListByUserName" resultType="com.library.bookhub.entity.ClubWishList">
+	SELECT a.*, b.clubName, b.host, b.descript, b.cDate, b.uploadFileName1 
+	from bh_club_wish_list AS a
+	JOIN bh_club AS b ON a.clubId = b.id
+	WHERE a.userName = #{userName}
+</select>
+
+<select id="findWishListByClubIdAndUserName" resultType="com.library.bookhub.entity.ClubWishList">
+	SELECT * FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
+</select>
+
+<select id="clubCount" resultType="int">
+	SELECT COUNT(*) FROM bh_club
+</select>
+
+<select id="clubCountByClubCate" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE clubCate = #{clubCate}
+	<!-- <where>
+		동적쿼리 쓰려면 무조건 clubCate 파라미터로 받을 때 쓸 수 있는 것임!
+		<if test="clubCate == null">
+			SELECT COUNT(*) FROM bh_club
+		</if>
+	</where> -->
+</select>
+
+<select id="clubCountByKeyword" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE clubName LIKE CONCAT ('%', #{keyword}, '%')
+</select>
+
+<select id="clubCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE userName = #{userName}
+</select>
+
+<select id="clubApplicationCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club_application WHERE userName = #{userName}
+</select>
+
+<select id="clubWishListCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club_wish_list WHERE userName = #{userName}
+</select>
+
 <update id="updateByApplication">
 	update bh_club set
 	`hcApply` = #{hcApply},
@@ -75,6 +135,19 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 <delete id="deleteApplication">
 	delete from bh_club_application where id = #{id}
 </delete>
+
+<delete id="delete">
+	DELETE FROM bh_club WHERE id=#{id}
+</delete>
+
+<delete id="deleteWishList">
+	DELETE FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
+</delete>
+
+<!-- 블록 주석 : ctrl shfit / -->
+<!-- <delete id="deleteApplicationByClubId">
+	DELETE FROM bh_club_application WHERE clubId="6";
+</delete> -->
 
 
 
