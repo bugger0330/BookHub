@@ -298,3 +298,13 @@ CREATE TABLE `bh_point_order` (
   PRIMARY KEY (`id`)
 );
 
+
+CREATE TABLE bh_cs_cate1 (
+  cate1 int NOT NULL,
+  c1Name varchar(25)
+);
+CREATE TABLE bh_cs_cate2 (
+  cate2 int NOT NULL ,
+  cate1 int NOT NULL,
+  c2Name varchar(25)
+) ;

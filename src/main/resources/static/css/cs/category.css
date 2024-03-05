@@ -1,0 +1,53 @@
+.main-category{
+    position: fixed;
+    top: 500px;
+    right: 10px;
+
+}
+
+.main-cate1{
+    border: 1px solid black;
+    width: 200px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+
+.cate-body{
+    display: flex;
+    flex-direction: column;
+}
+
+.cate-header{
+    padding: 5px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(236, 193, 137);
+}
+
+.cate1-title{
+    font-weight: 700;
+}
+
+.cate-child{
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.cate-child span{
+    margin: 4px 0;
+    border: 1px solid black;
+    padding: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.cate-child span:hover{
+    background-color: rgb(236, 193, 137);
+}

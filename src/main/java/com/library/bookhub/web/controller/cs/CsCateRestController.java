@@ -30,10 +30,10 @@ public class CsCateRestController {
     public ResponseEntity<?> getCategory(){
 
         List<CsCate1Dto> cate1List = csCateService.selectCsCate1();
+        System.out.println(cate1List.get(0).getRespList());
+        
 
-        System.out.println(cate1List.get(0));
-
-        return new ResponseEntity<List<CsCate1Dto>>(cate1List,HttpStatus.OK); //동기적, 페이지로 들어가는 순간 생김
+        return new ResponseEntity<List<CsCate1Dto>>(cate1List,HttpStatus.OK); 
 
 
     }

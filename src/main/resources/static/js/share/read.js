@@ -6,6 +6,7 @@ function load(){
 	$.ajax({
 		type : "get",
 		url : "/share/product/all",
+		async : false,
 		success : function(data){
 			if(data != ""){
 				innerFun(data);
