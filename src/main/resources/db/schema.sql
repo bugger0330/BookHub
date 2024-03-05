@@ -91,13 +91,15 @@ CREATE TABLE bh_cs_faq (
 -- 공지사항
 CREATE TABLE bh_cs_notice (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT NOT NULL,
-    cate2 INT NOT NULL,
+    cate1 INT,
+    cate2 INT,
     title VARCHAR(255) NOT NULL,
     content LONGTEXT NOT NULL,
-    hit INT DEFAULT 0,
-    rdate DATETIME NOT NULL
+    writer VARCHAR(255),
+    filepath VARCHAR(255),
+    rdate VARCHAR(20)
 );
+
 
 
 -- 광고

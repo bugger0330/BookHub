@@ -77,6 +77,12 @@ public class PageController {
 	public String testPage() {
 		return "pages/admin/test";
 	}
+	
+	// 공지사항 추가 페이지
+	@GetMapping("/notice/insert")
+	public String noticeInsertPage() {
+		return "pages/cs/notice/insert";
+	}
 
 	// ---------------- 관리자 페이지 ----------------//
 
