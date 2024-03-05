@@ -41,7 +41,10 @@ import jakarta.mail.internet.ParseException;
 import lombok.extern.slf4j.Slf4j;
 
 
-
+/**
+ * 포트원 페이서비스
+ * @Author : 이준혁
+ */
 @Service
 @Slf4j
 public class PayService {

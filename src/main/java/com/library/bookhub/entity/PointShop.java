@@ -5,6 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+/**
+ * 포인트 구매
+ * @Author : 이준혁
+ */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
