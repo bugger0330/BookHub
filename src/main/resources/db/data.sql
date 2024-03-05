@@ -48,9 +48,11 @@ VALUES (1, 1, 'FAQ 1', 'Content of FAQ 1', CURRENT_TIMESTAMP),
        (2, 2, 'FAQ 2', 'Content of FAQ 2', CURRENT_TIMESTAMP);
 
 -- 공지사항 더미 데이터 삽입
-INSERT INTO bh_cs_notice (cate1, cate2, title, content, hit, rdate)
-VALUES (1, 1, 'Notice 1', 'Content of Notice 1', 0, CURRENT_TIMESTAMP),
-       (2, 2, 'Notice 2', 'Content of Notice 2', 0, CURRENT_TIMESTAMP);
+INSERT INTO bh_cs_notice (cate1, cate2, title, content, writer, filepath, rdate) 
+VALUES 
+(1, 1, 'Sample Notice 1', 'Content of Sample Notice 1', 'John Doe', '/path/to/file1', '2024-03-05 10:00:00'),
+(2, 2, 'Sample Notice 2', 'Content of Sample Notice 2', 'Jane Smith', '/path/to/file2', '2024-03-06 11:00:00'),
+(1, 2, 'Sample Notice 3', 'Content of Sample Notice 3', 'Alice Johnson', '/path/to/file3', '2024-03-07 12:00:00');
 
 
 
@@ -62,3 +64,8 @@ INSERT INTO bh_point_shop(prodName, point, price)
 values('3000 포인트', 3000, 3500),
       ('5000 포인트', 5000, 5500),
       ('10000 포인트', 10000, 11000);
+
+-- 출석체크 더미 데이터
+insert into bh_attendance (userId, lastMonth, attendanceDays) 
+	values ('admin', 3, '3, 4, 11'),
+	('user1', 2, '5, 11, 13, 22, 27');

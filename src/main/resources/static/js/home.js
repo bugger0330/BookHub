@@ -6,7 +6,7 @@ $(document).ready(function() {
             type: "GET",
             success: function(data) {
                 // 공지사항 리스트를 받아온 후 테이블에 추가
-                displayNoticeList(data);
+                displayNoticeList(data.slice(0, 5)); // 5개만 보이도록 변경
                 loadView(); // 공지사항을 클릭할 때 페이지를 로드하는 함수 호출
             },
             error: function(xhr, status, error) {

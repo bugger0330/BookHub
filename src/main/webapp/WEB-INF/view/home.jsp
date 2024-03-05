@@ -55,28 +55,30 @@
 	<!-- 광고 끝 -->
 
 	<!-- BookHub 둘러보기 시작 -->
-<div style="display: flex; align-items: center;">
-    <h2 style="margin-right: auto;">
-        <i class="fa-solid fa-flag me-3"></i>Book Hub 소식
-    </h2>
-    <a href="/notice/list" class="btn btn-primary">공지사항 바로가기</a> <!-- 공지사항 바로가기 버튼 -->
-</div>
+	<div style="display: flex; align-items: center;">
+		<h2 style="margin-right: auto;">
+			<i class="fa-solid fa-flag me-3"></i>Book Hub 소식
+		</h2>
+		<a href="/notice/list" class="btn btn-primary">공지사항 바로가기</a>
+		<!-- 공지사항 바로가기 버튼 -->
+	</div>
 
-<div class="container">
-    <table id="notice-table" class="table table-hover" style="margin-top: 30px; margin-bottom: 30px;">
-        <thead class="thead-light text-center">
-            <tr>
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-            </tr>
-        </thead>
-        <tbody class="text-center">
-        </tbody>
-    </table>
-</div>
-<!-- BookHub 둘러보기 끝 -->
+	<div class="container">
+		<table id="notice-table" class="table table-hover"
+			style="margin-top: 30px; margin-bottom: 30px;">
+			<thead class="thead-light text-center">
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+				</tr>
+			</thead>
+			<tbody class="text-center">
+			</tbody>
+		</table>
+	</div>
+	<!-- BookHub 둘러보기 끝 -->
 
 
 
@@ -218,9 +220,7 @@
 
 
 
-
-
-
+	
 
 
 </div>

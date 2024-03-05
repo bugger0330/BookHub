@@ -21,5 +21,15 @@ public interface CsNoticeRepository {
 
 	// 전체 게시물개수 계산 
 	public int getAllPgCount();
+	
+	
+	// 공지사항 등록
+    void insertCsNotice(CsNoticeEntity notice);
+
+    // 공지사항 수정
+    void updateCsNotice(CsNoticeEntity notice);
+
+    // 공지사항 삭제
+    void deleteCsNotice(int id);
 
 }

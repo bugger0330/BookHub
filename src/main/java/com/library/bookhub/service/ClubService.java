@@ -184,6 +184,8 @@ public class ClubService {
 		user.setPoint(point);
 		clubRepository.updatePoint(user);
 		
+		// 개설 취소하려는 모임에 찜한 내역이 있으면 그것도 삭제
+		
 		return clubRepository.delete(id);
 	}
 	
@@ -226,5 +228,37 @@ public class ClubService {
 		
 		// 찜하기 내역에 있으면
 		return true;
+	}
+	
+	// 모임 전체 개수
+	public int clubCount() {
+		return clubRepository.clubCount();
+	}
+	
+	// 카테고리별 모임 개수
+	public int clubCountByClubCate(Integer clubCate) {
+		return clubRepository.clubCountByClubCate(clubCate);
+	}
+	
+	// 키워드별(검색) 모임 개수
+	public int clubCountByKeyword(String keyword) {
+		return clubRepository.clubCountByKeyword(keyword);
+	}
+	
+	// 모임 개설 개수
+	public int clubCountByUserName(Principal principal) {
+		return clubRepository.clubCountByUserName(principal.getName());
+	}
+	
+	// 모임 신청 개수
+	public int clubApplicationCountByUserName(MyUserDetails myUserDetails) {
+		
+		return clubRepository.clubApplicationCountByUserName(myUserDetails.getUsername());
+	}
+	
+	// 모임 찜하기 개수
+	public int clubWishListCountByUserName(Principal principal) {
+		
+		return clubRepository.clubWishListCountByUserName(principal.getName());
 	}
 }
