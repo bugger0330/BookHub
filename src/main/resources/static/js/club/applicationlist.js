@@ -1,5 +1,5 @@
 
-window.onload  = function() {
+window.onload = function() {
 	
  // ClassName이라 클래스 구분하는 . 안붙여도 됨		
  const buttons = document.getElementsByClassName('btn btn-primary'); 
@@ -45,34 +45,4 @@ window.onload  = function() {
 		 }
 	 })
  }	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	function deleteApplication(id, clubId) {
-		
-		console.log('id : ' + id);
-		console.log('clubId : ' + clubId);
-		
-		alert('신청취소 클릭');
-		
-		
-		
-	}
-	
-	
 }

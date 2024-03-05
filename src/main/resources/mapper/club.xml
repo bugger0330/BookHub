@@ -81,7 +81,7 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 </select>
 
 <select id="findWishListByUserName" resultType="com.library.bookhub.entity.ClubWishList">
-	SELECT a.*, b.clubName, b.descript, b.cDate, b.uploadFileName1 
+	SELECT a.*, b.clubName, b.host, b.descript, b.cDate, b.uploadFileName1 
 	from bh_club_wish_list AS a
 	JOIN bh_club AS b ON a.clubId = b.id
 	WHERE a.userName = #{userName}
@@ -89,6 +89,36 @@ select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by
 
 <select id="findWishListByClubIdAndUserName" resultType="com.library.bookhub.entity.ClubWishList">
 	SELECT * FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
+</select>
+
+<select id="clubCount" resultType="int">
+	SELECT COUNT(*) FROM bh_club
+</select>
+
+<select id="clubCountByClubCate" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE clubCate = #{clubCate}
+	<!-- <where>
+		동적쿼리 쓰려면 무조건 clubCate 파라미터로 받을 때 쓸 수 있는 것임!
+		<if test="clubCate == null">
+			SELECT COUNT(*) FROM bh_club
+		</if>
+	</where> -->
+</select>
+
+<select id="clubCountByKeyword" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE clubName LIKE CONCAT ('%', #{keyword}, '%')
+</select>
+
+<select id="clubCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE userName = #{userName}
+</select>
+
+<select id="clubApplicationCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club_application WHERE userName = #{userName}
+</select>
+
+<select id="clubWishListCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club_wish_list WHERE userName = #{userName}
 </select>
 
 <update id="updateByApplication">
