@@ -143,10 +143,10 @@ public class BookShareService {
 			if(masterResult == 0) {
 				throw new RuntimeException("계정 포인트 수정 실패!");
 			}
-			int borrowUserResult = repository.pointPayment(borrowUser);
-			if(borrowUserResult == 0) {
-				throw new RuntimeException("계정 포인트 수정 실패!");
-			}
+//			int borrowUserResult = repository.pointPayment(borrowUser);
+//			if(borrowUserResult == 0) {
+//				throw new RuntimeException("계정 포인트 수정 실패!");
+//			} 주석한 이유는 /point/order 주문시 주문자 정보에서 포인트 차감을 하기 때문..
 			return true;
 		}
 		return false;
