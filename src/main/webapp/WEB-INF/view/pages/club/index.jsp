@@ -168,17 +168,17 @@
                            <ul class="nav nav-pills d-inline-flex text-center mb-5">
                                <li class="nav-item">
                                    <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                       <span class="text-dark" style="width: 130px;">전체</span>
+                                   </a>
+                               </li>
+                               <li class="nav-item">
+                                   <a id="tab2--button" class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
                                        <span class="text-dark" style="width: 130px;">인기모임</span>
                                    </a>
                                </li>
                                <li class="nav-item">
-                                   <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                       <span class="text-dark" style="width: 130px;">마감임박</span>
-                                   </a>
-                               </li>
-                               <li class="nav-item">
                                    <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                       <span class="text-dark" style="width: 130px;">찜 많은 모임</span>
+                                       <span class="text-dark" style="width: 130px;">마감임박</span>
                                    </a>
                                </li>
                                
@@ -207,7 +207,7 @@
                                                    <p>${club.descript}</p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
-					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
+					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${club.formatCDate()}</p>
 					                                    <!-- principal 값 null이면 자바스크립트로 바로 로그인 화면으로 이동시키기 -->
 					                                    <!-- name 속성 줘서 getElementsByName 이용 -->
 					                                    <!-- button안에 i태그 있으니까 클릭할 때 e.target으로 data-id값을 잘 못 가져오더라, 버튼태그 빼니까 해결 -->
@@ -228,6 +228,27 @@
                        </div>
                        
                    </div>
+                   <!-- tab-content -->
+                   <div class="tab-content">
+                   		<!-- active는 index페이지 뜰 때 뜨는것이므로 삭제 -->
+                   		<div id="tab-2" class="tab-pane fade show p-0">
+                           <div class="row g-4">
+                               <div class="col-lg-12">
+                               		<!-- 자바스크립트로 동적으로 생성한 html을 id 값을 이용하여 추가 -->	   
+                               		<div  class="row g-4">
+                                   
+                                   <!-- 반복문 시작 -->
+                                   
+                                   <!-- 반복문 끝 -->
+                                       
+                                       
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       
+                   </div>
+                   <!-- tab-content -->
                </div>      
            </div>
        </div>

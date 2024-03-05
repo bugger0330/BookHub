@@ -47,9 +47,7 @@ public class PointService {
 		// 위 작업이 다 끝나면 전체 결제한 포인트를 유저 정보에 업데이트
 		User user = pointRepository.getUser(orderList.get(0).getUserName());
 		if(user != null) {
-			System.out.println("6=============================================");
 			user.setPoint(user.getPoint() - allOrderPoint);
-			System.out.println("------------" + user.toString());
 			int userPointUpdateResult = pointRepository.userPointUpdate(user);
 			if(userPointUpdateResult == 0) {
 				throw new RuntimeException("유저 포인트 정보 업데이트 실패!");

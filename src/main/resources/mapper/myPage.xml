@@ -5,7 +5,7 @@
 
 
 
-	<select id="findById" parameterType="int"
+	<select id="findById" parameterType="long"
 		resultType="com.library.bookhub.entity.User">
 		SELECT *
 		FROM BH_MEMBER
@@ -15,7 +15,7 @@
 
     <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">
         UPDATE BH_MEMBER SET password = #{password}, name = #{name}, phone = #{phone},
-        email = #{email}, point = #{point}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2}, role = #{role},
+        email = #{email}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2},
         wDate = #{wDate}, rDate = now() WHERE id = #{id}
     </update>
 

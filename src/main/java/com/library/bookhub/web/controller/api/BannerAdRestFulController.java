@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * 배너 광고 RestFul 컨트롤러
@@ -43,6 +44,22 @@ public class BannerAdRestFulController {
         String postYn = requestBody.get("post_yn");
         bannerAdService.updatePostStatus(id, postYn);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+    
+    
+    @PostMapping("/click/{id}")
+    public void increaseClicks(@PathVariable Long id) {
+        bannerAdService.increaseClicks(id);
+    }
+    
+    @GetMapping("/ad-price/{id}")
+    public int getBannerAdPrice(@PathVariable int id) {
+        return bannerAdService.getBannerAdPriceById(id);
+    }
+    
+    @GetMapping("/getPrice")
+    public int getTotalPrice() {
+    	return bannerAdService.getTotalPrice();
     }
 
 }

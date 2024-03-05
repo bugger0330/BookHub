@@ -3,7 +3,6 @@ package com.library.bookhub.service;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,5 +65,6 @@ public class MailService {
             return 0;
         }
 	}
+	
 	
 }

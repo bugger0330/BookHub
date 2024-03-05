@@ -3,6 +3,7 @@ package com.library.bookhub.web.controller.api;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +11,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.library.bookhub.entity.Club;
 import com.library.bookhub.handler.exception.CustomRestFulException;
 import com.library.bookhub.security.MyUserDetails;
 import com.library.bookhub.service.ClubService;
@@ -151,5 +154,14 @@ public class ClubRestController {
 		boolean result = clubService.readClubWishListByClubIdAndUserName(principal, clubId);
 		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
+	}
+	
+	// 모임 인기순 목록
+	@GetMapping("/popular")
+	public ResponseEntity<?> readClubListOrderByHcApply() {
+		
+		List<Club> clubList = clubService.readClubListOrderByHcApply();
+		
+		return new ResponseEntity<List<Club>>(clubList, HttpStatus.OK);
 	}
 }

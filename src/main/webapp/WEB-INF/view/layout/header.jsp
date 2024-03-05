@@ -51,6 +51,7 @@
     <link href="/css/share/write.css" rel="stylesheet">
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
+    <link href="/css/cs/category.css" rel="stylesheet">
     
        <!-- CS CSS -->
 <!-- <!--     <link href="/css/csStyle.css" rel="stylesheet">  --> 
@@ -122,6 +123,7 @@
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
                          <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
+                        <a href="/point/calendarPoint" class="dropdown-item">이벤트</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

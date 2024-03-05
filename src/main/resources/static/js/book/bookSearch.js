@@ -18,6 +18,7 @@ searchInput.onkeyup = () => {
 		$.ajax({
 			type : "get",
 			url : `/book/search/${option}/${searchInput.value}`,
+			async : false,
 			success : function(data){
 				if(data != ""){
 					innerFun(data);

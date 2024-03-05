@@ -37,7 +37,7 @@ dependencies {
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	
 	// H2
-    //runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2'
     
     // mySQL
     runtimeOnly 'com.mysql:mysql-connector-j'
@@ -65,7 +65,8 @@ dependencies {
 	// chatbot 을 위한 websocket 라이브러리 추가
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'  
 	
-	 implementation 'org.springframework.security:spring-security-oauth2-client:5.5.0' 
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-client
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2'
 }
 tasks.named('bootBuildImage') {
 	builder = 'paketobuildpacks/builder-jammy-base:latest'

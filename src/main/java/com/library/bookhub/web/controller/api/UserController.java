@@ -122,10 +122,14 @@ public class UserController {
         return "pages/myPage/myPageDetail";
     }
     
+    
     @GetMapping("/principal")
     @ResponseBody
     public String getPrincipal(@AuthenticationPrincipal UserDetails userDetails) {
-    	return userDetails.getUsername();
+    	if(userDetails != null) {
+    		return userDetails.getUsername();
+    	}
+    	return "";
     }
 
 }

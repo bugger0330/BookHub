@@ -12,8 +12,6 @@ let masterUsername = "";
 load();
 function load(){
 	calcPrice.textContent = "100";
-
-	
 	
 	$.ajax({
 		type : "get",
@@ -56,13 +54,13 @@ borrowDay.onchange = () => {
 		alert("최대 7일동안 대출 하실 수 있습니다.");
 		borrowDay.value = 7;
 	}
-	calcResult = calc(borrowDay.value);
+	let calcResult = calc(borrowDay.value);
 	calcPrice.textContent = calcResult;
 }
 
 function calc(day){
-	let calcResult = day * 100;
-	return calcResult;
+	let calc = day * 100;
+	return calc;
 }
 
 function innerFun(data){
@@ -95,6 +93,11 @@ function buttonClickEvent(boardTd, bookEntity){
 	const borrowBtns = document.querySelectorAll(".book--detail--button");
 	const calcDiv = document.querySelector(".book--detail--order-box");
 	const borrowBtn = document.querySelector(".borrow-btn");
+	
+	const now = new Date();
+	const comTime = new Date(bookEntity.wdate);
+	const dayTime = 60 * 60 * 24;
+	
 	// 대출, 반납버튼을 숨기게 되면 인덱스로 클릭이벤트 처리 할 수 없음!
 	borrowBtns[0].onclick = () => {
 		calcDiv.style.display = "flex";
@@ -118,7 +121,10 @@ function buttonClickEvent(boardTd, bookEntity){
 					},
 					success : function(data){
 						if(data == true){
-							payment(Number(calcPrice.textContent));
+							let result = orderUpdate(borrowDay.value, lateCalc(borrowDay.value), "공유 책 대출");
+								if(result == true){
+									payment(Number(calcPrice.textContent));
+								}
 						}else{
 							alert("대출실패!");
 						}
@@ -147,6 +153,7 @@ function buttonClickEvent(boardTd, bookEntity){
 				if(data == true){
 					alert("대출완료!");
 					window.location.href = `/share/detail/${addressNum}`;
+					
 				}else{
 					alert("대출실패!");
 				}
@@ -162,10 +169,6 @@ function buttonClickEvent(boardTd, bookEntity){
 	borrowBtns[1].onclick = () => { // 반납하기
 		if(memberId != ""){
 			if(boardTd[2].textContent != ""){
-				const now = new Date();
-				const comTime = new Date(bookEntity.wdate);
-				const dayTime = 60 * 60 * 24;
-				
 				console.log("지금", now.getTime());
 				console.log("반납", comTime.getTime());
 				
@@ -188,7 +191,11 @@ function buttonClickEvent(boardTd, bookEntity){
 							},
 							success : function(data){
 								if(data == true){
-									orderUpdate(lateDays, latePoint);
+									let result = orderUpdate(lateDays, latePoint, "공유 책 반납");
+									if(result == true){
+										alert("반납이 완료되었습니다.");
+										location.href = `/share/detail/${addressNum}`;
+									}
 								}else{
 									alert("반납실패!");
 								}
@@ -218,11 +225,6 @@ function buttonClickEvent(boardTd, bookEntity){
 							alert("에러");
 						}
 					});
-				}
-				//========================================================
-				function lateCalc(lateDays){
-					let latePoint = lateDays * 100;
-					return latePoint;
 				}
 			}else{
 				alert("반납할 책이 없습니다.");
@@ -320,10 +322,16 @@ function buttonClickEvent(boardTd, bookEntity){
 	
 }
 
-function orderUpdate(lateDays, latePoint){
+function lateCalc(lateDays){
+	let latePoint = lateDays * 100;
+	return latePoint;
+}
+
+function orderUpdate(lateDays, latePoint, productName){
+	let flag = false;
 	const orderArray = new Array();
 	const orders = {
-		productName : "공유 책 연체료",
+		productName : productName,
 		productPrice : 100,
 		productCount : lateDays,
 		allProductPrice : latePoint,
@@ -336,11 +344,11 @@ function orderUpdate(lateDays, latePoint){
 		type : "post",
 		url : "/point/order",
 		contentType : "application/json",
+		async : false,
 		data : JSON.stringify(orderArray),
 		success : function(data){
 			if(data == true){
-				alert("반납이 완료되었습니다.");
-				location.href = `/share/detail/${addressNum}`;
+				flag = true;
 			}else{
 				alert("반납 실패!");
 			}
@@ -349,6 +357,7 @@ function orderUpdate(lateDays, latePoint){
 			alert("에러");
 		}
 	});
+	return flag;
 }
 
 
