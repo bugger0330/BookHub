@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
-
+<link href="/css/csStyle.css" rel="stylesheet">
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -23,17 +23,16 @@
 			<div>
 				<h2>공지사항</h2>
 				<div class="input-group" style="margin-top: 30px;">
-					<select name="searchType">
-						<option value="prodName">전체</option>
-						<option value="prodNo">제목+내용</option>
-						<option value="company">작성일</option>
+					<select name="searchType" class="searchType">
+						<option value="title" >제목</option>
+						<option value="content" >내용</option>
+						<option value="rdate" >작성일</option>
 					</select>
 					<div class="form-outline">
-						<input type="search" id="form1" class="form-control"
-							placeholder="Search" />
+						<input type="search" id="form1" class="searchInput" name="keyword" placeholder="Search" />
 					</div>
 
-					<button type="button" class="btn btn-primary">
+					<button type="button" class="btn btn-primary searchButton" >
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
@@ -49,23 +48,7 @@
 						<th>Date</th>
 					</tr>
 				</thead>
-				<tbody class="text-center">
-					
-					<c:forEach var="list" items="${noticeList}">
-						<tr class="page-click" id="${list.id}">
-							<td><i class="bi bi-megaphone-fill text-danger">${list.id}</i></td>
-							<td class="text-left" width="50%">
-								<div class="panel-cs-container">
-									<p class="panel-cs-title">${list.title}</p>
-								</div>
-							</td>
-							<td><i class="bi bi-file-earmark-text-fill">${list.filepath}</i></td>
-							<td>${list.writer}</td>
-							<td>${list.rdate}</td>
-						</tr>
-					</c:forEach>
-					
-				</tbody>
+				<tbody class="text-center noticeLists"></tbody>
 			</table>
 
 			<!-- 페이징 처리 -->
@@ -100,15 +83,17 @@
 		</div>
 	</div>
 </section>
+<script src="/js/cs/csSearch.js">
 
+</script>
 <script>
-function loadView() {
-	const pageClick = $(".page-click");
-	pageClick.on("click", function() {
-		window.location.href = "/notice/view/" + $(this).attr("id");
-	});
-}
+	function loadView() {
+		const pageClick = $(".page-click");
+		pageClick.on("click", function() {
+			window.location.href = "/notice/view/" + $(this).attr("id");
+		});
+	}
 
-loadView();
-</script> 
+	loadView();
+</script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

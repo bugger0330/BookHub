@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link href="/css/csStyle.css" rel="stylesheet">
 <!-- CS aside Start -->
 
 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light">

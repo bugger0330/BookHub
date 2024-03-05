@@ -5,7 +5,7 @@
 	namespace="com.library.bookhub.repository.cs.CsNoticeRepository">
 
 	<!-- 공지사항 리스트 조회 -->
-	<select id="selectCsNoticeList"
+	<select id="noticeList"
 		resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
 		select * from bh_cs_notice order by #{id} desc;
 	</select>
@@ -53,6 +53,20 @@
 	<delete id="deleteCsNotice" parameterType="int">
 		DELETE FROM bh_cs_notice WHERE id = #{id};
 	</delete>
+	
+	<select id="noticeSearchPage" resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
+		select * from bh_cs_notice
+		<if test="searchType == 'title'">
+			where title like CONCAT('%',#{searchInput},'%');
+		</if>
+		<if test="searchType == 'content'">
+			where content like CONCAT('%',#{searchInput},'%');
+		</if>
+		<if test="searchType == 'rdate'">
+			where rdate like CONCAT('%',#{searchInput},'%');
+		</if>
+	</select>
 
+	<select id=""></select>
 
 </mapper>

@@ -51,15 +51,7 @@
     <link href="/css/share/write.css" rel="stylesheet">
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
-    
-       <!-- CS CSS -->
-<!-- <!--     <link href="/css/csStyle.css" rel="stylesheet">  --> 
-	
-	<!-- 서머노트 -->
    
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/principal.js"></script>
     

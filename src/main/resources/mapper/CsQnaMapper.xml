@@ -29,7 +29,6 @@
 		#{id};
 	</update>
 
-
 	<!-- Qna 삭제하기 -->
 	<delete id="qnaDelete">
 		delete from bh_cs_qna where id = #{id};

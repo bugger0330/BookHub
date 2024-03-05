@@ -32,4 +32,9 @@ public interface CsNoticeRepository {
     // 공지사항 삭제
     void deleteCsNotice(int id);
 
+    //강민 공지사항 리스트 불러오기
+	public List<CsNoticeEntity> noticeSearchPage(@Param("searchType") String searchType, @Param("searchInput") String searchInput);
+
+	public List<CsNoticeEntity> noticeList();
+
 }
