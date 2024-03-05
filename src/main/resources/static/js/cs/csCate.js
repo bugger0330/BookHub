@@ -48,8 +48,14 @@ function innerFun(data){
     for(let i = 0; i < cHeader.length; i++){
         cHeader[i].onclick = () => {
             if(cChild[i].style.display == "none"){
+				for(let k = 0; k < cChild.length; k++){
+					cChild[k].style.display = "none";
+				}
             	cChild[i].style.display = "flex";
             }else{
+				for(let k = 0; k < cChild.length; k++){
+					cChild[k].style.display = "none";
+				}
                 cChild[i].style.display = "none";
             }
         }
