@@ -11,6 +11,14 @@
 		FROM BH_MEMBER
 		WHERE id = #{id}
 	</select>
+	
+	
+	<select id="findByUserName" parameterType="String"
+		resultType="com.library.bookhub.entity.User">
+		SELECT *
+		FROM BH_MEMBER
+		WHERE userName = #{userName}
+	</select>
 
 
     <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">

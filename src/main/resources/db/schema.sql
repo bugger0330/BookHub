@@ -290,7 +290,13 @@ CREATE TABLE `bh_point_order` (
   PRIMARY KEY (`id`)
 );
 
-
+-- 출석체크
+CREATE TABLE bh_attendance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    userId VARCHAR(30) NOT NULL,
+    lastMonth INT DEFAULT 0,
+    attendanceDays VARCHAR(30) DEFAULT NULL
+);
 
 
 

@@ -7,6 +7,7 @@ function getPrincipal(){
 		url : "/user/principal",
 		async : false,
 		success : function(data){
+			console.log(data);
 			username = data;
 		},
 		error : function(){

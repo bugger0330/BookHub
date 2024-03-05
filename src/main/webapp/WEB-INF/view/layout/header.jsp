@@ -3,7 +3,19 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ page import="com.library.bookhub.entity.User" %>
+<%@ page import="org.springframework.security.core.Authentication" %>
+<%@ page import="org.springframework.security.core.context.SecurityContextHolder" %>
+<%
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    if (authentication != null && authentication.getPrincipal() instanceof User) {
+        User user = (User) authentication.getPrincipal();
+        Long id = user.getId();
+        // id 값을 이용하여 필요한 작업 수행
+%>
+   
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,8 +150,7 @@
                     <div class="dropdown-menu fade-down m-0">
                     <a href="/user/mypage" class="dropdown-item">나의 정보</a>
                         <a href="team.html" class="dropdown-item">도서 찜목록</a>
-                        <a href="testimonial.html" class="dropdown-item">회원정보수정</a>
-                       <a href="testimonial.html" class="dropdown-item">회원탈퇴</a>
+                        <a href="/myPage/detail/1" class="dropdown-item">회원정보수정</a>
                     </div>
                 </sec:authorize>
                     

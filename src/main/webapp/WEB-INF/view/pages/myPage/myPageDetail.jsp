@@ -76,55 +76,60 @@
 							<input type="hidden" id="userid" value="${user.id}">
 							<div class="row">
 								<div class="col-sm-5">
-									<div class="card mb-3">
-										<div class="card-header text-white">
-											<!-- 카드 헤더 -->
-											<h5 class="card-title">나의 정보</h5>
-										</div>
-										<div class="card-body">
-											<div class="row mb-3">
-												<div class="col-sm-4">
-													<p class="font-weight-bold mb-0">회원 아이디:</p>
-												</div>
-												<div class="col-sm-8">
-													<p id="userName"></p>
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col-sm-4">
-													<p class="font-weight-bold mb-0">이름:</p>
-												</div>
-												<div class="col-sm-8">
-													<p id="name"></p>
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col-sm-4">
-													<p class="font-weight-bold mb-0">연락처:</p>
-												</div>
-												<div class="col-sm-8">
-													<p id="phone"></p>
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col-sm-4">
-													<p class="font-weight-bold mb-0">보유포인트:</p>
-												</div>
-												<div class="col-sm-8">
-													<p id="point"></p>
-												</div>
-											</div>
-											<div class="row mb-3">
-												<div class="col-sm-4">
-													<p class="font-weight-bold mb-0">가입일:</p>
-												</div>
-												<div class="col-sm-8">
-													<p id="rdate"></p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+    <div class="card mb-3">
+        <div class="card-header text-white">
+            <!-- 카드 헤더 -->
+            <h5 class="card-title">나의 정보</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-sm-4">
+                    <p class="font-weight-bold mb-0">회원 아이디:</p>
+                </div>
+                <div class="col-sm-8">
+                    <p id="userName"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-4">
+                    <p class="font-weight-bold mb-0">이름:</p>
+                </div>
+                <div class="col-sm-8">
+                    <p id="name"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-4">
+                    <p class="font-weight-bold mb-0">연락처:</p>
+                </div>
+                <div class="col-sm-8">
+                    <p id="phone"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-4">
+                    <p class="font-weight-bold mb-0">보유포인트:</p>
+                </div>
+                <div class="col-sm-8">
+                    <p id="point"></p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-sm-4">
+                    <p class="font-weight-bold mb-0">가입일:</p>
+                </div>
+                <div class="col-sm-8">
+                    <p id="rdate"></p>
+                </div>
+            </div>
+            <!-- 회원정보 수정 버튼 -->
+            <div class="text-center">
+                <button class="btn btn-primary" onclick="editUserInfo()">회원정보 수정</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 								<div class="col-sm-7">
 									<div class="card mb-3">
 										<div class="card-header text-white">

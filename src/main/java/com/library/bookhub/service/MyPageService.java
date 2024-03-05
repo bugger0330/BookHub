@@ -21,6 +21,11 @@ public class MyPageService {
     public User findById(Long id) {
         return myPageRepository.findById(id);
     }
+    
+    // 이름으로 상세조회
+    public User findByUserName(String username) {
+    	return myPageRepository.findByUserName(username);
+    }
 
     // 저장, 수정
     public int save(User user) {

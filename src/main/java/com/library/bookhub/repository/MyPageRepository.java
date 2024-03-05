@@ -12,6 +12,9 @@ import com.library.bookhub.entity.User;
 public interface MyPageRepository {
 
     User findById(Long id);
+    
+    
+    User findByUserName(String username);
 
 //    List<User> findByUsername(String username);
 

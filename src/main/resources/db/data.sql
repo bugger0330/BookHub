@@ -18,6 +18,10 @@ INSERT INTO bh_member (userName, password, name, gender, phone, email, role, poi
 -- ('user10', 'password10', 'Olivia Davis', 2, '012-3456-7890', 'user10@example.com', 'USER', 300, '01234', '789 Orange St', 'Suite 505', 1, NOW(), NOW());
 
 
+-- 출석체크 더미 데이터
+insert into bh_attendance (userId, lastMonth, attendanceDays) 
+    values ('admin', 3, '3, 4, 11'),
+    ('user1', 2, '5, 11, 13, 22, 27');
 
 
 -- 회원포인트 더미 데이터 삽입
