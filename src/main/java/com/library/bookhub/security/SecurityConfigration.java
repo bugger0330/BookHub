@@ -64,7 +64,7 @@ public class SecurityConfigration implements WebMvcConfigurer {
             .rememberMe(remember -> remember
                     .rememberMeParameter("remember")
                     .alwaysRemember(false)
-                    .tokenValiditySeconds(60*60*24*30*3)
+                    .tokenValiditySeconds(60*60*24*7)
                     .key("rememberMe")
                     .userDetailsService(service))
             // 소셜 로그인 설정
@@ -172,7 +172,8 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	public void configure(WebSecurity web) throws Exception {
 	    web.httpFirewall(defaultHttpFirewall());
 	}
-	 
+	
+	// 더블 슬래시 허용
 	@Bean
 	public HttpFirewall defaultHttpFirewall() {
 	    return new DefaultHttpFirewall();

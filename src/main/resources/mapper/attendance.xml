@@ -13,6 +13,11 @@
 		SELECT * FROM bh_attendance WHERE `userId`=#{userId}
 	</select>
 	
+	<select id="selectByDays">
+		select count(*) from bh_attendance 
+			WHERE `userId`=#{userId} AND `attendanceDays` LIKE CONCAT('%', #{attendanceDays}, '%')
+	</select>
+	
 	<update id="updateByNewMonth">
 		UPDATE bh_attendance SET 
 			`lastMonth`=#{lastMonth}, `attendanceDays`=NULL WHERE `userId`=#{userId}
