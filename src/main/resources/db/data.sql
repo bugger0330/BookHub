@@ -67,5 +67,5 @@ values('3000 포인트', 3000, 3500),
 
 -- 출석체크 더미 데이터
 insert into bh_attendance (userId, lastMonth, attendanceDays) 
-	values ('admin', 3, '3, 4, 11'),
-	('user1', 2, '5, 11, 13, 22, 27');
+	values ('admin', 2, '3, 4, 11, '),
+	('user1', 3, '1, 11, 13, ');

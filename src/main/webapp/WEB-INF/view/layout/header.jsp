@@ -122,6 +122,7 @@
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
                          <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
+                        <a href="/point/calendarPoint" class="dropdown-item">이벤트</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">

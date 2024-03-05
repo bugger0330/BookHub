@@ -2,6 +2,7 @@ package com.library.bookhub.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class CalendarPointService {
 	
 	// 출석체크 첫 등록
 	@Transactional
-	public int createAttendance(String userId, int month, String day) {
+	public Attendance createAttendance(String userId, int month, String day) {
 		
 		Attendance attendance = Attendance.builder()
 										.userId(userId)
@@ -38,7 +39,7 @@ public class CalendarPointService {
 		
 		int result = attendanceRepository.insert(attendance);
 		
-		return result;
+		return attendance;
 	}
 	
 	// 출석체크 조회
@@ -61,6 +62,7 @@ public class CalendarPointService {
 	// 출석일 증가
 	public int modifyAttendanceDays(String today, String userId) {
 		int result = attendanceRepository.updateByAttendanceDays(today+", ", userId);
+		log.info("modifyAttendanceDays : "+result);
 		return result;
 	}
 	

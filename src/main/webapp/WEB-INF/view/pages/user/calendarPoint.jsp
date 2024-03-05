@@ -155,12 +155,9 @@
 		    // 달력 출력
 		    dateCalculator(currentMonth, currentDay);
 		    
+		    // 태그 부여
 		    addClassTag(days, attendance);
 		    
-		    // 7일 여부
-		    if(attendance.length === 7){
-		    	window.location.href = '/';
-		    }
 		})
     	.catch((error) => {
     		alert('날짜를 확인할 수 없습니다. 고객센터에서 문의해주세요.');

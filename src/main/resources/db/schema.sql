@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS bh_book_share_borrow;
 
 
 CREATE TABLE bh_member (
-  id int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   userName varchar(20) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
