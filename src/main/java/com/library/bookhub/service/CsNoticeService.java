@@ -61,4 +61,20 @@ public class CsNoticeService {
 			return pageRes;
 	}
 	
+	
+	   // Notice 등록
+    public void insertCsNotice(CsNoticeEntity notice) {
+        csNoticeRepository.insertCsNotice(notice);
+    }
+
+    // Notice 수정
+    public void updateCsNotice(CsNoticeEntity notice) {
+        csNoticeRepository.updateCsNotice(notice);
+    }
+
+    // Notice 삭제
+    public void deleteCsNotice(int id) {
+        csNoticeRepository.deleteCsNotice(id);
+    }
+	
 }
