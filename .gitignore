@@ -36,5 +36,6 @@ out/
 ### VS Code ###
 .vscode/
 
-# 추가
+#추가
+*.gradle
 *.yml
