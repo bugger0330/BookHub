@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.AttendanceRepository">
+	
+	<insert id="insert">
+		INSERT INTO bh_attendance (userId, lastMonth, attendanceDays) 
+			VALUES (#{userId}, #{lastMonth}, #{attendanceDays})
+	</insert>
+	
+	<select id="selectByUserId">
+		SELECT * FROM bh_attendance WHERE `userId`=#{userId}
+	</select>
+	
+	<select id="selectByDays">
+		select count(*) from bh_attendance 
+			WHERE `userId`=#{userId} AND `attendanceDays` LIKE CONCAT('%', #{attendanceDays}, '%')
+	</select>
+	
+	<update id="updateByNewMonth">
+		UPDATE bh_attendance SET 
+			`lastMonth`=#{lastMonth}, `attendanceDays`=NULL WHERE `userId`=#{userId}
+	</update>
+	
+	<update id="updateByAttendanceDays">
+		UPDATE bh_attendance SET 
+			`attendanceDays`=CONCAT(`attendanceDays`, #{attendanceDays}) WHERE `userId`=#{userId}
+	</update>
+	
+</mapper>
+

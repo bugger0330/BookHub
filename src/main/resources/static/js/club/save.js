@@ -173,7 +173,21 @@ window.onload = function() {
 	// 최솟값을 내가 작성한 문자열로 설정
 	datetimeInput.min = getToday();
 	
+	/*// 모임소개 글자수 제한하기
+	const descriptTxt = document.getElementById('descript--textarea');
+	const maxChars = 50;
 	
+	descriptTxt.addEventListener('input', function() {
+		
+		// 텍스트 길이
+		const textLength = descriptTxt.value.length;
+		
+		// 30글자보다 길면
+		if(textLength > maxChars) {
+			descriptTxt.value = descriptTxt.value.substring(0, maxChars);
+		}
+		
+	})*/
 	
 	
 } // window.onload end

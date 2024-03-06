@@ -6,7 +6,6 @@ const fileInput = document.querySelector(".share--book-input-file");
 const imgViewBox = document.querySelector(".share--img-box");
 const btn = document.querySelector(".share--btn");
 
-const username = "dddd1111";
 let fileValue = "";
 
 load();
@@ -14,7 +13,7 @@ function load(){
 	myPoint.textContent = 0;
 	
 	//myPoint.textContent = 0;
-	if(username == ""){
+	if(memberId == ""){
 		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
 		
 	}
@@ -22,11 +21,11 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
-				shareUsername.textContent = username;
+				shareUsername.textContent = memberId;
 				myPoint.textContent = data;
 			}
 		},
@@ -75,7 +74,7 @@ btn.onclick = () => {
 		company : inputs[1].value,
 		writer : inputs[2].value,
 		descript : textarea.value,
-		userName : username
+		userName : memberId
 	}
 	
 	
@@ -140,7 +139,7 @@ function myPointOrder(){
 		type : "post",
 		url : "/share/mypoint",
 		data : {
-			userName : username,
+			userName : memberId,
 			price : 1000
 		},
 		success : function(data){

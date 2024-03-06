@@ -29,6 +29,9 @@ public interface BannerAdRepository {
 
     // 총 데이터의 개수 조회
     public int getAdTotalCount();
+    
+    // 총 광고 수익 조회
+    public int getTotalPrice();
 
 
     // 배너 찾기
@@ -36,6 +39,13 @@ public interface BannerAdRepository {
     
     // 광고여부 상태값 변경
     void updatePostStatus(@Param("id") Long id, @Param("postYn") String postYn);
+    
+    
+    // 클릭시 클릭수 증가
+    void increaseClicks(Long id);
+    
+    // 광고수익계산
+    int getBannerAdPriceById(@Param("id") int id);
 
 
 }

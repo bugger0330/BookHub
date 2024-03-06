@@ -122,6 +122,9 @@
 													<p id="rdate"></p>
 												</div>
 											</div>
+											
+											<a href="/myPage/update/${user.id}"><button class="btn btn-primary">회원정보수정</button></a>
+											
 										</div>
 									</div>
 								</div>
@@ -164,6 +167,7 @@
 
 									</div>
 								</div>
+								
 							</div>
 						</div>
 					</div>

@@ -160,19 +160,19 @@
        <div class="container-fluid fruite py-5">
            <div class="container py-5">
                <div class="tab-class text-center">
-                   <div class="row g-4">
+                   <div class="row g-4"> <!-- 이 div 안에서는 div가 가로 배치 가능함 -->
                        <div class="col-lg-4 text-start">
-                           <h1></h1>
+                           <h4>총 ${clubCount}개<h4>
                        </div>
                        <div class="col-lg-8 text-end">
                            <ul class="nav nav-pills d-inline-flex text-center mb-5">
                                <li class="nav-item">
                                    <a class="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
-                                       <span class="text-dark" style="width: 130px;">신규모임</span>
+                                       <span class="text-dark" style="width: 130px;">전체</span>
                                    </a>
                                </li>
                                <li class="nav-item">
-                                   <a class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
+                                   <a id="tab2--button" class="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
                                        <span class="text-dark" style="width: 130px;">인기모임</span>
                                    </a>
                                </li>
@@ -181,16 +181,7 @@
                                        <span class="text-dark" style="width: 130px;">마감임박</span>
                                    </a>
                                </li>
-                               <li class="nav-item">
-                                   <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                                       <span class="text-dark" style="width: 130px;">Bread</span>
-                                   </a>
-                               </li>
-                               <li class="nav-item">
-                                   <a class="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                                       <span class="text-dark" style="width: 130px;">Meat</span>
-                                   </a>
-                               </li>
+                               
                            </ul>
                        </div>
                    </div>
@@ -208,19 +199,20 @@
                                            <div class="rounded position-relative fruite-item">
                                                <div class="fruite-img">
                                                		<!-- 첨부 파일에 따라 이미지 크기가 달라져서 height 값 고정함 -->
-                                                   <img src="/images/upload/${club.uploadFileName1 }" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
+                                                   <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
                                                </div>
                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                    <h4>${club.clubName}</h4>
+                                                   <h6>${club.host}</h6>
                                                    <p>${club.descript}</p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
-					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 10px;">${club.formatCDate()}</p>
+					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${club.formatCDate()}</p>
 					                                    <!-- principal 값 null이면 자바스크립트로 바로 로그인 화면으로 이동시키기 -->
 					                                    <!-- name 속성 줘서 getElementsByName 이용 -->
 					                                    <!-- button안에 i태그 있으니까 클릭할 때 e.target으로 data-id값을 잘 못 가져오더라, 버튼태그 빼니까 해결 -->
-					                                    <!-- i태그에 클릭 이벤트 하기 -->
-					                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px"></i>
+					                                    <!-- i태그에 클릭 이벤트 하기, 커서모양 디폴트로함 -->
+					                                    <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; cursor: default;"></i>
                                                    </div>
                                                </div>
                                            </div>
@@ -230,190 +222,33 @@
                                    <!-- 반복문 끝 -->
                                        
                                        
-                                       
-                                       
-                                       
                                    </div>
                                </div>
                            </div>
                        </div>
-                       <div id="tab-2" class="tab-pane fade show p-0">
-                           <div class="row g-4">
-                               <div class="col-lg-12">
-                                   <div class="row g-4">
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Grapes</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Raspberries</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div id="tab-3" class="tab-pane fade show p-0">
-                           <div class="row g-4">
-                               <div class="col-lg-12">
-                                   <div class="row g-4">
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Oranges</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-6.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Apple</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div id="tab-4" class="tab-pane fade show p-0">
-                           <div class="row g-4">
-                               <div class="col-lg-12">
-                                   <div class="row g-4">
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-5.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Grapes</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-4.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Apricots</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div id="tab-5" class="tab-pane fade show p-0">
-                           <div class="row g-4">
-                               <div class="col-lg-12">
-                                   <div class="row g-4">
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-3.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Banana</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-2.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Raspberries</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                       <div class="col-md-6 col-lg-4 col-xl-3">
-                                           <div class="rounded position-relative fruite-item">
-                                               <div class="fruite-img">
-                                                   <img src="/img/club/fruite-item-1.jpg" class="img-fluid w-100 rounded-top" alt="">
-                                               </div>
-                                               <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
-                                               <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>Oranges</h4>
-                                                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                   <div class="d-flex justify-content-between flex-lg-wrap">
-                                                       <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                       <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                                                   </div>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
+                       
                    </div>
+                   <!-- tab-content -->
+                   <div class="tab-content">
+                   		<!-- active는 index페이지 뜰 때 뜨는것이므로 삭제 -->
+                   		<div id="tab-2" class="tab-pane fade show p-0">
+                           <div class="row g-4">
+                               <div class="col-lg-12">
+                               		<!-- 자바스크립트로 동적으로 생성한 html을 id 값을 이용하여 추가 -->	   
+                               		<div  class="row g-4">
+                                   
+                                   <!-- 반복문 시작 -->
+                                   
+                                   <!-- 반복문 끝 -->
+                                       
+                                       
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       
+                   </div>
+                   <!-- tab-content -->
                </div>      
            </div>
        </div>

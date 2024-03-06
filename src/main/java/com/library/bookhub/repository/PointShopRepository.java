@@ -9,6 +9,11 @@ import org.apache.ibatis.annotations.Param;
 import com.library.bookhub.entity.PointShop;
 import com.library.bookhub.entity.User;
 
+
+/**
+ * 포인트 상품
+ * @Author : 이준혁
+ */
 @Mapper
 public interface PointShopRepository {
 	

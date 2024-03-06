@@ -6,7 +6,6 @@ const priceAll = document.querySelector(".price--all");
 const orderBtn = document.querySelector(".order--btn");
 const productName = document.querySelectorAll(".product--name");
 
-const username = "user1";
 /**
  * 페이지 로드시 내 포인트 들고옴
  * 
@@ -24,7 +23,7 @@ load();
 function load(){
 	
 	//myPoint.textContent = 0;
-	if(username == ""){
+	if(memberId == ""){
 		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
 		
 	}
@@ -32,7 +31,7 @@ function load(){
 		type : "post",
 		url : "/point/get",
 		data : {
-			userName : username
+			userName : memberId
 		},
 		success : function(data){
 			if(data != null){
@@ -103,9 +102,9 @@ orderBtn.onclick = () => {
 				productPrice : Number(coffiePrice[i].textContent),
 				productCount : coffieCount[i].value,
 				allProductPrice : (Number(coffiePrice[i].textContent) * Number(coffieCount[i].value)),
-				userName : username,
+				userName : memberId,
 				orderId : -1,
-				refund_type : "환불가능"
+				refundType : "환불가능"
 			};
 			orderArray.push(orders);
 		}
@@ -119,6 +118,7 @@ orderBtn.onclick = () => {
 		success : function(data){
 			if(data == true){
 				alert("주문이 완료되었습니다.");
+				location.href = "/point/cafe";
 			}else{
 				alert("주문 실패!");
 			}

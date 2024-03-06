@@ -18,22 +18,26 @@
 <!-- Header End -->
 
 <!-- Main Start -->
+<div class="col-lg-4 text-start">
+	<h4 style="margin-left: 70%;">총 ${clubCount}개<h4>
+</div>
+    
 <!-- empty 키워드는 변수가 null이거나 비어있는 경우를 확인 -->
-   <c:if test="${empty clubList}">
-   	<h1 style="margin-left: 40%;">개설한 모임이 없습니다</h1>
-   </c:if>
+<c:if test="${empty clubList}">
+	<h1 style="margin-left: 40%;">개설한 모임이 없습니다</h1>
+</c:if>
 
 <c:forEach var="club" items= "${clubList}">
 	<div class="card center mx-auto" style="width: 30%;">
 		<a href="/club/view/${club.id }">
 		<!-- max속성으로 너비, 높이 100%로 꽉차도록 함 / object-fit: cover; 하면 이미지 안에 개체도 꽉참 -->
-		  <img class="card-img-top" src="/images/upload/${club.uploadFileName1 }" style="width:100%; height:100%;" alt="Card image">
+		  <img class="card-img-top" src="${club.setupClubImage()}" style="width:100%; height:100%;" alt="Card image">
 		</a>	  
 	  	<div class="card-body">
 		    <h4 class="card-title text-center">${club.clubName}</h4>
 		    <p class="card-text text-center">개설일 : ${club.formatCreatedAt()}</p>
 	    <!--  data-toggle="modal" data-target="#deleteModal" 추가 -->
-		    <a data-id="${club.id }" href="#" class="btn btn-primary" >개설 취소</a>
+		    <a data-id="${club.id }" name="deleteButton" href="#" class="btn btn-primary" >개설 취소</a>
 	  	</div>
 	</div>
 	<br>
@@ -60,7 +64,7 @@
   </div>
 </div>
 <!-- 모달 끝 -->
-	
+
 <script src="/js/club/savelist.js"></script>	
 	
 

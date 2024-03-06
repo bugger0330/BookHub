@@ -51,9 +51,19 @@
     <link href="/css/share/write.css" rel="stylesheet">
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
+    <link href="/css/cs/category.css" rel="stylesheet">
+    
+       <!-- CS CSS -->
+<!-- <!--     <link href="/css/csStyle.css" rel="stylesheet">  --> 
+	
+	<!-- 서머노트 -->
    
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/principal.js"></script>
+    
     
 </head>
 
@@ -114,6 +124,7 @@
                         <a href="/point/computer" class="dropdown-item">컴퓨터 사용</a>
                          <a href="/point-shop" class="dropdown-item">포인트 구매하기</a>
                         <a href="/point/order-list" class="dropdown-item">포인트 사용내역</a>
+                        <a href="/point/calendarPoint" class="dropdown-item">이벤트</a>
                     </div>
                 </div>
                 <div class="nav-item dropdown">
@@ -161,3 +172,11 @@
         </div>
     </nav>
     <!-- 내비바 끝 -->
+    <!-- 사이드 메뉴 -->
+	<div class="main-category">
+		<div class="main-cate1">
+			<div class="cate-body"></div>
+		</div>
+	</div>
+	<!-- 사이드 메뉴 -->
+    <script src="/js/cs/csCate.js"></script>

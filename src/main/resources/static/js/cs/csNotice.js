@@ -48,6 +48,7 @@ $(document).ready(function() {
 
 
 
+/*추가*/
 $(document).ready(function() {
     // 공지사항 작성 폼이 제출될 때 실행되는 함수
     $("form").submit(function(event) {

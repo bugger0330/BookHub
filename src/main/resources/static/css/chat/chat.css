@@ -17,6 +17,8 @@
 	left: 81%;
 	transform: translate(-50%, -50%);
 	z-index: 1000;
+		border: 2px solid;
+	border-color: #06BBCC;
 }
 
 /* 모달 본문 스타일 */
