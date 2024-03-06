@@ -187,7 +187,7 @@
     <!-- 내비바 끝 -->
     <!-- 사이드 메뉴 -->
 	<div class="main-category">
-		<div class="main-cate1">
+		<div class="main-cate2">
 			<div class="cate-body"></div>
 		</div>
 	</div>
