@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
-
+<link href="/css/csStyle.css" rel="stylesheet">
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -24,20 +24,7 @@
 
 			<div>
 				<h2>문의하기</h2>
-				<div class="input-group" style="margin-bottom: 7px">
-					<select name="searchType">
-						<option value="prodName">전체</option>
-						<option value="prodNo">제목+내용</option>
-						<option value="company">작성자</option>
-					</select>
-					<div class="form-outline">
-						<input type="search" id="form1" class="form-control"
-							placeholder="Search" />
-					</div>
-					<button type="button" class="btn btn-primary">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
+
 				<div class="btn-group" role="group"
 					aria-label="Basic outlined example" style="display: flex;">
 					<button type="button" class="btn btn-outline-primary" id="btnInsert"
@@ -47,7 +34,9 @@
 					<button type="button" class="btn btn-outline-primary"
 						style="flex: none;">전체 문의내역</button>
 				</div>
+				
 			</div>
+			
 			<table class="table table-hover">
 				<thead class="thead-light text-center">
 					<tr>
@@ -82,8 +71,9 @@
 				</tbody>
 			</table>
 			
+			
 			<!-- 페이징 처리 -->
-			<div class="qna pagination">
+			<div class="qna pagination" id="qnaPage">
 				<c:if test="${page > 1}">
 					<li class="page-item"><a href="?page=1&size=${size}"
 						class="page-link">&laquo; 첫 페이지</a></li>

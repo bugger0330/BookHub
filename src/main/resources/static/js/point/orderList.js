@@ -4,7 +4,9 @@ const refundTrueCheck = document.querySelectorAll(".point--order--check");
 load();
 function load(){
 	if(memberId == ""){
-		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
+		alert("로그인이 필요한 서비스 입니다.");
+		location.href = "/login";
+		return;
 	}
 	$.ajax({
 		type : "get",

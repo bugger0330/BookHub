@@ -37,7 +37,7 @@ dependencies {
 	implementation group: 'org.glassfish.web', name: 'jakarta.servlet.jsp.jstl', version: '2.0.0'
 	
 	// H2
-    runtimeOnly 'com.h2database:h2'
+    //runtimeOnly 'com.h2database:h2'
     
     // mySQL
     implementation 'com.mysql:mysql-connector-j'

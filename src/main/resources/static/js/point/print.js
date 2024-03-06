@@ -8,10 +8,6 @@ const printBtn = document.querySelector(".point--print--print-btn");
 
 load();
 function load(){
-	if(memberId == ""){
-		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
-		
-	}
 	
 	printAllCount.textContent = 0;
 	
@@ -68,6 +64,17 @@ function countPlus(){
 }
 
 printBtn.onclick = () => {
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		location.href = "/login";
+		return;
+	}
+	
+	if(printAllCount.textContent == 0){
+		alert("프린트/복사 장 수를 입력해주세요!");
+		return;
+	}
+	
 	if(Number(myPoint.textContent) < Number(priceAll.textContent)){
 		alert("포인트가 부족합니다!");
 		return;

@@ -49,10 +49,18 @@
 }
 
 .point--order--th, .point--order--td{
-    padding: 10px;
+    padding: 15px;
 
 }
 
 .point--order--tbody .point--order--tr:hover{
     background-color: aliceblue;
+}
+
+.point--order--refund-btn{
+	border: none;
+	border-radius: 10px;
+	padding: 10px 15px;
+	background-color: gray;
+	color: white;
 }

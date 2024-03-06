@@ -6,16 +6,13 @@
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">Coffie & Bakery</h3>
+					<h3 class="display-5 text-white animated slideInDown">복사 / 프린트</h3>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Header End -->
 	<div class="point--print--main-div">
-        <div class="point--print--header-div">
-            <span class="point--print--header-title">복사 / 프린트</span>
-        </div>
         <div class="point--print--body-div">
             <div class="point--print--print-area">
                 <div class="point--print--print-item">
@@ -53,7 +50,7 @@
         <div class="point--print--footer-div">
             <div class="point--print--result-area">
                 <div class="point--print--result-title">
-                    <span>매수 :</span>
+                    <span>출력 수 :</span>
                     <span>내 포인트 :</span>
                     <span>결제금액 :</span>
                 </div>
