@@ -48,6 +48,8 @@ public class CalendarRestfulController {
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();
         
+        log.info(userId);
+        
         // 현재 월,일
         int currentMonth = cal.get(Calendar.MONTH) + 1;
         int currentDay = cal.get(Calendar.DAY_OF_MONTH);
@@ -119,13 +121,11 @@ public class CalendarRestfulController {
         // 출석일수 추가
         if(size < 7) {
         	log.info("modifyAttendanceDays...1");
-        	int result = calendarPointService.modifyAttendanceDays(today, userId);
+        	calendarPointService.modifyAttendanceDays(today, userId);
         	
-        	log.info("중복 허용 : "+result);
-        	if(result >= 1) {
-        		throw new CustomRestFulException("출석일수에 중복된 날짜를 넣을 수 없습니다.", HttpStatus.BAD_REQUEST);
-        	}
-        	
+        	 attendanceDays = attendanceEntity.getAttendanceDays();
+             days = calendarPointService.arrayConverter(attendanceDays);
+             size = days.size();
         }
         
 		// 7일이 되면 적립

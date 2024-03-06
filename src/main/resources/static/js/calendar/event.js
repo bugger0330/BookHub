@@ -63,7 +63,15 @@ check.onclick = () => {
 
 // 나가기
 exit.addEventListener('click', function(e){
-	if(confirm("오늘의 출석을 하지 않으시겠습니까?")){
-		window.location.href = '/';
-	}	
+	const checkToday = ulElement.querySelector('.today');
+	
+	
+	if(checkToday && checkToday.classList.contains('ch_on')){
+			window.location.href = '/';
+	} else {
+		if(confirm("오늘의 출석을 하지 않으시겠습니까?")){
+			window.location.href = '/';
+		}
+	}
+	
 });

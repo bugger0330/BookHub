@@ -239,6 +239,8 @@ function enterNumber() {
 			labelNumber.remove();
 			newInput.remove();
 			btnComplete.remove();
+			emailTime.remove();
+			
 			isEmailOk = true;
 			closeTime();
 		} else {
