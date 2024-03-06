@@ -1,69 +1,52 @@
 
 window.onload = function() {
 	
-	const buttons = document.querySelectorAll('.btn'); // 클래스 이름 이렇게만 적어도 되는강?? ㅇㅇ
+	//  개설취소 버튼
+	const deleteBtns = document.getElementsByName('deleteButton'); // 클래스 이름 이렇게만 적어도 되는강?? ㅇㅇ
 	// 모달 확인버튼
-	const deleteBtn = document.getElementById('confirmDeleteBtn');
+	const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
 	
-	for(let i=0 ; i<buttons.length ; i++) {
+	for(let i=0 ; i<deleteBtns.length ; i++) {
 		
-		buttons[i].addEventListener('click', function(e) {
+		deleteBtns[i].addEventListener('click', function() {
 			
-			//alert('클릭');
+			const id = this.getAttribute('data-id');
+			// 개설취소 버튼 누를 때마다, 확인버튼에 사용자 정의 속성 값 변경됨
+			confirmDeleteBtn.setAttribute('data-id', id);
 			
-			// Attribute가 아니고 getAttribute
-			const id = e.target.getAttribute('data-id');
+			//alert('id : ' + id);
 			
 			$('#deleteModal').modal('show');
-			
-			deleteBtn.addEventListener('click', function() {
-				
-				$('#deleteModal').modal('hide');
-	
-				// id값 받기 위해서 deleteBtn이벤트가 button[]이벤트 안에 있어야함
-				//alert('id : ' + id);
-				
-				$.ajax({
-					url : '/club/save',
-					type : 'delete',
-					data : {
-						id : id
-					},
-					
-					success : function(data) {
-						
-						if(data == true) {
-							alert('개설취소 완료');
-							location.reload();
-						}else {
-							alert('신청인원이 있으므로 관리자 승인이 필요합니다');
-						}
-					},
-					error : function() {
-						alert('에러');
-					}
-					
-				});
-			
-			}) 
 		})
-	}
-	
-	// 모달 취소버튼 누르고 다른 독서모임 삭제하려고 하면 id 값 이전 꺼 자꾸 뜸
-	// 모달 취소버튼 클릭시 reload해서 해결(닫기 버튼도 똑같이 적용)
-	const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-	const close = document.getElementById('close');
-	
-	cancelDeleteBtn.addEventListener('click', function() {
+	} // for문 끝
 		
-		location.reload();
-	})
-	 
-	close.addEventListener('click', function() {
-		
-		location.reload();
-	})
-	
+		// 모달 확인버튼
+		confirmDeleteBtn.addEventListener('click', function() {
+			
+			// 사용자 정의 속성 지정한 것 가져오기	
+			const id = this.getAttribute('data-id');
+			//alert('id : ' + id);
+			
+			$('#deleteModal').modal('hide');
 
-	
+			$.ajax({
+				url : '/club/save',
+				type : 'delete',
+				// 반복문에서 i값에 따라 가리키는 버튼을 이용해서, 사용자 속성 가져오기
+				data : {id : id},
+				
+				success : function(data) {
+					if(data == true) {
+						alert('개설취소 완료');
+						location.reload();
+					}else {
+						alert('신청인원이 있으므로 관리자 승인이 필요합니다');
+					}
+				},
+				error : function() {
+					alert('에러');
+				}
+			});
+		})
+		
 }

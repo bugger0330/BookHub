@@ -1,13 +1,8 @@
 package com.library.bookhub.security.oauth;
 
 import java.util.Map;
+import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.library.bookhub.entity.User;
-
-import ch.qos.logback.core.encoder.Encoder;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +17,11 @@ public class OAuthAttributes {
     private String nickname;
     private String email;
     private String phone;
+    
+    // 오스 이메일 가입자의 비밀번호 생성
+    static int randomNumber = (int) (Math.random() * 100000000);
+    static UUID uuPass = new UUID(0, randomNumber);
+    
     
     @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, 
@@ -44,7 +44,7 @@ public class OAuthAttributes {
         	return ofNaver(userNameAttributeName, attributes);
         }
         if ("google".equals(registrationId)) {
-        	return ofNaver(userNameAttributeName, attributes);
+        	return ofGoogle(userNameAttributeName, attributes);
         }
         return null;
     }
@@ -69,7 +69,6 @@ public class OAuthAttributes {
 	    String nickname = (String) profile.get("nickname");
         String email = (String) kakaoAccount.get("email");
         String username = "kakao_" + email;
-        String password = "asd13242342";
         
         
         
@@ -83,7 +82,7 @@ public class OAuthAttributes {
                 .nickname(nickname)
                 .email(email)
                 .username(username)
-                .password(password)
+                .password(uuPass.toString())
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
@@ -106,14 +105,12 @@ public class OAuthAttributes {
         String phone = (String) response.get("mobile");
 
         String username = "naver_" + email;
-        String password = "asd13242342"; // 임시 패스워드 설정
 
         log.info("=========== naver data  ===========");
 	    log.info("email :"+email);
 	    log.info("name :"+name);
 	    log.info("phone :"+phone);
 	    log.info("username :"+username);
-	    log.info("password :"+password);
 	    log.info("=========== end ===========");
         
         
@@ -121,11 +118,35 @@ public class OAuthAttributes {
 				  .email(email)
 				  .nickname(name)
 				  .username(username) 
-				  .password(password) 
+				  .password(uuPass.toString()) 
 				  .attributes(attributes)
 				  .nameAttributeKey(userNameAttributeName)
 				  .phone(phone) 
 				  .build();
+		 
+    }
+    
+    // google 데이터
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
+        
+    	String email = (String) attributes.get("email");
+        String name = (String) attributes.get("name");
+    	
+        log.info("=========== naver data  ===========");
+	    log.info("email :"+email);
+	    log.info("name :"+name);
+	    log.info("=========== end ===========");
+        
+    	String username = "google_" + email;
+        
+        return OAuthAttributes.builder()
+               .nickname(name)
+               .email(email)
+               .username(username)
+               .password(uuPass.toString())
+               .attributes(attributes)
+               .nameAttributeKey(userNameAttributeName)
+               .build();
 		 
     }
     

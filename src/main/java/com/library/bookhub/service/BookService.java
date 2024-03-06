@@ -37,7 +37,6 @@ public class BookService {
 		LocalDateTime now = LocalDateTime.now().plusDays(7);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		String returnDate = now.format(formatter);
-
 		// 만약 borrow 테이블에 이미 내역이 존재하면 대출이 되어선 안됨
 		BookBorrow borrowEntity = bookRepository.selectBorrow(bookId, username);
 		if(borrowEntity != null) {

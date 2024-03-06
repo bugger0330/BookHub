@@ -53,7 +53,9 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-floating">
-								<input type="number" min="1"
+								<!-- 최솟값, 최댓값 설정하기 -->
+								<!-- type number -->
+								<input type="number" min="1" max="30"
 									class="form-control bg-white rounded-input" name="headCount"
 									placeholder="숫자"> <label for="name">최대인원</label>
 							</div>
@@ -86,9 +88,10 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-floating">
+								<!-- maxlength로 글자수 제한하기 -->
 								<textarea class="form-control bg-white  rounded-input"
-									placeholder="Special Request" id="message"
-									style="height: 100px" name="descript"></textarea>
+									placeholder="Special Request" id="descript--textarea"
+									style="height: 100px" name="descript" maxlength="50"></textarea>
 								<label for="message">모임소개</label>
 							</div>
 						</div>

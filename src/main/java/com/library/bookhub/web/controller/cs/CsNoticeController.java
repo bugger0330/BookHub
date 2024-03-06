@@ -27,7 +27,8 @@ public class CsNoticeController {
 		return "pages/cs/notice/list";
 	}
 	
-	// 공지사항 검색 리스트 
+
+	// 추가 공지사항 검색 리스트 
 	@GetMapping("/api/notice/search-list")
 	@ResponseBody
 	public List<CsNoticeEntity> noticeSearchPage(String searchType, String searchInput) {
@@ -36,13 +37,13 @@ public class CsNoticeController {
 		return csNoticeService.noticeSearchPage(searchType, searchInput);
 	}
 	
-	// 공지사항 리스트
+	// 추가 공지사항 리스트
 	@GetMapping("/api/notice/list")
 	@ResponseBody
 	public List<CsNoticeEntity> noticeList(){
 		return csNoticeService.noticeList();
 	}
-	
+
 	
 
 	// 공지사항 상세보기 화면 띄우기

@@ -67,6 +67,29 @@
 		WHERE
     		id = #{id}
 	</update>
+	
+	
+	<update id="increaseClicks"
+		parameterType="com.library.bookhub.entity.BannerAd">
+		UPDATE BH_BANNER
+		SET
+    		clicks = clicks + 1
+		WHERE
+    		id = #{id}
+	</update>
+	
+	
+	<select id="getBannerAdPriceById" parameterType="int"
+		resultType="int">
+		select clicks * 550 from BH_BANNER 
+		where id = #{id}
+	</select>
+	
+	
+		<select id="getTotalPrice" resultType="int">
+		select sum(clicks * 550) from BH_BANNER
+	</select>
+	
 
 
 

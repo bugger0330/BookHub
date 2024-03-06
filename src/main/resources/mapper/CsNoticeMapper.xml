@@ -53,7 +53,8 @@
 	<delete id="deleteCsNotice" parameterType="int">
 		DELETE FROM bh_cs_notice WHERE id = #{id};
 	</delete>
-	
+
+	<!-- 추가 -->
 	<select id="noticeSearchPage" resultType="com.library.bookhub.entity.cs.CsNoticeEntity">
 		select * from bh_cs_notice
 		<if test="searchType == 'title'">
@@ -66,7 +67,5 @@
 			where rdate like CONCAT('%',#{searchInput},'%');
 		</if>
 	</select>
-
-	<select id=""></select>
 
 </mapper>

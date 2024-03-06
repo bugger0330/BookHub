@@ -23,6 +23,7 @@ public class ClubWishList {
 	
 	// 조인칼럼 추가
 	private String clubName;
+	private String host;
 	private String descript;
 	private Timestamp cDate;
 	private String uploadFileName1;

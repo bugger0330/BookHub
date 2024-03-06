@@ -19,33 +19,6 @@ public class MyPageApiController {
 
 	@Autowired
 	private MyPageService myPageService;
-//
-//    // 사용자 정보 페이지 렌더링
-//    @GetMapping("/user/{id}")
-//    public String getUserById(Long id, Model model) {
-//    	List<User> user = userService.findById(id);
-//    	model.addAttribute("user", user);
-//    	return "/user/userDetail";
-//    }
-//
-//    // 사용자 정보 수정 페이지 렌더링
-////    @GetMapping("/edit/{id}")
-////    public String getEditUserPage(@PathVariable("id") Long id, Model model) {
-////        List<User> userOptional = userService.findById(id);
-////        if (userOptional.isPresent()) {
-////            model.addAttribute("user", userOptional.get());
-////            return "userEdit"; // userEdit.html로 이동
-////        } else {
-////            return "notFound"; // 사용자가 없을 경우 notFound.html로 이동
-////        }
-////    }
-//
-//    // 사용자 정보 수정 처리
-//    @PostMapping("/{id}/edit")
-//    public String updateUser(@PathVariable("id") Long id, @ModelAttribute User user) {
-//        userService.save(user);
-//        return "redirect:/users/" + id; // 수정된 사용자 정보를 보여주는 페이지로 리다이렉트
-//    }
 
 	@GetMapping("/detail/{id}")
 	public String findId(@PathVariable Long id, Model model) {
@@ -72,6 +45,7 @@ public class MyPageApiController {
 
 	@PutMapping("/delete/{id}")
 	public RedirectView deleteId(@PathVariable Long id, @ModelAttribute User user) {
+		System.out.println("실해됨?");
 		myPageService.deleteById(user);
 		return new RedirectView("/");
 	}

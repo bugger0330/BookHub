@@ -29,12 +29,13 @@
 		<c:choose>
 			<c:when test="${not empty banner}">
 				<!-- Carousel Start -->
+				
 				<div class="container-fluid p-0 mb-5" style="height: 200px">
 					<div class="owl-carousel header-carousel position-relative">
 						<!-- Iterate through banners -->
 						<c:forEach var="ad" items="${banner}">
 							<div class="owl-carousel-items position-relative">
-								<a href="${ad.content}"><img class="img-fluid"
+								<a href="${ad.content}" ><img class="img-fluid" onclick="handleBannerClick(${ad.id});"
 									src="/images/upload/${ad.uploadFileName}" style="height: 200px"
 									alt="" /></a>
 							</div>
@@ -220,9 +221,7 @@
 
 
 
-
-
-
+	
 
 
 </div>
@@ -235,4 +234,3 @@
 
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
-

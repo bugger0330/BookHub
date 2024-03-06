@@ -29,7 +29,7 @@
                            		<!-- class에 있는 border rounded 빼기 -->
                                 <div class="">
                                     <a href="#">
-                                        <img src="/images/upload/${club.uploadFileName1 }" class="img-fluid rounded" alt="Image">
+                                        <img src="${club.setupClubImage()}" class="img-fluid rounded" alt="Image">
                                     </a>
                                 </div>
                             </div>
@@ -39,6 +39,7 @@
                                 <input id="club--id" value="${club.id}" hidden>
                                 
                                 <h4 class="fw-bold mb-3">${club.clubName}</h4>
+                                <h6>${club.host}</h6>
                                 <p class="mb-3">${club.descript}</p>
                                 <h5 id="club-status" class="fw-bold mb-3">${club.status}</h5>
                                 <h5 class="fw-bold mb-3">인원 : ${club.hcApply} / ${club.headCount}</h5>
@@ -48,7 +49,7 @@
                                 <p class="mb-4">모임날짜 ${club.formatCDate()}</p>
                                 
                                 <!-- 찜하기 -->
-                                <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; color: #06BBCC !important"></i>
+                                <i data-id="${club.id}" data-principal="${principal }" name="wishButton" class="bi-heart" style="font-size: 50px; color: #06BBCC !important; cursor: default;"></i>
                                 <!-- 사용자 아이디값 가져오기 -->
                                 <a id="apply--button" data-username="${userName}" href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">신청하기</a>
                             </div>

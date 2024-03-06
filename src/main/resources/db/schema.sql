@@ -14,17 +14,22 @@ DROP TABLE IF EXISTS bh_club;
 DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
 DROP TABLE IF EXISTS bh_point_shop;
+DROP TABLE IF EXISTS  bh_attendance;
 DROP TABLE IF EXISTS bh_club_wish_list;
 DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;
 DROP TABLE IF EXISTS bh_book_share;
 DROP TABLE IF EXISTS bh_book_share_borrow;
 
+DROP TABLE IF EXISTS bh_cs_cate1;
+DROP TABLE IF EXISTS bh_cs_cate2;
+
+
 
 
 
 CREATE TABLE bh_member (
-  id int NOT NULL AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   userName varchar(20) NOT NULL,
   password varchar(255) NOT NULL,
   name varchar(20) DEFAULT NULL,
@@ -97,7 +102,11 @@ CREATE TABLE bh_cs_notice (
     content LONGTEXT NOT NULL,
     writer VARCHAR(255),
     filepath VARCHAR(255),
+
     rdate DATETIME NOT NULL
+
+   
+
 );
 
 
@@ -111,6 +120,7 @@ CREATE TABLE bh_banner (
     origin_file_name VARCHAR(255) NOT NULL,
     upload_file_name VARCHAR(255) NOT NULL,
     post_yn VARCHAR(2) DEFAULT 'N',
+    clicks INT DEFAULT 0,
     created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
@@ -162,6 +172,13 @@ CREATE TABLE bh_user_point (
 	
 );
 
+-- 출석체크
+CREATE TABLE bh_attendance (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	userId VARCHAR(30) NOT NULL,
+    lastMonth INT DEFAULT 0,
+    attendanceDays VARCHAR(30) DEFAULT NULL
+);
 
 
 
@@ -293,4 +310,22 @@ CREATE TABLE `bh_point_order` (
 
 
 
+
+
+CREATE TABLE `bh_cs_cate1` (
+  `cate1` int NOT NULL,
+  `c1Name` varchar(25) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+);
+
+
+CREATE TABLE `bh_cs_cate2` (
+  `cate1` int NOT NULL,
+  `cate2` int NOT NULL,
+  `c2Name` varchar(25) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+);
 
