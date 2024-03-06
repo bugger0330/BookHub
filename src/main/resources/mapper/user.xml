@@ -10,6 +10,8 @@
 		  <![CDATA[
     SELECT * FROM bh_member WHERE name LIKE '%' || #{name} || '%' LIMIT #{limit} OFFSET #{offset}
     ]]>
+    
+    
 	</select>
 
 
