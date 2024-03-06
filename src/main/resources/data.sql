@@ -476,6 +476,11 @@ INSERT INTO `bh_club_cate` (`cate`, `cateName`) VALUES
 	(6, '기타');
 
 -- 독서모임　회원　데이터
-INSERT INTO `bh_member` (`userName`, `password`, `name`, `gender`, `phone`, `email`, `role`, `point`, `zip`, `addr1`, `addr2`, `status`, `wdate`, `rdate`, `etc1`, `etc2`, `etc3`, `etc4`, `etc5`) VALUES
-	('hansan', '$2a$10$uB7kWc8Z4Dzam3mkGpNRFewdjSQKKJKEE9xEznR5deplTPN7vD8xO', '박한산', 1, '010-8367-7710', 'hansani9611@naver.com', 'USER', 115000, '', '', '', 0, NULL, '2024-03-04 12:52:43', NULL, NULL, NULL, NULL, NULL),
-	('host1', '$2a$10$LlXITMxa85jv58A2zevBg.pfww7T.kgCF5Ue2xTkmfCB03Pf092Wy', '호스트', 1, '010-1234-1111', 'hansani9611@naver.com', 'USER', 410000, '', '', '', 0, NULL, '2024-03-05 14:50:34', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `bh_member` (`userName`, `password`, `name`, `gender`, `phone`, `email`, `role`, `point`, `zip`, `addr1`, `addr2`, `status`, `wdate`, `rdate`) VALUES
+	('hansan', '$2a$10$uB7kWc8Z4Dzam3mkGpNRFewdjSQKKJKEE9xEznR5deplTPN7vD8xO', '박한산', 1, '010-8367-7710', 'hansani9611@naver.com', 'USER', 115000, '', '', '', 0, NULL, '2024-03-04 12:52:43'),
+	('host1', '$2a$10$LlXITMxa85jv58A2zevBg.pfww7T.kgCF5Ue2xTkmfCB03Pf092Wy', '호스트', 1, '010-1234-1111', 'hansani9611@naver.com', 'USER', 410000, '', '', '', 0, NULL, '2024-03-05 14:50:34');
+
+
+
+
+
