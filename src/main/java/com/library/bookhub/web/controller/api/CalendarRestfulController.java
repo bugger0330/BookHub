@@ -38,6 +38,7 @@ public class CalendarRestfulController {
 	// 날짜 계산, 출석체크 조회
 	@GetMapping("/calendar/month")
 	public Map<String, Object> CalculateDate(@AuthenticationPrincipal UserDetails user) {
+		
 		String userId = user.getUsername();
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();

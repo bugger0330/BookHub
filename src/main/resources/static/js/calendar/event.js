@@ -8,7 +8,7 @@ check.onclick = () => {
     const checkToday = ulElement.querySelector('.today');
     const chOn = document.querySelectorAll('.ch_on');
     console.log('currentDay : '+currentDay);
-    
+    console.log('chOn '+chOn.length);
     // 중복 체크
     if(checkToday && checkToday.classList.contains('ch_on')){
 		alert("이미 출석되었습니다.");
@@ -16,7 +16,7 @@ check.onclick = () => {
 	}
 	
 	// 일주일 마감
-	if(chOn.length <= 7) {
+	if(chOn.length >= 7) {
 		alert("이번 달 출석체크는 끝나셨습니다.");
 		return;
 	}

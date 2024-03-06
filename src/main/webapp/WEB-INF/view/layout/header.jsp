@@ -63,6 +63,22 @@
     
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/principal.js"></script>
+    <script>
+    	const uid = memberId;
+    	
+    	document.addEventListener("DOMContentLoaded", function() {
+            function loginDiv(uid) {
+                const divUid = document.querySelector('.div-uid');
+
+                if(uid !== null && uid !== ''){
+                    console.log(uid);
+                    divUid.textContent = uid;
+                }
+            }
+
+            loginDiv(memberId);
+        });
+    </script>
     
 </head>
 
@@ -151,14 +167,14 @@
 					<a href="/admin" class="nav-item nav-link active">관리자 페이지</a>
 				</sec:authorize>
 				<sec:authorize access="hasRole('ROLE_USER')">
-					<div class="navbar-nav" style="
+					<div class="nav-item div-uid" style="
 					    display: flex;
 					    width: 170px;
 					    text-align: center;
 					    flex-direction: column;
 					    justify-content: space-around;
 					    color: #06BBCC;"
-					><sec:authentication property="principal.user.name"/></div>
+					></div>
 				</sec:authorize>
             </div>
             <!-- 이부분은 로그인하였을 경우 로그아웃 버튼으로, 로그인하지 않았을 경우 로그인/회원가입 버튼으로 -->

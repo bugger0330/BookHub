@@ -19,8 +19,8 @@ public class OAuthAttributes {
     private String phone;
     
     // 오스 이메일 가입자의 비밀번호 생성
-    static int randomNumber = (int) (Math.random() * 100000000);
-    static UUID uuPass = new UUID(0, randomNumber);
+    private static int randomNumber = (int) (Math.random() * 100000000);
+    private static UUID uuPass = new UUID(0, randomNumber);
     
     
     @Builder
@@ -68,7 +68,7 @@ public class OAuthAttributes {
 		
 	    String nickname = (String) profile.get("nickname");
         String email = (String) kakaoAccount.get("email");
-        String username = "kakao_" + email;
+        String username = email;
         
         
         
@@ -80,7 +80,7 @@ public class OAuthAttributes {
 
         return OAuthAttributes.builder()
                 .nickname(nickname)
-                .email(email)
+                .email("kakao_"+email)
                 .username(username)
                 .password(uuPass.toString())
                 .attributes(attributes)
@@ -104,7 +104,7 @@ public class OAuthAttributes {
         String name = (String) response.get("name");
         String phone = (String) response.get("mobile");
 
-        String username = "naver_" + email;
+        String username = email;
 
         log.info("=========== naver data  ===========");
 	    log.info("email :"+email);
@@ -115,7 +115,7 @@ public class OAuthAttributes {
         
         
 		  return OAuthAttributes.builder()
-				  .email(email)
+				  .email("naver_" + email)
 				  .nickname(name)
 				  .username(username) 
 				  .password(uuPass.toString()) 
@@ -137,11 +137,11 @@ public class OAuthAttributes {
 	    log.info("name :"+name);
 	    log.info("=========== end ===========");
         
-    	String username = "google_" + email;
+    	String username =  email;
         
         return OAuthAttributes.builder()
                .nickname(name)
-               .email(email)
+               .email("google_"+email)
                .username(username)
                .password(uuPass.toString())
                .attributes(attributes)

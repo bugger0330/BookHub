@@ -11,7 +11,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.library.bookhub.entity.User;
+import com.library.bookhub.security.oauth.SessionUser;
+import com.mysql.cj.Session;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
@@ -39,7 +42,9 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
         this.user = user;
         this.attributes = attributes;
         this.isOAuthUser = true;
+        
     }
+    
     
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -74,6 +79,7 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 
 	@Override
 	public String getUsername() {
+		
 		return user.getUserName();
 	}
 	
