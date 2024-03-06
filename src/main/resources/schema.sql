@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS bh_book;
 DROP TABLE IF EXISTS bh_product_cart;
 DROP TABLE IF EXISTS bh_book_borrow;
 DROP TABLE IF EXISTS bh_cs_qna;
+DROP TABLE IF EXISTS bh_cs_qna_reply;
+DROP TABLE IF EXISTS bh_cs_file;
 DROP TABLE IF EXISTS bh_cs_faq;
 DROP TABLE IF EXISTS bh_cs_notice;
 DROP TABLE IF EXISTS bh_banner;
@@ -67,46 +69,61 @@ CREATE TABLE bh_product_cart (
 );
 
 
--- 문의
-CREATE TABLE bh_cs_qna (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT,
-    cate2 INT,
-    title VARCHAR(255),
-    content TEXT NOT NULL,
-    file1 VARCHAR(255),
-    file2 VARCHAR(255),
-    file3 VARCHAR(255),
-    file4 VARCHAR(255),
-    writer VARCHAR(20) NOT NULL,
-    answerComplete TINYINT DEFAULT 0 CHECK (answerComplete IN (0, 1, 2, 3)),
-    rdate DATETIME NOT NULL
+-- cs qna
+CREATE TABLE `bh_cs_qna` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cate1` int DEFAULT NULL,
+  `cate2` int DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filepath` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writer` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answerComplete` tinyint DEFAULT NULL,
+  `rdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
--- faq
-CREATE TABLE bh_cs_faq (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT NOT NULL,
-    cate2 INT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    content LONGTEXT NOT NULL,
-    rdate DATETIME NOT NULL
+-- cs file
+CREATE TABLE `bh_cs_file` (
+  `uuid` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `original_file_name` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_data` mediumblob
 );
 
--- 공지사항
-CREATE TABLE bh_cs_notice (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT,
-    cate2 INT,
-    title VARCHAR(255) NOT NULL,
-    content LONGTEXT NOT NULL,
-    writer VARCHAR(255),
-    filepath VARCHAR(255),
+-- cs qna reply
+CREATE TABLE `bh_cs_qna_reply` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rdate` datetime NOT NULL,
+  `writer` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qnaId` int NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
-    rdate DATETIME NOT NULL
 
-   
+-- cs faq
+CREATE TABLE `bh_cs_faq` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cate1` int DEFAULT NULL,
+  `cate2` int DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `writer` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
+-- cs notice
+CREATE TABLE `bh_cs_notice` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cate1` int DEFAULT NULL,
+  `cate2` int DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `writer` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filepath` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 
