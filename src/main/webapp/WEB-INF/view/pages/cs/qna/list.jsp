@@ -58,7 +58,7 @@
 							</td>
 							<td>${list.writer}</td>
 							<!-- 작성자 마킹처리 -->
-							<td>${list.rdate}</td>
+							<td>${list.formatRdate()}</td>
 
 							<c:if test="${list.answerComplete eq 1}">
 								<td>답변완료</td>

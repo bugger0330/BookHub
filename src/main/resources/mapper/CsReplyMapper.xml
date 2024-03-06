@@ -5,19 +5,19 @@
 <mapper
 	namespace="com.library.bookhub.repository.cs.CsQnaReplyRepository">
 
-	<!-- Qna 리스트 조회 -->
+	<!-- QnaReply 리스트 조회 -->
 	<select id="selectCsQnaReplyList"
 		resultType="com.library.bookhub.entity.cs.CsQnaReplyEntity">
 		select * from bh_cs_qna_reply order by #{id} desc;
 	</select>
 
-	<!-- Qna 작성하기 -->
+	<!-- QnaReply 작성하기 -->
 	<insert id="qnaReplyInsert">
 		INSERT INTO bh_cs_qna_reply (content, rdate, writer, qnaId)
 		VALUES (#{content}, now(), #{writer}, #{qnaId});
 	</insert>
 
-	<!-- Qna 삭제하기 -->
+	<!-- QnaReply 삭제하기 -->
 	<delete id="qnaReplyDelete">
 		delete from bh_cs_qna_reply where id = #{id};
 	</delete>

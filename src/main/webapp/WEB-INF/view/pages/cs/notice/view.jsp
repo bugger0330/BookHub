@@ -38,6 +38,7 @@
 
 			<div>
 				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+				<button id="btn-delete" class="btn btn-danger">삭제하기</button>
 			</div>
 
 

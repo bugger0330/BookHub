@@ -6,12 +6,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.library.bookhub.entity.cs.CsNoticeEntity;
+import com.library.bookhub.entity.cs.CsQnaEntity;
 
 @Mapper
 public interface CsNoticeRepository {
 
 	// Notice 리스트
-	public List<CsNoticeEntity> selectCsNoticeList();
+	//public List<CsNoticeEntity> selectCsNoticeList();
 
 	// Notice 상세보기
 	public CsNoticeEntity noticeView(int id);
@@ -23,16 +24,15 @@ public interface CsNoticeRepository {
 	public int getAllPgCount();
 	
 	
-	// 공지사항 등록
-    void insertCsNotice(CsNoticeEntity notice);
-
-
-    // 공지사항 수정
-    void updateCsNotice(CsNoticeEntity notice);
-
-    // 공지사항 삭제
-    void deleteCsNotice(int id);
-
+	// Notice 작성
+	public int noticeInsert(CsNoticeEntity csNoticeEntity);
+	
+	// Notice 삭제하기
+	public int noticeDelete(int id);
+    
+	/*
+	 * 공지사항 수정 void updateCsNotice(CsNoticeEntity notice);
+	 */
 
     // 추가 강민 공지사항 리스트 불러오기
 	public List<CsNoticeEntity> noticeSearchPage(@Param("searchType") String searchType, @Param("searchInput") String searchInput);

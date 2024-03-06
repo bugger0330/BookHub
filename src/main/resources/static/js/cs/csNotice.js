@@ -1,21 +1,22 @@
-let title;
-let content;
+const title = $("#title");
+const content = $("#content");
+const filepath = $("#formFileMultiple");
+const updateBtn = $("#btn-update");
+const deleteBtn = $("#btn-delete");
 
-
-  // 제목과 내용 가져오기
-        title = $("#title").val();
-        content = $("#content").summernote('code');
 let addressNum = window.location.pathname.split("/")[3];
 
-// Notice list에서 View 위한 클릭 이벤트
-function loadView() {
-	const pageClick = $(".page-click");
-	pageClick.on("click", function() {
-		window.location.href = "/notice/view/" + $(this).attr("id");
+// notice list에서 등록 위한 클릭 이벤트
+function loadInsert() {
+	const insertClick = $("#btnInsert");
+	insertClick.on("click", function() {
+		window.location.href = "/notice/insert";
 	});
 }
+loadInsert();
+     
+// Notice list에서 View 위한 클릭 이벤트 --> csSearch.js
 
-loadView();
 
 // Notice list에서 View Id 넘겨주기
 function loadViewId() {
@@ -39,6 +40,27 @@ function loadViewId() {
             alert("Error fetching data!");
         }
     });
+    
+    // 삭제하기 
+	deleteBtn.on("click", function() {
+		$.ajax({
+			type: "post",
+			url: "/notice/delete/" + addressNum,
+			success: function(data) {
+				if (data == true) {
+					window.location.href = "/notice/list";
+				} else {
+					alert("데이터 삭제에 실패했습니다.");
+				}
+			},
+			error: function() {
+				alert("서버와의 통신 중 에러가 발생했습니다.");
+			}
+		});
+	});
+    
+    
+    
 }
 
 // 페이지 로드 시 데이터 로딩 함수 호출
@@ -49,7 +71,7 @@ $(document).ready(function() {
 
 
 /*추가*/
-$(document).ready(function() {
+/*$(document).ready(function() {
     // 공지사항 작성 폼이 제출될 때 실행되는 함수
     $("form").submit(function(event) {
         // 기본 동작(stop default behavior) 방지
@@ -83,9 +105,9 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             success: function(response) {
-                /* // 공지사항 등록 성공 시 경고창 표시 후 페이지 리로드
+                 // 공지사항 등록 성공 시 경고창 표시 후 페이지 리로드
                 alert("공지사항이 성공적으로 등록되었습니다.");
-                window.location.reload();*/
+                window.location.reload();
             },
             error: function(xhr, status, error) {
                 // 공지사항 등록 실패 시 에러 메시지 표시
@@ -95,3 +117,4 @@ $(document).ready(function() {
         });
     });
 });
+*/

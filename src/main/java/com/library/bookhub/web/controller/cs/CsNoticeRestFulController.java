@@ -40,10 +40,10 @@ public class CsNoticeRestFulController {
 	private CsNoticeService csNoticeService;
 
 	// 메인화면에 띄울 전체공지사항리스트
-	@GetMapping("/api/notice")
-	public List<CsNoticeEntity> getCsNoticeList() {
-		return csNoticeService.selectCsNoticeList();
-	}
+	/*
+	 * @GetMapping("/api/notice") public List<CsNoticeEntity> getCsNoticeList() {
+	 * return csNoticeService.selectCsNoticeList(); }
+	 */
 
 	// 공지사항 상세조회
 	@GetMapping("/api/notice/{id}")
@@ -52,23 +52,22 @@ public class CsNoticeRestFulController {
 	}
 	
 	
-	 // 공지사항 등록
-    @PostMapping("/api/notice")
-    public void addNotice(@RequestBody CsNoticeEntity notice) {
-        csNoticeService.insertCsNotice(notice);
-    }
-
-    // 공지사항 수정
-    @PutMapping("/api/notice/{id}")
-    public void updateNotice(@PathVariable int id, @RequestBody CsNoticeEntity notice) {
-        notice.setId(id);
-        csNoticeService.updateCsNotice(notice);
-    }
-
-    // 공지사항 삭제
-    @DeleteMapping("/api/notice/{id}")
-    public void deleteNotice(@PathVariable int id) {
-        csNoticeService.deleteCsNotice(id);
-    }
+	/*
+	 * // 공지사항 등록
+	 * 
+	 * @PostMapping("/api/notice") public void addNotice(@RequestBody CsNoticeEntity
+	 * notice) { csNoticeService.insertCsNotice(notice); }
+	 * 
+	 * // 공지사항 수정
+	 * 
+	 * @PutMapping("/api/notice/{id}") public void updateNotice(@PathVariable int
+	 * id, @RequestBody CsNoticeEntity notice) { notice.setId(id);
+	 * csNoticeService.updateCsNotice(notice); }
+	 * 
+	 * // 공지사항 삭제
+	 * 
+	 * @DeleteMapping("/api/notice/{id}") public void deleteNotice(@PathVariable int
+	 * id) { csNoticeService.deleteCsNotice(id); }
+	 */
 
 }
