@@ -15,12 +15,17 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
-
   datasource:
-    url: jdbc:mysql://54.180.81.23:3306/bookhub?serverTimeZone=Asia/Seoul
+    url: jdbc:mysql://13.124.61.207:3306/bookhub?serverTimeZone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: bookhub
-    password: asd1234!
+    username: root
+    password: zp426486!!ZP
+
+#  datasource:
+#    url: jdbc:mysql://54.180.81.23:3306/bookhub?serverTimeZone=Asia/Seoul
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: bookhub
+#    password: asd1234!
 
 #  datasource: # DB 설정
 #    url: jdbc:h2:~/spring-bookhub-db2;MODE=MySQL # Embedded Mode ->  H2 DB 데이터를 로컬에 직접 저장

@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.library.bookhub.entity.cs.CsNoticeEntity;
 import com.library.bookhub.entity.cs.CsQnaEntity;
 import com.library.bookhub.service.CsFileService;
 import com.library.bookhub.service.CsQnaService;
+import com.library.bookhub.web.dto.common.PageReq;
+import com.library.bookhub.web.dto.common.PageRes;
 import com.library.bookhub.web.dto.cs.CsQnaDto;
-import com.library.bookhub.web.dto.cs.PageReq;
-import com.library.bookhub.web.dto.cs.PageRes;
 
 import lombok.extern.log4j.Log4j2;
 

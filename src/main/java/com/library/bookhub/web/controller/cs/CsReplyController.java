@@ -39,19 +39,18 @@ public class CsReplyController {
 	// QnaReply 작성하기
 	@PostMapping("/qna/reply/{qnaId}")
 	@ResponseBody
-	public ResponseEntity<String> qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto) {
+	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto) {
 
 		System.out.println(qnaId);
+		System.out.println(dto);
+		
+		dto.setQnaId(qnaId);
 		
 		boolean result = csQnaReplyService.qnaReplyInsert(dto, qnaId);
 
 		System.out.println(result);
 		
-		if (result == true) {
-			return ResponseEntity.ok("Success");
-		}
-
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed");
+		return result;
 	}
 
 

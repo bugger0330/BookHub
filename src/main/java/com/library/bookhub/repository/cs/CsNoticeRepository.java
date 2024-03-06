@@ -26,10 +26,17 @@ public interface CsNoticeRepository {
 	// 공지사항 등록
     void insertCsNotice(CsNoticeEntity notice);
 
+
     // 공지사항 수정
     void updateCsNotice(CsNoticeEntity notice);
 
     // 공지사항 삭제
     void deleteCsNotice(int id);
+
+
+    // 추가 강민 공지사항 리스트 불러오기
+	public List<CsNoticeEntity> noticeSearchPage(@Param("searchType") String searchType, @Param("searchInput") String searchInput);
+	// 추가
+	public List<CsNoticeEntity> noticeList();
 
 }
