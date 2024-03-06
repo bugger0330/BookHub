@@ -6,7 +6,7 @@
 
 	<insert id="insert">
 
-		INSERT INTO BH_BANNER(title, content, writer, origin_file_name,
+		INSERT INTO bh_banner(title, content, writer, origin_file_name,
 		upload_file_name, post_yn, created_at)
 		VALUES(#{title}, #{content}, #{writer}, #{originFileName}, #{uploadFileName},
 		#{postYn}, now())
@@ -16,27 +16,25 @@
 
 	<select id="findAllWithPagingAndWriter"
 		resultType="com.library.bookhub.entity.BannerAd">
-		SELECT * FROM BH_BANNER WHERE LOWER(writer) LIKE CONCAT('%', LOWER(#{writer}), '%') LIMIT #{limit} OFFSET #{offset}
+		SELECT * FROM bh_banner WHERE LOWER(writer) LIKE CONCAT('%', LOWER(#{writer}), '%') LIMIT #{limit} OFFSET #{offset}
 
 	</select>
 
 	<select id="getAdTotalCount" resultType="int">
-		SELECT COUNT(*) FROM
-		BH_BANNER
+		SELECT COUNT(*) FROM bh_banner
 	</select>
 
 
 	<select id="findById"
 		resultType="com.library.bookhub.entity.BannerAd">
-		SELECT ID ,upload_file_name, CONTENT FROM BH_BANNER
-		WHERE POST_YN = 'Y'
+		SELECT ID, UPLOAD_FILE_NAME, CONTENT FROM bh_banner WHERE POST_YN = 'Y'
 	</select>
 
 
 	<select id="findByBannerId" parameterType="int"
 		resultType="com.library.bookhub.entity.BannerAd">
 		SELECT *
-		FROM BH_BANNER
+		FROM bh_banner
 		WHERE id = #{id}
 	</select>
 
@@ -46,7 +44,7 @@
 
 	<update id="update"
 		parameterType="com.library.bookhub.entity.BannerAd">
-		UPDATE BH_BANNER
+		UPDATE bh_banner
 		SET
 		title = #{title},
 		content = #{content},
@@ -61,7 +59,7 @@
 
 	<update id="updatePostStatus"
 		parameterType="com.library.bookhub.entity.BannerAd">
-		UPDATE BH_BANNER
+		UPDATE bh_banner
 		SET
     		post_yn = #{postYn}
 		WHERE
@@ -71,7 +69,7 @@
 	
 	<update id="increaseClicks"
 		parameterType="com.library.bookhub.entity.BannerAd">
-		UPDATE BH_BANNER
+		UPDATE bh_banner
 		SET
     		clicks = clicks + 1
 		WHERE
@@ -81,27 +79,27 @@
 	
 	<select id="getBannerAdPriceById" parameterType="int"
 		resultType="int">
-		select clicks * 550 from BH_BANNER 
+		select clicks * 550 from bh_banner 
 		where id = #{id}
 	</select>
 	
 	
 		<select id="getTotalPrice" resultType="int">
-		select sum(clicks * 550) from BH_BANNER
+		select sum(clicks * 550) from bh_banner
 	</select>
 	
 
 
 
 	<delete id="deleteById" parameterType="int">
-		DELETE FROM BH_BANNER
+		DELETE FROM bh_banner
 		WHERE id = #{id}
 	</delete>
 
 
 	<select id="existById" parameterType="int" resultType="long">
 		SELECT COUNT(id)
-		FROM BH_BANNER
+		FROM bh_banner
 		WHERE id = #{id}
 	</select>
 
