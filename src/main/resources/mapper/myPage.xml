@@ -8,19 +8,19 @@
 	<select id="findById" parameterType="long"
 		resultType="com.library.bookhub.entity.User">
 		SELECT *
-		FROM BH_MEMBER
+		FROM bh_member
 		WHERE id = #{id}
 	</select>
 
 
     <update id="myPageUpdate" parameterType="com.library.bookhub.entity.User">
-        UPDATE BH_MEMBER SET password = #{password}, name = #{name}, phone = #{phone},
+        UPDATE bh_member SET password = #{password}, name = #{name}, phone = #{phone},
         email = #{email}, zip = #{zip}, addr1 = #{addr1}, addr2 = #{addr2},
         wDate = #{wDate}, rDate = now() WHERE id = #{id}
     </update>
 
     <update id="myPageDeleteById" parameterType="com.library.bookhub.entity.User">
-        UPDATE BH_MEMBER SET status = 1, wDate = now() WHERE id = #{id}
+        UPDATE bh_member SET status = 1, wDate = now() WHERE id = #{id}
     </update>
 
 

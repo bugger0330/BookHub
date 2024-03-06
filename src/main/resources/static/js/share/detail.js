@@ -365,27 +365,3 @@ function orderUpdate(lateDays, latePoint, productName){
 	});
 	return flag;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

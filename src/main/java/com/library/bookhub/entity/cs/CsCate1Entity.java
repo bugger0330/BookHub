@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CsCate1Entity {
 
+	
 	private int cate1;
 	private String c1Name;
-
+	private int id;
 }
