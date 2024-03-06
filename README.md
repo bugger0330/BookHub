@@ -41,6 +41,7 @@ Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜
 #😎 이준혁
 - 포트원 API 이용 상품 결제 구현
 - [![시연영상](http://img.youtube.com/vi/YDWpmKiytrk/0.jpg)](https://youtu.be/YDWpmKiytrk)
+-  [![시연영상](http://img.youtube.com/vi/PKw6_phIOQM/0.jpg)](https://youtu.be/PKw6_phIOQM)
 
 ## 개발기간/작업관리
 개발기간
