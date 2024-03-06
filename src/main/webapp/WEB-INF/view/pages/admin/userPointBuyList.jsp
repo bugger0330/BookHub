@@ -61,7 +61,7 @@ th {
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">포인트상품 목록</h3>
+					<h3 class="display-5 text-white animated slideInDown">유저 결제 내역</h3>
 				</div>
 			</div>
 		</div>
@@ -70,11 +70,7 @@ th {
 	
 
 	<div class="container-xxl">
-		<div class="row justify-content-end mb-3">
-			<div class="col-auto">
-				<a href="/point-product-add" class="btn btn-dark">상품 추가하기</a>
-			</div>
-		</div>
+		
 		
 	
 		<c:choose>
