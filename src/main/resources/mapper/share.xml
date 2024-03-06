@@ -14,7 +14,7 @@
 			#{userName},
 			#{file},
 			now(),
-			now(),
+			null,
 			"대출 가능"
 		);
 	</insert>

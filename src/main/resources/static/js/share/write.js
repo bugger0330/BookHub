@@ -12,10 +12,10 @@ load();
 function load(){
 	myPoint.textContent = 0;
 	
-	//myPoint.textContent = 0;
 	if(memberId == ""){
-		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
-		
+		alert("로그인이 필요한 서비스 입니다.");
+		location.href = "/login";
+		return;
 	}
 	$.ajax({
 		type : "post",
@@ -106,6 +106,7 @@ btn.onclick = () => {
 }
 
 fileInput.onchange = (event) => {
+	imgViewBox.innerHTML = "";
 	if(event.target.files[0].size > 5242880){ // 5 mb 까지만 가능
 		alert("첨부파일은 5mb 이하만 가능합니다.");
 		fileInput.value = "";
@@ -132,6 +133,7 @@ fileInput.onchange = (event) => {
 		fileInput.value = "";
 		return;
 	}
+	console.log("이미지 숫자 : ", fileInput.value);
 }
 
 function myPointOrder(){

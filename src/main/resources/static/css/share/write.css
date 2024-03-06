@@ -20,8 +20,8 @@
     font-weight: 700;
 }
 
-.share--body{
-    width: 500px;
+.share--body--write{
+    width: 35%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,10 +43,19 @@
     margin-top: 5px;
 }
 
+.share--textarea{
+	height: 200px;
+	resize: none;
+}
+
 .share--btn{
     padding: 10px 20px;
     border: none;
     color: white;
     background-color: gray;
     cursor: pointer;
+}
+
+.share--img-box img{
+	width: 300px;
 }

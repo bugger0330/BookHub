@@ -1,4 +1,4 @@
-.share--main-div{
+.share1--main-div{
     width: 90%;
     margin: 100px auto;
     display: flex;
@@ -8,31 +8,32 @@
     padding: 5px;
 }
 
-.share--header{
+.share1--header{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
 }
 
-.share--header span{
+.share1--header span{
     font-size: 40px;
     font-weight: 700;
 }
 
-.share--body{
-    width: 90%;
-    border: 1px solid black;
+.share1--body--read{
+	width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.share--book-list-box{
+.share1--book-list-box{
     display: flex;
     flex-flow:row wrap;
     padding: 10px;
 }
 
-.share--book-box{
-    border: 1px solid black;
+.share1--book-box{
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -43,17 +44,17 @@
     cursor: pointer;
 }
 
-.share--img-box{
+.share1--img-box{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.share--book-img{
+.share1--book-img{
     width: 200px;
 }
 
-.share--content-box{
+.share1--content-box{
     display: flex;
     flex-direction: column;
     align-items: center;
