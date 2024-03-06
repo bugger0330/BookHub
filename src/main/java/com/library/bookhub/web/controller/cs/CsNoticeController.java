@@ -7,13 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.entity.cs.CsNoticeEntity;
+import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.CsFileService;
 import com.library.bookhub.service.CsNoticeService;
+import com.library.bookhub.web.dto.common.PageReq;
+import com.library.bookhub.web.dto.common.PageRes;
 import com.library.bookhub.web.dto.cs.CsNoticeDto;
-import com.library.bookhub.web.dto.cs.CsQnaDto;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -21,6 +24,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class CsNoticeController {
 
+	@Autowired
+	UserDetailsServiceImpl serviceImpl; // 로그인유저 ID 가져오기
+	
 	@Autowired
 	CsNoticeService csNoticeService;
 
@@ -110,5 +116,8 @@ public class CsNoticeController {
 
 		return result;
 	}
+	
+	
+	
 
 }

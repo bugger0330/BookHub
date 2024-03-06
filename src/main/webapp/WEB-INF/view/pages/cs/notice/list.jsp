@@ -23,13 +23,18 @@
 			<div>
 				<h2>공지사항</h2>
 
-				<div class="btn-group" role="group"
+                <!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+					<div class="btn-group" role="group"
 					aria-label="Basic outlined example" style="display: flex;">
 					<button type="button" class="btn btn-outline-primary"
 						id="btnInsert" style="flex: none;">
 						</a>등록
 					</button>
 				</div>
+				</sec:authorize>
+
+				
 
 				<div class="input-group" style="margin-top: 30px;">
 					<select name="searchType" class="searchType">

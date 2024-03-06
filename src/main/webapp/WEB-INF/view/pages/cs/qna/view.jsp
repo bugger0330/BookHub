@@ -40,7 +40,11 @@
 				</form>
 			</div>
 
-			<div class="container mt-5">
+			
+			<!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+					
+				<div class="container mt-5">
 				<h2>댓글 등록 폼</h2>
 				<div class="form-group">
 					<label for="commentContent">댓글 내용</label>
@@ -54,6 +58,7 @@
 					<!-- 여기에 댓글 목록이 나열될 것입니다. -->
 				</div>
 			</div>
+			</sec:authorize>
 
 			<div id="modifyBtn">
 				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>

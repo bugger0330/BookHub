@@ -38,7 +38,11 @@
 
 			<div>
 				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-				<button id="btn-delete" class="btn btn-danger">삭제하기</button>
+				<!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+					<button id="btn-delete" class="btn btn-danger">삭제하기</button>
+				</sec:authorize>
+				
 			</div>
 
 
