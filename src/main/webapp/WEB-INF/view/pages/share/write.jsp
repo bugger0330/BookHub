@@ -13,7 +13,7 @@
 	</div>
 	<!-- Header End -->
     <div class="share--main-div">
-        <div class="share--body">
+        <div class="share--body--write">
             <div class="share--input-box">
                 <span>내 아이디</span>
                 <span class="share--username"></span>

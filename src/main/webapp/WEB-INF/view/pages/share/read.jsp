@@ -6,18 +6,15 @@
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">Coffie & Bakery</h3>
+					<h3 class="display-5 text-white animated slideInDown">공유 도서 목록</h3>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Header End -->
-    <div class="share--main-div">
-        <div class="share--header">
-            <span>공유 도서 목록</span>
-        </div>
-        <div class="share--body">
-            <div class="share--book-list-box"></div>
+    <div class="share1--main-div">
+        <div class="share1--body--read">
+            <div class="share1--book-list-box"></div>
         </div>
     </div>
 <script src="/js/share/read.js"></script>

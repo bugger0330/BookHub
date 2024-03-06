@@ -1,15 +1,18 @@
 package com.library.bookhub.web.controller.api;
 
 import com.library.bookhub.entity.User;
+import com.library.bookhub.security.oauth.SessionUser;
 import com.library.bookhub.service.UserService;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -54,6 +57,7 @@ public class UserController {
         List<User> userList = pageRes.getContent();
         log.info("Retrieved user list: {}", userList);
 
+        System.out.println(userList);
         // 페이징 정보를 모델에 추가
         model.addAttribute("userList", userList);
         model.addAttribute("page", pageReq.getPage());
@@ -125,9 +129,16 @@ public class UserController {
     
     @GetMapping("/principal")
     @ResponseBody
-    public String getPrincipal(@AuthenticationPrincipal UserDetails userDetails) {
+    public String getPrincipal(@AuthenticationPrincipal UserDetails userDetails,
+    							@AuthenticationPrincipal OAuth2User auth2User, HttpSession httpSession) {
+    	// 일반
     	if(userDetails != null) {
     		return userDetails.getUsername();
+    	}
+    	// 소셜
+    	if(auth2User != null) {
+    		SessionUser sessionUser = (SessionUser) httpSession.getAttribute("user");
+    		return sessionUser.getUsername();
     	}
     	return "";
     }

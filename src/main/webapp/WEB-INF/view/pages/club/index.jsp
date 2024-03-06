@@ -202,9 +202,11 @@
                                                    <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
                                                </div>
                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>${club.clubName}</h4>
+                                               	   <!-- clubName 길이에 따라 카드 크기 달라져서 height 고정값 줌 --> 	
+                                                   <h4 style="height: 50px;">${club.clubName}</h4>
                                                    <h6>${club.host}</h6>
-                                                   <p>${club.descript}</p>
+                                                   <!-- descript 길이에 따라 카드 크기 달라져서 height 고정값 줌 -->
+                                                   <p style="height: 60px;">${club.descript}</p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
 					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${club.formatCDate()}</p>
@@ -226,29 +228,22 @@
                                </div>
                            </div>
                        </div>
-                       
-                   </div>
-                   <!-- tab-content -->
-                   <div class="tab-content">
-                   		<!-- active는 index페이지 뜰 때 뜨는것이므로 삭제 -->
-                   		<div id="tab-2" class="tab-pane fade show p-0">
+                       <!-- 2번탭-->
+                       <!-- active는 index페이지 뜰 때 뜨는것이므로 삭제 -->
+                   	   <div id="tab-2" class="tab-pane fade show p-0">
                            <div class="row g-4">
                                <div class="col-lg-12">
                                		<!-- 자바스크립트로 동적으로 생성한 html을 id 값을 이용하여 추가 -->	   
-                               		<div  class="row g-4">
+                               		<div id="clubList" class="row g-4">
+                                    <!-- 반복문 시작 -->
                                    
-                                   <!-- 반복문 시작 -->
-                                   
-                                   <!-- 반복문 끝 -->
-                                       
-                                       
+                                    <!-- 반복문 끝 -->
                                    </div>
                                </div>
                            </div>
-                       </div>
-                       
+                        </div>
+                        <!--2번탭-->
                    </div>
-                   <!-- tab-content -->
                </div>      
            </div>
        </div>

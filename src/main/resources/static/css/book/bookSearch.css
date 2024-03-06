@@ -1,6 +1,5 @@
 .book--search--main--div{
     width: 90%;
-    height: 500px;
     margin: 100px auto;
     display: flex;
     justify-content: center;
@@ -39,7 +38,6 @@
 
 .book--search--inner--box{
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	padding: 5px;
 	flex-flow:row wrap;
@@ -52,7 +50,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid black;
 	margin: 10px;
 	cursor: pointer;
 }

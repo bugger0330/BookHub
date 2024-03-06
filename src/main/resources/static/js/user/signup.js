@@ -57,11 +57,15 @@ const inputTag = '<input type="text" id="auth-number"'
 			+' style="margin-right: 4px;" required>';
 const buttonTag = '<button type="button" class="btn-complete" '
 			+'onclick="enterNumber()">완료</button>';
+const pTag = '<p class="p-timer">3:00</p>';
 			
 /* 최종 전송 버튼 */
 const btnForm = document.getElementsByClassName('btn-form')[0];
 
 
+// 시간 변수
+let countTime = 0;
+let intervalCall;
 
 // 아이디 값 조작 방지
 inputId.addEventListener('keydown',function(e){
@@ -174,27 +178,23 @@ function authEmail(email) {
 
 	resultEmail.style.display = 'block';
 	resultEmail.style.color = '#52565b';
-	resultEmail.textContent = '인증 코드 전송 중입니다';
 
-	// 1초 뒤 요청
-	setTimeout(function(){
-		fetch(`/user/sendEmail/`+email,{
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json;charset=UTF-8",
-			},
-		}).then((response) => response.text())
-		.then((data) => {
-			resultEmail.textContent = ('인증 코드가 전송되었습니다!');
-			divEmailCreate();
-		})
-		.catch((error) => {
-			alert('이메일 인증을 실패했습니다.');
-			console.log(error);
-			
-		});
+	fetch(`/user/sendEmail/`+email,{
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json;charset=UTF-8",
+		},
+	}).then((response) => response.text())
+	.then((data) => {
+		resultEmail.textContent = ('인증 코드가 전송되었습니다!');
+		divEmailCreate();
+	})
+	.catch((error) => {
+		alert('이메일 인증을 실패했습니다.');
+		console.log(error);
+		
+	});
 
-	}, 1000); // end setTimeout
 } // end authEmail
 
 // 동적 태그 추가
@@ -203,6 +203,7 @@ function divEmailCreate() {
 		divEmail.insertAdjacentHTML("beforeend", labelTag);
 		divEmail.insertAdjacentHTML("beforeend", inputTag);
 		divEmail.insertAdjacentHTML("beforeend", buttonTag);
+		divEmail.insertAdjacentHTML("beforeend", pTag);
 	}
 }
 
@@ -216,7 +217,13 @@ function enterNumber() {
 	const newInput = document.querySelector('.input-authNumber');
 	const btnComplete = document.getElementsByClassName('btn-complete')[0];
 	const labelNumber = document.getElementsByClassName('label-number')[0];
+	const emailTime = document.getElementsByClassName('p-timer')[0];
 	const num = newInput.value;
+	
+	if(emailTime.textContent === '0:00') {
+		alert('입력 시간이 지났습니다. 다시 코드를 발급해주세요.');
+		return;
+	}
 
 	console.log('num : '+num);
 
@@ -233,6 +240,7 @@ function enterNumber() {
 			newInput.remove();
 			btnComplete.remove();
 			isEmailOk = true;
+			closeTime();
 		} else {
 			alert('인증 코드를 다시 입력해주세요.');
 		}
@@ -242,6 +250,40 @@ function enterNumber() {
 		console.log(error);
 	});
 }
+
+// 타이머 시작
+function time(time) {
+    countTime = time;
+    intervalCall = setInterval(alertFunc, 1000);
+}
+
+// 시간 끝내기
+function closeTime() {
+    clearInterval(intervalCall);
+}
+
+// 타이머 보이기
+function alertFunc() {
+	const emailTime = document.getElementsByClassName('p-timer')[0];
+	
+	let min = Math.floor(Math.max(0, countTime) / 60); // 음수인 경우 0으로 처리
+    let sec = Math.max(0, countTime) - (60 * min); // 음수인 경우 0으로 처리
+    if (sec > 9) {
+    	emailTime.textContent = min + ':' + sec;
+    } else {
+    	emailTime.textContent = min + ':0' + sec;
+    }
+    
+    if (countTime <= 0) {
+        clearInterval(intervalCall);
+    }
+    countTime--;
+}
+
+// 이메일 전송 버튼 클릭 후 time
+btnEmail.addEventListener("click", function() {
+	time(179);
+});
 
 // 휴대폰 번호
 function valiHp() {

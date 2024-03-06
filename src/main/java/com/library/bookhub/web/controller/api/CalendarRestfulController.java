@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.library.bookhub.entity.Attendance;
 import com.library.bookhub.handler.exception.CustomRestFulException;
+import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.CalendarPointService;
 
 import jakarta.servlet.http.HttpSession;
@@ -32,13 +33,18 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class CalendarRestfulController {
 	
+	
+	@Autowired
+	private UserDetailsServiceImpl serviceImpl;
+	
 	@Autowired
 	private CalendarPointService calendarPointService;
 	
 	// 날짜 계산, 출석체크 조회
 	@GetMapping("/calendar/month")
-	public Map<String, Object> CalculateDate(@AuthenticationPrincipal UserDetails user) {
-		String userId = user.getUsername();
+	public Map<String, Object> CalculateDate() {
+		
+		String userId = serviceImpl.getUserId();
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();
         
@@ -86,11 +92,9 @@ public class CalendarRestfulController {
 	// 포인트 적립, 출석 일수
 	@PostMapping("/calendar/attendance")
 	@ResponseBody
-	public Map<String, Integer> attendanceCheck(@RequestBody Map<String, String> date,
-												@AuthenticationPrincipal UserDetails user, 
-												HttpSession session) {
+	public Map<String, Integer> attendanceCheck(@RequestBody Map<String, String> date, HttpSession session) {
 		int addPoint = 0;
-		String userId = user.getUsername();
+		String userId = serviceImpl.getUserId();
 		String today = (String) date.get("today");
 		int month =  Integer.parseInt(date.get("month"));
 		

@@ -79,17 +79,7 @@ th {
 	
 		<c:choose>
 			<c:when test="${not empty productList}">
-			<div class="search mb-3">
-			<form action="/point-shop/admin/list" method="get">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="상품명 검색"
-						name="prodName">
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-dark">검색</button>
-					</div>
-				</div>
-			</form>
-		</div>
+			
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">

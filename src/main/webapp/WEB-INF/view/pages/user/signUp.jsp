@@ -136,6 +136,15 @@
 	font-size: 12px;
 	margin-bottom: 20px;
 }
+.log-form-group:nth-child(4) {
+	position: relative;
+}
+.p-timer {
+	position: absolute;
+    right: 174px;
+    bottom: -5px;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>

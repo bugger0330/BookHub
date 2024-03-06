@@ -10,22 +10,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<style>
-    .menu-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-    }
 
-    .product-name {
-        margin-left: 10px;
-    }
-
-    .coffie-count {
-        width: 60px;
-    }
-</style>
 </head>
 <body>
 

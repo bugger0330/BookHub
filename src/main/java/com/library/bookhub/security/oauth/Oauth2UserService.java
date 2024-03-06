@@ -73,6 +73,7 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
             // 사용자를 등록한 후에 즉시 userEntity에 할당
             memberRepository.insert(userEntity);
         }
+        userEntity = memberRepository.findByUsername(attributes.getUsername());
         log.info("saveOrUpdate user : " + userEntity);
 
         return userEntity;
