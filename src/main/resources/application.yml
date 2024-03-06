@@ -16,10 +16,10 @@ spring:
       max-request-size: 20MB
 
   datasource:
-    url: jdbc:mysql://54.180.81.23:3306/bookhub?serverTimeZone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: bookhub
-    password: asd1234!
+    username: root
+    password: asd1234
 
 
 

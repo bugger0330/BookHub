@@ -37,7 +37,7 @@ window.onload = function() {
 				
 				success : function(data) {
 					if(data == true) {
-						alert('개설취소 완료');
+						alert('개설취소 완료입니다');
 						location.reload();
 					}else {
 						alert('신청인원이 있으므로 관리자 승인이 필요합니다');
