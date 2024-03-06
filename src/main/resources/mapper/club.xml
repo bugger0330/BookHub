@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.bookhub.repository.ClubRepository">
+
+<insert id="insert">
+	insert INTO bh_club set
+		userName = #{userName}, 
+		clubCate = #{clubCate}, 
+		clubName = #{clubName}, 
+		descript = #{descript}, 
+		detail = #{detail},
+		cDate = #{cDate}, 
+		host = #{host}, 
+		headCount = #{headCount}, 
+		originFileName1 = #{originFileName1}, 
+		originFileName2 = #{originFileName2}, 
+		originFileName3 = #{originFileName3}, 
+		uploadFileName1 = #{uploadFileName1}, 
+		uploadFileName2 = #{uploadFileName2}, 
+		uploadFileName3 = #{uploadFileName3}, 
+		rdate = now()
+</insert>
+
+<insert id="insertApplication">
+	insert into bh_club_application set
+	`clubId` = #{clubId},
+	`userName` = #{userName},
+	`rdate`= now()
+</insert>
+
+<insert id="insertWishList">
+	INSERT INTO bh_club_wish_list SET
+	`clubId` = #{clubId},
+	`userName` = #{userName},
+	`rdate` = now()
+</insert>
+
+<select id="findAll" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club order by id desc
+</select>
+
+<select id="findById" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club where id = #{id}
+</select>
+
+<select id="findApplicationByIdAndUserName" resultType="com.library.bookhub.entity.ClubApplication">
+	select * from bh_club_application where clubId = #{clubId} and userName = #{userName}
+</select>
+
+<select id="findByUserName" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club where userName = #{userName} order by id desc
+</select>
+
+<select id="findApplicationByUserName" resultType="com.library.bookhub.entity.ClubApplication">
+	select a.*, b.clubName, b.uploadFileName1
+	from bh_club_application as a join 
+	bh_club as b on a.clubId = b.id
+	where a.userName = #{userName} order by id desc
+</select>
+
+<select id="findByClubCate" resultType="com.library.bookhub.entity.Club">
+	select * from bh_club where clubCate = #{clubCate} order by id desc
+</select>
+
+<select id="findByKeyword" resultType="com.library.bookhub.entity.Club">
+select * from bh_club where clubName LIKE concat('%', #{clubName}, '%') order by id desc
+</select>
+
+<select id="findApplicationByClubId" resultType="com.library.bookhub.entity.ClubApplication">
+	SELECT * FROM bh_club_application WHERE clubId=#{clubId}
+</select>
+
+<select id="findUserByUserName" resultType="com.library.bookhub.entity.User">
+	SELECT * FROM bh_member WHERE userName = #{userName}
+</select>
+
+<select id="findByUserNameAndId" resultType="com.library.bookhub.entity.Club">
+	SELECT * FROM bh_club WHERE userName = #{userName} AND id = #{id}
+</select>
+
+<select id="findWishListByUserName" resultType="com.library.bookhub.entity.ClubWishList">
+	SELECT a.*, b.clubName, b.host, b.descript, b.cDate, b.uploadFileName1 
+	from bh_club_wish_list AS a
+	JOIN bh_club AS b ON a.clubId = b.id
+	WHERE a.userName = #{userName}
+</select>
+
+<select id="findWishListByClubIdAndUserName" resultType="com.library.bookhub.entity.ClubWishList">
+	SELECT * FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
+</select>
+
+<select id="clubCount" resultType="int">
+	SELECT COUNT(*) FROM bh_club
+</select>
+
+<select id="clubCountByClubCate" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE clubCate = #{clubCate}
+	<!-- <where>
+		동적쿼리 쓰려면 무조건 clubCate 파라미터로 받을 때 쓸 수 있는 것임!
+		<if test="clubCate == null">
+			SELECT COUNT(*) FROM bh_club
+		</if>
+	</where> -->
+</select>
+
+<select id="clubCountByKeyword" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE clubName LIKE CONCAT ('%', #{keyword}, '%')
+</select>
+
+<select id="clubCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club WHERE userName = #{userName}
+</select>
+
+<select id="clubApplicationCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club_application WHERE userName = #{userName}
+</select>
+
+<select id="clubWishListCountByUserName" resultType="int">
+	SELECT COUNT(*) FROM bh_club_wish_list WHERE userName = #{userName}
+</select>
+
+<select id="findAllOrderByHcApply" resultType="com.library.bookhub.entity.Club">
+	SELECT * FROM bh_club ORDER BY hcApply DESC
+</select>
+
+<update id="updateByApplication">
+	update bh_club set
+	`hcApply` = #{hcApply},
+	`status` = #{status}
+	where bh_club.id = #{id}
+</update>
+
+<update id="updatePoint">
+	UPDATE bh_member SET point = #{point} WHERE userName = #{userName}
+</update>
+
+<delete id="deleteApplication">
+	delete from bh_club_application where id = #{id}
+</delete>
+
+<delete id="delete">
+	DELETE FROM bh_club WHERE id=#{id}
+</delete>
+
+<delete id="deleteWishList">
+	DELETE FROM bh_club_wish_list WHERE clubId = #{clubId} AND userName = #{userName}
+</delete>
+
+<delete id="deleteWishListByClubId">
+	DELETE FROM bh_club_wish_list WHERE clubId = #{clubId}
+</delete>
+
+
+
+<!-- 블록 주석 : ctrl shfit / -->
+<!-- <delete id="deleteApplicationByClubId">
+	DELETE FROM bh_club_application WHERE clubId="6";
+</delete> -->
+
+
+
+</mapper>

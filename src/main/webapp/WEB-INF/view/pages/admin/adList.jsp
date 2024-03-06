@@ -53,7 +53,6 @@ th {
 .pagination a:hover:not(.active) {
 	background-color: #ddd;
 }
-
 </style>
 </head>
 <body>
@@ -68,40 +67,53 @@ th {
 		</div>
 	</div>
 
-	<div class="container-xxl">
+	<div style="padding-left: 300px; padding-right: 300px">
 		<div class="row justify-content-end mb-3">
 			<div class="col-auto">
-				<a href="/ad-setting" class="btn btn-primary">광고 추가하기</a>
+				<a href="/ad-setting" class="btn btn-dark">광고 추가하기</a>
 			</div>
 		</div>
-
+		<h5>광고 수익 : 클릭 횟수 * 550원</h5>
 		<c:choose>
 			<c:when test="${not empty adList}">
+			
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
 							<th>No</th>
-							<th>제목</th>
-							<th>내용(url)</th>
-							<th>광고주명</th>
+							<th >제목</th>
+							<th>URL</th>
+							<th>광고주</th>
 							<th>이미지</th>
 							<th>광고여부</th>
+							<th>클릭수</th>
+							<th>수익</th>
 							<th>setting</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="ad" items="${adList}">
 							<tr>
-								<td class="text-center">${ad.id}</td>
-								<td class="text-center">${ad.title}</td>
-								<td class="text-center" style="word-wrap: break-word; max-width: 200px;">${ad.content}</td>
-								<td class="text-center">${ad.writer}</td>
-								<td class="text-center"><img src="${ad.setupAdImage()}"
-									width="200" height="100"></td>
-								<td class="text-center">${ad.postYn == 'Y' ? '광고중' : '광고중단'}</td>
-								<td class="text-center"><a href="/ad/update/${ad.id}"
-									class="btn btn-primary">수정하기</a></td>
+								<td class="text-center align-middle" >${ad.id}</td>
+								<td class="text-center align-middle">${ad.title}</td>
+								<td class="text-center align-middle"
+									style="word-wrap: break-word; max-width: 200px;">${ad.content}</td>
+								<td class="text-center align-middle">${ad.writer}</td>
+								<td class="text-center align-middle" style="width: 500px"><img
+									src="${ad.setupAdImage()}" width="80%" height="80%"></td>
+								<td class="text-center align-middle"><select
+									class="form-select" id="postYn-${ad.id}"
+									onchange="updatePostStatus(${ad.id})">
+										<option value="Y" ${ad.postYn == 'Y' ? 'selected' : ''}>광고중</option>
+										<option value="N" ${ad.postYn == 'N' ? 'selected' : ''}>광고중단</option>
+								</select></td>
+								<td class="text-center align-middle">${ad.clicks}</td>
+								<td class="text-center align-middle" id="result-${ad.id}"></td>
+
+								<td class="text-center align-middle"><a
+									href="/ad/update/${ad.id}" class="btn btn-primary">수정하기</a></td>
 							</tr>
+
 						</c:forEach>
 					</tbody>
 				</table>
@@ -129,8 +141,15 @@ th {
 			</c:when>
 			<c:otherwise>
 				<div class="container">
-					<p class="text-center">업로드된 광고가 없습니다.</p>
-				</div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="alert alert-info" role="alert">
+                <strong>업로드 된 광고가 없습니다. 광고를 업로드해주세요</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
 			</c:otherwise>
 		</c:choose>
 
@@ -141,10 +160,6 @@ th {
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('.dropdown-toggle').dropdown();
-		});
-	</script>
+		<script src="/js/admin/adList.js"></script>
 </body>
 </html>

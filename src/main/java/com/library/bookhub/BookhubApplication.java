@@ -8,13 +8,15 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 @SpringBootApplication
 public class BookhubApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BookhubApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BookhubApplication.class, args);
+    }
 
-	@Bean
-	HiddenHttpMethodFilter hiddenHttpMethodFilter() {
-		return new HiddenHttpMethodFilter();
-	}
+
+    // hidden 속성 사용
+    @Bean
+    HiddenHttpMethodFilter hiddenHttpMethodFilter() {
+        return new HiddenHttpMethodFilter();
+    }
 
 }

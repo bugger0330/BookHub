@@ -1,0 +1,126 @@
+#cs>div {
+	display: flex; 
+}
+
+#cs>.csMainContainer {
+	display: flex;
+}
+
+
+
+
+#cs>.csMainContainer>div.d-flex.flex-column.flex-shrink-0.p-3.bg-light {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: flex-start;
+	justify-content: flex-start;
+	align-items: baseline;
+	align-content: flex-start;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#cs>.csMainContainer>div>div>div  select {
+	color: #52565b;
+	border: 1px solid #ced4da;
+}
+
+#cs>.csMainContainer>div>div>div {
+	justify-content: flex-end;
+}
+
+#cs>.csMainContainer>div>div>div>.btn {
+	position: relative;
+}
+
+#cs > div > div.container > div.qna.pagination {
+	justify-content: center;
+	align-content: center;
+}
+
+
+
+.panel-cs-container {
+	margin-bottom: -16px;
+}
+
+.panel-cs-title {
+	color: #06BBCC;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.panel-cs-answer {
+	height: 0;
+	overflow: hidden;
+	/* 변화가 시작되는 쪽에다가 transition 적용해준다 0 -> 300px 
+  왜? 닫기 버튼을 누를 때 변화가 티남 */
+	transition: all 1s;
+}
+
+#btn-all-close {
+	margin-bottom: 10px;
+	background-color: #06BBCC;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	padding: 10px 25px;
+	float: right;
+}
+
+#btn-all-close:hover {
+	background-color: #181d38;
+	color: white;
+	transition: all 0.35s;
+}
+
+.activeFaq {
+	display: block;
+	/* 높이를 정해줘야지만 transition이 적용됨 */
+	height: auto;
+	text-align: left;
+}
+
+#btn-insert {
+	float: right;
+	margin-top: 20px;
+}
+
+#cs>div>div.container>div:nth-child(3) {
+	float: right;
+	margin-right: 10px;
+}
+
+.main-cate1{
+	display: flex;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	margin-bottom: 5px;
+	flex-direction: column;
+}
+
+.cate-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+	margin-bottom: 5px;
+	width: auto;
+	padding: 10px;
+}
+
+.cate-child {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	width: 200px;
+}
+
+.cate-child span{
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+

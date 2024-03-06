@@ -15,99 +15,119 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+/**
+ * 배너 광고 서비스
+ * @Author : 이준혁
+ */
 @Slf4j
 @Service
 public class BannerAdService {
 
-    @Autowired
-    private BannerAdRepository bannerAdRepository;
+	@Autowired
+	private BannerAdRepository bannerAdRepository;
 
-    public BannerAdService(BannerAdRepository bannerAdRepository) {
-        this.bannerAdRepository = bannerAdRepository;
-    }
+	public BannerAdService(BannerAdRepository bannerAdRepository) {
+		this.bannerAdRepository = bannerAdRepository;
+	}
 
+	// 총 광고 수 조회 메서드
+	public long getTotalAdCount() {
+		return bannerAdRepository.getAdTotalCount();
+	}
+	
+	public int getTotalPrice() {
+		return bannerAdRepository.getTotalPrice();
+	}
 
-    // 총 광고 수 조회 메서드
-    public long getTotalAdCount() {
-        return bannerAdRepository.getAdTotalCount();
-    }
+	public List<BannerAd> findById(Integer id) {
+		return bannerAdRepository.findById(id);
+	}
 
-    public List<BannerAd> findById(Integer id){
-        return bannerAdRepository.findById(id);
-    }
+	// 업로드 처리
+	@Transactional
+	public void uploadBannerAd(BannerAdFormDto dto) {
+		BannerAd bannerAd = BannerAd.builder().title(dto.getTitle()).content(dto.getContent()).writer(dto.getWriter())
+				.originFileName(dto.getOriginFileName()).uploadFileName(dto.getUploadFileName()).postYn(dto.getPostYn())
+				.build();
 
-    // 업로드 처리
-    @Transactional
-    public void uploadBannerAd(BannerAdFormDto dto) {
-        BannerAd bannerAd = BannerAd.builder()
-                .title(dto.getTitle())
-                .content(dto.getContent())
-                .writer(dto.getWriter())
-                .originFileName(dto.getOriginFileName())
-                .uploadFileName(dto.getUploadFileName())
-                .postYn(dto.getPostYn())
-                .build();
+		int result = bannerAdRepository.insert(bannerAd);
+		if (result != 1) {
+			throw new CustomRestFulException(Define.FAIL_UPLOAD_AD, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
-        int result = bannerAdRepository.insert(bannerAd);
-        if(result != 1) {
-            throw new CustomRestFulException(Define.FAIL_UPLOAD_AD, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	// 페이징된 배너 목록 조회
+	public PageRes<BannerAd> getAdWithPaging(PageReq pageReq, String writer) {
+		int page = pageReq.getPage();
+		int size = pageReq.getSize();
+		int offset = (page - 1) * size; // 오프셋 계산
 
+		// 총 데이터 개수 조회
+		long totalElements = bannerAdRepository.getAdTotalCount();
 
-    // 페이징된 유저 목록 조회
-    public PageRes<BannerAd> getAdWithPaging(PageReq pageReq, String writer) {
-        int page = pageReq.getPage();
-        int size = pageReq.getSize();
-        int offset = (page - 1) * size; // 오프셋 계산
+		// 페이징 처리된 유저 목록 조회
+		List<BannerAd> ads = bannerAdRepository.findAllWithPagingAndWriter(offset, size, writer);
 
-        // 총 데이터 개수 조회
-        long totalElements = bannerAdRepository.getAdTotalCount();
+		// 페이징 결과 객체 생성
+		PageRes<BannerAd> pageRes = new PageRes<>(ads, page, totalElements, size);
 
-        // 페이징 처리된 유저 목록 조회
-        List<BannerAd> ads = bannerAdRepository.findAllWithPagingAndWriter(offset, size, writer);
+		return pageRes;
+	}
 
-        // 페이징 결과 객체 생성
-        PageRes<BannerAd> pageRes = new PageRes<>(ads, page, totalElements, size);
+	// 상세조회
+	public Optional<BannerAd> findByBannerId(int id) {
+		// db 상세조회 호출
+		Optional<BannerAd> optionalBannerAd = bannerAdRepository.findByBannerId(id);
 
-        return pageRes;
-    }
+		return optionalBannerAd;
+	}
 
-    // 상세조회
-    public Optional<BannerAd> findByBannerId(int id) {
-        // db 상세조회 호출
-        Optional<BannerAd> optionalBannerAd = bannerAdRepository.findByBannerId(id);
+	// 수정
+	public int save(BannerAd bannerAd) {
+		int queryResult = -1;
+		try {
+			if (bannerAd.getId() == null) {
+				queryResult = bannerAdRepository.insert(bannerAd);
+			} else {
+				queryResult = bannerAdRepository.update(bannerAd);
+			}
+		} catch (Exception e) {
+			log.debug(e.getMessage());
+		}
 
-        return optionalBannerAd;
-    }
+		return queryResult;
+	}
 
-    // 저장
-    public int save(BannerAd bannerAd) {
-        int queryResult = -1;
-        try {
-            if (bannerAd.getId() == null) {
-                queryResult = bannerAdRepository.insert(bannerAd);
-            } else {
-                queryResult = bannerAdRepository.update(bannerAd);
-            }
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-        }
+	// 삭제함수
+	public boolean removeById(int id) {
+		try {
+			if (bannerAdRepository.existById(id) > 0) {
+				bannerAdRepository.deleteById(id);
+				return true;
+			}
+		} catch (Exception e) {
+			log.debug(e.getMessage());
+		}
+		return false;
 
-        return queryResult;
-    }
-
-    // 삭제함수
-    public boolean removeById(int id) {
-        try {
-            if(bannerAdRepository.existById(id) > 0) {
-                bannerAdRepository.deleteById(id);
-                return true;
-            }
-        } catch (Exception e) {
-            log.debug(e.getMessage());
-        }
-        return false;
-
-    }
+	}
+	
+	
+	
+	// 광고상태여부 변경
+	 public void updatePostStatus(Long id, String postYn) {
+	        bannerAdRepository.updatePostStatus(id, postYn);
+	    }
+	 
+	 
+	 // 배너 클릭수 증가
+	 public void increaseClicks(Long id) {
+	        bannerAdRepository.increaseClicks(id);
+	    }
+	 
+	 // 배너 광고 수익 
+	 public int getBannerAdPriceById(int id) {
+	        return bannerAdRepository.getBannerAdPriceById(id);
+	    }
 }

@@ -1,30 +1,51 @@
 package com.library.bookhub.entity;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+/**
+ * 사용자 엔티티
+ * @Author : 이준혁
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class User {
     private Long id;
-    private String username;
+    private String userName;
     private String password;
     private String name;
     private int gender;
     private String phone;
     private String email;
-    private int type;
+    private String role;
     private int point;
     private String zip;
     private String addr1;
     private String addr2;
-    private int status;
     private LocalDateTime wDate;
     private LocalDateTime rDate;
+    
+    
+	// 포메터 기능(금액)
+	public String formatBalancePoint() {
+		// 1000 -> 1,000
+		DecimalFormat df = new DecimalFormat("#,###");
+		String formaterNumber = df.format(point);
+		return formaterNumber + " 포인트";
+	}
+
+
+    // 포메터 기능(날짜)
+    public String formatDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
+        return wDate.format(formatter);
+    }
+	
 }

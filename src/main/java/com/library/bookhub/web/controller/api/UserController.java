@@ -8,6 +8,8 @@ import com.library.bookhub.web.dto.common.PageRes;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -19,11 +21,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * 유저 컨트롤러
+ * @Author : 이준혁
+ */
 @Slf4j
 @Controller
 @RequestMapping("/user")
@@ -104,5 +111,25 @@ public class UserController {
         return new RedirectView("/user/list");
     }
 
+    
+    // 마이페이지
+    @GetMapping("/mypage")
+    public String myPage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        // 현재 인증된 사용자 정보를 가져와서 모델에 추가합니다.
+        model.addAttribute("user", userDetails);
+        
+        // mypage.html에 해당하는 뷰를 반환합니다.
+        return "pages/myPage/myPageDetail";
+    }
+    
+    
+    @GetMapping("/principal")
+    @ResponseBody
+    public String getPrincipal(@AuthenticationPrincipal UserDetails userDetails) {
+    	if(userDetails != null) {
+    		return userDetails.getUsername();
+    	}
+    	return "";
+    }
 
 }
