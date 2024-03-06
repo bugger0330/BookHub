@@ -124,12 +124,16 @@ window.onload = function() {
 			})
 		} // for문 end
 		
-		// 모임 인기순 목록
+		/*// 모임 인기순 목록
 		const tab2Btn = document.getElementById('tab2--button');
+		
+		// wishBtns 전역변수로 위에서 선언해놔서 인덱스 아무거나 사용해서 data-principal 값 가져오기
+		const principal = wishBtns[0].getAttribute('data-principal');
+		
 		
 		tab2Btn.addEventListener('click', function() {
 			
-			alert('클릭');
+			//alert('principal : ' + principal);
 			
 			$.ajax({
 				url : '/club/popular',
@@ -137,36 +141,34 @@ window.onload = function() {
 				type : 'get',
 				
 				success : function(data) {
-					alert('성공1');
+					//alert('성공1');
+					console.log(data);
+					
+					let html = "";
 					// 서버로부터 받은 데이터(data)를 처리하여 HTML을 생성하는 코드
         			// 받은 데이터를 순회하면서 각 클럽 정보를 추출하고, HTML을 동적으로 생성하여 화면에 추가
 					// data로 받은 리스트 안에 있는 각각의 객체를 'club' 이라는 변수로 사용
 					data.forEach(function(club) {
 						
-						var clubId = club.id;
-						var clubName = club.clubName;
-						var host = club.host;
-						var descript = club.descript;
-						var formatCDate = club.formatCDate();
-						var setupClubImage = club.setupClubImage();
-						// index 페이지에서 principal 값을 JavaScript 변수에 할당
-						var principal = "${principal}";
 						
-						// HTML 생성 / principal은 index 페이지뜰때 저장해놓으니까 이 html에 적용되겠지
-			            var html = `
+						//alert('성공2');
+						
+						// HTML 생성 / principal은 index 페이지뜰때 저장해놓으니까 이 html에 적용되겠지 -> 적용 안됨!!!! principal 변수 선언해서 가져옴
+						// 근데 왜 ${principal} 밖에 안되지?
+			            html += `
 			                <div class="col-md-6 col-lg-4 col-xl-3">
-			                    <a href="/club/view/${clubId}">
+			                    <a href="/club/view/${club.id}">
 			                        <div class="rounded position-relative fruite-item">
 			                            <div class="fruite-img">
-			                                <img src="${setupClubImage}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
+			                                <img src="${club.setupClubImage}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
 			                            </div>
 			                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-			                                <h4>${clubName}</h4>
-			                                <h6>${host}</h6>
-			                                <p>${descript}</p>
+			                                <h4>${club.clubName}</h4>
+			                                <h6>${club.host}</h6>
+			                                <p>${club.descript}</p>
 			                                <div class="d-flex justify-content-between flex-lg-wrap">
-			                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${formatCDate}</p>
-			                                    <i data-id="${clubId}" data-principal="${principal}" name="wishButton" class="bi-heart" style="font-size: 50px; cursor: default;"></i>
+			                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${club.formatCDate}</p>
+			                                    <i data-id="${club.id}" data-principal="${principal}" name="wishButton" class="bi-heart" style="font-size: 50px; cursor: default;"></i>
 			                                </div>
 			                            </div>
 			                        </div>
@@ -179,13 +181,13 @@ window.onload = function() {
            				$('#clubList').append(html);
 					})
 					// 여기로 안들어옴!!!!!!!!!!!
-					alert('성공3');
+					//alert('성공3');
 				},
 				error : function() {
 					alert('에러');
 				}
 			})
-		})
+		})*/
 		
 		
 		

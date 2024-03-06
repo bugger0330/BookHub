@@ -228,29 +228,22 @@
                                </div>
                            </div>
                        </div>
-                       
-                   </div>
-                   <!-- tab-content -->
-                   <div class="tab-content">
-                   		<!-- active는 index페이지 뜰 때 뜨는것이므로 삭제 -->
-                   		<div id="tab-2" class="tab-pane fade show p-0">
+                       <!-- 2번탭-->
+                       <!-- active는 index페이지 뜰 때 뜨는것이므로 삭제 -->
+                   	   <div id="tab-2" class="tab-pane fade show p-0">
                            <div class="row g-4">
                                <div class="col-lg-12">
                                		<!-- 자바스크립트로 동적으로 생성한 html을 id 값을 이용하여 추가 -->	   
-                               		<div  class="row g-4">
+                               		<div id="clubList" class="row g-4">
+                                    <!-- 반복문 시작 -->
                                    
-                                   <!-- 반복문 시작 -->
-                                   
-                                   <!-- 반복문 끝 -->
-                                       
-                                       
+                                    <!-- 반복문 끝 -->
                                    </div>
                                </div>
                            </div>
-                       </div>
-                       
+                        </div>
+                        <!--2번탭-->
                    </div>
-                   <!-- tab-content -->
                </div>      
            </div>
        </div>
