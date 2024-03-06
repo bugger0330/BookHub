@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.library.bookhub.entity.Attendance;
 import com.library.bookhub.handler.exception.CustomRestFulException;
+import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.CalendarPointService;
 
 import jakarta.servlet.http.HttpSession;
@@ -32,14 +33,18 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class CalendarRestfulController {
 	
+	
+	@Autowired
+	private UserDetailsServiceImpl serviceImpl;
+	
 	@Autowired
 	private CalendarPointService calendarPointService;
 	
 	// 날짜 계산, 출석체크 조회
 	@GetMapping("/calendar/month")
-	public Map<String, Object> CalculateDate(@AuthenticationPrincipal UserDetails user) {
+	public Map<String, Object> CalculateDate() {
 		
-		String userId = user.getUsername();
+		String userId = serviceImpl.getUserId();
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();
         
