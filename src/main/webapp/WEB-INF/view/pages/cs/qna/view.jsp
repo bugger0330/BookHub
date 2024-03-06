@@ -52,7 +52,7 @@
 				</div>
 			</div>
 
-			<div>
+			<div id="modifyBtn">
 				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
 				<button class="btn btn-warning" id="btn-update">수정하기</button>
 				<button id="btn-delete" class="btn btn-danger">삭제하기</button>

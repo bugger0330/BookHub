@@ -72,12 +72,12 @@ public class CsNoticeService {
     }
 
 	public List<CsNoticeEntity> noticeSearchPage(String searchType, String searchInput) {
-		// TODO Auto-generated method stub
+		
 		return csNoticeRepository.noticeSearchPage(searchType, searchInput);
 	}
 
 	public List<CsNoticeEntity> noticeList() {
-		// TODO Auto-generated method stub
+		
 		return csNoticeRepository.noticeList();
 	}
 	

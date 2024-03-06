@@ -86,7 +86,7 @@
 	margin-top: 20px;
 }
 
-#cs>div>div.container>div:nth-child(3) {
+#modifyBtn {
 	float: right;
 	margin-right: 10px;
 }
