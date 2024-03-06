@@ -46,7 +46,9 @@ searchBtn.onclick = () => {
 	$.ajax({
 		type : "get",
 		url : `/book/search/${option}/${searchInput.value}`,
+		async : false,
 		success : function(data){
+			console.log("검색결과", data);
 			if(data != ""){
 				innerFun(data);
 			}else{

@@ -1,24 +1,39 @@
 const innerBody = document.querySelector(".cate-body");
 
 
-load();
+cateLoad();
 
-function load(){
-	
-    $.ajax({
-        type : "get",
-        url : "/csCategory",
-        async : false,
-        success : function(data){
-            if(data != ""){
-                innerFun(data);
-            }
-        },
-        error : function(){
-            alert("에러");
-        }
-    });
+function cateLoad(){
+	const arrs = (JSON.parse(localStorage.getItem("listData")) == null) ? 
+		null : (JSON.parse(localStorage.getItem("listData")));
+	if(arrs == null){
+		$.ajax({
+	        type : "get",
+	        url : "/csCategory",
+	        async : false,
+	        success : function(cData){
+	            if(cData != ""){
+	                innerFun(cData);
+	                arrFun(cData);
+	            }
+	        },
+	        error : function(){
+	            alert("에러");
+	        }
+	    });
+	}else{
+		innerFun(arrs);
+	}
 }
+
+function arrFun(data){
+	const listData = new Array();
+	for(let i = 0; i < data.length; i++){
+		listData.push(data[i]);
+	}
+	localStorage.setItem("listData", JSON.stringify(listData));
+}
+
 
 function innerFun(data){
     let innr = "";
@@ -30,15 +45,15 @@ function innerFun(data){
     innerBody.innerHTML = innr;
 
     const cChild = document.querySelectorAll(".cate-child");
-    for(let k = 0; k < data.length; k++){
+    for(let v = 0; v < data.length; v++){
         let innr2 = "";
-        for(let g = 0; g < data[k].respList.length; g++){
+        for(let g = 0; g < data[v].respList.length; g++){
             innr2 += `
-                <span class="child-item">${data[k].respList[g].c2Name}</span>
-                <input class="hidden-address" type="hidden" value="${data[k].respList[g].address}" />
+                <span class="child-item">${data[v].respList[g].c2Name}</span>
+                <input class="hidden-address" type="hidden" value="${data[v].respList[g].address}" />
             `;
         }// for(let g
-        cChild[k].innerHTML = innr2;
+        cChild[v].innerHTML = innr2;
     }// for(let k
 
     for(let i = 0; i < cChild.length; i++){

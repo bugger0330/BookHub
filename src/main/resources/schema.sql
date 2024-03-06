@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS bh_member;
 DROP TABLE IF EXISTS bh_member_point;
 DROP TABLE IF EXISTS bh_book;
+DROP TABLE IF EXISTS bh_user_point;
 DROP TABLE IF EXISTS bh_product_cart;
 DROP TABLE IF EXISTS bh_book_borrow;
 DROP TABLE IF EXISTS bh_cs_qna;
@@ -13,8 +14,9 @@ DROP TABLE IF EXISTS bh_payment;
 DROP TABLE IF EXISTS bh_club;
 DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
+DROP TABLE IF EXISTS bh_point_product;
 DROP TABLE IF EXISTS bh_point_shop;
-DROP TABLE IF EXISTS  bh_attendance;
+DROP TABLE IF EXISTS bh_attendance;
 DROP TABLE IF EXISTS bh_club_wish_list;
 DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;

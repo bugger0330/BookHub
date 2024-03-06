@@ -10,6 +10,7 @@ function load(){
 	$.ajax({
 		type : "get",
 		url : `/book/info/${addressNum}`,
+		async : false,
 		success : function(data){
 			if(data != null){
 				innerFun(data);

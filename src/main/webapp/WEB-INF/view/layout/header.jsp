@@ -64,6 +64,7 @@
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="/js/principal.js"></script>
     
+    
 </head>
 
 <body>
@@ -171,3 +172,11 @@
         </div>
     </nav>
     <!-- 내비바 끝 -->
+    <!-- 사이드 메뉴 -->
+	<div class="main-category">
+		<div class="main-cate1">
+			<div class="cate-body"></div>
+		</div>
+	</div>
+	<!-- 사이드 메뉴 -->
+    <script src="/js/cs/csCate.js"></script>
