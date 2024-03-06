@@ -116,20 +116,18 @@
 		<i class="bi bi-chat-dots-fill"></i>
 	</button>
 
-	<!-- 사이드 메뉴 -->
-	<div class="main-category">
-		<div class="main-cate1">
-			<div class="cate-body"></div>
-		</div>
-	</div>
-	<!-- 사이드 메뉴 -->
+	
 	
 	<!-- Back to Top -->
 	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
 		class="bi bi-arrow-up"></i></a>
 
 	<!-- JavaScript code -->
+<<<<<<< HEAD
 	<!-- <script src="/js/cs/csCate.js"></script> -->
+=======
+	
+>>>>>>> 951e3bc500082435658c4e6072cca77b85f3c51f
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 	<script
