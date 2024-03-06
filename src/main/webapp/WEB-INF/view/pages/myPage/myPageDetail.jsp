@@ -11,38 +11,7 @@
 <link href="/img/favicon.ico" rel="icon">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-.card {
-	border: none;
-	border-radius: 10px;
-	overflow: hidden;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition: all 0.3s ease;
-}
-
-.card:hover {
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.card-img {
-	width: 100%;
-	height: auto;
-}
-
-.card-header {
-	background-color: #007bff; /* 파란색 배경색 */
-	color: white; /* 흰색 텍스트 */
-	padding: 15px; /* 안쪽 여백 */
-	border-radius: 10px 10px 0 0; /* 둥근 테두리 설정 */
-}
-
-.rounded-box {
-	border: 1px solid #ced4da;
-	border-radius: 10px;
-	padding: 10px;
-	margin-bottom: 10px;
-}
-</style>
+<link href="/css/myPage/myPageDetail.css" rel="stylesheet">
 </head>
 <body>
 
