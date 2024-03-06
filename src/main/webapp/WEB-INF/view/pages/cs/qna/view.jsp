@@ -23,6 +23,9 @@
 		<div class="container">
 
 			<div class="container mt-3">
+
+			
+
 				<h2>문의글 상세보기</h2>
 				<form>
 					<div class="mb-3">
@@ -39,14 +42,14 @@
 
 			<div class="container mt-5">
 				<h2>댓글 등록 폼</h2>
-					<div class="form-group">
-						<label for="commentContent">댓글 내용</label>
-						<textarea class="form-control" id="reply-content" rows="3"
-							placeholder="댓글 내용을 입력하세요"></textarea>
-					</div>
-					<button type="button" class="btn btn-primary"
-						id="btn-save-reply">댓글 등록</button>
-				
+				<div class="form-group">
+					<label for="commentContent">댓글 내용</label>
+					<textarea class="form-control" id="reply-content" rows="3"
+						placeholder="댓글 내용을 입력하세요"></textarea>
+				</div>
+				<button type="button" class="btn btn-primary" id="btn-save-reply">댓글
+					등록</button>
+
 				<div id="commentList" class="mt-4">
 					<!-- 여기에 댓글 목록이 나열될 것입니다. -->
 				</div>
