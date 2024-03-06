@@ -129,7 +129,7 @@
 		class="bi bi-arrow-up"></i></a>
 
 	<!-- JavaScript code -->
-	<script src="/js/cs/csCate.js"></script>
+	<!-- <script src="/js/cs/csCate.js"></script> -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 	<script
