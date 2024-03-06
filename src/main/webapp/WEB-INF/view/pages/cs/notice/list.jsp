@@ -22,17 +22,27 @@
 
 			<div>
 				<h2>공지사항</h2>
+
+				<div class="btn-group" role="group"
+					aria-label="Basic outlined example" style="display: flex;">
+					<button type="button" class="btn btn-outline-primary"
+						id="btnInsert" style="flex: none;">
+						</a>등록
+					</button>
+				</div>
+
 				<div class="input-group" style="margin-top: 30px;">
 					<select name="searchType" class="searchType">
-						<option value="title" >제목</option>
-						<option value="content" >내용</option>
-						<option value="rdate" >작성일</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>
+						<option value="rdate">작성일</option>
 					</select>
 					<div class="form-outline">
-						<input type="search" id="form1" class="searchInput" name="keyword" placeholder="Search" />
+						<input type="search" id="form1" class="searchInput" name="keyword"
+							placeholder="Search" style="height: 40px" />
 					</div>
 
-					<button type="button" class="btn btn-primary searchButton" >
+					<button type="button" class="btn btn-primary searchButton">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
@@ -84,8 +94,8 @@
 	</div>
 </section>
 <script src="/js/cs/csSearch.js">
+</script>
 <script src="/js/cs/csNotice.js">
-
 </script>
 <script>
 	function loadView() {

@@ -19,6 +19,7 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -79,19 +80,13 @@ public class SecurityConfigration implements WebMvcConfigurer {
             // 인가 권한 설정
             .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
             		.requestMatchers("/**").permitAll()
-            		.requestMatchers("/home").permitAll()
+            		.requestMatchers("/carousel").permitAll()
+            		.requestMatchers("/home","/").permitAll()
+            		.requestMatchers("/header","/footer").permitAll()
             		.requestMatchers("/login").permitAll()
-                    .requestMatchers("/h2-console/**").permitAll()
-                    .requestMatchers(PathRequest.toH2Console()).permitAll()
-                    .requestMatchers("/user/**").permitAll()
-                    .requestMatchers("/club/**").permitAll()
-                    .requestMatchers("/ad/**").permitAll()
-                    .requestMatchers("/myPage/**").permitAll()
-                    .requestMatchers("/payment/**").permitAll()
-                    .requestMatchers("/product-category/**").permitAll()
-                    .requestMatchers("/api/**").permitAll()
-                    .requestMatchers("/sc-product/**").permitAll()
-                    .requestMatchers("/point-product/**").permitAll()
+            		.requestMatchers("/point/calendarPoint").authenticated()
+            		.requestMatchers("/h2-console/**").permitAll()
+                    .requestMatchers(PathRequest.toH2Console()).authenticated()
             	    .requestMatchers("/admin").hasAuthority("ADMIN") // "/admin" 경로에 대한 권한 설정
             	    .requestMatchers("/css/**", "/js/**", "/img/**", "/lib/**").permitAll());
 

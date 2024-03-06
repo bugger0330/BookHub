@@ -19,18 +19,17 @@
 	</select>
 	
 	<select id="findEmailByUsername">
-		SELECT `userName`,`email` FROM bh_member WHERE `email`=#{email}
+		SELECT `userName`,`email` FROM bh_member WHERE `email`=#{email} AND `email` NOT LIKE '%\_%'
 	</select>
 	
 	<select id="countIdAndEmailByUser">
-		SELECT COUNT(*) FROM bh_member WHERE `userName`=#{username} AND `email`=#{email}
+		SELECT COUNT(*) FROM bh_member WHERE `userName`=#{username} AND `email`=#{email} AND `email` NOT LIKE '%\_%'
 	</select>
 	
 	<update id="updatePassword">
 		UPDATE bh_member SET `password` = #{password} WHERE `userName` = #{userName}
 	</update>
 	
-	<!-- 이동될 수도 있는 태그 -->
 	<update id="updateAttendanceByPoint">
 		UPDATE bh_member SET `point`= point + #{point} WHERE `userName` = #{userName}
 	</update>

@@ -2,6 +2,8 @@ package com.library.bookhub.entity.cs;
 
 import java.sql.Timestamp;
 
+import com.library.bookhub.utils.TimeUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +22,9 @@ public class CsFaqEntity {
 	private String content;
 	private String writer;
 	private Timestamp rdate;
+
+	// "yyyy-MM-dd"
+	public String formatRdate() {
+		return TimeUtils.dateToString(rdate);
+	}
 }

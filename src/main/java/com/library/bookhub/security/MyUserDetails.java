@@ -39,7 +39,9 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
         this.user = user;
         this.attributes = attributes;
         this.isOAuthUser = true;
+        
     }
+    
     
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -74,6 +76,7 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 
 	@Override
 	public String getUsername() {
+		
 		return user.getUserName();
 	}
 	

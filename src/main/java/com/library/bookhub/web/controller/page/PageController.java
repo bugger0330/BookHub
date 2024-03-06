@@ -1,10 +1,18 @@
 package com.library.bookhub.web.controller.page;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.library.bookhub.entity.User;
+import com.library.bookhub.utils.Define;
+
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class PageController {
+	
+	
 
 	// ---------------- 메인 페이지 ----------------//
 
@@ -78,11 +86,12 @@ public class PageController {
 		return "pages/admin/test";
 	}
 	
-	// 공지사항 추가 페이지
-	@GetMapping("/notice/insert")
-	public String noticeInsertPage() {
-		return "pages/cs/notice/insert";
-	}
+	/*
+	 * // 공지사항 추가 페이지
+	 * 
+	 * @GetMapping("/notice/insert") public String noticeInsertPage() { return
+	 * "pages/cs/notice/insert"; }
+	 */
 
 	// ---------------- 관리자 페이지 ----------------//
 
@@ -95,6 +104,8 @@ public class PageController {
 	// 어드민 페이지
 	@GetMapping("/admin")
 	public String adminPage() {
+		
+	
 		return "pages/admin/main";
 	}
 

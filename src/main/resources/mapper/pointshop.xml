@@ -13,8 +13,11 @@
 
 	<select id="findAllWithPagingAndProdName"
 		resultType="com.library.bookhub.entity.PointShop">
-		SELECT * FROM bh_point_shop WHERE LOWER(prodName) LIKE CONCAT('%',
-		LOWER(#{prodName}),'%') LIMIT #{limit} OFFSET #{offset}
+		
+		
+			<![CDATA[
+   SELECT * FROM bh_point_shop WHERE LOWER(prodName) LIKE '%' || #{prodName} || '%' LIMIT #{limit} OFFSET #{offset}
+    ]]>
 	</select>
 	
 	<select id="getTotalCount" resultType="int">

@@ -76,9 +76,9 @@
                                                    <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
                                                </div>
                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                   <h4>${club.clubName}</h4>
+                                                   <h4 style="height: 50px;">${club.clubName}</h4>
                                                    <h6>${club.host}</h6>
-                                                   <p>${club.descript}</p>
+                                                   <p style="height: 60px;">${club.descript}</p>
                                                    <div class="d-flex justify-content-between flex-lg-wrap">
                                                    		<!-- Club의 cDate 타입이 Timestamp라 바로 출력이 안되서 포멧해줘야함(문자열로) -->
 					                                    <p class="text-dark fs-5 fw-bold mb-0" style="margin-top: 5%;">${club.formatCDate()}</p>
