@@ -23,18 +23,17 @@
 			<div>
 				<h2>공지사항</h2>
 
-                <!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
+				<!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
 					<div class="btn-group" role="group"
-					aria-label="Basic outlined example" style="display: flex;">
-					<button type="button" class="btn btn-outline-primary"
-						id="btnInsert" style="flex: none;">
-						</a>등록
-					</button>
-				</div>
+						aria-label="Basic outlined example" style="display: flex;">
+						<button type="button" class="btn btn-outline-primary"
+							id="btnInsert" style="flex: none;">
+							</a>등록
+						</button>
+					</div>
 				</sec:authorize>
 
-				
 
 				<div class="input-group" style="margin-top: 30px;">
 					<select name="searchType" class="searchType">
@@ -51,20 +50,24 @@
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
+				
 			</div>
-			<table class="table table-hover"
-				style="margin-top: 30px; margin-bottom: 30px;">
-				<thead class="thead-light text-center">
-					<tr>
-						<th>No</th>
-						<th>NOTICE Title</th>
-						<th>File</th>
-						<th>Writer</th>
-						<th>Date</th>
-					</tr>
-				</thead>
-				<tbody class="text-center noticeLists"></tbody>
-			</table>
+
+			
+				<table class="table table-hover">
+					<thead class="thead-light text-center">
+						<tr>
+							<th>No</th>
+							<th>NOTICE Title</th>
+							<th>File</th>
+							<th>Writer</th>
+							<th>Date</th>
+						</tr>
+					</thead>
+					<tbody class="text-center noticeLists"></tbody>
+				</table>
+			
+
 
 			<!-- 페이징 처리 -->
 			<div class="qna pagination">
@@ -99,8 +102,10 @@
 	</div>
 </section>
 <script src="/js/cs/csSearch.js">
+	
 </script>
 <script src="/js/cs/csNotice.js">
+	
 </script>
 <script>
 	function loadView() {

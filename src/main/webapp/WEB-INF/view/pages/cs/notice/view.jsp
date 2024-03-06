@@ -14,44 +14,58 @@
 </div>
 <!-- Header End -->
 
-<section id="cs">
+<section id="cs" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container csMainContainer">
 
-	<div class="csMainContainer">
+        <div class="container">
 
-		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
+            <div class="container mt-3">
 
-		<div class="container">
+                <h2 style="margin-bottom: 80px;">공지사항 상세보기</h2>
 
-			<div class="container mt-3">
+                <div class="mb-3">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="font-weight-bold text-center" style="width: 100px; background-color: #2bc5d4; color: #fff;">Title</th>
+                            <td id="title-display" style="text-align: left;"></td>
+                        </tr>
+                    </table>
+                </div>
 
-				<h2>공지사항 상세보기</h2>
-				<div class="mb-3">
-					<label for="title">Title:</label> <span id="title-display"></span>
-				</div>
-				<div class="mb-3">
-					<label for="content">Content:</label> <span id="content-display"></span>
-				</div>
-				<div class="mb-3">
-					<label for="filepath">File :</label> <span id="file-display"></span>
-				</div>
-			</div>
+                <div class="mb-3">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="font-weight-bold text-center" style="width: 100px; background-color: #2bc5d4; color: #fff;">Content</th>
+                            <td id="content-display" style="text-align: left;"></td>
+                        </tr>
+                    </table>
+                </div>
 
-			<div>
-				<button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
-				<!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
+                <div class="mb-3">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <th class="font-weight-bold text-center" style="width: 100px; background-color: #2bc5d4; color: #fff;">File</th>
+                            <td id="file-display" style="text-align: left;"></td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+            <div>
+                <button class="btn btn-secondary rounded-pill shadow-sm" onclick="history.back()" style="float: right; margin-left: 10px;">돌아가기</button>
+                <!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-					<button id="btn-delete" class="btn btn-danger">삭제하기</button>
-				</sec:authorize>
-				
-			</div>
+                    <button id="btn-delete" class="btn btn-danger rounded-pill shadow-sm" style="float: right;">삭제하기</button>
+                </sec:authorize>
+            </div>
 
+        </div>
 
-		</div>
-
-
-	</div>
-	</div>
+    </div>
 </section>
+
+
 
 <script src="/js/cs/csNotice.js"></script>
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

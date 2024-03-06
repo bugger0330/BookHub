@@ -3,6 +3,8 @@ package com.library.bookhub.web.controller.cs;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,14 +67,17 @@ public class CsQnaController {
 	// Qna 작성하기 화면
 	@GetMapping("/qna/insert")
 	public String qnaInsertPage() {
-		System.out.println("b");
+
 		return "pages/cs/qna/insert";
 	}
 
 	// Qna 작성하기
 	@PostMapping("/qna/insert")
-	public String qnaInsert(CsQnaDto dto) {
-		System.out.println("c");
+	public String qnaInsert(CsQnaDto dto, @AuthenticationPrincipal UserDetails userDetails) {
+		
+		String userId = userDetails.getUsername();
+		
+		System.out.println("유저 정보" +userId);
 		System.out.println(dto.toString());
 
 		// 파일 저장
@@ -80,7 +85,7 @@ public class CsQnaController {
 
 		System.out.println("filepath 확인" + filepath.toString());
 
-		boolean result = csQnaService.qnaInsert(dto, filepath);
+		boolean result = csQnaService.qnaInsert(dto, filepath, userId);
 
 		System.out.println(result);
 		

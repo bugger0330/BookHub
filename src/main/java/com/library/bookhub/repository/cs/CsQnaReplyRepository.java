@@ -16,7 +16,7 @@ public interface CsQnaReplyRepository {
 	public List<CsQnaReplyEntity> selectCsQnaReplyList();
 
 	// QnaReply 작성
-	public int qnaReplyInsert(CsQnaReplyEntity csQnaReplyEntity);
+	public int qnaReplyInsertAndUpdateQna(CsQnaReplyEntity csQnaReplyEntity);
 
 	// QnaReply 삭제하기
 	public int qnaReplyDelete(int id);

@@ -33,17 +33,17 @@ public class CsQnaReplyService {
 
 	// QnaReply 작성하기
 	@Transactional
-	public boolean qnaReplyInsert(CsQnaReplyDto dto, int qnaId) {
+	public boolean qnaReplyInsertAndUpdateQna(CsQnaReplyDto dto, int qnaId, String userId) {
 		
 		CsQnaEntity csQnaEntity = csQnaRepository.qnaView(qnaId);
 		
 		CsQnaReplyEntity csQnaReplyEntity = CsQnaReplyEntity.builder()
 				.content(dto.getContent())
-				.writer(dto.getWriter())
+				.writer(userId)
 				.qnaId(dto.getQnaId())
 				.build();
 
-		int result = csQnaReplyRepository.qnaReplyInsert(csQnaReplyEntity);
+		int result = csQnaReplyRepository.qnaReplyInsertAndUpdateQna(csQnaReplyEntity);
 
 		if (result == 1) {
 			return true;

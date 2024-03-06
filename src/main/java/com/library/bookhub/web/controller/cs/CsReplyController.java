@@ -3,6 +3,8 @@ package com.library.bookhub.web.controller.cs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,34 +26,37 @@ public class CsReplyController {
 	@Autowired
 	CsQnaReplyService csQnaReplyService;
 
-
 	// QnaReply 작성하기 화면
 	@GetMapping("/qna/reply/{qnaId}")
 	public String qnaReplyInsertPage(@PathVariable("qnaId") int qnaId, Model model) {
 
 		model.addAttribute("qnaId", qnaId);
-		
+
 		System.out.println(qnaId);
-		
+
 		return "pages/cs/qna/view";
 	}
 
 	// QnaReply 작성하기
 	@PostMapping("/qna/reply/{qnaId}")
 	@ResponseBody
-	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto) {
+	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto,
+			@AuthenticationPrincipal UserDetails userDetails) {
+
+		String userId = userDetails.getUsername();
+
+		System.out.println("유저 정보" + userId);
 
 		System.out.println(qnaId);
 		System.out.println(dto);
-		
+
 		dto.setQnaId(qnaId);
-		
-		boolean result = csQnaReplyService.qnaReplyInsert(dto, qnaId);
+
+		boolean result = csQnaReplyService.qnaReplyInsertAndUpdateQna(dto, qnaId, userId);
 
 		System.out.println(result);
-		
+
 		return result;
 	}
-
 
 }

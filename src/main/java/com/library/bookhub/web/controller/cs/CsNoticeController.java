@@ -3,19 +3,18 @@ package com.library.bookhub.web.controller.cs;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.entity.cs.CsNoticeEntity;
 import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.CsFileService;
 import com.library.bookhub.service.CsNoticeService;
-import com.library.bookhub.web.dto.common.PageReq;
-import com.library.bookhub.web.dto.common.PageRes;
 import com.library.bookhub.web.dto.cs.CsNoticeDto;
 
 import lombok.extern.log4j.Log4j2;
@@ -24,9 +23,6 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class CsNoticeController {
 
-	@Autowired
-	UserDetailsServiceImpl serviceImpl; // 로그인유저 ID 가져오기
-	
 	@Autowired
 	CsNoticeService csNoticeService;
 
@@ -77,27 +73,27 @@ public class CsNoticeController {
 		return csNoticeEntity;
 	}
 
-	
-	 // Notice 작성하기 화면
-	 @GetMapping("/notice/insert") 
-	 public String noticeInsertPage() {
-	  
-	 return "pages/cs/notice/insert";
+	// Notice 작성하기 화면
+	@GetMapping("/notice/insert")
+	public String noticeInsertPage() {
+
+		return "pages/cs/notice/insert";
 	}
-	 
 
 	// Notice 작성하기
 	@PostMapping("/notice/insert")
-	public String noticeInsert(CsNoticeDto dto) {
-
-		System.out.println(dto.toString());
-
+	public String noticeInsert(CsNoticeDto dto,@AuthenticationPrincipal UserDetails userDetails) {
+		
+		String userId = userDetails.getUsername();
+		
+		System.out.println("유저 정보" +userId);
+		
 		// 파일 저장
 		String filepath = csFileService.saveFiles(dto.getFilepath());
 
 		System.out.println("filepath 확인" + filepath.toString());
 
-		boolean result = csNoticeService.noticeInsert(dto, filepath);
+		boolean result = csNoticeService.noticeInsert(dto, filepath, userId);
 
 		System.out.println(result);
 
@@ -116,8 +112,5 @@ public class CsNoticeController {
 
 		return result;
 	}
-	
-	
-	
 
 }

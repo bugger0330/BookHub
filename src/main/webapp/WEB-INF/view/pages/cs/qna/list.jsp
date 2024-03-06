@@ -18,9 +18,8 @@
 
 	<div class="csMainContainer">
 
-		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
 
-		<div class="container">
+		<div class="container" style="display: flex; flex-direction: column;">
 
 			<div>
 				<h2>문의하기</h2>
@@ -31,8 +30,6 @@
 						style="flex: none;"></a>등록</button>
 					<button type="button" class="btn btn-outline-primary"
 						style="flex: none;">나의 문의내역</button>
-					<button type="button" class="btn btn-outline-primary"
-						style="flex: none;">전체 문의내역</button>
 				</div>
 				
 			</div>
@@ -56,7 +53,7 @@
 									<p class="panel-cs-title">${list.title}</p>
 								</div>
 							</td>
-							<td>${list.writer}</td>
+							<td><span class="mask-writer">${list.writer}</span></td>
 							<!-- 작성자 마킹처리 -->
 							<td>${list.formatRdate()}</td>
 

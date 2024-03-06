@@ -29,7 +29,7 @@ public class CsQnaService {
 	}
 
 	// Qna 작성하기
-	public boolean qnaInsert(CsQnaDto dto , String filepath) {
+	public boolean qnaInsert(CsQnaDto dto , String filepath, String userId) {
 		
 		System.out.println("인서트 서비스"+ dto.getFilepath());
 		
@@ -37,6 +37,7 @@ public class CsQnaService {
 				.title(dto.getTitle())
 				.content(dto.getContent())
 				.filepath(filepath)
+				.writer(userId)
 				.build();
 
 		int result = csQnaRepository.qnaInsert(csQnaEntity);

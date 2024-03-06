@@ -12,7 +12,7 @@
 	</select>
 
 	<!-- QnaReply 작성하기 -->
-	<insert id="qnaReplyInsert">
+	<insert id="qnaReplyInsertAndUpdateQna">
 		INSERT INTO bh_cs_qna_reply (content, rdate, writer, qnaId)
 		VALUES (#{content}, now(), #{writer}, #{qnaId});
 	</insert>
