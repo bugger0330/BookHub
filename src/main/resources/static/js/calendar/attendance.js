@@ -1,8 +1,10 @@
 const ulElement = document.getElementById('calendar'); // 캘린더
 const title = document.querySelector(".ft_sb"); // 현재 월
+const li = document.querySelectorAll("li");
 
 let currentMonth = 1;
 let currentDay = 1;
+let currentPoint = 1;
 
 // 월, 현재 날짜
 fetch('/calendar/month',{
@@ -18,6 +20,7 @@ fetch('/calendar/month',{
 	const month = data.month;
 	const days = data.today;
 	let attendance = [];
+	const point = data.point;
 	
 	// attendance null 체크
 	if (data && data.attendance) {
@@ -34,6 +37,7 @@ fetch('/calendar/month',{
     // 저장
     currentMonth = month;
     currentDay = days;
+    currentPoint = point;
     
     // 달력 출력
     dateCalculator(currentMonth, currentDay);

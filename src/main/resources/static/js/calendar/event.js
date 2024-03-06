@@ -1,7 +1,15 @@
 const check = document.querySelector(".ft_sb_p"); // 출석체크 버튼
 const checkDiv = document.querySelector(".check-go-btn-bg");
-const li = document.querySelectorAll("li");
 const exit = document.querySelector(".exit");
+
+check.onmouseover = () => {
+    checkDiv.classList.add("check_go_btn_on");
+    // checkDiv.style.background = "background: rgba(255, 255, 255, 0.1);";
+} // 커서 갖다댔을때 백그라운드 이미지 바꾸는거 // 아직 구현 못함
+check.onmouseout = () => {
+    checkDiv.classList.remove("check_go_btn_on");
+    // checkDiv.style.background = "background: rgba(255, 255, 255, 0.1);";
+}
 
 // 전송
 check.onclick = () => {

@@ -13,19 +13,19 @@
 		SELECT * FROM bh_attendance WHERE `userId`=#{userId}
 	</select>
 	
-	<select id="selectByDays">
-		select count(*) from bh_attendance 
-			WHERE `userId`=#{userId} AND `attendanceDays` LIKE CONCAT('%', #{attendanceDays}, '%')
-	</select>
-	
 	<update id="updateByNewMonth">
 		UPDATE bh_attendance SET 
-			`lastMonth`=#{lastMonth}, `attendanceDays`=NULL WHERE `userId`=#{userId}
+			`lastMonth`=#{lastMonth}, `attendanceDays`=NULL, `point`=0 WHERE `userId`=#{userId}
 	</update>
 	
 	<update id="updateByAttendanceDays">
 		UPDATE bh_attendance SET 
 			`attendanceDays`=CONCAT(`attendanceDays`, #{attendanceDays}) WHERE `userId`=#{userId}
+	</update>
+	
+	<update id="updatePoint">
+		UPDATE bh_attendance SET 
+			`point`=#{point} WHERE `userId`=#{userId}
 	</update>
 	
 </mapper>

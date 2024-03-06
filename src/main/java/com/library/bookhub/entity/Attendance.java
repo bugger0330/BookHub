@@ -19,4 +19,5 @@ public class Attendance {
 	private String userId;
 	private int lastMonth; // 지난 달(혹은 현재 달)
 	private String attendanceDays; // 출석일
+	private int point;
 }

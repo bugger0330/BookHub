@@ -43,8 +43,8 @@ public class CalendarRestfulController {
 	// 날짜 계산, 출석체크 조회
 	@GetMapping("/calendar/month")
 	public Map<String, Object> CalculateDate() {
-		
 		String userId = serviceImpl.getUserId();
+		
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();
         
@@ -58,6 +58,7 @@ public class CalendarRestfulController {
         Attendance attendanceEntity = null;
         List<Integer> days = new ArrayList<>();
         Integer lastMonth = 0;
+        int point = 0;
         
         // 현재 정보 불러오기
         attendanceEntity = calendarPointService.readAttendance(userId);
@@ -68,6 +69,7 @@ public class CalendarRestfulController {
         	
 	        String attendanceDays = attendanceEntity.getAttendanceDays();
 	        days = calendarPointService.arrayConverter(attendanceDays);
+	        point = attendanceEntity.getPoint();
 	        
 	        // 지난 달(혹은 현재 월)
 	        lastMonth = attendanceEntity.getLastMonth();
@@ -86,6 +88,7 @@ public class CalendarRestfulController {
         result.put("month", currentMonth);
         result.put("today", currentDay);
         result.put("attendance", days);
+        result.put("point", point);
         
         return result;
         
@@ -116,17 +119,18 @@ public class CalendarRestfulController {
         String attendanceDays = attendanceEntity.getAttendanceDays();
         List<Integer> days = calendarPointService.arrayConverter(attendanceDays);
         int size = days.size();
-        log.info("size : "+size);
+        
         
         // 출석일수 추가
-        if(size < 7) {
+        if(size >= 2 && size <= 7) {
         	log.info("modifyAttendanceDays...1");
-        	calendarPointService.modifyAttendanceDays(today, userId);
+        	attendanceEntity = calendarPointService.modifyAttendanceDays(today, userId);
         	
         	 attendanceDays = attendanceEntity.getAttendanceDays();
              days = calendarPointService.arrayConverter(attendanceDays);
              size = days.size();
         }
+        log.info("size : "+size);
         
 		// 7일이 되면 적립
 		if(size == 7) {

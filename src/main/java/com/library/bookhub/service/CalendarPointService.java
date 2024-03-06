@@ -60,10 +60,12 @@ public class CalendarPointService {
 	}
 	
 	// 출석일 증가
-	public int modifyAttendanceDays(String today, String userId) {
+	public Attendance modifyAttendanceDays(String today, String userId) {
 		int result = attendanceRepository.updateByAttendanceDays(today+", ", userId);
+		Attendance attendance = attendanceRepository.selectByUserId(userId);
+		
 		log.info("modifyAttendanceDays : "+result);
-		return result;
+		return attendance;
 	}
 	
 	// 포인트 적립
@@ -71,6 +73,9 @@ public class CalendarPointService {
 	public int completePoint(String username) {
 		int addPoint = randomPoint();
 		
+		// 포인트 기록
+		attendanceRepository.updatePoint(addPoint, username);
+		// 포인트 저장
 		int result = memberRepository.updateAttendanceByPoint(addPoint, username);
 		log.info("completePoint : "+result+", user : "+username);
 		
