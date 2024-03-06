@@ -15,17 +15,17 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: asd1234!
+  datasource:
+    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: asd1234
 
-  datasource: # DB 설정
-    url: jdbc:h2:~/spring-bookhub-db2;MODE=MySQL # Embedded Mode ->  H2 DB 데이터를 로컬에 직접 저장
-    driver-class-name: org.h2.Driver
-    username: user # 유저 이름
-    password: # 비밀번호 (비워두면 비밀번호 X)
+#  datasource: # DB 설정
+#    url: jdbc:h2:~/spring-bookhub-db2;MODE=MySQL # Embedded Mode ->  H2 DB 데이터를 로컬에 직접 저장
+#    driver-class-name: org.h2.Driver
+#    username: user # 유저 이름
+#    password: # 비밀번호 (비워두면 비밀번호 X)
   sql:
     init: # 초기 sql 파일 읽기
       mode: never #  always : 서버 실행시마다 data, schema 읽음, never : 읽지 않음

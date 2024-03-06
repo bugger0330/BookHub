@@ -4,7 +4,6 @@
 	align-items: center;
 	width: 90%;
 	margin: 50px auto;
-	border: 1px solid black;
 	padding: 5px;
 	/*flex-flow:row wrap*/;
 }
@@ -23,7 +22,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid black;
 	margin: 10px;
 	cursor: pointer;
 }
