@@ -84,6 +84,7 @@
 	</div>
 </section>
 <script src="/js/cs/csSearch.js">
+<script src="/js/cs/csNotice.js">
 
 </script>
 <script>
