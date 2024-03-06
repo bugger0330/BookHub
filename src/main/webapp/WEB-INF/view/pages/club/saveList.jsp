@@ -28,7 +28,7 @@
 </c:if>
 
 <c:forEach var="club" items= "${clubList}">
-	<div class="card center mx-auto" style="width: 30%;">
+	<div class="card center mx-auto" style="width: 20%;">
 		<a href="/club/view/${club.id }">
 		<!-- max속성으로 너비, 높이 100%로 꽉차도록 함 / object-fit: cover; 하면 이미지 안에 개체도 꽉참 -->
 		  <img class="card-img-top" src="${club.setupClubImage()}" style="width:100%; height:100%;" alt="Card image">

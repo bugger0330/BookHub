@@ -33,6 +33,7 @@ searchInput.onkeyup = () => {
 						innerFun(data);
 					}else{
 						nothingText.textContent = "검색 결과가 없습니다.";
+						bookBox.innerHTML = "";
 					}
 				},
 				error : function(){
@@ -76,6 +77,7 @@ searchBtn.onclick = () => {
 						innerFun(data);
 					}else{
 						nothingText.textContent = "검색 결과가 없습니다.";
+						bookBox.innerHTML = "";
 					}
 				},
 				error : function(){

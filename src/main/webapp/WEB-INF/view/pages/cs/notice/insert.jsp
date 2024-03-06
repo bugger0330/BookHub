@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
-
 <link href="/css/csStyle.css" rel="stylesheet">
-
 
 	<!-- 서머노트 -->
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
@@ -16,7 +14,7 @@
 	<div class="container py-5">
 		<div class="row justify-content-center">
 			<div class="col-lg-10 text-center">
-				<h3 class="display-5 text-white animated slideInDown">공지사항 작성</h3>
+				<h3 class="display-5 text-white animated slideInDown">공지사항</h3>
 			</div>
 		</div>
 	</div>
@@ -31,13 +29,13 @@
 
 			<div class="container mt-3">
 				<h2 style="margin-bottom: 30px;">공지사항 작성하기</h2>
-				<form method="post" action="/qna/insert" enctype="multipart/form-data">
+				<form method="post" action="/notice/insert" enctype="multipart/form-data">
 					<div class="mb-3">
-						<label for="title">제목:</label> <input type="text" class="form-control" id="title" name="title"
+						<label for="title">Title:</label> <input type="text" class="form-control" id="title" name="title"
 							placeholder="Enter Title">
 					</div>
 					<div class="mb-3">
-						<label for="content">내용:</label>
+						<label for="content">Content:</label>
 						<textarea id="content" name="content"></textarea>
 					</div>
 					<div class="file_list">
@@ -56,7 +54,7 @@
 							</button>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary" id="btn-insert">작성하기</button>
+					<button type="submit" class="btn btn-primary" id="btn-insert">Submit</button>
 				</form>
 				
 			</div>

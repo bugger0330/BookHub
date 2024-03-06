@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.library.bookhub.utils.TimeUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,5 +27,9 @@ public class CsNoticeEntity {
 	private String filepath;
 	private Timestamp rdate;
 
-	
+	// "yyyy-MM-dd"
+	public String formatRdate() {
+		return TimeUtils.dateToString(rdate);
+	}
+
 }

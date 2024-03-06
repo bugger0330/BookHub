@@ -3,9 +3,10 @@ window.onload = function() {
 	
 	const button = document.getElementById('form--button');
 	const confirmBtn = document.getElementById('confirmPointBtn');
-	const inputs = document.querySelectorAll("input");
-	const select = document.querySelector("select");
-	const textareas = document.querySelectorAll("textarea");
+	// querySelectorAll 쓰지마라!!!!! header.jsp 수정되면서 다른 거까지 다 선택됨
+	const inputs = document.getElementsByClassName('rounded-input');
+	const select = document.querySelector('select');
+	const textareas = document.querySelectorAll('textarea');
 	
 	button.addEventListener('click', function(e) {
 		
@@ -32,24 +33,20 @@ window.onload = function() {
 			inputs[3].focus();
 			return;
 		}
-		if(select.value == "") {
-			alert("카테고리를 입력하세요");
-			select.focus();
-			return;
-		}
-		if(inputs[4].value == "") {
-			alert("이미지를 첨부하세요");
-			inputs[4].focus();
-			return;
-		}
-		if(textareas[0].value == "") {
+		if(inputs[5].value == "") {
 			alert("모임소개를 입력하세요");
 			textareas[0].focus();
 			return;
 		}
-		if(textareas[1].value == "") {
+		if(inputs[6].value == "") {
 			alert("모임내용을 입력하세요");
 			textareas[1].focus();
+			return;
+		}
+		// inputFile 변수 아래쪽에서 getElementById로 선언
+		if(inputFile.value == "") {
+			alert("이미지를 첨부하세요");
+			inputs[4].focus();
 			return;
 		}
 		// 현재 시간 이후 선택하도록 유효성 검사
@@ -168,26 +165,13 @@ window.onload = function() {
 		
 		return todayString;
 	}
+	console.log('getToday() : ' + getToday());
 	
 	var datetimeInput = document.getElementById('datetime');
 	// 최솟값을 내가 작성한 문자열로 설정
 	datetimeInput.min = getToday();
 	
-	/*// 모임소개 글자수 제한하기
-	const descriptTxt = document.getElementById('descript--textarea');
-	const maxChars = 50;
 	
-	descriptTxt.addEventListener('input', function() {
-		
-		// 텍스트 길이
-		const textLength = descriptTxt.value.length;
-		
-		// 30글자보다 길면
-		if(textLength > maxChars) {
-			descriptTxt.value = descriptTxt.value.substring(0, maxChars);
-		}
-		
-	})*/
 	
 	
 } // window.onload end
