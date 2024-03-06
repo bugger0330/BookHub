@@ -14,40 +14,13 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
-<<<<<<< HEAD
-=======
 
-#  datasource:
-#    url: jdbc:mysql://13.124.61.207:3306/bookhub?serverTimeZone=Asia/Seoul
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: zp426486!!ZP
-
->>>>>>> 911b5ac00f1088077a957d9ffe9ce69fb7bb5c9a
   datasource:
     url: jdbc:mysql://54.180.81.23:3306/bookhub?serverTimeZone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: bookhub
     password: asd1234!
-#
-#  datasource: # DB 설정
-#    url: jdbc:h2:~/spring-bookhub-db2;MODE=MySQL # Embedded Mode ->  H2 DB 데이터를 로컬에 직접 저장
-#    driver-class-name: org.h2.Driver
-#    username: user # 유저 이름
-#    password: # 비밀번호 (비워두면 비밀번호 X)
-<<<<<<< HEAD
-#
-#
-#
-#  sql:
-#    init: # 초기 sql 파일 읽기
-#      mode: always #  always : 서버 실행시마다 data, schema 읽음, never : 읽지 않음
-#      #이부분은 gradle implementation h2 일때만 사용
-#      schema-locations: # 스키마 (테이블 생성 등)
-#        - classpath:schema.sql
-#      data-locations: # 샘플 데이터
-#        - classpath:data.sql
-=======
+
 
 
 
@@ -78,7 +51,6 @@ spring:
 ##        - classpath:schema.sql
 ##      data-locations: # 샘플 데이터
 ##        - classpath:data.sql
->>>>>>> 911b5ac00f1088077a957d9ffe9ce69fb7bb5c9a
 #  h2:
 #    console:
 #      enabled: true
