@@ -9,20 +9,7 @@
 <!-- 메인 컨텐츠부분 시작 -->
 <div class="container">
 
-	<!-- 통합 검색 시작 -->
-	<div>
-		<h2>
-			<i class="fa-solid fa-magnifying-glass me-3"></i>도서통합검색
-		</h2>
 
-		<div class="position-relative mx-auto mb-5">
-			<input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text"
-				placeholder="검색하실 도서명을 입력하세요." style="background-color: #E6E6E6;">
-			<button type="button"
-				class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">도서찾기</button>
-		</div>
-	</div>
-	<!-- 통합검색 끝 -->
 
 	<!-- 광고영역 -->
 	<div class="advertising-area">
@@ -228,10 +215,7 @@
 <!-- 메인 컨텐츠부분 끝 -->
 
 
-<script src="/js/home.js">
-	
-</script>
+<script src="/js/home.js"></script>
 
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
-

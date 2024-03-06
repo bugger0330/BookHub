@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <!-- padding 속성으로 텍스트 배치하기 -->
-                            <div class="col-lg-6" style="padding-left: 10%;">
+                            <div class="col-lg-6" style="padding-left: 10%; padding-top: 5%;">
                             	<!-- javascript 이용하기 위해 hidden 태그 사용하기 -->
                                 <input id="club--id" value="${club.id}" hidden>
                                 

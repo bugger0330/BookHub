@@ -78,6 +78,12 @@ function checkTrue(){
 }
 
 orderBtn.onclick = () => {
+	if(memberId == ""){
+		alert("로그인이 필요한 서비스 입니다.");
+		location.href = "/login";
+		return;
+	}
+	
 	let flag = 0;
 	for(let i = 0; i < coffieCheck.length; i++){
 		if(coffieCheck[i].checked == true && coffieCount[i].value != 0){

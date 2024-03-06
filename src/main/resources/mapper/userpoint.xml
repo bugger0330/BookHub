@@ -27,7 +27,7 @@
 	
 	<select id="refundReq" resultType="com.library.bookhub.entity.UserPoint">
 	
-	select * from BH_USER_POINT where refund_yn like '환불요청';
+	select * from bh_user_point where refund_yn like '환불요청';
 	</select>
 
 
@@ -107,7 +107,7 @@
 	
 	
 	<select id="findByPrice" resultType="long">
-	select sum(price) from BH_USER_POINT
+	select sum(price) from bh_user_point
 	where refund_yn = '미환불'
 	</select>
 

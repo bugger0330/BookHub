@@ -3,9 +3,12 @@
 DROP TABLE IF EXISTS bh_member;
 DROP TABLE IF EXISTS bh_member_point;
 DROP TABLE IF EXISTS bh_book;
+DROP TABLE IF EXISTS bh_user_point;
 DROP TABLE IF EXISTS bh_product_cart;
 DROP TABLE IF EXISTS bh_book_borrow;
 DROP TABLE IF EXISTS bh_cs_qna;
+DROP TABLE IF EXISTS bh_cs_qna_reply;
+DROP TABLE IF EXISTS bh_cs_file;
 DROP TABLE IF EXISTS bh_cs_faq;
 DROP TABLE IF EXISTS bh_cs_notice;
 DROP TABLE IF EXISTS bh_banner;
@@ -13,15 +16,18 @@ DROP TABLE IF EXISTS bh_payment;
 DROP TABLE IF EXISTS bh_club;
 DROP TABLE IF EXISTS bh_point_computer;
 DROP TABLE IF EXISTS bh_point_order;
+DROP TABLE IF EXISTS bh_point_product;
 DROP TABLE IF EXISTS bh_point_shop;
-DROP TABLE IF EXISTS  bh_attendance;
+DROP TABLE IF EXISTS bh_attendance;
 DROP TABLE IF EXISTS bh_club_wish_list;
 DROP TABLE IF EXISTS bh_club_application;
 DROP TABLE IF EXISTS bh_club_cate;
 DROP TABLE IF EXISTS bh_book_share;
 DROP TABLE IF EXISTS bh_book_share_borrow;
+
 DROP TABLE IF EXISTS bh_cs_cate1;
 DROP TABLE IF EXISTS bh_cs_cate2;
+
 
 
 
@@ -65,42 +71,61 @@ CREATE TABLE bh_product_cart (
 );
 
 
--- 문의
-CREATE TABLE bh_cs_qna (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT,
-    cate2 INT,
-    title VARCHAR(255),
-    content TEXT NOT NULL,
-    file1 VARCHAR(255),
-    file2 VARCHAR(255),
-    file3 VARCHAR(255),
-    file4 VARCHAR(255),
-    writer VARCHAR(20) NOT NULL,
-    answerComplete TINYINT DEFAULT 0 CHECK (answerComplete IN (0, 1, 2, 3)),
-    rdate DATETIME NOT NULL
+-- cs qna
+CREATE TABLE `bh_cs_qna` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cate1` int DEFAULT NULL,
+  `cate2` int DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filepath` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `writer` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answerComplete` tinyint DEFAULT NULL,
+  `rdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
--- faq
-CREATE TABLE bh_cs_faq (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT NOT NULL,
-    cate2 INT NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    content LONGTEXT NOT NULL,
-    rdate DATETIME NOT NULL
+-- cs file
+CREATE TABLE `bh_cs_file` (
+  `uuid` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `original_file_name` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `file_data` mediumblob
 );
 
--- 공지사항
-CREATE TABLE bh_cs_notice (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cate1 INT,
-    cate2 INT,
-    title VARCHAR(255) NOT NULL,
-    content LONGTEXT NOT NULL,
-    writer VARCHAR(255),
-    filepath VARCHAR(255),
-    rdate VARCHAR(20)
+-- cs qna reply
+CREATE TABLE `bh_cs_qna_reply` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rdate` datetime NOT NULL,
+  `writer` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qnaId` int NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+
+-- cs faq
+CREATE TABLE `bh_cs_faq` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cate1` int DEFAULT NULL,
+  `cate2` int DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `writer` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- cs notice
+CREATE TABLE `bh_cs_notice` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cate1` int DEFAULT NULL,
+  `cate2` int DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `writer` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filepath` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rdate` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 );
 
 
@@ -176,51 +201,54 @@ CREATE TABLE bh_attendance (
 
 
 
+-- 독서모임
+CREATE TABLE `bh_club` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `userName` VARCHAR(20) NOT NULL,
+  `clubCate` TINYINT NULL,
+  `clubName` VARCHAR(100) NOT NULL,
+  `descript` VARCHAR(100) NOT NULL,
+  `detail` VARCHAR(1000) NULL,
+  `cDate` DATETIME NOT NULL,
+  `host` VARCHAR(20) NOT NULL,
+  `headCount` INT NOT NULL,
+  `hcApply` INT NULL DEFAULT 0,
+  `status` VARCHAR(20) NULL DEFAULT '신청가능',
+  `originFileName1` VARCHAR(255) NULL,
+  `originFileName2` VARCHAR(255) NULL,
+  `originFileName3` VARCHAR(255) NULL,
+  `uploadFileName1` VARCHAR(255) NULL,
+  `uploadFileName2` VARCHAR(255) NULL,
+  `uploadFileName3` VARCHAR(255) NULL,
+  `rdate` DATETIME NOT NULL,
+  `wdate` DATETIME NULL
+);
 
-CREATE TABLE bh_club_application (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  clubId INT NOT NULL,
-  userName VARCHAR(20) NOT NULL,
-  rdate DATETIME NOT NULL,
-  wdate DATETIME NULL
+CREATE TABLE `bh_club_cate` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `cate` INT NULL,
+  `cateName` VARCHAR(20) NULL
+);
+
+CREATE TABLE `bh_club_application` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `clubId` INT NOT NULL,
+  `userName` VARCHAR(20) NOT NULL,
+  `rdate` DATETIME NOT NULL,
+  `wdate` DATETIME NULL
+);
+
+CREATE TABLE `bh_club_wish_list` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `clubId` INT NOT NULL,
+  `userName` VARCHAR(20) NOT NULL,
+  `rdate` DATETIME NOT NULL,
+  `wdate` DATETIME NULL
 );
 
 
-CREATE TABLE bh_club_wish_list (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  clubId INT NOT NULL,
-  userName VARCHAR(20) NOT NULL,
-  rdate DATETIME NOT NULL,
-  wdate DATETIME NULL
-);
 
 
-CREATE TABLE bh_club_cate (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  cate INT NULL,
-  cateName VARCHAR(20) NULL
-);
-CREATE TABLE bh_club (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  userName VARCHAR(20) NOT NULL,
-  clubCate TINYINT NULL,
-  clubName VARCHAR(100) NOT NULL,
-  descript VARCHAR(100) NOT NULL,
-  detail VARCHAR(1000) NULL,
-  cDate DATETIME NOT NULL,
-  host VARCHAR(20) NOT NULL,
-  headCount INT NOT NULL,
-  hcApply INT NULL DEFAULT 0,
-  status VARCHAR(20) NULL DEFAULT '신청가능',
-  originFileName1 VARCHAR(255) NULL,
-  originFileName2 VARCHAR(255) NULL,
-  originFileName3 VARCHAR(255) NULL,
-  uploadFileName1 VARCHAR(255) NULL,
-  uploadFileName2 VARCHAR(255) NULL,
-  uploadFileName3 VARCHAR(255) NULL,
-  rdate DATETIME NOT NULL,
-  wdate DATETIME NULL
-);
 
 CREATE TABLE `bh_book` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -301,6 +329,11 @@ CREATE TABLE `bh_point_order` (
   PRIMARY KEY (`id`)
 );
 
+
+
+
+
+
 CREATE TABLE `bh_cs_cate1` (
   `cate1` int NOT NULL,
   `c1Name` varchar(25) DEFAULT NULL,
@@ -317,3 +350,4 @@ CREATE TABLE `bh_cs_cate2` (
   `id` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 );
+

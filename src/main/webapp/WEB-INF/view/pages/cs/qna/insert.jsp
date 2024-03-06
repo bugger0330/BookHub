@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
-
+<link href="/css/csStyle.css" rel="stylesheet">
 
 	<!-- 서머노트 -->
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>

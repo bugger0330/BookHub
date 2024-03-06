@@ -17,9 +17,12 @@ function load(){
 		type : "get",
 		url : `/share/info/${addressNum}`,
 		success : function(data){
-			if(data != null){
+			if(data != ""){
 				innerFun(data);
 				masterUsername = data.userName;
+			}else{
+				alert("잘못된 접근입니다.");
+				location.href = "/share/read";
 			}
 		},
 		error : function(){
@@ -230,6 +233,9 @@ function buttonClickEvent(boardTd, bookEntity){
 				alert("반납할 책이 없습니다.");
 				return;
 			}
+		}else{
+			alert("로그인이 필요한 서비스 입니다.");
+			window.location.href = "/login";
 		}
 	}
 	
@@ -359,27 +365,3 @@ function orderUpdate(lateDays, latePoint, productName){
 	});
 	return flag;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

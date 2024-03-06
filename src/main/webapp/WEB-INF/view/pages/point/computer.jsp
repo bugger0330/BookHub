@@ -6,7 +6,7 @@
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">Coffie & Bakery</h3>
+					<h3 class="display-5 text-white animated slideInDown">컴퓨터실</h3>
 				</div>
 			</div>
 		</div>

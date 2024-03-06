@@ -7,56 +7,86 @@ const nothingText = document.querySelector(".book--search--nothing--text");
 
 searchInput.onkeyup = () => {
 	if(window.event.keyCode==13){
+		if(searchInput.value == ""){
+			alert("검색어를 입력해주세요!");
+			return;
+		}
 		nothingText.textContent = "";
 		
-		let option = "";
-		for(let i = 0; i < searchOptions.length; i++){
-			if(searchOptions[i].selected){
-				option = searchOptions[i].value;
-			}
-		}
-		$.ajax({
-			type : "get",
-			url : `/book/search/${option}/${searchInput.value}`,
-			async : false,
-			success : function(data){
-				if(data != ""){
-					innerFun(data);
-				}else{
-					nothingText.textContent = "검색 결과가 없습니다.";
+		let str = searchInput.value;
+		let pattern = /^[a-zA-Zㄱ-힣0-9|s]*$/;
+		
+		if (str.match(pattern)) {
+		  if (str.match(pattern).length > 0) {
+		    let option = "";
+			for(let i = 0; i < searchOptions.length; i++){
+				if(searchOptions[i].selected){
+					option = searchOptions[i].value;
 				}
-			},
-			error : function(){
-				alert("에러");
 			}
-		});
+			$.ajax({
+				type : "get",
+				url : `/book/search/${option}/${searchInput.value}`,
+				async : false,
+				success : function(data){
+					if(data != ""){
+						innerFun(data);
+					}else{
+						nothingText.textContent = "검색 결과가 없습니다.";
+					}
+				},
+				error : function(){
+					alert("에러");
+				}
+			});
+		  }
+		}else{
+			nothingText.textContent = "검색 결과가 없습니다.";
+			bookBox.innerHTML = "";
+		}
 	}
 }
 
 
 searchBtn.onclick = () => {
+	if(searchInput.value == ""){
+		alert("검색어를 입력해주세요!");
+		return;
+	}
 	nothingText.textContent = "";
 	
-	let option = "";
-	for(let i = 0; i < searchOptions.length; i++){
-		if(searchOptions[i].selected){
-			option = searchOptions[i].value;
-		}
-	}
-	$.ajax({
-		type : "get",
-		url : `/book/search/${option}/${searchInput.value}`,
-		success : function(data){
-			if(data != ""){
-				innerFun(data);
-			}else{
-				nothingText.textContent = "검색 결과가 없습니다.";
+	let str = searchInput.value;
+	let pattern = /^[a-zA-Zㄱ-힣0-9|s]*$/;
+	
+	if (str.match(pattern)) {
+	  if (str.match(pattern).length > 0) {
+		    let option = "";
+			for(let i = 0; i < searchOptions.length; i++){
+				if(searchOptions[i].selected){
+					option = searchOptions[i].value;
+				}
 			}
-		},
-		error : function(){
-			alert("에러");
-		}
-	});
+			$.ajax({
+				type : "get",
+				url : `/book/search/${option}/${searchInput.value}`,
+				async : false,
+				success : function(data){
+					console.log("검색결과", data);
+					if(data != ""){
+						innerFun(data);
+					}else{
+						nothingText.textContent = "검색 결과가 없습니다.";
+					}
+				},
+				error : function(){
+					alert("에러");
+				}
+			});
+	  }
+	}else{
+		nothingText.textContent = "검색 결과가 없습니다.";
+		bookBox.innerHTML = "";
+	}
 }
 
 function innerFun(data){

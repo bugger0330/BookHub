@@ -125,6 +125,7 @@
 
 							<div class="custom-form-group d-flex justify-content-center">
 								<button type="submit" class="btn btn-primary btn-submit">수정하기</button>
+								
 							</div>
 						</form>
 						

@@ -67,7 +67,7 @@ th {
 		</div>
 	</div>
 
-	<div class="container-xxl">
+	<div style="padding-left: 300px; padding-right: 300px">
 		<div class="row justify-content-end mb-3">
 			<div class="col-auto">
 				<a href="/ad-setting" class="btn btn-dark">광고 추가하기</a>
@@ -81,13 +81,13 @@ th {
 					<thead class="table-dark">
 						<tr class="text-center">
 							<th>No</th>
-							<th>제목</th>
+							<th >제목</th>
 							<th>URL</th>
-							<th>광고주명</th>
+							<th>광고주</th>
 							<th>이미지</th>
 							<th>광고여부</th>
-							<th>광고 클릭수</th>
-							<th>광고수익</th>
+							<th>클릭수</th>
+							<th>수익</th>
 							<th>setting</th>
 						</tr>
 					</thead>

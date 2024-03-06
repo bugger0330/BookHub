@@ -1,4 +1,4 @@
-const innerBody = document.querySelector(".share--book-list-box");
+const innerShareBody = document.querySelector(".share1--book-list-box");
 
 load();
 
@@ -19,11 +19,11 @@ function innerFun(data){
 	let innr = "";
 	for(let i = 0; i < data.length; i++){
 		innr += `
-			<div class="share--book-box" id="${data[i].id}">
-                <div class="share--img-box">
-                    <img src="/images/upload/${data[i].file}" alt="책" class="share--book-img">
+			<div class="share1--book-box" id="${data[i].id}">
+                <div class="share1--img-box">
+                    <img src="/images/upload/${data[i].file}" alt="책" class="share1--book-img">
                 </div>
-                <div class="share--content-box">
+                <div class="share1--content-box">
                     <span>${data[i].bookName}</span>
                     <span>${data[i].writer}</span>
                     <span>${data[i].company}</span>
@@ -31,8 +31,8 @@ function innerFun(data){
             </div>
 		`;
 	}
-	innerBody.innerHTML = innr;
-	const bookTag = document.querySelectorAll(".share--book-box");
+	innerShareBody.innerHTML = innr;
+	const bookTag = document.querySelectorAll(".share1--book-box");
 	pagingEvent(bookTag);
 }
 

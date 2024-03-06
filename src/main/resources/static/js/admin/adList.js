@@ -33,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		            success: function () {
 		                // 성공적으로 업데이트됐을 때 처리할 내용
 		                alert("광고 상태가 업데이트되었습니다.");
+		                 location.reload();
 		            },
 		            error: function () {
 		                // 오류 발생 시 처리할 내용
