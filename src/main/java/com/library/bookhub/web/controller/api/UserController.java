@@ -1,6 +1,7 @@
 package com.library.bookhub.web.controller.api;
 
 import com.library.bookhub.entity.User;
+
 import com.library.bookhub.service.UserService;
 import com.library.bookhub.web.dto.common.PageReq;
 import com.library.bookhub.web.dto.common.PageRes;
@@ -54,6 +55,7 @@ public class UserController {
         List<User> userList = pageRes.getContent();
         log.info("Retrieved user list: {}", userList);
 
+        System.out.println(userList);
         // 페이징 정보를 모델에 추가
         model.addAttribute("userList", userList);
         model.addAttribute("page", pageReq.getPage());

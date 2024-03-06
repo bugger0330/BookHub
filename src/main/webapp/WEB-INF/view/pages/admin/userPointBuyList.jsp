@@ -79,17 +79,7 @@ th {
 	
 		<c:choose>
 			<c:when test="${not empty pointList}">
-			<div class="search mb-3">
-			<form action="/admin/user-point/list" method="get">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="유저 아이디 검색"
-						name="userId">
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-dark">검색</button>
-					</div>
-				</div>
-			</form>
-		</div>
+			
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
@@ -101,7 +91,7 @@ th {
 							<th>환불여부</th>
 							<th>아임포트 UID</th>
 							<th>구매번호</th>
-							<th>setting</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -116,8 +106,7 @@ th {
 								<td class="text-center align-middle">${point.impUid}</td>
 								<td class="text-center align-middle">${point.merchantUid}</td>
 								
-								<td class="text-center align-middle"><a
-									href="/point-product/update/${ppd.id}" class="btn btn-primary">수정하기</a></td>
+							
 							</tr>
 
 						</c:forEach>

@@ -16,7 +16,11 @@
 
 	<select id="findAllWithPagingAndWriter"
 		resultType="com.library.bookhub.entity.BannerAd">
-		SELECT * FROM bh_banner WHERE LOWER(writer) LIKE CONCAT('%', LOWER(#{writer}), '%') LIMIT #{limit} OFFSET #{offset}
+	
+		
+		<![CDATA[
+    SELECT * FROM bh_banner WHERE LOWER(writer) LIKE '%' || #{writer} || '%' LIMIT #{limit} OFFSET #{offset}
+    ]]>
 
 	</select>
 
