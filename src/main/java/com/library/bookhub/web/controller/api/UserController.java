@@ -51,7 +51,9 @@ public class UserController {
 
         // 페이징된 유저 목록 가져오기
         PageRes<User> pageRes = userService.getUsersWithPaging(pageReq, name);
+        System.out.println(pageRes);
         List<User> userList = pageRes.getContent();
+        System.out.println(userList);
         log.info("Retrieved user list: {}", userList);
 
         // 페이징 정보를 모델에 추가

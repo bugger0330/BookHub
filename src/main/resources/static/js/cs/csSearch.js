@@ -70,5 +70,11 @@ function innerFun(data){
 		`;
 	}
 	noticeLists.innerHTML = innr;
+	const pageRows = document.querySelectorAll(".page-click");
+	for(let i = 0; i < pageRows.length; i++){
+		pageRows[i].onclick = () => {
+			location.href = "/qna/view/" + pageRows[i].id;
+		}
+	}
 
 }

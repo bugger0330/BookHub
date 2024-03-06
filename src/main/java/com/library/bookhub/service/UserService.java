@@ -65,9 +65,10 @@ public class UserService {
         
         // 페이징 처리된 유저 목록 조회
         List<User> users = userRepository.findAllWithPagingAndUsername(offset, size, name);
-
+        System.out.println("서비스 1: " + users);
         // 페이징 결과 객체 생성
         PageRes<User> pageRes = new PageRes<>(users, page, totalElements, size);
+        System.out.println("서비스 : 2" + pageRes);
 
         return pageRes;
     }
