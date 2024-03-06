@@ -13,8 +13,10 @@
 
 	<select id="findAllUserPointPaging"
 		resultType="com.library.bookhub.entity.UserPoint">
-		SELECT * FROM bh_user_point WHERE LOWER(user_id) LIKE
-		CONCAT('%', LOWER(#{userId}), '%') LIMIT #{limit} OFFSET #{offset}
+		
+		  <![CDATA[
+    SELECT * FROM bh_user_point WHERE LOWER(user_id) LIKE '%' || #{userId} || '%' LIMIT #{limit} OFFSET #{offset}
+    ]]>
 	</select>
 
 

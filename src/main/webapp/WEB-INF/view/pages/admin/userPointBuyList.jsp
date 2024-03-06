@@ -61,7 +61,7 @@ th {
 		<div class="container py-5">
 			<div class="row justify-content-center">
 				<div class="col-lg-10 text-center">
-					<h3 class="display-5 text-white animated slideInDown">포인트상품 목록</h3>
+					<h3 class="display-5 text-white animated slideInDown">유저 결제 내역</h3>
 				</div>
 			</div>
 		</div>
@@ -70,26 +70,12 @@ th {
 	
 
 	<div class="container-xxl">
-		<div class="row justify-content-end mb-3">
-			<div class="col-auto">
-				<a href="/point-product-add" class="btn btn-dark">상품 추가하기</a>
-			</div>
-		</div>
+		
 		
 	
 		<c:choose>
 			<c:when test="${not empty pointList}">
-			<div class="search mb-3">
-			<form action="/admin/user-point/list" method="get">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="유저 아이디 검색"
-						name="userId">
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-dark">검색</button>
-					</div>
-				</div>
-			</form>
-		</div>
+			
 				<table class="table table-hover table-light">
 					<thead class="table-dark">
 						<tr class="text-center">
@@ -101,7 +87,7 @@ th {
 							<th>환불여부</th>
 							<th>아임포트 UID</th>
 							<th>구매번호</th>
-							<th>setting</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -116,8 +102,7 @@ th {
 								<td class="text-center align-middle">${point.impUid}</td>
 								<td class="text-center align-middle">${point.merchantUid}</td>
 								
-								<td class="text-center align-middle"><a
-									href="/point-product/update/${ppd.id}" class="btn btn-primary">수정하기</a></td>
+							
 							</tr>
 
 						</c:forEach>

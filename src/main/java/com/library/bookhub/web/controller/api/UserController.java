@@ -57,6 +57,7 @@ public class UserController {
         List<User> userList = pageRes.getContent();
         log.info("Retrieved user list: {}", userList);
 
+        System.out.println(userList);
         // 페이징 정보를 모델에 추가
         model.addAttribute("userList", userList);
         model.addAttribute("page", pageReq.getPage());

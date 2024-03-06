@@ -92,17 +92,7 @@ img {
 
 	<div class="container">
 
-		<div class="search mb-3">
-			<form action="/user/list" method="get">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="유저 이름 검색"
-						name="name">
-					<div class="input-group-append">
-						<button type="submit" class="btn btn-dark">검색</button>
-					</div>
-				</div>
-			</form>
-		</div>
+		
 
 		<c:choose>
 			<c:when test="${not empty userList}">

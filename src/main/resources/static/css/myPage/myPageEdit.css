@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.card-header {
+	background-color: #343a40;
+	color: white;
+}
+
+.custom-form-group {
+	margin-bottom: 20px;
+}
+
+.custom-label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.form-control {
+	width: calc(100% - 20px); /* 폼 요소 너비 조정 */
+	margin-bottom: 10px;
+}
+
+.btn-submit {
+	width: calc(50% - 5px); /* 버튼 너비 조정 */
+	border-radius: 20px; /* 테두리를 둥글게 조정 */
+}
+
+.container {
+	margin-top: 50px;
+}
+
+/* 추가된 부분: 버튼 간격 조정 */
+.custom-form-group .btn-submit {
+	margin-right: 5px;
+}

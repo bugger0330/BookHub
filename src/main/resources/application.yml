@@ -15,23 +15,12 @@ spring:
       max-file-size: 20MB
       max-request-size: 20MB
 
-#  datasource:
-#    url: jdbc:mysql://13.124.61.207:3306/bookhub?serverTimeZone=Asia/Seoul
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: root
-#    password: zp426486!!ZP
-
   datasource:
     url: jdbc:mysql://54.180.81.23:3306/bookhub?serverTimeZone=Asia/Seoul
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: bookhub
     password: asd1234!
 
-#  datasource: # DB 설정
-#    url: jdbc:h2:~/spring-bookhub-db2;MODE=MySQL # Embedded Mode ->  H2 DB 데이터를 로컬에 직접 저장
-#    driver-class-name: org.h2.Driver
-#    username: user # 유저 이름
-#    password: # 비밀번호 (비워두면 비밀번호 X)
 
 
 
@@ -50,7 +39,13 @@ spring:
 #    password: asd1234
 
 #  datasource: # DB 설정
-#    url: jdbc:h2:mem:testdb;MODE=MySQL
+#    url: jdbc:mysql://localhost:3306/bookhub?serverTimeZone=Asia/Seoul
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: asd1234!
+
+#  datasource: # DB 설정
+#    url: jdbc:h2:~/spring-bookhub-db2;MODE=MySQL # Embedded Mode ->  H2 DB 데이터를 로컬에 직접 저장
 #    driver-class-name: org.h2.Driver
 #    username: user # 유저 이름
 #    password: # 비밀번호 (비워두면 비밀번호 X)
@@ -62,6 +57,11 @@ spring:
 ##        - classpath:schema.sql
 ##      data-locations: # 샘플 데이터
 ##        - classpath:data.sql
+#      이부분은 gradle implementation h2 일때만 사용
+#      schema-locations: # 스키마 (테이블 생성 등)
+#        - classpath:schema.sql
+#      data-locations: # 샘플 데이터
+#        - classpath:data.sql
 #  h2:
 #    console:
 #      enabled: true

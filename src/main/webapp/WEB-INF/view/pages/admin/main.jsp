@@ -85,6 +85,24 @@
 <script>
 	$(document).ready(function() {
 		$.ajax({
+			type : "get",
+			url : "/user/principal",
+			async : false,
+			success : function(data){
+				if(data == ""){
+					alert('로그인 후 이용해주세요');
+					window.location.href = "/";
+				}
+			},
+			error : function(){
+				alert("에러");
+			}
+		});
+		
+		
+		
+		
+		$.ajax({
 			url : "/totaluser",
 			type : "GET",
 			success : function(data) {
