@@ -29,30 +29,26 @@
 		bh_cs_notice
 	</select>
 
-
-	<!-- 공지사항 등록 -->
-	<insert id="insertCsNotice"
-		parameterType="com.library.bookhub.entity.cs.CsNoticeEntity">
-		INSERT INTO bh_cs_notice (cate1, cate2, title, content, writer, filepath,
-		rdate)
-		VALUES (#{cate1}, #{cate2}, #{title}, #{content}, #{writer}, #{filepath},
-		#{rdate});
+	<!-- 공지사항 작성하기 -->
+	<insert id="noticeInsert">
+		INSERT INTO bh_cs_notice (cate1, cate2, title, content, writer, filepath , rdate)
+		VALUES (#{cate1},#{cate2},#{title},#{content}, #{writer}, #{filepath}, now());
 	</insert>
 
+	<!-- 공지사항 삭제하기 -->
+	<delete id="noticeDelete">
+		delete from bh_cs_notice where id = #{id};
+	</delete>
+
 	<!-- 공지사항 수정 -->
-	<update id="updateCsNotice"
+	<!-- <update id="updateCsNotice"
 		parameterType="com.library.bookhub.entity.cs.CsNoticeEntity">
 		UPDATE bh_cs_notice
 		SET cate1 = #{cate1}, cate2 = #{cate2}, title = #{title}, content =
 		#{content}, writer = #{writer}, filepath = #{filepath}, rdate =
 		#{rdate}
 		WHERE id = #{id};
-	</update>
-
-	<!-- 공지사항 삭제 -->
-	<delete id="deleteCsNotice" parameterType="int">
-		DELETE FROM bh_cs_notice WHERE id = #{id};
-	</delete>
+	</update> -->
 
 	<!-- 추가 -->
 	<select id="noticeSearchPage" resultType="com.library.bookhub.entity.cs.CsNoticeEntity">

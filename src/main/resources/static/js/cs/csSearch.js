@@ -55,6 +55,15 @@ console.log("검색어:" + searchInput.value);
 function innerFun(data){
 	let innr = "";
 	for(let i = 0; i < data.length; i++){
+		
+		const date = new Date(data[i].rdate);
+		
+		const formattedDate = date.toLocaleDateString("en-GB", {
+  			day: "2-digit",
+  			month: "2-digit",
+  			year: "numeric"
+		}).replace(/\//g, '-');
+		
 		innr += `
 			<tr class="page-click" id="${data[i].id}">
 				<td><i class="bi bi-megaphone-fill text-danger">${data[i].id}</i></td>
@@ -65,10 +74,16 @@ function innerFun(data){
 				</td>
 				<td><i class="bi bi-file-earmark-text-fill">${data[i].filepath}</i></td>
 				<td>${data[i].writer}</td>
-				<td>${data[i].rdate}</td>
+				<td>${formattedDate}</td>
 			</tr>
 		`;
 	}
 	noticeLists.innerHTML = innr;
+	const pageRows = document.querySelectorAll(".page-click");
+	for(let i = 0; i < pageRows.length; i++){
+		pageRows[i].onclick = () => {
+			location.href = "/notice/view/" + pageRows[i].id;
+		}
+	}
 
 }

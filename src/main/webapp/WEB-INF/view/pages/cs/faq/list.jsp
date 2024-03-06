@@ -26,7 +26,7 @@
 
 			<div>
 				<h2>자주 묻는 질문</h2>
-
+				
 				<button id="btn-all-close">FAQ ALL Close</button>
 				<br>
 				<table
@@ -50,7 +50,7 @@
 									</div>
 								</div>
 							</td>
-							<td>${list.rdate}</td>
+							<td>${list.formatRdate()}</td>
 						</tr>
 						</c:forEach>
 						<tr class="info">

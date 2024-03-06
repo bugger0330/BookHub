@@ -118,6 +118,7 @@ updateBtn.on("click", function() {
     window.location.href = "/qna/update/" + addressNum;
 });
 
+// qna list에서 View Id 넘겨주기
 function loadViewId() {
 	$.ajax({
 		type: "post",
