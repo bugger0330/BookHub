@@ -92,11 +92,9 @@ public class CalendarRestfulController {
 	// 포인트 적립, 출석 일수
 	@PostMapping("/calendar/attendance")
 	@ResponseBody
-	public Map<String, Integer> attendanceCheck(@RequestBody Map<String, String> date,
-												@AuthenticationPrincipal UserDetails user, 
-												HttpSession session) {
+	public Map<String, Integer> attendanceCheck(@RequestBody Map<String, String> date, HttpSession session) {
 		int addPoint = 0;
-		String userId = user.getUsername();
+		String userId = serviceImpl.getUserId();
 		String today = (String) date.get("today");
 		int month =  Integer.parseInt(date.get("month"));
 		
