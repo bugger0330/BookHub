@@ -39,13 +39,12 @@ public class MyPageApiController {
 
 	@PutMapping("/edit/{id}")
 	public RedirectView updateId(@PathVariable Long id, @ModelAttribute User user) {
-		myPageService.save(user);
+		myPageService.update(user);
 		return new RedirectView("/");
 	}
 
 	@PutMapping("/delete/{id}")
 	public RedirectView deleteId(@PathVariable Long id, @ModelAttribute User user) {
-		System.out.println("실해됨?");
 		myPageService.deleteById(user);
 		return new RedirectView("/");
 	}

@@ -28,7 +28,7 @@ public class ChatService {
         String message = getReqMessage(chatMessage);
         String encodeBase64String = makeSignature(message, SECRET_KEY);
 
-        HttpURLConnection con = (HttpURLConnection)url.openConnection();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json;UTF-8");
         con.setRequestProperty("X-NCP-CHATBOT_SIGNATURE", encodeBase64String);
@@ -39,24 +39,7 @@ public class ChatService {
         wr.flush();
         wr.close();
 
-        int responseCode = con.getResponseCode();
-        String responseMessage;
-
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-            StringBuilder response = new StringBuilder();
-            String line;
-            while ((line = in.readLine()) != null) {
-                response.append(line);
-            }
-            in.close();
-
-            responseMessage = parseResponse(response.toString());
-        } else {
-            responseMessage = con.getResponseMessage();
-        }
-
-        return responseMessage;
+        return getResponse(con);
     }
 
     private String makeSignature(String message, String secretKey) {
@@ -74,41 +57,49 @@ public class ChatService {
 
         } catch (Exception e){
             e.printStackTrace();
+            return encodeBase64String;
         }
-
-        return encodeBase64String;
     }
 
+
     private String getReqMessage(String voiceMessage) {
-        String requestBody = "";
+        JSONObject obj = new JSONObject();
+        long timestamp = new Date().getTime();
+        obj.put("version", "v2");
+        obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
+        obj.put("timestamp", timestamp);
 
-        try {
-            JSONObject obj = new JSONObject();
-            long timestamp = new Date().getTime();
-            obj.put("version", "v2");
-            obj.put("userId", "U47b00b58c90f8e47428af8b7bddc1231heo2");
-            obj.put("timestamp", timestamp);
+        JSONObject bubbles_obj = new JSONObject();
+        bubbles_obj.put("type", "text");
+        JSONObject data_obj = new JSONObject();
+        data_obj.put("description", voiceMessage);
+        bubbles_obj.put("type", "text");
+        bubbles_obj.put("data", data_obj);
 
-            JSONObject bubbles_obj = new JSONObject();
-            bubbles_obj.put("type", "text");
-            JSONObject data_obj = new JSONObject();
-            data_obj.put("description", voiceMessage);
-            bubbles_obj.put("type", "text");
-            bubbles_obj.put("data", data_obj);
+        JSONArray bubbles_array = new JSONArray();
+        bubbles_array.add(bubbles_obj);
 
-            JSONArray bubbles_array = new JSONArray();
-            bubbles_array.add(bubbles_obj);
+        obj.put("bubbles", bubbles_array);
+        obj.put("event", "send");
 
-            obj.put("bubbles", bubbles_array);
-            obj.put("event", "send");
+        return obj.toString();
+    }
 
-            requestBody = obj.toString();
+    private String getResponse(HttpURLConnection con) throws IOException {
+        int responseCode = con.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = in.readLine()) != null) {
+                response.append(line);
+            }
+            in.close();
 
-        } catch (Exception e){
-            e.printStackTrace();
+            return parseResponse(response.toString());
+        } else {
+            return con.getResponseMessage();
         }
-
-        return requestBody;
     }
 
     private String parseResponse(String jsonResponse) {
