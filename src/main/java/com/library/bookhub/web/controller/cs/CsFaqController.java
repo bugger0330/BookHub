@@ -25,11 +25,8 @@ public class CsFaqController {
 	public String faqPage(Model model) {
 
 		List<CsFaqEntity> faqList = csFaqService.selectCsFaqList();
+		
 		model.addAttribute("faqList", faqList);
-
-		System.out.println("faqList" + faqList);
-
-		log.info(faqList.toString());
 
 		return "pages/cs/faq/list";
 	}

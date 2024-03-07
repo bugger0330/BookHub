@@ -18,14 +18,12 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class CsQnaReplyService {
 
-
 	@Autowired
 	private CsQnaReplyRepository csQnaReplyRepository;
 
 	@Autowired
 	private CsQnaRepository csQnaRepository;
-	
-	
+
 	// QnaReply 리스트
 	public List<CsQnaReplyEntity> selectCsQnaReplyList() {
 		return csQnaReplyRepository.selectCsQnaReplyList();
@@ -33,17 +31,14 @@ public class CsQnaReplyService {
 
 	// QnaReply 작성하기
 	@Transactional
-	public boolean qnaReplyInsert(CsQnaReplyDto dto, int qnaId) {
-		
-		CsQnaEntity csQnaEntity = csQnaRepository.qnaView(qnaId);
-		
-		CsQnaReplyEntity csQnaReplyEntity = CsQnaReplyEntity.builder()
-				.content(dto.getContent())
-				.writer(dto.getWriter())
-				.qnaId(dto.getQnaId())
-				.build();
+	public boolean qnaReplyInsertAndUpdateQna(CsQnaReplyDto dto, int qnaId, String userId) {
 
-		int result = csQnaReplyRepository.qnaReplyInsert(csQnaReplyEntity);
+		CsQnaEntity csQnaEntity = csQnaRepository.qnaView(qnaId);
+
+		CsQnaReplyEntity csQnaReplyEntity = CsQnaReplyEntity.builder().content(dto.getContent()).writer(userId)
+				.qnaId(dto.getQnaId()).build();
+
+		int result = csQnaReplyRepository.qnaReplyInsertAndUpdateQna(csQnaReplyEntity);
 
 		if (result == 1) {
 			return true;
@@ -51,7 +46,6 @@ public class CsQnaReplyService {
 
 		return false;
 	}
-
 
 	// QnaReply 삭제하기
 	public boolean qnaReplyDelete(int id) {
@@ -64,5 +58,13 @@ public class CsQnaReplyService {
 
 		return false;
 	}
-	
+
+	// QnaReply 상세보기
+	public CsQnaReplyEntity qnaReplyView(int qnaId) {
+
+		System.out.println(" 서비스 " + qnaId);
+		
+		return csQnaReplyRepository.qnaReplyView(qnaId);
+	}
+
 }

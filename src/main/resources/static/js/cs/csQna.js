@@ -4,7 +4,6 @@ const filepath = $("#formFileMultiple");
 const updateBtn = $("#btn-update");
 const deleteBtn = $("#btn-delete");
 
-// 수정완료, 삭제하기, 리스트 alert창, 등록버튼
 
 let addressNum = window.location.pathname.split("/")[3];
 
@@ -47,7 +46,7 @@ let replyObject = {
 			url: "/qna/reply/" + addressNum,
 			contentType: "application/json",  // Content-Type을 JSON으로 설정
             data: JSON.stringify({
-				id: Number(addressNum),
+				id: addressNum,
                 content: replyContent
             }),
 			success: function(data) {
@@ -118,7 +117,7 @@ updateBtn.on("click", function() {
     window.location.href = "/qna/update/" + addressNum;
 });
 
-// qna list에서 View Id 넘겨주기
+// qna list에서 View Id 넘겨주기 상세보기
 function loadViewId() {
 	$.ajax({
 		type: "post",
@@ -199,5 +198,56 @@ function loadViewId() {
 }
 // 페이지 로드 시 데이터 로딩 함수 호출
 loadViewId();
+
+// qna list에서 View qnaId 넘겨주기 상세보기
+function loadReplyViewId() {
+	console.log(addressNum);
+	
+	$.ajax({
+		type: "post",
+		url: "/qna/reply", 
+		data: {
+			qnaId: Number(addressNum)
+		},
+		success: function(data) {
+			// reply-display 엘리먼트에 데이터 출력
+			$("#reply-display").html(data.content);
+
+		},
+		error: function() {
+			alert("Error fetching data!");
+		}
+	});
+}
+// 페이지 로드 시 데이터 로딩 함수 호출
+loadReplyViewId();
+
+// 마스킹 처리
+function maskMiddleChars(str) {
+    if (str.length <= 2) {
+        return '*'.repeat(str.length);
+    }
+    const midIndex = Math.floor(str.length / 2);
+    return str.substring(0, midIndex - 1) + '*'.repeat(2) + str.substring(midIndex + 1);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const writerElements = document.querySelectorAll(".mask-writer");
+
+    writerElements.forEach(function(element) {
+        const originalText = element.innerText;
+        const maskedText = maskMiddleChars(originalText);
+        element.innerText = maskedText;
+    });
+
+    const titleDisplayElement = document.getElementById("title-display");
+    const contentDisplayElement = document.getElementById("content-display");
+    const writerDisplayElement = document.getElementById("writer-display");
+
+    // 여기에 마스킹 처리할 엘리먼트에 클래스 추가하는 코드를 작성합니다.
+    if (writerDisplayElement) {
+        writerDisplayElement.classList.add("mask-writer");
+    }
+});
 
 

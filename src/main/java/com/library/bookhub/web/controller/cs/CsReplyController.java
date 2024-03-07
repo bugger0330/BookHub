@@ -1,17 +1,18 @@
 package com.library.bookhub.web.controller.cs;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.library.bookhub.entity.cs.CsQnaEntity;
+import com.library.bookhub.entity.cs.CsQnaReplyEntity;
 import com.library.bookhub.service.CsQnaReplyService;
 import com.library.bookhub.web.dto.cs.CsQnaReplyDto;
 
@@ -24,34 +25,49 @@ public class CsReplyController {
 	@Autowired
 	CsQnaReplyService csQnaReplyService;
 
-
 	// QnaReply 작성하기 화면
 	@GetMapping("/qna/reply/{qnaId}")
 	public String qnaReplyInsertPage(@PathVariable("qnaId") int qnaId, Model model) {
 
 		model.addAttribute("qnaId", qnaId);
-		
+
 		System.out.println(qnaId);
-		
+
 		return "pages/cs/qna/view";
 	}
 
 	// QnaReply 작성하기
 	@PostMapping("/qna/reply/{qnaId}")
 	@ResponseBody
-	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto) {
+	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto,
+			@AuthenticationPrincipal UserDetails userDetails) {
 
-		System.out.println(qnaId);
-		System.out.println(dto);
-		
+		String userId = userDetails.getUsername();
+
 		dto.setQnaId(qnaId);
-		
-		boolean result = csQnaReplyService.qnaReplyInsert(dto, qnaId);
 
-		System.out.println(result);
-		
+		boolean result = csQnaReplyService.qnaReplyInsertAndUpdateQna(dto, qnaId, userId);
+
 		return result;
 	}
 
+	/*
+	 * // QnaReply 상세보기 화면 띄우기
+	 * 
+	 * @GetMapping("/qna/reply/{qnaId}") public String detailQnaReply() {
+	 * 
+	 * return "pages/cs/qna/view"; }
+	 */
+
+	// QnaReply 상세보기
+	@PostMapping("/qna/reply")
+	@ResponseBody
+	public CsQnaReplyEntity qnaReplyView(int qnaId) {
+
+		CsQnaReplyEntity csQnaReplyEntity = csQnaReplyService.qnaReplyView(qnaId);
+		System.out.println("여기는 컨트롤러 " + csQnaReplyEntity);
+		
+		return csQnaReplyEntity;
+	}
 
 }
