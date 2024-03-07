@@ -304,7 +304,7 @@ function buttonClickEvent(boardTd, bookEntity){
 	    setTimeout(function() {
 		    createTag.print();
 	    	//createTag.close();
-		}, 100);
+		}, 10);
 
 
 	}
