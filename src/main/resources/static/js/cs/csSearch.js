@@ -80,7 +80,6 @@ function innerFun(data) {
                         <p class="panel-cs-title">${data[i].title}</p>
                     </div>
                 </td>
-                <td>${data[i].filepath}</td>
                 <td>${maskedWriter}</td>
                 <td>${formattedDate}</td>
             </tr>

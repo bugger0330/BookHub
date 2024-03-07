@@ -20,4 +20,7 @@ public interface CsQnaReplyRepository {
 
 	// QnaReply 삭제하기
 	public int qnaReplyDelete(int id);
+
+	// QnaReply 상세보기
+	public CsQnaReplyEntity qnaReplyView(int qnaId);
 }

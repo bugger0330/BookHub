@@ -28,8 +28,8 @@
 					aria-label="Basic outlined example" style="display: flex;">
 					<button type="button" class="btn btn-outline-primary" id="btnInsert"
 						style="flex: none;"></a>등록</button>
-					<button type="button" class="btn btn-outline-primary"
-						style="flex: none;">나의 문의내역</button>
+					<!-- <button type="button" class="btn btn-outline-primary"
+						style="flex: none;">나의 문의내역</button> -->
 				</div>
 				
 			</div>

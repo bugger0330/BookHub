@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 <link href="/css/csStyle.css" rel="stylesheet">
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -50,32 +51,37 @@
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
-				
+
 			</div>
 
-			
-				<table class="table table-hover">
-					<thead class="thead-light text-center">
-						<tr>
-							<th>No</th>
-							<th>NOTICE Title</th>
-							<th>File</th>
-							<th>Writer</th>
-							<th>Date</th>
-						</tr>
-					</thead>
-					<tbody class="text-center noticeLists"></tbody>
-				</table>
-			
+
+			<table class="table table-hover">
+				<thead class="thead-light text-center">
+					<tr>
+						<th>No</th>
+						<th>NOTICE Title</th>
+						<th>Writer</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody class="text-center noticeLists"></tbody>
+			</table>
+
 
 
 			<!-- 페이징 처리 -->
 			<div class="qna pagination">
+				<c:set var="page" value="1" />
+				<c:set var="size" value="10" />
+				<c:set var="totalPages" value="3" />
+				<c:set var="startPage" value="1" />
+				<c:set var="endPage" value="3" />
+
 				<c:if test="${page > 1}">
 					<li class="page-item"><a href="?page=1&size=${size}"
 						class="page-link">&laquo; 첫 페이지</a></li>
 					<li class="page-item"><a href="?page=${page - 1}&size=${size}"
-						class="page-link">&laquo; Prev</a></li>
+						class="page-link">&laquo; 이전</a></li>
 				</c:if>
 				<c:forEach begin="${startPage}" end="${endPage}" var="i">
 					<c:choose>
@@ -91,12 +97,13 @@
 				</c:forEach>
 				<c:if test="${page < totalPages}">
 					<li class="page-item"><a href="?page=${page + 1}&size=${size}"
-						class="page-link">Next &raquo;</a></li>
+						class="page-link">다음 &raquo;</a></li>
 					<li class="page-item"><a
 						href="?page=${totalPages}&size=${size}" class="page-link">마지막
 							페이지 &raquo;</a></li>
 				</c:if>
 			</div>
+
 
 		</div>
 	</div>

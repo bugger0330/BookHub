@@ -117,7 +117,7 @@ updateBtn.on("click", function() {
     window.location.href = "/qna/update/" + addressNum;
 });
 
-// qna list에서 View Id 넘겨주기
+// qna list에서 View Id 넘겨주기 상세보기
 function loadViewId() {
 	$.ajax({
 		type: "post",
@@ -198,6 +198,29 @@ function loadViewId() {
 }
 // 페이지 로드 시 데이터 로딩 함수 호출
 loadViewId();
+
+// qna list에서 View qnaId 넘겨주기 상세보기
+function loadReplyViewId() {
+	console.log(addressNum);
+	
+	$.ajax({
+		type: "post",
+		url: "/qna/reply", 
+		data: {
+			qnaId: Number(addressNum)
+		},
+		success: function(data) {
+			// reply-display 엘리먼트에 데이터 출력
+			$("#reply-display").html(data.content);
+
+		},
+		error: function() {
+			alert("Error fetching data!");
+		}
+	});
+}
+// 페이지 로드 시 데이터 로딩 함수 호출
+loadReplyViewId();
 
 // 마스킹 처리
 function maskMiddleChars(str) {

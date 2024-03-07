@@ -8,7 +8,7 @@
 	<!-- QnaReply 리스트 조회 -->
 	<select id="selectCsQnaReplyList"
 		resultType="com.library.bookhub.entity.cs.CsQnaReplyEntity">
-		select * from bh_cs_qna_reply order by #{id} desc;
+		select * from bh_cs_qna_reply order by #{qnaId} desc;
 	</select>
 
 	<!-- QnaReply 작성하기 -->
@@ -19,7 +19,13 @@
 
 	<!-- QnaReply 삭제하기 -->
 	<delete id="qnaReplyDelete">
-		delete from bh_cs_qna_reply where id = #{id};
+		delete from bh_cs_qna_reply where qnaId = #{qnaId};
 	</delete>
+	
+	<!-- QnaReply 상세보기 -->
+	<select id="qnaReplyView"
+		resultType="com.library.bookhub.entity.cs.CsQnaReplyEntity">
+		SELECT * FROM bh_cs_qna_reply where qnaId = #{qnaId};
+	</select>
 
 </mapper>
