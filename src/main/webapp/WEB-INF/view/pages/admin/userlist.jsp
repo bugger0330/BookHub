@@ -90,7 +90,7 @@ img {
 		</div>
 	</div>
 
-	<div class="container">
+	<div style="padding-left: 250px; padding-right: 250px">
 
 		
 
