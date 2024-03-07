@@ -26,8 +26,6 @@ public class MemberService {
 	// 회원가입 기능
 	@Transactional
 	public void createUser(SignUpFormDto dto) {
-		log.info("createUser...1");
-		log.info("dto : "+dto.toString());
 		
 		User userEntity = User.builder()
 							.userName(dto.getUid())
@@ -41,8 +39,6 @@ public class MemberService {
 							.addr2(dto.getAddr2())
 							.build();
 		
-		log.info("createUser...2");
-		log.info("userEntity : "+userEntity.toString());
 		
 		memberRepository.insert(userEntity);
 		
@@ -52,7 +48,6 @@ public class MemberService {
 	public int confirmUid(String uid) {
 		
 		int result = memberRepository.countByUsername(uid);
-		log.info("where uid ? :"+ result);
 		
 		return result;
 	}

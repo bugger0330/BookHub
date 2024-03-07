@@ -27,7 +27,6 @@ public class MailService {
 		// 인증코드 생성
 		int code = ThreadLocalRandom.current().nextInt(100000,1000000); // 랜덤 생성
 		generatedCode = ""+code;
-		log.info("전송된 인증 번호 : "+generatedCode);
 		
 		String sender = "BookHub";
 		String title = "BookHub 인증코드";
@@ -59,10 +58,8 @@ public class MailService {
 	public int confirmCodeByEmail(String code) {
 		
 		if (code.equals(generatedCode)) {
-            log.info("인증 번호 일치 --");
             return 1;
         }else {
-            log.error("인증 번호 불일치 --");
             return 0;
         }
 	}

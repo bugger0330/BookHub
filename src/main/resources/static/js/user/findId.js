@@ -39,7 +39,6 @@ function valiEmail() {
 
 // 이메일 인증
 function authEmail(email) {
-	console.log("email : "+email);
 	divNum.style.display = 'block';
 	fetch('/findId/sendEmail',{
 		method: "POST",
@@ -51,7 +50,6 @@ function authEmail(email) {
 		}),
 	}).then((response) => response.text())
 	.then((data) => {
-		console.log(data);
 		
 		if(data != null){
 			divNum.style.display = 'block';
@@ -64,7 +62,6 @@ function authEmail(email) {
 	})
 	.catch((error) => {
 		alert('이메일 인증을 실패했습니다.');
-		console.log(error);
 	});
 	
 }
@@ -85,7 +82,6 @@ function EnterNumber() {
 		},
 	}).then((response) => response.text())
 	.then((data) => {
-		console.log('number : '+data);
 		if(data <= 0){
 			alert("인증 코드를 다시 입력해주세요.");
 		} else {
@@ -97,7 +93,6 @@ function EnterNumber() {
 	.catch((error) => {
 		alert('인증 번호에 문제가 발생했습니다.');
 		window.localStorage.removeItem('email');
-		console.log(error);
 	});
 }
 

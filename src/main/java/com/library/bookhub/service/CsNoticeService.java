@@ -22,10 +22,11 @@ public class CsNoticeService {
 	@Autowired
 	private CsNoticeRepository csNoticeRepository;
 
-	/*
-	 * // Notice 리스트 public List<CsNoticeEntity> selectCsNoticeList() { return
-	 * csNoticeRepository.selectCsNoticeList(); }
-	 */
+	
+	 // Notice 리스트 메인화면 
+	public List<CsNoticeEntity> selectCsNoticeList() { return
+	 csNoticeRepository.noticeList(); }
+	 
 
 	// Notice 상세보기
 	public CsNoticeEntity noticeView(int id) {

@@ -35,7 +35,6 @@ public class CalendarPointService {
 										.lastMonth(month)
 										.attendanceDays(day+", ")
 										.build();
-		log.info("attendance : "+attendance);
 		
 		int result = attendanceRepository.insert(attendance);
 		
@@ -64,7 +63,6 @@ public class CalendarPointService {
 		int result = attendanceRepository.updateByAttendanceDays(today+", ", userId);
 		Attendance attendance = attendanceRepository.selectByUserId(userId);
 		
-		log.info("modifyAttendanceDays : "+result);
 		return attendance;
 	}
 	
@@ -77,7 +75,6 @@ public class CalendarPointService {
 		attendanceRepository.updatePoint(addPoint, username);
 		// 포인트 저장
 		int result = memberRepository.updateAttendanceByPoint(addPoint, username);
-		log.info("completePoint : "+result+", user : "+username);
 		
 		return addPoint;
 	}
@@ -104,7 +101,6 @@ public class CalendarPointService {
                 days.add(Integer.parseInt(day));
             }
         }
-        log.info("days : "+days);
 		
 		return days;
 	}

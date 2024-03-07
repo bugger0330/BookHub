@@ -60,9 +60,6 @@ public class MyUserDetails implements UserDetails, OAuth2User  {
 	        });
 		}
 		
-		log.info(authorities.toString());
-		
-		
 		
 		return authorities;
 	}

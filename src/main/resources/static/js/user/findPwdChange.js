@@ -76,7 +76,6 @@ const btn = document.getElementsByClassName('btn-change-pass')[0];
 				}),
 			}).then((response) => response.text())
 			.then((data) => {
-				console.log(data);
 				
 				if(data >= 1){
 					alert('비밀번호가 변경되었습니다.');
@@ -86,7 +85,6 @@ const btn = document.getElementsByClassName('btn-change-pass')[0];
 			})
 			.catch((error) => {
 				alert('비밀번호를 변경하는데 문제가 발생했습니다');
-				console.log(error);
 			});
 			
 		});

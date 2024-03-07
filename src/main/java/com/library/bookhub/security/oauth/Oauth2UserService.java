@@ -29,24 +29,17 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        log.info("Oauth2UserService=================== start");
         
         OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
-        log.info("1..oAuth2User : "+oAuth2User);
 
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        log.info("2..registrationId : "+registrationId);
         
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
-        log.info("3..userNameAttributeName : "+userNameAttributeName);
         
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName,oAuth2User.getAttributes());
-        log.info("4..attributes : "+attributes);
-        log.info("4..attributes : "+attributes.getNameAttributeKey());
         
         User user = saveOrUpdate(attributes);
-        log.info("5..user : "+user);
         
         httpSession.setAttribute("user", new SessionUser(user));
 
@@ -57,7 +50,6 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
 
     /// 소셜 등록 or 조회
     private User saveOrUpdate(OAuthAttributes attributes) {
-        log.info("saveOrUpdate - attributes : " + attributes.toString());
         User userEntity = memberRepository.findByUsername(attributes.getUsername());
 
         if (userEntity == null) {
@@ -74,7 +66,6 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
             memberRepository.insert(userEntity);
         }
         userEntity = memberRepository.findByUsername(attributes.getUsername());
-        log.info("saveOrUpdate user : " + userEntity);
 
         return userEntity;
     }

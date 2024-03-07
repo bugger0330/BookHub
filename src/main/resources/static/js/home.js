@@ -25,7 +25,7 @@ $(document).ready(function() {
             $tr.append('<td><i class="bi bi-megaphone-fill text-danger">' + notice.id + '</i></td>');
             $tr.append('<td class="text-left"><div class="panel-cs-container"><p class="panel-cs-title">' + notice.title + '</p></div></td>');
             $tr.append('<td>' + notice.writer + '</td>');
-            $tr.append('<td>' + notice.rdate + '</td>');
+            
 
             $tbody.append($tr);
         });
