@@ -2,7 +2,7 @@ $(document).ready(function() {
     // 서버로부터 공지사항 리스트를 가져오는 함수
     function fetchNoticeList() {
         $.ajax({
-            url: "/api/notice",
+            url: "/api/notice/list",
             type: "GET",
             success: function(data) {
                 // 공지사항 리스트를 받아온 후 테이블에 추가
@@ -10,7 +10,7 @@ $(document).ready(function() {
                 loadView(); // 공지사항을 클릭할 때 페이지를 로드하는 함수 호출
             },
             error: function(xhr, status, error) {
-                console.error("Failed to fetch notice list:", error);
+                //console.error("Failed to fetch notice list:", error);
             }
         });
     }

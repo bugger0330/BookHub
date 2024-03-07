@@ -64,11 +64,7 @@ public class BookController {
 	 */
 	@PostMapping("/borrow") // 책 대출
 	public ResponseEntity<?> bookBorrow(int bookId, String username){
-		// bh_book에 책정보 update - id
-		// bh_book_borrow에 대출정보 insert - userId
-		// 트랜젝션 걸어야함
 		boolean result = bookService.bookBorrow(bookId, username);
-		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}
 
@@ -81,9 +77,6 @@ public class BookController {
 	 */
 	@DeleteMapping("/borrow")
 	public ResponseEntity<?> bookBorrowEnd(int bookId, String username){
-		// bh_book에 반납 정보 update - bookId
-		// bh_book_borrow에 대출정보 삭제해야함!
-		
 		boolean result = bookService.bookBorrowEnd(bookId, username);
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}

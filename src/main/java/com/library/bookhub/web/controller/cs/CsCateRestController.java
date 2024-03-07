@@ -5,15 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.library.bookhub.entity.cs.CsCate1Entity;
-import com.library.bookhub.entity.cs.CsCate2Entity;
 import com.library.bookhub.service.CsCateService;
 import com.library.bookhub.web.dto.cs.CsCate1Dto;
 
@@ -26,17 +20,17 @@ public class CsCateRestController {
 	@Autowired
 	private CsCateService csCateService;
 	
+	
+	/**
+	 * @fileName : CsCateRestController.java
+	 * @Project : BookHub
+	 * @Date : 2024. 3. 7.
+	 * @작성자 : 강민
+	 * @설명 : 카테고리 트리를 가져오는 기능
+	 */
     @GetMapping("/csCategory")
     public ResponseEntity<?> getCategory(){
-
         List<CsCate1Dto> cate1List = csCateService.selectCsCate1();
-        System.out.println(cate1List.get(0).getRespList());
-        
-
         return new ResponseEntity<List<CsCate1Dto>>(cate1List,HttpStatus.OK); 
-
-
     }
-
-
 }

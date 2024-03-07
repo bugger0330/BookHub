@@ -35,7 +35,6 @@ for(let i = 0; i < printInput.length; i++){ // input onchange
 		}
 		allPoint = checkTrue();
 		priceAll.textContent = allPoint;
-		// 갯수 리턴받아서 보여줘야함
 		all = countPlus();
 		printAllCount.textContent = all;
 		return;

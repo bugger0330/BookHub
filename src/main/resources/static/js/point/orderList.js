@@ -128,7 +128,6 @@ function refundEvent(btns, datas){
 				},
 				success : function(data){
 					if(data == true){
-						//마이포인트 업데이트
 						mypointUpdate(datas[i]);
 					}
 				},

@@ -1,5 +1,4 @@
 let memberId = getPrincipal();
-console.log("유저정보 : " + memberId);
 function getPrincipal(){
 	let username = "";
 	$.ajax({
@@ -15,3 +14,4 @@ function getPrincipal(){
 	});
 	return username;
 }
+

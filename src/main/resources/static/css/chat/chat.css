@@ -24,13 +24,15 @@
 /* 모달 본문 스타일 */
 .modal_body-chat {
 	position: absolute; /* 모달 본문을 절대적으로 위치시킵니다. */
-	flex-direction: column; /* 내용을 수직으로 정렬합니다. */
+	flex-direction: column-reverse; /* 내용을 수직으로 정렬합니다. */
 	justify-content: center; /* 내용을 수직으로 정렬합니다. */
 	width: 100%; /* 모달 본문의 너비를 100%로 설정합니다. */
 	height: 100%; /* 모달 본문의 높이를 100%로 설정합니다. */
 	padding: 20px; /* 모달 본문 내부에 여백을 추가합니다. */
 	text-align: left; /* 텍스트를 가운데 정렬합니다. */
 	overflow-y: auto; /* 수직 스크롤링을 활성화합니다. */
+	display: flex;
+	
 }
 
 #connectForm {

@@ -10,26 +10,18 @@ import com.library.bookhub.entity.User;
 
 @Mapper
 public interface BookShareRepository {
-
-	int shareBookWrite(BookShare bookShare);
-
-	List<BookShare> getShareBookALL();
-
-	BookShare getShareBook(int id);
-
-	ShareBookBorrow selectShareBookBorrow(ShareBookBorrow entity);
-	int shareBookBorrow(ShareBookBorrow entity);
-
-	BookShare shareBookInfo(int bookId);
-
-	int borrowShareBook(BookShare book);
-	int borrowShareBookEnd(BookShare book);
-
-	User getUser(String userName);
-
-	int pointPayment(User user);
-
-	int shareBookBorrowEnd(ShareBookBorrow entity);
+	
+	public int shareBookWrite(BookShare bookShare);
+	public List<BookShare> getShareBookALL();
+	public BookShare getShareBook(int id);
+	public ShareBookBorrow selectShareBookBorrow(ShareBookBorrow entity);
+	public int shareBookBorrow(ShareBookBorrow entity);
+	public BookShare shareBookInfo(int bookId);
+	public int borrowShareBook(BookShare book);
+	public int borrowShareBookEnd(BookShare book);
+	public User getUser(String userName);
+	public int pointPayment(User user);
+	public int shareBookBorrowEnd(ShareBookBorrow entity);
 
 
 }

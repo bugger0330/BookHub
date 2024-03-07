@@ -6,27 +6,8 @@ const priceAll = document.querySelector(".price--all");
 const orderBtn = document.querySelector(".order--btn");
 const productName = document.querySelectorAll(".product--name");
 
-/**
- * 페이지 로드시 내 포인트 들고옴
- * 
- * 체크박스 클릭 이벤트가 일어날 때마다 각 메뉴 가격*갯수들 다 더해서 총합을 계산
- * 
- * 결제버튼 클릭시 로그인 안되어 있으면 로그인부터 해야함.
- * 결제버튼 클릭시 마이포인트가 적으면 결제안됨, 포인트 결제 페이지로?
- * 
- * 총결제금액--
- * 메인함수 - 체크박스 체크 이벤트
- * 서브함수 - 체크된 곳 금액 * 갯수
- */
-
 load();
 function load(){
-	
-	//myPoint.textContent = 0;
-	if(memberId == ""){
-		// 로그인이 필요합니다 출력(내 포인트: <<==여기에)
-		
-	}
 	$.ajax({
 		type : "post",
 		url : "/point/get",
@@ -98,9 +79,7 @@ orderBtn.onclick = () => {
 		alert("포인트가 부족합니다.");
 		return;
 	}
-	// 주문하기
 	let orderArray = new Array();
-	
 	for(let i = 0; i < coffieCheck.length; i++){
 		if(coffieCheck[i].checked == true && coffieCount[i].value != 0){
 			const orders = {

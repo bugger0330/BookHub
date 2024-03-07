@@ -12,7 +12,6 @@
 	            $("#disconnect").prop("disabled", false);
 	            $("#send").prop("disabled", true);
 	            $("#chat-room").show();
-	            console.log('Connected: ' + frame);
 	            stompClient.subscribe('/topic/public', function(message) {
 	                showMessage("💡💬 : " + message.body);
 	            });
@@ -32,7 +31,6 @@
 	            $("#disconnect").prop("disabled", true);
 	            $("#send").prop("disabled", true);
 	            $("#chat-room").hide();
-	            console.log("Disconnected");
 	            stompClient = null;
 	        }
 	    });
@@ -95,7 +93,6 @@
 	            $("#disconnect").prop("disabled", true);
 	            $("#send").prop("disabled", true);
 	            $("#chat-room").hide();
-	            console.log("Disconnected");
 	            stompClient = null;
 	        }
 	    }

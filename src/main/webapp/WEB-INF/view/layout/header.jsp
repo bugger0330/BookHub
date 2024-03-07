@@ -51,7 +51,9 @@
     <link href="/css/share/write.css" rel="stylesheet">
     <link href="/css/share/read.css" rel="stylesheet">
     <link href="/css/share/detail.css" rel="stylesheet">
+    
     <link href="/css/cs/category.css" rel="stylesheet">
+    <link href="/css/chat/chat.css" rel="stylesheet">
     
        <!-- CS CSS -->
 <!-- <!--     <link href="/css/csStyle.css" rel="stylesheet">  --> 
@@ -71,7 +73,6 @@
                 const divUid = document.querySelector('.div-uid');
 
                 if(uid !== null && uid !== ''){
-                    console.log(uid);
                     divUid.textContent = uid;
                 }
             }
@@ -191,5 +192,9 @@
 			<div class="cate-body"></div>
 		</div>
 	</div>
+	<!-- 챗봇 아이콘 -->
+	<button class="btn btn-lg btn-primary btn-lg-square btn--chatbot">
+		<i class="bi bi-chat-dots-fill"></i>
+	</button>
 	<!-- 사이드 메뉴 -->
     <script src="/js/cs/csCate.js"></script>
