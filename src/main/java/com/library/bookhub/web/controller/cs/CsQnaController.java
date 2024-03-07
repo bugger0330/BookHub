@@ -31,11 +31,18 @@ public class CsQnaController {
 	@Autowired
 	CsFileService csFileService;
 
+	
+	/**
+	 * @fileName : CsQnaController.java
+	 * @Project : BookHub
+	 * @작성자 : 노수현
+	 * @설명 : 문의하기
+	 */
+	
 	// Qna 리스트
 	@GetMapping("/qna/list")
 	public String qnaPage(PageReq pageReq, Model model) {
 
-		System.out.println("a");
 		// 페이징
 		if (pageReq.getPage() <= 0) {
 			pageReq.setPage(1); // 페이지가 0 이하일 경우 첫 페이지로 설정한다
@@ -47,7 +54,6 @@ public class CsQnaController {
 
 		PageRes<CsQnaEntity> pageRes = csQnaService.getQnaUsingPage(pageReq); // 페이징 처리함
 		List<CsQnaEntity> qnaList = pageRes.getContent(); // 내용을 보여줄거다
-		System.out.println("qnaList" + qnaList.size());
 
 		// 페이징 정보를 모델에 추가
 		model.addAttribute("qnaList", qnaList); // 프로젝트 마다 다른 코드
@@ -58,7 +64,6 @@ public class CsQnaController {
 		model.addAttribute("startPage", pageRes.getStartPage());
 		model.addAttribute("endPage", pageRes.getEndPage());
 
-		System.out.println("CsQnaEntity" + "여기까지오나");
 
 		return "pages/cs/qna/list";
 
@@ -76,18 +81,12 @@ public class CsQnaController {
 	public String qnaInsert(CsQnaDto dto, @AuthenticationPrincipal UserDetails userDetails) {
 		
 		String userId = userDetails.getUsername();
-		
-		System.out.println("유저 정보" +userId);
-		System.out.println(dto.toString());
 
 		// 파일 저장
 		String filepath = csFileService.saveFiles(dto.getFilepath());
 
-		System.out.println("filepath 확인" + filepath.toString());
-
 		boolean result = csQnaService.qnaInsert(dto, filepath, userId);
 
-		System.out.println(result);
 		
 		if (result == true) {
 			return "pages/cs/qna/list";
@@ -99,7 +98,7 @@ public class CsQnaController {
 	// Qna 상세보기 화면 띄우기
 	@GetMapping("/qna/view/{id}")
 	public String detailQna() {
-		System.out.println("d");
+
 		return "pages/cs/qna/view";
 	}
 
@@ -107,8 +106,6 @@ public class CsQnaController {
 	@PostMapping("/qna/view")
 	@ResponseBody
 	public CsQnaEntity qnaView(int id) {
-		System.out.println("e");
-		System.out.println(id);
 
 		CsQnaEntity csQnaEntity = csQnaService.qnaView(id);
 
@@ -119,7 +116,7 @@ public class CsQnaController {
 	// Qna 수정하기 화면 띄우기
 	@GetMapping("/qna/update/{id}")
 	public String update() {
-		System.out.println("f");
+
 		return "pages/cs/qna/update";
 	}
 
@@ -127,9 +124,6 @@ public class CsQnaController {
 	@PostMapping("/qna/update/{id}")
 	@ResponseBody
 	public boolean qnaUpdate(@PathVariable int id, CsQnaDto dto) {
-		System.out.println("g");
-		System.out.println("아이디 번호" + id);
-		System.out.println("데이터" + dto.toString());
 
 		boolean result = csQnaService.qnaUpdate(id, dto);
 
@@ -141,7 +135,7 @@ public class CsQnaController {
 	@PostMapping("/qna/delete/{id}")
 	@ResponseBody
 	public boolean qnaDelete(@PathVariable int id) {
-		System.out.println("h");
+		
 		boolean result = csQnaService.qnaDelete(id);
 
 		return result;

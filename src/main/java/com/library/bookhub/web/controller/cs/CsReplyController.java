@@ -25,13 +25,19 @@ public class CsReplyController {
 	@Autowired
 	CsQnaReplyService csQnaReplyService;
 
+	/**
+	 * @fileName : CsReplyController.java
+	 * @Project : BookHub
+	 * @작성자 : 노수현
+	 * @설명 : 문의하기 답변
+	 */
+	
+	
 	// QnaReply 작성하기 화면
 	@GetMapping("/qna/reply/{qnaId}")
 	public String qnaReplyInsertPage(@PathVariable("qnaId") int qnaId, Model model) {
 
 		model.addAttribute("qnaId", qnaId);
-
-		System.out.println(qnaId);
 
 		return "pages/cs/qna/view";
 	}
@@ -65,7 +71,6 @@ public class CsReplyController {
 	public CsQnaReplyEntity qnaReplyView(int qnaId) {
 
 		CsQnaReplyEntity csQnaReplyEntity = csQnaReplyService.qnaReplyView(qnaId);
-		System.out.println("여기는 컨트롤러 " + csQnaReplyEntity);
 		
 		return csQnaReplyEntity;
 	}

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 <link href="/css/csStyle.css" rel="stylesheet">
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -16,8 +17,6 @@
 
 <section id="cs" class="py-5" style="background-color: #f8f9fa;">
 	<div class="container csMainContainer">
-
-		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
 
 		<div class="container">
 
@@ -62,24 +61,26 @@
 			<div id="commentList" class="mt-4">
 				<!-- 여기에 댓글 목록이 나열될 것입니다. -->
 				<h2>답변</h2>
-				<div class="form-group" style="width: -webkit-fill-available; margin-bottom: 20px;">
-					<textarea class="form-control" id="reply-display" rows="3"  readonly></textarea>
+				<div class="form-group"
+					style="width: -webkit-fill-available; margin-bottom: 20px;">
+					<textarea class="form-control" id="reply-display" rows="3" readonly></textarea>
 				</div>
 			</div>
 
 			<div id="modifyBtn">
-			<sec:authorize access="isAuthenticated()"> <!--회원전용  -->
-				<button class="btn btn-secondary rounded-pill shadow-sm"
-					onclick="history.back()">돌아가기</button>
+				<sec:authorize access="isAuthenticated()">
+					<!-- 회원전용 -->
+					<button class="btn btn-secondary rounded-pill shadow-sm"
+						onclick="history.back()">돌아가기</button>
 					<sec:authorize access="hasRole('ROLE_USER')">
-					<button class="btn btn-warning rounded-pill shadow-sm"
-						id="btn-update">수정하기</button>
+						<button class="btn btn-warning rounded-pill shadow-sm"
+							id="btn-update">수정하기</button>
 					</sec:authorize>
-				<!-- 이부분은 관리자계정으로 로그인시 표시되게 설정해야함 -->
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<button id="btn-delete"
-						class="btn btn-danger rounded-pill shadow-sm">삭제하기</button>
-				</sec:authorize>
+					<!-- 관리자전용 -->
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<button id="btn-delete"
+							class="btn btn-danger rounded-pill shadow-sm">삭제하기</button>
+					</sec:authorize>
 				</sec:authorize>
 			</div>
 
@@ -89,11 +90,6 @@
 </section>
 
 
-
-
-<script>
-	
-</script>
 <script src="/js/cs/csQna.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>

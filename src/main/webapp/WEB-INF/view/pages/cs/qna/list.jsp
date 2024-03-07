@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 <link href="/css/csStyle.css" rel="stylesheet">
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -18,7 +19,6 @@
 
 	<div class="csMainContainer">
 
-
 		<div class="container" style="display: flex; flex-direction: column;">
 
 			<div>
@@ -30,7 +30,7 @@
 						aria-label="Basic outlined example" style="display: flex;">
 						<button type="button" class="btn btn-outline-primary"
 							id="btnInsert" style="flex: none;">
-							</a>등록
+							<a>등록</a>
 						</button>
 						<!-- <button type="button" class="btn btn-outline-primary"
 						style="flex: none;">나의 문의내역</button> -->
@@ -103,7 +103,6 @@
 			</div>
 
 		</div>
-	</div>
 	</div>
 </section>
 

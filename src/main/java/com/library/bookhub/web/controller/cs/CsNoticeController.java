@@ -29,20 +29,25 @@ public class CsNoticeController {
 	@Autowired
 	CsFileService csFileService;
 
+	/**
+	 * @fileName : CsFaqController.java
+	 * @Project : BookHub
+	 * @작성자 : 노수현
+	 * @설명 : 공지사항
+	 */
 	// Notice 리스트 화면
 	@GetMapping("/notice/list")
 	public String noticePage() {
-		System.out.println("a");
+		
 		return "pages/cs/notice/list";
 	}
 
+	
 	// 추가 Notice 검색 리스트
 	@GetMapping("/api/notice/search-list")
 	@ResponseBody
 	public List<CsNoticeEntity> noticeSearchPage(String searchType, String searchInput) {
-		System.out.println("b");
-		System.out.println(searchType);
-		System.out.println(searchInput);
+
 		return csNoticeService.noticeSearchPage(searchType, searchInput);
 	}
 
@@ -50,14 +55,14 @@ public class CsNoticeController {
 	@GetMapping("/api/notice/list")
 	@ResponseBody
 	public List<CsNoticeEntity> noticeList() {
-		System.out.println("c");
+
 		return csNoticeService.noticeList();
 	}
 
 	// Notice 상세보기 화면 띄우기
 	@GetMapping("/notice/view/{id}")
 	public String detailNotice() {
-		System.out.println("d");
+
 		return "pages/cs/notice/view";
 	}
 
@@ -65,8 +70,7 @@ public class CsNoticeController {
 	@PostMapping("/notice/view")
 	@ResponseBody
 	public CsNoticeEntity noticeView(int id) {
-		System.out.println("e");
-		System.out.println(id);
+
 
 		CsNoticeEntity csNoticeEntity = csNoticeService.noticeView(id);
 
@@ -86,16 +90,13 @@ public class CsNoticeController {
 		
 		String userId = userDetails.getUsername();
 		
-		System.out.println("유저 정보" +userId);
 		
 		// 파일 저장
 		String filepath = csFileService.saveFiles(dto.getFilepath());
 
-		System.out.println("filepath 확인" + filepath.toString());
 
 		boolean result = csNoticeService.noticeInsert(dto, filepath, userId);
-
-		System.out.println(result);
+		
 
 		if (result == true) {
 			return "pages/cs/notice/list";

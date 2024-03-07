@@ -7,6 +7,7 @@ import com.library.bookhub.entity.cs.CsFileEntity;
 @Mapper
 public interface CsFileRepository {
 
+	// 파일업로드
 	public int saveFiles(CsFileEntity csFileEntity);
 	
 	

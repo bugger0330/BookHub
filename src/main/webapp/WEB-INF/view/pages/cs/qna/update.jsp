@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/layout/header.jsp"%>
 <link href="/css/csStyle.css" rel="stylesheet">
+
 <!-- Header Start -->
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
 	<div class="container py-5">
@@ -18,10 +19,7 @@
 
 	<div class="csMainContainer">
 
-		<%-- <%@ include file="/WEB-INF/view/pages/cs/layout/aside.jsp"%> --%>
-
 		<div class="container">
-
 
 			<div class="container mt-3">
 				<h2>문의글 수정하기</h2>
@@ -60,11 +58,7 @@
 				<button class="btn btn-warning" id="btn-update-complete">수정완료</button>
 			</div>
 
-
 		</div>
-
-
-	</div>
 	</div>
 </section>
 <script type="text/javascript">
@@ -147,9 +141,7 @@ function removeFile(element) {
 						[ 'view', [ 'fullscreen', 'codeview', 'help' ] ] ]
 			});
 </script>
-<script src="/js/cs/csQna.js">
-	
-</script>
+<script src="/js/cs/csQna.js"></script>
 
 <%@ include file="/WEB-INF/view/layout/footer.jsp"%>
 
