@@ -8,7 +8,7 @@
 	<!-- Qna 리스트 조회 -->
 	<select id="selectCsQnaList"
 		resultType="com.library.bookhub.entity.cs.CsQnaEntity">
-		select * from bh_cs_qna order by #{id} desc;
+		select * from bh_cs_qna order by id desc;
 	</select>
 
 	<!-- Qna 작성하기 -->
@@ -37,7 +37,7 @@
 	<!-- 페이징 처리 -->
 	<select id="findAllwithPasing"
 		resultType="com.library.bookhub.entity.cs.CsQnaEntity">
-		select * from bh_cs_qna
+		select * from bh_cs_qna order by id desc
 		limit #{limit} offset #{offset}
 	</select>
 

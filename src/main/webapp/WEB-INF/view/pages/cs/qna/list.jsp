@@ -24,16 +24,20 @@
 			<div>
 				<h2>문의하기</h2>
 
-				<div class="btn-group" role="group"
-					aria-label="Basic outlined example" style="display: flex;">
-					<button type="button" class="btn btn-outline-primary" id="btnInsert"
-						style="flex: none;"></a>등록</button>
-					<!-- <button type="button" class="btn btn-outline-primary"
+				<!-- 이부분은 유저계정으로 로그인시 표시되게 설정해야함 -->
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<div class="btn-group" role="group"
+						aria-label="Basic outlined example" style="display: flex;">
+						<button type="button" class="btn btn-outline-primary"
+							id="btnInsert" style="flex: none;">
+							</a>등록
+						</button>
+						<!-- <button type="button" class="btn btn-outline-primary"
 						style="flex: none;">나의 문의내역</button> -->
-				</div>
-				
+					</div>
+				</sec:authorize>
 			</div>
-			
+
 			<table class="table table-hover">
 				<thead class="thead-light text-center">
 					<tr>
@@ -46,7 +50,7 @@
 				</thead>
 				<tbody class="text-center">
 					<c:forEach var="list" items="${qnaList}">
-						<tr  class="page-click" id="${list.id}">
+						<tr class="page-click" id="${list.id}">
 							<td>${list.id}</td>
 							<td class="text-left" width="50%">
 								<div class="panel-cs-container">
@@ -67,8 +71,8 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			
-			
+
+
 			<!-- 페이징 처리 -->
 			<div class="qna pagination" id="qnaPage">
 				<c:if test="${page > 1}">
