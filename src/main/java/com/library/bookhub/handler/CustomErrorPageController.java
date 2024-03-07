@@ -9,14 +9,14 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 
 /**
- * @fileName : CustomErrorController.java
+ * @fileName : CustomErrorPageController.java
  * @Project : BookHub
  * @Date : 2024. 3. 7.
  * @작성자 : 강민
  * @설명 : 
  */
 @Controller
-public class CustomErrorController implements ErrorController {
+public class CustomErrorPageController implements ErrorController {
 	
 	@GetMapping("/error")
 	public String errorPage(HttpServletRequest request) {
@@ -31,6 +31,4 @@ public class CustomErrorController implements ErrorController {
         }
 		return null;
 	}
-	
-
 }
