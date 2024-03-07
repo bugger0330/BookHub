@@ -123,11 +123,9 @@
 		class="bi bi-arrow-up"></i></a>
 
 	<!-- JavaScript code -->
-<<<<<<< HEAD
+
 	<!-- <script src="/js/cs/csCate.js"></script> -->
-=======
-	
->>>>>>> 951e3bc500082435658c4e6072cca77b85f3c51f
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 	<script
