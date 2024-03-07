@@ -186,7 +186,6 @@ function authEmail(email) {
 		},
 	}).then((response) => response.text())
 	.then((data) => {
-		resultEmail.textContent = ('인증 코드가 전송되었습니다!');
 		divEmailCreate();
 	})
 	.catch((error) => {
