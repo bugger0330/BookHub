@@ -19,6 +19,7 @@
 
 	<div class="csMainContainer">
 
+
 		<div class="container" style="display: flex; flex-direction: column;">
 
 			<div>
@@ -30,7 +31,9 @@
 						aria-label="Basic outlined example" style="display: flex;">
 						<button type="button" class="btn btn-outline-primary"
 							id="btnInsert" style="flex: none;">
+
 							<a>등록</a>
+
 						</button>
 						<!-- <button type="button" class="btn btn-outline-primary"
 						style="flex: none;">나의 문의내역</button> -->

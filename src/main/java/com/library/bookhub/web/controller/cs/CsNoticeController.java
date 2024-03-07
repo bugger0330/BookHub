@@ -90,9 +90,14 @@ public class CsNoticeController {
 		
 		String userId = userDetails.getUsername();
 		
+
 		
 		// 파일 저장
 		String filepath = csFileService.saveFiles(dto.getFilepath());
+
+
+
+		boolean result = csNoticeService.noticeInsert(dto, filepath, userId);
 
 
 		boolean result = csNoticeService.noticeInsert(dto, filepath, userId);
