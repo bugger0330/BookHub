@@ -9,16 +9,15 @@ $(document).ready(function() {
 
             $(".refund-btn").click(function() {
                 let impUid = $(this).data("impuid");
-                console.log("결과", impUid);
+                
                 let price = $(this).data("price");
-                console.log("가격", price);
+              
                 let userId = $(this).data("username");
-                console.log("유저아이디", userId);
+              
                 let point = $(this).data("point");
-                console.log("포인트", point);
+              
                 let id = $(this).data("id");
-                console.log("id", id);
-
+              
                 let cancelRequest = {
                     imp_uid: impUid,
                     amount: price,
@@ -29,7 +28,7 @@ $(document).ready(function() {
                     refundYn: '환불완료'
                 };
 
-                console.log(cancelRequest);
+             
 
                 $.ajax({
                     type: "POST",
@@ -47,7 +46,7 @@ $(document).ready(function() {
                             contentType: "application/json",
                             data: JSON.stringify({ userId: userId, point: point }), // 사용자 ID와 환불된 포인트 정보 전송
                             success: function(response) {
-                                console.log("환불 정보가 성공적으로 처리되었습니다.");
+                                
 
                                 // 포인트 차감 후 유저 포인트 업데이트 요청
                                 $.ajax({
