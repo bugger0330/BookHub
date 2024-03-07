@@ -17,20 +17,20 @@ import com.library.bookhub.service.CsNoticeService;
 import lombok.extern.log4j.Log4j2;
 
 /**
-
-  * @FileName : CsNoticeRestFulController.java
-
-  * @Project : BookHub
-
-  * @Date : 2024. 3. 5. 
-
-  * @작성자 : 이준혁
-
-  * @변경이력 :
-
-  * @프로그램 설명 : 공지사항 restful controller
-
-  */
+ * 
+ * @FileName : CsNoticeRestFulController.java
+ * 
+ * @Project : BookHub
+ * 
+ * @Date : 2024. 3. 5.
+ * 
+ * @작성자 : 이준혁
+ * 
+ * @변경이력 :
+ * 
+ * @프로그램 설명 : 공지사항 restful controller
+ * 
+ */
 
 @RestController
 @Log4j2
@@ -39,19 +39,17 @@ public class CsNoticeRestFulController {
 	@Autowired
 	private CsNoticeService csNoticeService;
 
-	// 메인화면에 띄울 전체공지사항리스트
-	/*
-	 * @GetMapping("/api/notice") public List<CsNoticeEntity> getCsNoticeList() {
-	 * return csNoticeService.selectCsNoticeList(); }
-	 */
+	// 메인화면(홈화면)에 띄울 전체공지사항리스트
+	 @GetMapping("/api/notice") public List<CsNoticeEntity> getCsNoticeList() {
+	 return csNoticeService.selectCsNoticeList(); }
+	 
 
 	// 공지사항 상세조회
 	@GetMapping("/api/notice/{id}")
 	public CsNoticeEntity getNoticeView(@PathVariable int id) {
 		return csNoticeService.noticeView(id);
 	}
-	
-	
+
 	/*
 	 * // 공지사항 등록
 	 * 
