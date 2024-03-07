@@ -33,6 +33,7 @@ searchInput.onkeyup = () => {
 						innerFun(data);
 					}else{
 						nothingText.textContent = "검색 결과가 없습니다.";
+						bookBox.innerHTML = "";
 					}
 				},
 				error : function(){
@@ -71,11 +72,11 @@ searchBtn.onclick = () => {
 				url : `/book/search/${option}/${searchInput.value}`,
 				async : false,
 				success : function(data){
-					console.log("검색결과", data);
 					if(data != ""){
 						innerFun(data);
 					}else{
 						nothingText.textContent = "검색 결과가 없습니다.";
+						bookBox.innerHTML = "";
 					}
 				},
 				error : function(){

@@ -1,53 +1,81 @@
-.main-category{
-    position: fixed;
-    top: 500px;
-    right: 10px;
+/* Import Google Fonts stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
+
+body {
+    font-family: 'Noto Sans KR', sans-serif; 
 }
 
-.main-cate1{
-    border: 1px solid black;
+
+.main-cate2, .cate-header, .cate1-title, .cate-child span {
+    font-family: 'Noto Sans KR', sans-serif; 
+}
+
+
+
+
+.main-category {
+    position: fixed;
+    top: 300px;
+    right: 30px;
+}
+
+
+.main-cate2 {
     width: 200px;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: antiquewhite;
+    background-color: #F0FBFC;
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-.cate-body{
+
+.cate-body {
     display: flex;
     flex-direction: column;
 }
 
-.cate-header{
-    padding: 5px;
-    border: 1px solid black;
+
+.cate-header {
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background-color: rgb(236, 193, 137);
+    background-color: #06BBCC;
+    border-radius: 10px; 
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold; 
 }
 
-.cate1-title{
-    font-weight: 700;
+
+.cate1-title {
+    margin: 0; 
 }
 
-.cate-child{
+
+.cate-child {
     display: flex;
     flex-direction: column;
     padding-left: 10px;
 }
 
-.cate-child span{
-    margin: 4px 0;
-    border: 1px solid black;
-    padding: 5px;
+
+.cate-child span {
+    margin: 4px 0 5px;
+    border: 1px solid #ccc;
+    padding: 8px; 
     cursor: pointer;
     background-color: white;
+    border-radius: 10px; 
+    transition: background-color 0.3s ease; 
 }
 
-.cate-child span:hover{
-    background-color: rgb(236, 193, 137);
+
+.cate-child span:hover {
+    background-color: #E0F5FF; 
 }

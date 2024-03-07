@@ -23,8 +23,6 @@
 			const email = inputEmail.value;
 			const uid = inputUid.value;
 			
-			console.log("email : "+email+", uid : "+uid);
-			
 			
 			fetch('/findPwd/sendEmail',{
 				method: "POST",
@@ -37,7 +35,6 @@
 				}),
 			}).then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				
 				const result = data.result;
 				const username = data.username;
@@ -53,7 +50,6 @@
 			})
 			.catch((error) => {
 				alert('이메일 인증을 실패했습니다.');
-				console.log(error);
 			});
 			
 		}
@@ -76,7 +72,6 @@
 				},
 			}).then((response) => response.text())
 			.then((data) => {
-				console.log('number : '+data);
 				if(data <= 0){
 					alert("인증 코드를 다시 입력해주세요.");
 				} else {
@@ -87,7 +82,6 @@
 			})
 			.catch((error) => {
 				alert('인증 번호에 문제가 발생했습니다.');
-				console.log(error);
 			});
 		}
 		

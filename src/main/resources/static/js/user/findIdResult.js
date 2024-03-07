@@ -23,7 +23,6 @@
 			}),
 		}).then((response) => response.json())
 		.then((data) => {
-			console.log('response : '+data);
 						
 			uidLoad(data);
 		})
@@ -37,10 +36,8 @@
 	
 	// 태그 생성
 	function uidLoad(data) {
-		console.log('count : '+data.length);
 		
 		if(data != null && data.length > 1){
-			console.log('true');
 			
 			for (let i = 0; i < data.length; i++) {
 				const liTag = '<li>'+data[i]+'</li>';

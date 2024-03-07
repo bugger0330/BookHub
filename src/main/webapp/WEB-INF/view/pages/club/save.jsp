@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/layout/header.jsp"%>
+<%@ include file="/WEB-INF/view/layout/header.jsp"%> <!--  header.jsp 수정되면서 자바스크립트 작동 안함 -->
 <style>
 .rounded-input {
 	border-radius: 10px;
@@ -41,7 +41,7 @@
 					<div class="row g-3">
 						<div class="col-md-6">
 							<div class="form-floating">
-								<input type="text" class="form-control bg-white  rounded-input"
+								<input type="text" class="form-control bg-white rounded-input"
 									name="clubName" placeholder="독서모임명"> <label for="name">독서모임명</label>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 							<div class="form-floating date" id="date3"
 								data-target-input="nearest">
 								<!-- type 변경으로 달력 출력함!!! -->
-								<!-- 최솟값 주기 위해 min 설정 -->
+								<!-- 최솟값 주기 위해 자바스크립트로 min 설정 -->
 								<input type="datetime-local" min=""
 									class="datepicker-input form-control bg-white  rounded-input"
 									id="datetime" placeholder="Date & Time" data-target="#date3"

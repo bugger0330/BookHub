@@ -36,7 +36,6 @@ public class BookShareService {
 
 	public boolean shareBookWrite(ShareWriteReqDto dto) {
 		
-		// 파일업로드 처리
         MultipartFile file = dto.getFile();
         if (file.isEmpty() == false) {
             if (file.getSize() > Define.MAX_IMG_FILE_SIZE) {
@@ -49,10 +48,8 @@ public class BookShareService {
                 dir.mkdir();
             }
 
-            // 파일이름
             UUID uuid = UUID.randomUUID();
             String fileName = uuid + "_" + file.getOriginalFilename();
-            System.out.println("filename : " + fileName);
 
             String uploadPath = Define.UPLOAD_FILE_DERECTORY + File.separator + fileName;
             File destination = new File(uploadPath);
@@ -98,12 +95,10 @@ public class BookShareService {
 	}
 
 	public boolean shareBookBorrow(ShareBookBorrowDto dto) {
-		// 현재 시간 + 7일 = 반납일자 / 형태 2024-02-16 17:40:57
 		LocalDateTime now = LocalDateTime.now().plusDays(dto.getBorrowDay());
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		String returnDate = now.format(formatter);
 		dto.setWdate(returnDate);
-		// 만약 borrow 테이블에 이미 내역이 존재하면 대출이 되어선 안됨
 		ShareBookBorrow borrowEntity = repository.selectShareBookBorrow(dto.toEntity());
 		if(borrowEntity != null) {
 			return false;
@@ -115,7 +110,6 @@ public class BookShareService {
 		
 		BookShare book = repository.shareBookInfo(dto.getBookId());
 
-		// 북에 대출건수 +1 하고, 대출여부 수정해야함
 		if(book != null) {
 			book.setBorrow(book.getBorrow() + 1);
 			book.setStatus("대출 불가");
@@ -131,8 +125,6 @@ public class BookShareService {
 
 	@Transactional
 	public boolean pointPayment(int point, String masterUsername, String userName) {
-		// 마스터 - 빌려주는 쪽
-		// 유저정보 둘 다 들고와서 각각 + - 포인트 처리
 		User masterUser = repository.getUser(masterUsername);
 		User borrowUser = repository.getUser(userName);
 		masterUser.setPoint(masterUser.getPoint() + point);
@@ -143,10 +135,6 @@ public class BookShareService {
 			if(masterResult == 0) {
 				throw new RuntimeException("계정 포인트 수정 실패!");
 			}
-//			int borrowUserResult = repository.pointPayment(borrowUser);
-//			if(borrowUserResult == 0) {
-//				throw new RuntimeException("계정 포인트 수정 실패!");
-//			} 주석한 이유는 /point/order 주문시 주문자 정보에서 포인트 차감을 하기 때문..
 			return true;
 		}
 		return false;
@@ -157,12 +145,10 @@ public class BookShareService {
 		if(borrowEntity == null) {
 			return false;
 		}
-		// 대출내역이 있으면 반납기능 수행
 		int borrowEndresult = repository.shareBookBorrowEnd(borrowEntity);
 		if(borrowEndresult == 0) {
 			throw new RuntimeException("bh_book_share_borrow 테이블에 대출기록 flag=1 수정 실패!");
 		}
-		// book 정보 수정
 		BookShare book = repository.shareBookInfo(dto.getBookId());
 		if(book != null) {
 			book.setStatus("대출 가능");

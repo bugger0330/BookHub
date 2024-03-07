@@ -5,17 +5,9 @@ const innerFlag = document.querySelector(".inner-flag");
 const orderPrice = document.querySelector(".order-price");
 const orderBtn = document.querySelector(".use-btn");
 let play = 0;
-
 let statusData = null;
-
 let myPoint = 0;
-
 const now = new Date();
-
-// 사용불가 컴퓨터는 아이콘을 빨간색으로 변경
-// 사용불가 시 디비에 저장된 사용기간을 가져와서 현재시간과 계산해서 사용가능한지 여부
-// com1 클릭시마다 innerHtml로 상태 변경
-// mypoint 는 한번만 가져와서 헤더에 세팅 - 변수에 담아놓기! 동기처리
 
 load();
 function load(){
@@ -36,9 +28,6 @@ function load(){
 		}
 	});
 	
-	// 현재 컴퓨터 사용자 리스트 불러오기
-	// 컴퓨터 예약할 때 사용시간이 끝난 컴퓨터는 종료시키기(list로 업데이트)
-	
 	$.ajax({
 		type : "get",
 		url : "/point/computer/used",
@@ -56,7 +45,6 @@ function load(){
 function usedComputerList(data){
 	if(data != ""){
 		for(let i = 0; i < data.length; i++){
-			// 현재시각이랑 남은시각 비교
 			const comTime = new Date(data[i].endTime);
 			if(now > comTime){
 				com1[data[i].comNumber - 1].style.backgroundColor = "blue";
@@ -67,7 +55,6 @@ function usedComputerList(data){
 	}
 }
 
-// flagColor 
 for(let i = 0; i < com1.length; i++){
 	com1[i].onclick = () => {
 		let innr = "";
@@ -95,7 +82,6 @@ for(let i = 0; i < com1.length; i++){
 			flagColor.style.color = "green";
 			const playTime = document.querySelector(".play-time");
 			timeChangeEvent(playTime, com1[i]);
-			
 		}else{
 			innr = `
 				<div class="computer-info-area">
@@ -192,7 +178,6 @@ orderBtn.onclick = () => {
 		data : JSON.stringify(arr),
 		success : function(data){
 			if(data == true){
-				// 포인트 사용 내역 추가
 				myOrderUpdate();
 			}
 		},

@@ -46,8 +46,6 @@ function load(){
 		}
 	});
 }
-//-------------------------------------------------
-
 
 borrowDay.onchange = () => {
 	if(borrowDay.value < 0){
@@ -69,9 +67,9 @@ function calc(day){
 function innerFun(data){
 	if(data != null){
 		setImg.src = "/images/upload/" + data.file;
-		bookInfos[0].textContent = data.bookName;// 제목
-		bookInfos[1].textContent = data.writer;// 작가
-		bookInfos[2].textContent = `${data.company}, 1982, 인쇄자료(책자형), 2950`;// 작가
+		bookInfos[0].textContent = data.bookName;
+		bookInfos[1].textContent = data.writer;
+		bookInfos[2].textContent = `${data.company}, 1982, 인쇄자료(책자형), 2950`;
 		
 		let innr = `
 			<tr>
@@ -82,15 +80,10 @@ function innerFun(data){
             </tr>
 		`;
 		tbody.innerHTML = innr;
-		// 대출, 반납 버튼 숨김 기능 추가해야함
 		const boardTd = document.querySelectorAll(".book--detail--td");
 		buttonClickEvent(boardTd, data);
 	}
 }
-
-// 일단 로그인 된 상태로 가정하고 대출하기, 반납하기 기능 구현함.
-// 회원정보 가져와서 만약 빌린 책이면 대출하기 버튼은 숨김 - 반대도 가능해야함
-//let username = "abc123";// 세션에서 유저정보 가져왔다고 가정하고
 
 function buttonClickEvent(boardTd, bookEntity){
 	const borrowBtns = document.querySelectorAll(".book--detail--button");
@@ -101,19 +94,16 @@ function buttonClickEvent(boardTd, bookEntity){
 	const comTime = new Date(bookEntity.wdate);
 	const dayTime = 60 * 60 * 24;
 	
-	// 대출, 반납버튼을 숨기게 되면 인덱스로 클릭이벤트 처리 할 수 없음!
 	borrowBtns[0].onclick = () => {
 		calcDiv.style.display = "flex";
 	}
-	//=========================
+	
 	borrowBtn.onclick = () => {
 		if(memberId != ""){
 			if(memberId == bookEntity.userName){
 				alert("본인의 책은 대출이 불가능합니다.");
 				return;
 			}else{
-				// 테이블명 : bh_book_borrow(대출) - 대출정보 등록
-				// 북 테이블에 상태값도 변경해야함
 				$.ajax({
 					type : "post",
 					url : "/share/borrow",
@@ -156,7 +146,6 @@ function buttonClickEvent(boardTd, bookEntity){
 				if(data == true){
 					alert("대출완료!");
 					window.location.href = `/share/detail/${addressNum}`;
-					
 				}else{
 					alert("대출실패!");
 				}
@@ -167,14 +156,9 @@ function buttonClickEvent(boardTd, bookEntity){
 		});
 	}
 	
-	//=========================
-	
-	borrowBtns[1].onclick = () => { // 반납하기
+	borrowBtns[1].onclick = () => { 
 		if(memberId != ""){
 			if(boardTd[2].textContent != ""){
-				console.log("지금", now.getTime());
-				console.log("반납", comTime.getTime());
-				
 				let lateDays = Math.floor(+ now / 1000 / dayTime) - Math.floor(+ comTime / 1000 / dayTime) + 1;
 				let latePoint = lateCalc(lateDays);// 연체금액
 				if(now.getTime() > comTime.getTime()){
@@ -244,7 +228,6 @@ function buttonClickEvent(boardTd, bookEntity){
 	const modalClosed = document.querySelector(".modal--closed--btn");
     borrowBtns[2].onclick = () => {
 		modal.style.display="flex";
-		//modalTable -- innerhtml 해주자!
 		let modalVal = `
 			<tr>
 	            <th class="modal--table--th">제 목 :</th>

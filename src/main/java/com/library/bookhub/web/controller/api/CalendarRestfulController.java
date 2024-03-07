@@ -43,8 +43,8 @@ public class CalendarRestfulController {
 	// 날짜 계산, 출석체크 조회
 	@GetMapping("/calendar/month")
 	public Map<String, Object> CalculateDate() {
-		
 		String userId = serviceImpl.getUserId();
+		
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();
         
@@ -56,25 +56,24 @@ public class CalendarRestfulController {
         Attendance attendanceEntity = null;
         List<Integer> days = new ArrayList<>();
         Integer lastMonth = 0;
+        int point = 0;
         
         // 현재 정보 불러오기
         attendanceEntity = calendarPointService.readAttendance(userId);
         
         // 날짜 불러오기
         if(attendanceEntity != null) {
-        	log.info("first attendance...1");
         	
 	        String attendanceDays = attendanceEntity.getAttendanceDays();
 	        days = calendarPointService.arrayConverter(attendanceDays);
+	        point = attendanceEntity.getPoint();
 	        
 	        // 지난 달(혹은 현재 월)
 	        lastMonth = attendanceEntity.getLastMonth();
-	        log.info("lastMonth : "+lastMonth);
         }
         
         // 다음 달이 된 경우
         if (lastMonth != currentMonth && lastMonth > 0) {
-        	log.info("modifyLastMonth...1");
             // 출석일 초기화
         	days = calendarPointService.modifyLastMonth(currentMonth,userId);
         }
@@ -84,6 +83,7 @@ public class CalendarRestfulController {
         result.put("month", currentMonth);
         result.put("today", currentDay);
         result.put("attendance", days);
+        result.put("point", point);
         
         return result;
         
@@ -98,15 +98,11 @@ public class CalendarRestfulController {
 		String today = (String) date.get("today");
 		int month =  Integer.parseInt(date.get("month"));
 		
-		log.info("today : "+today);
-		log.info("month : "+month);
-		
 		// 현재 정보 불러오기
         Attendance attendanceEntity = calendarPointService.readAttendance(userId);
 		
         // 첫 출석체크 등록자
         if(attendanceEntity == null) {
-        	log.info("createAttendance...1");
         	attendanceEntity = calendarPointService.createAttendance(userId, month, today);
         }
 		
@@ -114,25 +110,20 @@ public class CalendarRestfulController {
         String attendanceDays = attendanceEntity.getAttendanceDays();
         List<Integer> days = calendarPointService.arrayConverter(attendanceDays);
         int size = days.size();
-        log.info("size : "+size);
+        
         
         // 출석일수 추가
-        if(size < 7) {
-        	log.info("modifyAttendanceDays...1");
-        	int result = calendarPointService.modifyAttendanceDays(today, userId);
+        if(size >= 2 && size <= 7) {
+        	attendanceEntity = calendarPointService.modifyAttendanceDays(today, userId);
         	
-        	log.info("중복 허용 : "+result);
-        	if(result >= 1) {
-        		throw new CustomRestFulException("출석일수에 중복된 날짜를 넣을 수 없습니다.", HttpStatus.BAD_REQUEST);
-        	}
-        	
+        	 attendanceDays = attendanceEntity.getAttendanceDays();
+             days = calendarPointService.arrayConverter(attendanceDays);
+             size = days.size();
         }
         
 		// 7일이 되면 적립
 		if(size == 7) {
-			log.info("completePoint...1");
 			addPoint = calendarPointService.completePoint(userId);
-			log.info("addPoint : "+addPoint);
 		}
 		
 		Map<String, Integer> result = new HashMap<>();

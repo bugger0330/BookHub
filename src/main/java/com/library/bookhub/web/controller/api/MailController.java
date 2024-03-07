@@ -36,12 +36,10 @@ public class MailController {
 	// 이메일 전송
 	@PostMapping("/user/sendEmail/{email}")
 	public void sendEmail(@PathVariable("email") String email) {
-		log.info("받는 자 : " + email);
 
 		try {
 			mailService.sendCodeByEmail(email);
 		} catch (Exception e) {
-			log.error(e);
 			throw new CustomRestFulException("전송에 문제가 발생했습니다. 고객센터로 문의해주세요.", HttpStatus.BAD_REQUEST);
 		}
 
@@ -51,11 +49,8 @@ public class MailController {
 	@GetMapping("/user/authNumber")
 	@ResponseBody
 	public int authEmail(@RequestParam("number") String number) {
-		log.info("입력한 번호 : " + number);
 
 		int result = mailService.confirmCodeByEmail(number);
-		log.info("결과 값 : " + result);
-
 		return result;
 
 	}
@@ -67,8 +62,6 @@ public class MailController {
 	@ResponseBody
 	public String findIdEmail(@RequestBody Map<String, String> email) {
 		String email1 = email.get("email");
-
-		log.info("받는 자 : " + email1);
 
 		try {
 			mailService.sendCodeByEmail(email1);
@@ -83,10 +76,8 @@ public class MailController {
 	@GetMapping("/findId/authNumber")
 	@ResponseBody
 	public int findIdNumber(@RequestParam("number") String number) {
-		log.info("입력한 번호 : " + number);
 
 		int result = mailService.confirmCodeByEmail(number);
-		log.info("결과 값 : " + result);
 
 		return result;
 
@@ -98,18 +89,15 @@ public class MailController {
 	@PostMapping("/findPwd/sendEmail")
 	@ResponseBody
 	public Map<String, Object> findPwdEmail(@RequestBody Map<String, String> Data) {
-		log.info("받는 자 : " + Data);
 
 		String email = Data.get("email");
 		String username = Data.get("username");
 
 		int result = memberService.findPassword(username, email);
-		log.info("result : " + result);
 
 		try {
 			mailService.sendCodeByEmail(email);
 		} catch (Exception e) {
-			log.error(e);
 			result = 0;
 		}
 
@@ -125,10 +113,8 @@ public class MailController {
 	@ResponseBody
 	public int findPwdNumber(@RequestParam("num") String num, @RequestParam("username") String username,
 			HttpSession session) {
-		log.info("findPwdNumber data : " + num + username);
 
 		int result = mailService.confirmCodeByEmail(num);
-		log.info("결과 값 : "+result);
 		
 		if(result >= 1) {
 			session.setAttribute("findByUsername", username);

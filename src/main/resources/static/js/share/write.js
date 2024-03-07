@@ -35,14 +35,6 @@ function load(){
 	});
 }
 
-/**
- * 0 - 도서명
- * 1 - 출판사
- * 2 - 작가
- * 기본설명
- * 첨부
- * 미리보기
- */
 
 btn.onclick = () => {
 	if(inputs[0].value == ""){
@@ -78,13 +70,11 @@ btn.onclick = () => {
 	}
 	
 	
-	// 파일은 따로
 	let formData = new FormData();
     formData.append("shareInfo", new Blob([JSON.stringify(shareInfo)], {type: "application/json"}));
     formData.append("file", fileValue);
     
 	if(confirm("등록시 1000 포인트가 결제 됩니다. 계속하시려면 확인을 눌러주세요!")){
-		// 등록기능
 		$.ajax({
 			type : "post",
 			url : "/share/book/write",
@@ -133,7 +123,6 @@ fileInput.onchange = (event) => {
 		fileInput.value = "";
 		return;
 	}
-	console.log("이미지 숫자 : ", fileInput.value);
 }
 
 function myPointOrder(){

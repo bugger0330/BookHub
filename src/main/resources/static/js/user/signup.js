@@ -78,7 +78,6 @@ inputId.addEventListener('keydown',function(e){
 // 아이디 찾기
 btnId.addEventListener('click', function(e) {
 	const uid = inputId.value;
-	console.log(uid);
 	
 	// 아이디 유효성 검사
 	if(!uid.match(reUid)){
@@ -114,7 +113,6 @@ btnId.addEventListener('click', function(e) {
 	})
 	.catch((error) => {
 		alert('아이디를 확인할 수 없습니다.');
-		console.log(error);
 	});
 }); 
 
@@ -186,12 +184,10 @@ function authEmail(email) {
 		},
 	}).then((response) => response.text())
 	.then((data) => {
-		resultEmail.textContent = ('인증 코드가 전송되었습니다!');
 		divEmailCreate();
 	})
 	.catch((error) => {
 		alert('이메일 인증을 실패했습니다.');
-		console.log(error);
 		
 	});
 
@@ -225,7 +221,6 @@ function enterNumber() {
 		return;
 	}
 
-	console.log('num : '+num);
 
 	fetch(`/user/authNumber?number=`+num,{
 		method: "GET",
@@ -239,6 +234,8 @@ function enterNumber() {
 			labelNumber.remove();
 			newInput.remove();
 			btnComplete.remove();
+			emailTime.remove();
+			
 			isEmailOk = true;
 			closeTime();
 		} else {
@@ -247,7 +244,6 @@ function enterNumber() {
 	})
 	.catch((error) => {
 		alert('인증 번호에 문제가 발생했습니다.');
-		console.log(error);
 	});
 }
 
@@ -305,7 +301,6 @@ function valiHp() {
 function checkGender() {
 	for(let gender of inputGender) {
 		if (gender.checked) {
-    		console.log(gender.value);
 			isGenderOk = true;
 		}
 	}

@@ -25,8 +25,6 @@ public class PointService {
 	
 	@Transactional
 	public boolean ProductOrder(List<PointOrderRequestDto> orderList) {
-		// bh_point_order 테이블에 리스트 전부 저장하는데,
-		// 해당 아이디의 orderId 마지막 번호를 가져와서 +1 한 후 등록할것
 		int orderId = 0;
 		Integer userOrderId = pointRepository.getUserOrderId(orderList.get(0).getUserName());
 		if(userOrderId == null) {
@@ -44,7 +42,6 @@ public class PointService {
 		if(cafeOrderResult == 0) {
 			throw new RuntimeException("결제내역 insert 실패");
 		}
-		// 위 작업이 다 끝나면 전체 결제한 포인트를 유저 정보에 업데이트
 		User user = pointRepository.getUser(orderList.get(0).getUserName());
 		if(user != null) {
 			user.setPoint(user.getPoint() - allOrderPoint);

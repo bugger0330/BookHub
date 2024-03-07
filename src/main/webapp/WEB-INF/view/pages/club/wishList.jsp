@@ -40,8 +40,8 @@
                                     
                                     <!-- 반복문 시작 -->
                                     <c:forEach var="clubWishItem" items= "${clubWishList}">
-                                   	<!-- 한줄에 2개씩 차지하기 -->
-                       			   	<div class="col-md-6 col-lg-6 col-xl-6">
+                                   	<!-- 한줄에 3개씩 차지하기 -->
+                       			   	<div class="col-md-6 col-lg-4 col-xl-4">
                               			<a href="/club/view/${clubWishItem.clubId}">
                                            <div class="rounded position-relative fruite-item">
                                                <div class="fruite-img">

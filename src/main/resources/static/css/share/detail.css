@@ -44,3 +44,11 @@
 .book--detail--mypoint{
     margin-right: 5px;
 }
+
+.borrow-btn{
+	border: none;
+	border-radius: 10px;
+	background-color: gray;
+	color : white;
+	padding: 10px 20px;
+}

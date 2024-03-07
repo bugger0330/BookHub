@@ -27,7 +27,6 @@ public class MailService {
 		// 인증코드 생성
 		int code = ThreadLocalRandom.current().nextInt(100000,1000000); // 랜덤 생성
 		generatedCode = ""+code;
-		log.info("전송된 인증 번호 : "+generatedCode);
 		
 		String sender = "BookHub";
 		String title = "BookHub 인증코드";
@@ -42,10 +41,11 @@ public class MailService {
 		String msgOfEmail= "";
 		msgOfEmail += "<div style='margin:20px;'>";
         msgOfEmail += "<br>";
-        msgOfEmail += "<div  align='center' style='border:1px solid black; font-family:verdana';>";
-        msgOfEmail += "<h3 style='color:blue;'>이메일 인증 번호입니다.</h3>";
+        msgOfEmail += "<div  align='center' style='border:1px solid #ccc; border-radius: 5px;  ";
+        msgOfEmail += "box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);';>";
+        msgOfEmail += "<h3 style='color: #06BBCC;'>BookHub 인증 코드</h3>";
         msgOfEmail += "<div style='font-size:130%'>";
-        msgOfEmail += "<strong>"+ generatedCode + "</strong><div><br/> ";
+        msgOfEmail += "<strong>"+ generatedCode + "<strong/><div><br/> ";
         msgOfEmail += "</div>";
 		
 		message.setText(msgOfEmail, "utf-8", "html");
@@ -58,10 +58,8 @@ public class MailService {
 	public int confirmCodeByEmail(String code) {
 		
 		if (code.equals(generatedCode)) {
-            log.info("인증 번호 일치 --");
             return 1;
         }else {
-            log.error("인증 번호 불일치 --");
             return 0;
         }
 	}

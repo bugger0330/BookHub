@@ -51,33 +51,14 @@ public class OAuthAttributes {
     
     // kakao 데이터
     private static OAuthAttributes ofKakao(String userNameAttributeName,Map<String, Object> attributes) {
-    	
-    	log.info("=========== OAuthAttributes ===========");
-    	log.info("OAuthAttributes attributes id : "+attributes);
-		log.info("OAuthAttributes attributes id : "+attributes.get("id"));
-		log.info("OAuthAttributes attributes kakao_account : "+attributes.get("kakao_account"));
-		log.info("=========== end ===========");
 		
 		Map<String, Object> kakaoAccount = (Map<String, Object>) attributes.get("kakao_account");
 	    Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
-	    
-	    log.info("=========== kakaoAccount,profile  ===========");
-	    log.info("kakaoAccount :"+kakaoAccount);
-	    log.info("profile :"+profile);
-	    log.info("=========== end ===========");
 		
 	    String nickname = (String) profile.get("nickname");
         String email = (String) kakaoAccount.get("email");
         String username = email;
         
-        
-        
-        log.info("=========== kakaoAccount,profile  ===========");
-	    log.info("nickname :"+nickname);
-	    log.info("email :"+email);
-	    log.info("username :"+username);
-	    log.info("=========== end ===========");
-
         return OAuthAttributes.builder()
                 .nickname(nickname)
                 .email("kakao_"+email)
@@ -90,15 +71,7 @@ public class OAuthAttributes {
     
     // naver 데이터
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
-        log.info("=========== OAuthAttributes ===========");
-        log.info("OAuthAttributes attributes id : " + attributes);
-        log.info("=========== end ===========");
-        
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
-        
-        log.info("=========== response  ===========");
-	    log.info("response :"+response);
-	    log.info("=========== end ===========");
         
         String email = (String) response.get("email");
         String name = (String) response.get("name");
@@ -106,14 +79,6 @@ public class OAuthAttributes {
 
         String username = email;
 
-        log.info("=========== naver data  ===========");
-	    log.info("email :"+email);
-	    log.info("name :"+name);
-	    log.info("phone :"+phone);
-	    log.info("username :"+username);
-	    log.info("=========== end ===========");
-        
-        
 		  return OAuthAttributes.builder()
 				  .email("naver_" + email)
 				  .nickname(name)
@@ -132,10 +97,6 @@ public class OAuthAttributes {
     	String email = (String) attributes.get("email");
         String name = (String) attributes.get("name");
     	
-        log.info("=========== naver data  ===========");
-	    log.info("email :"+email);
-	    log.info("name :"+name);
-	    log.info("=========== end ===========");
         
     	String username =  email;
         

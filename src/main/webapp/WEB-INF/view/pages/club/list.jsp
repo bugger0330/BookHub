@@ -116,7 +116,7 @@
                                     
                                     <!-- 반복문 시작 -->
                                     <c:forEach var="club" items= "${clubList}">
-                                    	<!-- 한줄에 4개씩 차지해서 2개씩 차지도록 부트스트랩 클래스명 바꿈 -->
+                                    	<!-- 한줄에 4개씩 차지해서 3개씩 차지도록 부트스트랩 클래스명 바꿈 -->
                                     	<!-- <div class="col-md-6 col-lg-4 col-xl-3"> -->
                                     	<div class="col-md-6 col-lg-4 col-xl-4">
                                     		<a href="/club/view/${club.id}">
