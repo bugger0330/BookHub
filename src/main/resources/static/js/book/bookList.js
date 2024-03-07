@@ -68,7 +68,7 @@ function boardPageNum(data) {
 	boardListPage.innerHTML = pageNum;
 	
 	preNextBtn[0].onclick = () => { // 이전 버튼
-		nowPage = startIndex != 1 ? startIndex - 1 : 1;
+		nowPage = 1;
 		load(nowPage);
 	}
 	

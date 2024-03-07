@@ -30,7 +30,7 @@ public class CsQnaService {
 
 	// Qna 작성하기
 	public boolean qnaInsert(CsQnaDto dto , String filepath, String userId) {
-		
+	
 		CsQnaEntity csQnaEntity = CsQnaEntity.builder()
 				.title(dto.getTitle())
 				.content(dto.getContent())

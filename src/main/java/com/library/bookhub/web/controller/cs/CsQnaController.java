@@ -82,8 +82,10 @@ public class CsQnaController {
 		
 		String userId = userDetails.getUsername();
 
+
 		// 파일 저장
 		String filepath = csFileService.saveFiles(dto.getFilepath());
+
 
 		boolean result = csQnaService.qnaInsert(dto, filepath, userId);
 

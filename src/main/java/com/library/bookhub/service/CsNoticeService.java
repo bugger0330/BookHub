@@ -39,8 +39,7 @@ public class CsNoticeService {
 
 	// Notice 작성하기
 	public boolean noticeInsert(CsNoticeDto dto, String filepath, String userId) {
-
-		
+	
 		CsNoticeEntity csNoticeEntity = CsNoticeEntity.builder().title(dto.getTitle()).content(dto.getContent())
 				.filepath(filepath).writer(userId).build();
 
