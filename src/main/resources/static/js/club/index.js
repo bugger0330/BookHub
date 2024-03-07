@@ -193,10 +193,11 @@ window.onload = function() {
 		                </div>
 		            `;
 			}
-			// 생성한 HTML을 화면에 추가
-			// id값 clubList 태그에 추가함
-       		$('#clubList').append(html);
 		}
+		// 생성한 HTML을 화면에 추가
+		// id값 clubList 태그에 추가함
+		// empty() 중요!!! 이전에 있는 내용을 지우고 새로운 내용을 추가합니다
+   		$('#clubList').empty().append(html);
 	}
 	
 	function formatCDate(cDate) {
