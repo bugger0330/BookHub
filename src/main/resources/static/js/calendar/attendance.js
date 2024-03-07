@@ -15,7 +15,6 @@ fetch('/calendar/month',{
 })
 .then((response) => response.json())
 .then((data) => {
-	console.log(data);
 	
 	const month = data.month;
 	const days = data.today;
@@ -26,9 +25,6 @@ fetch('/calendar/month',{
 	if (data && data.attendance) {
 	    attendance = data.attendance;
 	}
-	
-	console.log(month+'월 '+days+'일');
-    console.log('출석 날짜 :'+attendance);
 	
     // 현재 날짜 월 넣기
     title.textContent = ''+month;
@@ -48,7 +44,6 @@ fetch('/calendar/month',{
 })
 .catch((error) => {
 	alert('날짜를 확인할 수 없습니다. 고객센터에서 문의해주세요.');
-	console.log(error);
 });
 
 

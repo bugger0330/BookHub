@@ -48,8 +48,6 @@ public class CalendarRestfulController {
 		// 현재 날짜 가져오기
         Calendar cal = Calendar.getInstance();
         
-        log.info(userId);
-        
         // 현재 월,일
         int currentMonth = cal.get(Calendar.MONTH) + 1;
         int currentDay = cal.get(Calendar.DAY_OF_MONTH);
@@ -65,7 +63,6 @@ public class CalendarRestfulController {
         
         // 날짜 불러오기
         if(attendanceEntity != null) {
-        	log.info("first attendance...1");
         	
 	        String attendanceDays = attendanceEntity.getAttendanceDays();
 	        days = calendarPointService.arrayConverter(attendanceDays);
@@ -73,12 +70,10 @@ public class CalendarRestfulController {
 	        
 	        // 지난 달(혹은 현재 월)
 	        lastMonth = attendanceEntity.getLastMonth();
-	        log.info("lastMonth : "+lastMonth);
         }
         
         // 다음 달이 된 경우
         if (lastMonth != currentMonth && lastMonth > 0) {
-        	log.info("modifyLastMonth...1");
             // 출석일 초기화
         	days = calendarPointService.modifyLastMonth(currentMonth,userId);
         }
@@ -103,15 +98,11 @@ public class CalendarRestfulController {
 		String today = (String) date.get("today");
 		int month =  Integer.parseInt(date.get("month"));
 		
-		log.info("today : "+today);
-		log.info("month : "+month);
-		
 		// 현재 정보 불러오기
         Attendance attendanceEntity = calendarPointService.readAttendance(userId);
 		
         // 첫 출석체크 등록자
         if(attendanceEntity == null) {
-        	log.info("createAttendance...1");
         	attendanceEntity = calendarPointService.createAttendance(userId, month, today);
         }
 		
@@ -123,20 +114,16 @@ public class CalendarRestfulController {
         
         // 출석일수 추가
         if(size >= 2 && size <= 7) {
-        	log.info("modifyAttendanceDays...1");
         	attendanceEntity = calendarPointService.modifyAttendanceDays(today, userId);
         	
         	 attendanceDays = attendanceEntity.getAttendanceDays();
              days = calendarPointService.arrayConverter(attendanceDays);
              size = days.size();
         }
-        log.info("size : "+size);
         
 		// 7일이 되면 적립
 		if(size == 7) {
-			log.info("completePoint...1");
 			addPoint = calendarPointService.completePoint(userId);
-			log.info("addPoint : "+addPoint);
 		}
 		
 		Map<String, Integer> result = new HashMap<>();

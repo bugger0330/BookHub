@@ -33,12 +33,12 @@ public class UserSignUpController {
 	// 회원가입 기능
 	@PostMapping("/signUp")
 	public String signUpLogic(@Validated SignUpFormDto dto, BindingResult bindingResult) {
-		log.info(dto.toString());
 		
 		if (bindingResult.hasErrors()) {
 	        List<ObjectError> errors = bindingResult.getAllErrors();
 	        for (ObjectError error : errors) {
 	        	log.error(error.getDefaultMessage());
+	        	throw new CustomRestFulException("회원가입란을 확인해주세요", HttpStatus.UNAUTHORIZED);
 	        }
 	    }
 		
@@ -51,7 +51,6 @@ public class UserSignUpController {
 	@PostMapping("/confirmId/{uid}")
 	@ResponseBody
 	public int checkUid(@PathVariable("uid") String uid) {
-		log.info("uid : "+uid);
 		
 		int num = memberService.confirmUid(uid);
 		
@@ -62,12 +61,9 @@ public class UserSignUpController {
 	@PostMapping("/findUids")
 	@ResponseBody
 	public List<String> findResult(@RequestBody Map<String, String> email) {
-		log.info("findResult...1");
 		String email1 = email.get("email");
-		log.info("받는 자 : "+email1);
 		
 		List<String> uids = memberService.findUid(email1);
-		log.info("uids : "+uids);
 		
 		return uids;
 	}
@@ -80,14 +76,12 @@ public class UserSignUpController {
 		String newPassword = password.get("password");
 		String username = (String) session.getAttribute("findByUsername");
 		
-		log.info("changePassword : "+newPassword+", "+username);
 		
 		if(username == null || username.isEmpty() || username == "") {
 			throw new CustomRestFulException("변경할 비밀번호의 아이디가 존재하지 않습니다", HttpStatus.BAD_REQUEST);
 		}
 		
 		int result = memberService.modifyPassword(username, newPassword);
-		log.info("result : "+result);
 		
 	    session.removeAttribute("findByUsername");
 		
