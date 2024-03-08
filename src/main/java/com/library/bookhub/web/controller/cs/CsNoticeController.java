@@ -99,8 +99,6 @@ public class CsNoticeController {
 
 		boolean result = csNoticeService.noticeInsert(dto, filepath, userId);
 
-
-		boolean result = csNoticeService.noticeInsert(dto, filepath, userId);
 		
 
 		if (result == true) {
