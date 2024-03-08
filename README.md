@@ -151,6 +151,18 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 
 <br>
 
+## 3️⃣ ERD & 테이블 명세서
+테이블 명세서 : 
+
+<br>
+<br>
+
+![image](https://github.com/bugger0330/BookHub/assets/92834334/49df0846-ef3a-4e91-b4d6-206cb9541ee8)
+
+
+<br>
+
+
 
 ## 역할 분담
 #😎 강민(팀장)
