@@ -156,6 +156,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 
 ## 3️⃣ ERD
 <br>
+
 ![image](https://github.com/bugger0330/BookHub/assets/92834334/49df0846-ef3a-4e91-b4d6-206cb9541ee8)
 
 <br>
@@ -175,7 +176,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - 서브 카테고리 트리 기능을 구현하였습니다.
 
 #😎 노수현
--
+- 
 #😎 송기동
 -
 #😎 박한산
