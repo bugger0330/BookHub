@@ -190,6 +190,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
         <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/24b9934e-fabf-4fce-9513-a8c496fa0cee"></img></td>
     </tr>
 </table>
+
 #😎 이지민
 - 
 #😎 이준혁
