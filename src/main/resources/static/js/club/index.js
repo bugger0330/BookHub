@@ -177,7 +177,7 @@ window.onload = function() {
 		                    <a href="/club/view/${data[i].id}">
 		                        <div class="rounded position-relative fruite-item">
 		                            <div class="fruite-img">
-		                                <img src="${setupClubImage}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
+		                                <img src="/images/upload/${data[i].uploadFileName1}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
 		                            </div>
 		                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
 		                                <h4 style="height: 50px;">${data[i].clubName}</h4>
