@@ -187,7 +187,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
     </tr>
     <tr>
         <!--<td><img src=""></img></td>-->
-        <td><img src=""></img></td>
+         <!--<td><img src=""></img></td>-->
     </tr>
 </table>
 
