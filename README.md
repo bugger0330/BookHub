@@ -59,6 +59,91 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 ```
 <br>
 
+## 1️⃣ 프로젝트 구조
+
+<details>
+    <summary>⚡️ 구조 자세히 살펴보기</summary>
+    
+    📦src
+     ┗ 📂main
+       ┣ 📂java
+       ┃ ┗ 📂com
+       ┃   ┗ 📂library
+       ┃     ┗ 📂bookhub
+       ┃       ┃ ┗ 📂config
+       ┃       ┃ ┗ 📂entity
+       ┃       ┣ 📂handler
+       ┃       ┃ ┗ 📂exception
+       ┃       ┃ ┗ 📂repository
+       ┃       ┣ 📂security
+       ┃       ┃ ┗ 📂oauth
+       ┃       ┃ ┗ 📂service
+       ┃       ┃ ┗ 📂utils
+       ┃       ┣ 📂web
+       ┃       ┃ ┗ 📂controller
+       ┃       ┃   ┣ 📂api
+       ┃       ┃   ┗ 📂page
+       ┃       ┃ ┗ 📂dto
+       ┣ 📂resources
+       ┃ ┣ 📂db
+       ┃ ┣ 📂mapper
+       ┃ ┗ 📂static
+       ┃   ┣ 📂css
+       ┃   ┃ ┣ 📂book
+       ┃   ┃ ┣ 📂calendar
+       ┃   ┃ ┣ 📂chat
+       ┃   ┃ ┣ 📂club
+       ┃   ┃ ┣ 📂cs
+       ┃   ┃ ┣ 📂myPage
+       ┃   ┃ ┗ 📂share
+       ┃   ┣ 📂img
+       ┃   ┃ ┣ 📂book
+       ┃   ┃ ┣ 📂calendar
+       ┃   ┃ ┣ 📂club
+       ┃   ┃ ┣ 📂error
+       ┃   ┃ ┣ 📂point
+       ┃   ┃ ┗ 📂share
+       ┃   ┗ 📂js
+       ┃     ┣ 📂admin
+       ┃     ┣ 📂book
+       ┃     ┣ 📂calendar
+       ┃     ┣ 📂chat
+       ┃     ┣ 📂club
+       ┃     ┣ 📂cs
+       ┃     ┣ 📂myPage
+       ┃     ┣ 📂point
+       ┃     ┣ 📂pointshop
+       ┃     ┣ 📂share
+       ┃     ┗ 📂user
+       ┃   ┗ 📂lib
+       ┗ 📂webapp
+         ┗ 📂WEB-INF
+           ┗ 📂view
+             ┣ 📂layout
+             ┣ 📂pages
+               ┣ 📂about
+               ┣ 📂admin
+               ┣ 📂book
+               ┣ 📂chat
+               ┣ 📂club
+               ┣ 📂cs
+               ┣ 📂error
+               ┣ 📂myPage
+               ┣ 📂notice
+               ┣ 📂openArea
+               ┣ 📂payment
+               ┣ 📂point
+               ┣ 📂pointshop
+               ┣ 📂share
+               ┣ 📂subproduct
+               ┗ 📂user
+             ┗ 📂user
+
+    
+</details>
+    
+<br>
+
 ## 역할 분담
 #😎 강민(팀장)
 - 도서 목록/상세 페이지 및 대출/반납 기능을 구현했습니다. 반납 시 대출 기한을 넘기면 연체료를 내도록 하였습니다.
