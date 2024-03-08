@@ -189,8 +189,8 @@
                        <div id="tab-1" class="tab-pane fade show p-0 active">
                            <div class="row g-4">
                                <div class="col-lg-12">
-                                   <div class="row g-4">
-                                   
+                                      <div class="row g-4">
+                                
                                    <!-- 반복문 시작 -->
                                    <c:forEach var="club" items= "${clubList}">
                                    <!-- 한줄에 4개씩 차지해서 col-xl-3을 수정 -->
@@ -199,7 +199,8 @@
                                            <div class="rounded position-relative fruite-item">
                                                <div class="fruite-img">
                                                		<!-- 첨부 파일에 따라 이미지 크기가 달라져서 height 값 고정함 -->
-                                                   <img src="${club.setupClubImage()}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
+                                               		<!-- img src는 WebMvcConfig 활용하기 -->
+                                                   <img src="/images/upload/${club.uploadFileName1}" class="img-fluid w-100 rounded-top" style="height: 380px;" alt="">
                                                </div>
                                                <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                	   <!-- clubName 길이에 따라 카드 크기 달라져서 height 고정값 줌 --> 	

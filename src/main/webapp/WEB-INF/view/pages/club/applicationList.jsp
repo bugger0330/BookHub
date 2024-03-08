@@ -31,7 +31,7 @@
 		<div class="card center mx-auto" style="width: 20%;">
 		  	<a href="/club/view/${application.clubId }" >
   			  <!-- 이미자는 width, height 100%로 설정 -->
-			  <img class="card-img-top" src="${application.setupClubImage()}" style="width: 100%; height: 100%;""  alt="Card image">
+			  <img class="card-img-top" src="/images/upload/${application.uploadFileName1}" style="width: 100%; height: 100%;""  alt="Card image">
 			</a>  
 		  	<div class="card-body">
 		    	<h4 class="card-title text-center">${application.clubName}</h4>
