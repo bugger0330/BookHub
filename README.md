@@ -186,8 +186,8 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
         <td>독서모임 신청</td>
     </tr>
     <tr>
-        <td>![독서모임 개설](https://github.com/bugger0330/BookHub/assets/136421972/a64b729e-3666-4887-aab1-874476ba190b)</td>
-        <td>![독서모임 신청](https://github.com/bugger0330/BookHub/assets/136421972/24b9934e-fabf-4fce-9513-a8c496fa0cee)</td>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/a64b729e-3666-4887-aab1-874476ba190b"></img></td>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/24b9934e-fabf-4fce-9513-a8c496fa0cee"></img></td>
     </tr>
 </table>
 #😎 이지민
