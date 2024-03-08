@@ -91,7 +91,8 @@ public class CsQnaController {
 
 		
 		if (result == true) {
-			return "pages/cs/qna/list";
+			
+			return "redirect:list";
 		}
 
 		return "pages/cs/qna/list";
