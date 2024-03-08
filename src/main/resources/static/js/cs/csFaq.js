@@ -1,4 +1,4 @@
-//faq 아코디언 
+// faq 아코디언 
 window.onload = () => {
   // panel-faq-container
   const panelFaqContainer = document.querySelectorAll(".panel-cs-container"); // NodeList 객체

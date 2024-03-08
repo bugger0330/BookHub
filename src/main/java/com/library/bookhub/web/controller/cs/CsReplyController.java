@@ -31,8 +31,6 @@ public class CsReplyController {
 
 		model.addAttribute("qnaId", qnaId);
 
-		System.out.println(qnaId);
-
 		return "pages/cs/qna/view";
 	}
 
@@ -65,7 +63,7 @@ public class CsReplyController {
 	public CsQnaReplyEntity qnaReplyView(int qnaId) {
 
 		CsQnaReplyEntity csQnaReplyEntity = csQnaReplyService.qnaReplyView(qnaId);
-		System.out.println("여기는 컨트롤러 " + csQnaReplyEntity);
+
 		
 		return csQnaReplyEntity;
 	}

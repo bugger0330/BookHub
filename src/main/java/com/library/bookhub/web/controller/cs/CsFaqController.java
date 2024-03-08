@@ -19,8 +19,13 @@ public class CsFaqController {
 	@Autowired
 	CsFaqService csFaqService;
 
+	/**
+	 * @fileName : CsFaqController.java
+	 * @Project : BookHub
+	 * @작성자 : 노수현
+	 * @설명 : 자주 묻는 질문 리스트
+	 */
 
-	// 자주 묻는 질문 리스트
 	@GetMapping("/faq/list")
 	public String faqPage(Model model) {
 

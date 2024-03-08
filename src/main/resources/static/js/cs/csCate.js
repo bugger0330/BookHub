@@ -1,3 +1,4 @@
+// cs 카테 --> 전체 카테로 변경해서 작업
 const innerBody = document.querySelector(".cate-body");
 
 
