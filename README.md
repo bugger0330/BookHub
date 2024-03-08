@@ -186,7 +186,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
         <td>독서모임 신청</td>
     </tr>
     <tr>
-        <td><img src=""></img></td>
+        <!--<td><img src=""></img></td>-->
         <td><img src=""></img></td>
     </tr>
 </table>
