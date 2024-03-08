@@ -19,7 +19,7 @@
 - Backend : JAVA 17, SpringBoot 3.1.8, MyBatis, JSP
 - 버전/이슈관리 : GitHub, GitBash
 - 협업 툴 : Discord, Notion
-- API : 포트원 결제 API, 카카오, 구글, 네이버 소셜로그인 API, 클로버 챗봇 API
+- 외부 API : 포트원 결제 API, 카카오, 구글, 네이버 소셜로그인 API, 클로버 챗봇 API
 
 ## 브랜치 전략
 Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜치를 운용했습니다.
@@ -34,6 +34,10 @@ Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜
 - 포인트를 이용하여 카페, 복사, 컴퓨터실 등에서 결제하여 이용할 수 있도록 구현했습니다.
 - 도서 공유 기능을 구현하여 대여를 통해 수익을 발생 하도록 했습니다.
 - 서브 카테고리 트리 기능을 구현하였습니다.
+
+### 🙌🏻 Collaboration
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=Jira&logoColor=white"/> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=Slack&logoColor=white"/> <img src="https://img.shields.io/badge/Github-181717?style=flat&logo=Github&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Chart.js-FF6384?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Eclipse-2C2255?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Jira-0052CC?style=flat&logo=Notion&logoColor=white"/> <br><img src="https://img.shields.io/badge/JQuery-0769AD?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Gradle-02303A?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Tomcat-F8DC75?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=Notion&logoColor=white"/>
+
 
 #😎 노수현
 -
