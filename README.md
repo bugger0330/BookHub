@@ -1,6 +1,8 @@
 # 📖 도서관 웹 서비스 BOOKHUB
 ![image](https://github.com/bugger0330/BookHub/assets/126323071/06435db1-c07b-4f24-8948-99b9aca6e2ef)
 
+<br>
+
 ## 프로젝트 소개
 - BookHub는 인터넷 도서관 형태의 서비스이며 책을 좋아하는 사람이라면 누구나 이용가능한 서비스를 만들기위해 이 프로젝트를 기획하였습니다.
 - 도서 검색을 통해 책을 검색할 수 있습니다.
@@ -10,9 +12,12 @@
 - 소셜 로그인(구글, 카카오, 네이버)기능을 구현하였습니다.
 - 포인트를 이용하여 다양한 상품을 구매할 수 있습니다.
 
+<br>
+
 ## 팀원 구성
 ![image](https://github.com/bugger0330/BookHub/assets/126323071/aae290f1-c685-40b8-82ca-8beb678aac09)
 
+<br>
 
 ## 개발환경
 - 개발 툴 : Spring Tools 4 (4.21.1)
@@ -21,6 +26,8 @@
 - 협업 툴 : Discord, Notion
 - 외부 API : 포트원 결제 API, 카카오, 구글, 네이버 소셜로그인 API, 클로버 챗봇 API
 
+<br>
+
 ## 브랜치 전략
 Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜치를 운용했습니다.
 - main, develop, Feat 브랜치로 나누어 개발을 하였습니다.
@@ -28,7 +35,7 @@ Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜
 - develop 브랜치는 개발 단계에서 git-flow의 master 역할을 하는 브랜치입니다.
 - Feat 브랜치는 기능 단위로 독립적인 개발 환경을 위하여 사용하고 merge 후 각 브랜치를 삭제해주었습니다.
 
-
+<br>
 
 ## ⚙ 의존성
 ```java
@@ -147,12 +154,8 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 
 <br>
 
-## 3️⃣ ERD & 테이블 명세서
-테이블 명세서 : 
-
+## 3️⃣ ERD
 <br>
-<br>
-
 ![image](https://github.com/bugger0330/BookHub/assets/92834334/49df0846-ef3a-4e91-b4d6-206cb9541ee8)
 
 <br>
