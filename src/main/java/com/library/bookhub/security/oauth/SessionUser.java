@@ -15,6 +15,7 @@ public class SessionUser implements Serializable {
     private String email;
     private String username;
     private String password;
+    private String role;
     
     public SessionUser(User user) {
     	this.id = user.getId();
@@ -22,5 +23,6 @@ public class SessionUser implements Serializable {
         this.email = user.getEmail();
         this.username = user.getUserName();
         this.password = "";
+        this.role = user.getRole();
     }
 }

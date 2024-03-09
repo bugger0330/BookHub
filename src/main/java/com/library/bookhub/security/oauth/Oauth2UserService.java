@@ -42,7 +42,7 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
         User user = saveOrUpdate(attributes);
         
         httpSession.setAttribute("user", new SessionUser(user));
-
+        
         return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(user.getRole())),
         		attributes.getAttributes(),
         		attributes.getNameAttributeKey());
@@ -60,7 +60,7 @@ public class Oauth2UserService implements OAuth2UserService<OAuth2UserRequest, O
             userEntity.setName(attributes.getNickname());
             userEntity.setEmail(attributes.getEmail());
             userEntity.setPhone(attributes.getPhone());
-            userEntity.setRole("ROLE_USER");
+            userEntity.setRole(attributes.getRole());
 
             // 사용자를 등록한 후에 즉시 userEntity에 할당
             memberRepository.insert(userEntity);

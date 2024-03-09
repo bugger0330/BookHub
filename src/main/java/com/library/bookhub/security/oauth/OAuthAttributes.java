@@ -17,6 +17,7 @@ public class OAuthAttributes {
     private String nickname;
     private String email;
     private String phone;
+    private String role;
     
     // 오스 이메일 가입자의 비밀번호 생성
     private static int randomNumber = (int) (Math.random() * 100000000);
@@ -25,7 +26,7 @@ public class OAuthAttributes {
     
     @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, 
-    						String username,String nickname, String email, String password, String phone) {
+    						String username,String nickname, String email, String password, String phone, String role) {
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
         this.username = username;
@@ -33,6 +34,7 @@ public class OAuthAttributes {
         this.nickname = nickname;
         this.email = email;
         this.phone = phone;
+        this.role = role;
     }
     
     // 소셜 구분 및 정보 분배
@@ -66,6 +68,7 @@ public class OAuthAttributes {
                 .password(uuPass.toString())
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
+                .role("ROLE_USER")
                 .build();
     }
     
@@ -87,6 +90,7 @@ public class OAuthAttributes {
 				  .attributes(attributes)
 				  .nameAttributeKey(userNameAttributeName)
 				  .phone(phone) 
+				  .role("ROLE_USER")
 				  .build();
 		 
     }
@@ -107,6 +111,7 @@ public class OAuthAttributes {
                .password(uuPass.toString())
                .attributes(attributes)
                .nameAttributeKey(userNameAttributeName)
+               .role("ROLE_USER")
                .build();
 		 
     }

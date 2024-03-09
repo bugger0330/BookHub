@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer.FrameOptionsConfig;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
@@ -162,8 +165,12 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	}
 	
 	
-	public void configure(WebSecurity web) throws Exception {
+	public void configure(WebSecurity web, AuthenticationManagerBuilder auth) throws Exception {
 	    web.httpFirewall(defaultHttpFirewall());
+	    
+	    auth.userDetailsService(service)
+        // 비밀번호를 저장할 때 인코딩 설정 (필요에 따라 변경 가능)
+        .passwordEncoder(passwordEncoder());
 	}
 	
 	// 더블 슬래시 허용
@@ -173,7 +180,10 @@ public class SecurityConfigration implements WebMvcConfigurer {
 	    
 	}
 
-	
+	@Bean
+    public GrantedAuthority socialUserRole() {
+        return new SimpleGrantedAuthority("ROLE_USER");
+    }
 	
 	
 }

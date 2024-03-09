@@ -25,7 +25,7 @@
 				<h2>문의하기</h2>
 
 				<!-- 이부분은 유저계정으로 로그인시 표시되게 설정해야함 -->
-				<sec:authorize access="hasRole('ROLE_USER')">
+				<sec:authorize access="isAuthenticated()">
 					<div class="btn-group" role="group"
 						aria-label="Basic outlined example" style="display: flex;">
 						<button type="button" class="btn btn-outline-primary"
