@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.library.bookhub.entity.Club;
 import com.library.bookhub.security.MyUserDetails;
+import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.ClubService;
 import com.library.bookhub.web.dto.ClubSaveFormDto;
 
@@ -27,6 +28,9 @@ public class ClubRestController {
 
 	@Autowired
 	ClubService clubService;
+	
+	@Autowired
+	private UserDetailsServiceImpl serviceImpl;
 	
 	// 독서모임 신청
 	// Ajax로 보낸 데이터 아래와 같이 파라미터로 받음
@@ -60,9 +64,10 @@ public class ClubRestController {
 	// 모임 개설
 	// 파일업로드 로직도 서비스에서 구현한다!
 	@PostMapping("/save")
-	public ResponseEntity<?> save(@AuthenticationPrincipal MyUserDetails myUserDetails, ClubSaveFormDto dto) {
+	public ResponseEntity<?> save(ClubSaveFormDto dto) {
+		String username = serviceImpl.getUserId();
 		
-		boolean result = clubService.createClub(myUserDetails, dto);
+		boolean result = clubService.createClub(username, dto);
 		
 		return new ResponseEntity<Boolean>(result, HttpStatus.OK);
 	}

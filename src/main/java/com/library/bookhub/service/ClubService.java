@@ -34,13 +34,13 @@ public class ClubService {
 	
 	// 모임 개설
 	@Transactional
-	public boolean createClub(@AuthenticationPrincipal MyUserDetails myUserDetails, ClubSaveFormDto dto) {
+	public boolean createClub(String username, ClubSaveFormDto dto) {
 		
 		// 포인트 조회
 		// DB에 포인트 값 수정해도 처음 로그인 시 포인트 값으로 계속 로그찍힘
 		// userName으로 DB에서 조회해서 포인트 가져오자
-		log.info("userName : " + myUserDetails.getUsername());
-		User user = clubRepository.findUserByUserName(myUserDetails.getUsername());
+		log.info("userName : " + username);
+		User user = clubRepository.findUserByUserName(username);
 		log.info("user : " + user);
 		int point = user.getPoint();
 		

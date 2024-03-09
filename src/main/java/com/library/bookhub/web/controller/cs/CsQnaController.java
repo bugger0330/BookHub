@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.entity.cs.CsQnaEntity;
+import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.CsFileService;
 import com.library.bookhub.service.CsQnaService;
 import com.library.bookhub.web.dto.common.PageReq;
@@ -30,6 +31,9 @@ public class CsQnaController {
 
 	@Autowired
 	CsFileService csFileService;
+	
+	@Autowired
+	private UserDetailsServiceImpl serviceImpl;
 
 	// Qna 리스트
 	@GetMapping("/qna/list")
@@ -73,9 +77,9 @@ public class CsQnaController {
 
 	// Qna 작성하기
 	@PostMapping("/qna/insert")
-	public String qnaInsert(CsQnaDto dto, @AuthenticationPrincipal UserDetails userDetails) {
+	public String qnaInsert(CsQnaDto dto) {
 		
-		String userId = userDetails.getUsername();
+		String userId = serviceImpl.getUserId();
 		
 		System.out.println("유저 정보" +userId);
 		System.out.println(dto.toString());

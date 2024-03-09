@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.library.bookhub.entity.cs.CsQnaEntity;
 import com.library.bookhub.entity.cs.CsQnaReplyEntity;
+import com.library.bookhub.security.UserDetailsServiceImpl;
 import com.library.bookhub.service.CsQnaReplyService;
 import com.library.bookhub.web.dto.cs.CsQnaReplyDto;
 
@@ -24,6 +25,9 @@ public class CsReplyController {
 
 	@Autowired
 	CsQnaReplyService csQnaReplyService;
+	
+	@Autowired
+	private UserDetailsServiceImpl serviceImpl;
 
 	// QnaReply 작성하기 화면
 	@GetMapping("/qna/reply/{qnaId}")
@@ -39,10 +43,9 @@ public class CsReplyController {
 	// QnaReply 작성하기
 	@PostMapping("/qna/reply/{qnaId}")
 	@ResponseBody
-	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto,
-			@AuthenticationPrincipal UserDetails userDetails) {
+	public boolean qnaReplyInsert(@PathVariable("qnaId") int qnaId, @RequestBody CsQnaReplyDto dto) {
 
-		String userId = userDetails.getUsername();
+		String userId = serviceImpl.getUserId();
 
 		dto.setQnaId(qnaId);
 

@@ -28,6 +28,9 @@ public class CsNoticeController {
 
 	@Autowired
 	CsFileService csFileService;
+	
+	@Autowired
+	private UserDetailsServiceImpl serviceImpl;
 
 	// Notice 리스트 화면
 	@GetMapping("/notice/list")
@@ -82,9 +85,9 @@ public class CsNoticeController {
 
 	// Notice 작성하기
 	@PostMapping("/notice/insert")
-	public String noticeInsert(CsNoticeDto dto,@AuthenticationPrincipal UserDetails userDetails) {
+	public String noticeInsert(CsNoticeDto dto) {
+		String userId = serviceImpl.getUserId();
 		
-		String userId = userDetails.getUsername();
 		
 		System.out.println("유저 정보" +userId);
 		
