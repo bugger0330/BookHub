@@ -157,7 +157,8 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 ## 3️⃣ ERD
 <br>
 
-![image](https://github.com/bugger0330/BookHub/assets/92834334/49df0846-ef3a-4e91-b4d6-206cb9541ee8)
+![image](https://github.com/bugger0330/BookHub/assets/101609520/1105d441-87d8-4585-80a3-f9c586373d2f)
+
 
 <br>
 
@@ -192,7 +193,8 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 </table>
 
 #😎 이지민
-- 
+-
+
 #😎 이준혁
 - 포트원 API 이용 상품 결제 구현
 - [![시연영상](http://img.youtube.com/vi/YDWpmKiytrk/0.jpg)](https://youtu.be/YDWpmKiytrk)
@@ -204,5 +206,8 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - 2024.02.08 ~ 2024.03.08
 작업관리
 - 노션을 이용하여 그날 작업했던 내용을 기록하였습니다.
+
+![image](https://github.com/bugger0330/BookHub/assets/101609520/0797e525-9f8d-4c0a-bb65-191799fe8030)
+![image](https://github.com/bugger0330/BookHub/assets/101609520/d573c147-0b46-4a53-b6c2-d44dd4fa911d)
 
 
