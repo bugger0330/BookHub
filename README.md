@@ -267,6 +267,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - 2024.02.08 ~ 2024.03.08
 작업관리
 - 노션을 이용하여 그날 작업했던 내용을 기록하였습니다.
+- 노션 주소 : https://phase-ground-168.notion.site/14c5a9ac94484ad29fdf3f0db3c4c613?v=d9e697a019a945f0a10048e72c89218e&pvs=4
 
 ![image](https://github.com/bugger0330/BookHub/assets/101609520/0797e525-9f8d-4c0a-bb65-191799fe8030)
 ![image](https://github.com/bugger0330/BookHub/assets/101609520/d573c147-0b46-4a53-b6c2-d44dd4fa911d)
