@@ -185,6 +185,9 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
   
 #😎 송기동
 -
+- 챗봇 기능
+- 회원정보 수정/탈퇴
+- 도서관소개 페이지
 
 #😎 박한산
 -
