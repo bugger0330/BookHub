@@ -262,6 +262,10 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 |------|------|
 |![아이디찾기](https://github.com/bugger0330/BookHub/assets/126323071/c10b12a5-40e7-4f40-9bd6-201ae032f58d)|![비밀번호찾기](https://github.com/bugger0330/BookHub/assets/126323071/3c53e499-61ad-4688-af75-ce07c0d65329)|
 
+- 회원가입 : 아이디/휴대폰/이메일 중복 확인, Validation 체크 처리, 카카오 우편번호 찾기 API를 사용 하여 주소 입력, smtp 이메일 인증을 통한 이메일 정보 확인
+- 로그인 : 카카오/구글/네이버 소셜 로그인 (OAuth 2.0 프로토콜), 일반 로그인, 아이디/비밀번호 찾기 및 변경(smtp 이메일 인증)
+
+
 #😎 이준혁
 
 |포인트구매(결제API)|포인트상품추가|포인트상품 수정/삭제|
