@@ -15,7 +15,7 @@
 <br>
 
 ## 팀원 구성
-![image](https://github.com/bugger0330/BookHub/assets/126323071/aae290f1-c685-40b8-82ca-8beb678aac09)
+![image](https://github.com/bugger0330/BookHub/assets/136422040/188c1dd9-830e-4fc3-9234-76bd332f31ec)
 
 <br>
 
