@@ -6,7 +6,7 @@ const deleteBtn = $("#btn-delete");
 
 let addressNum = window.location.pathname.split("/")[3];
 
-// notice list에서 등록 위한 클릭 이벤트
+// 목록에서 공지사항 등록 위한 클릭 이벤트
 function loadInsert() {
 	const insertClick = $("#btnInsert");
 	insertClick.on("click", function() {
@@ -15,7 +15,7 @@ function loadInsert() {
 }
 loadInsert();
      
-// Notice list에서 View 위한 클릭 이벤트 --> csSearch.js
+// 목록에서 View 위한 클릭 이벤트 --> csSearch.js
 
 
 // Notice list에서 View Id 넘겨주기

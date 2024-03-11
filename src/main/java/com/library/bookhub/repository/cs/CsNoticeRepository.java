@@ -12,7 +12,7 @@ import com.library.bookhub.entity.cs.CsQnaEntity;
 public interface CsNoticeRepository {
 
 	// Notice 리스트
-//	public List<CsNoticeEntity> selectCsNoticeList();
+	// public List<CsNoticeEntity> selectCsNoticeList();
 
 	// Notice 상세보기
 	public CsNoticeEntity noticeView(int id);
@@ -36,7 +36,7 @@ public interface CsNoticeRepository {
 
     // 추가 강민 공지사항 리스트 불러오기
 	public List<CsNoticeEntity> noticeSearchPage(@Param("searchType") String searchType, @Param("searchInput") String searchInput);
-	// 추가
+	// 추가 전체 리스트
 	public List<CsNoticeEntity> noticeList();
 
 }
