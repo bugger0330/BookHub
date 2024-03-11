@@ -180,10 +180,13 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 -
 - 공지사항 (crud, 검색, 페이징)
 - qna (crud, 페이징, 답변)
-- faq (아코디언형식js) 
+- faq (아코디언형식js)
+  
 #😎 송기동
 -
+
 #😎 박한산
+-
 <table>
     <tr>
         <td>독서모임 개설</td>
