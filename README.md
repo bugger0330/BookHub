@@ -26,6 +26,7 @@
 - 버전/이슈관리 : GitHub, GitBash
 - 협업 툴 : Discord, Notion
 - 외부 API : 포트원 결제 API, 카카오/구글/네이버 소셜로그인 API, 클로버 챗봇 API, 카카오 우편번호 API, 이메일 전송(구글 SMTP 프로토콜) API, 공공(도서목록) API
+- 게시판 : Summernote editor
 
 <br>
 
