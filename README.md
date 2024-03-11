@@ -21,10 +21,11 @@
 
 ## 개발환경
 - 개발 툴 : Spring Tools 4 (4.21.1)
-- Backend : JAVA 17, SpringBoot 3.1.8, MyBatis, JSP
+- Backend : JAVA 17, SpringBoot 3.1.8, MyBatis, JSP, MySQL 8.0.26, lombok, BCrypt HASH, Apache Tomcat : 9.0
+- Frontend : bootstrap : 4.6.2, HTML5, CSS3, JavaScript : 1.16.1, JQuery : 3.6.4
 - 버전/이슈관리 : GitHub, GitBash
 - 협업 툴 : Discord, Notion
-- 외부 API : 포트원 결제 API, 카카오, 구글, 네이버 소셜로그인 API, 클로버 챗봇 API
+- 외부 API : 포트원 결제 API, 카카오/구글/네이버 소셜로그인 API, 클로버 챗봇 API, 카카오 우편번호 API, 이메일 전송(구글 SMTP 프로토콜) API, 공공(도서목록) API
 
 <br>
 
@@ -62,6 +63,16 @@ implementation 'org.springframework.boot:spring-boot-starter-websocket'
 implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2'
 ```
 <br>
+
+## 개발기간/작업관리
+개발기간 (총 16일)
+- 2024.02.08 ~ 2024.03.06
+작업관리
+- 노션을 이용하여 그날 작업했던 내용을 기록하였습니다.
+- 노션 주소 : https://phase-ground-168.notion.site/14c5a9ac94484ad29fdf3f0db3c4c613?v=d9e697a019a945f0a10048e72c89218e&pvs=4
+
+![image](https://github.com/bugger0330/BookHub/assets/101609520/0797e525-9f8d-4c0a-bb65-191799fe8030)
+![image](https://github.com/bugger0330/BookHub/assets/101609520/d573c147-0b46-4a53-b6c2-d44dd4fa911d)
 
 ## 1️⃣ 프로젝트 구조
 
@@ -151,6 +162,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 ## 2️⃣ 프로젝트 개요
 
 * 핵심 기능이 많으며 실무에서 활용할 수 있는 기능이 포함된 것들 중, 예약, 환불, 외부 API를 활용할 수 있는 도서관 + 독서모임 사이트로 주제 선정
+  
 
 <br>
 
@@ -171,6 +183,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 
 ## 역할 분담
 #😎 강민(팀장)
+
 |도서목록|도서상세(대출)|
 |------|------|
 |![도서목록](https://github.com/bugger0330/BookHub/assets/126323071/2e7c5f90-460f-4f6f-a132-e7a0fde43392)|![도서대출](https://github.com/bugger0330/BookHub/assets/126323071/15e61a5f-74c3-4d7c-9e13-1b0c2b7bc29f)|
@@ -195,6 +208,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 
 
 #😎 노수현
+
 |공지사항|공지사항검색|문의하기|자주묻는질문|
 |------|------|------|------|
 |![도서반납](https://github.com/bugger0330/BookHub/assets/126323071/433ad34f-276c-4888-9459-fcc6ff9116e1)|![도서서가위치](https://github.com/bugger0330/BookHub/assets/126323071/bb46a5c1-8b1a-4342-9256-90a3df845a45)|![도서검색](https://github.com/bugger0330/BookHub/assets/126323071/5f58e45a-6832-4ff4-bc02-bbdc8f5ab853)|![자주묻는질문](https://github.com/bugger0330/BookHub/assets/126323071/b822f301-6bca-48c3-9702-70830a13868e)|
@@ -203,6 +217,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - faq (아코디언형식js)
   
 #😎 송기동
+
 |챗봇|회원정보수정/탈퇴|도서관소개|
 |------|------|------|
 |![챗봇](https://github.com/bugger0330/BookHub/assets/126323071/dcf5badb-9702-4ad2-83d1-e46fb11f1198)|![회원수정](https://github.com/bugger0330/BookHub/assets/126323071/f36e22bf-3ea7-4a2b-a9bf-e2aec7b78368) ![회원탈퇴](https://github.com/bugger0330/BookHub/assets/126323071/19d19e61-bb41-4950-919e-56ed20c79f83)|![도서관소개페이지](https://github.com/bugger0330/BookHub/assets/126323071/106ec07d-496c-4907-942f-7ef46be4ec8a)|
@@ -211,6 +226,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - 도서관소개 페이지
 
 #😎 박한산
+
 <table>
     <tr>
         <td>독서모임 개설</td>
@@ -237,6 +253,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 </table>
 
 #😎 이지민
+
 |로그인|회원가입|이메일인증|출석체크|
 |------|------|------|------|
 |![로그인](https://github.com/bugger0330/BookHub/assets/126323071/a75d8432-1158-4cfb-a7e2-65bed809c45b)|![회원가입](https://github.com/bugger0330/BookHub/assets/126323071/f52243f1-3947-45f0-8e27-89060356ed98)|![회원가입_이메일인증](https://github.com/bugger0330/BookHub/assets/126323071/449510f6-fb20-4696-8ece-988d68ad623e)|![출첵](https://github.com/bugger0330/BookHub/assets/126323071/78ee4a17-aaed-40f0-83ce-b33209cb76d5)|
@@ -246,6 +263,7 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 |![아이디찾기](https://github.com/bugger0330/BookHub/assets/126323071/c10b12a5-40e7-4f40-9bd6-201ae032f58d)|![비밀번호찾기](https://github.com/bugger0330/BookHub/assets/126323071/3c53e499-61ad-4688-af75-ce07c0d65329)|
 
 #😎 이준혁
+
 |포인트구매(결제API)|포인트상품추가|포인트상품 수정/삭제|
 |------|------|------|
 |![포인트구매](https://github.com/bugger0330/BookHub/assets/126323071/f55c86ca-f855-4af4-b96e-fa81174dfe4f)|![포인트상품추가](https://github.com/bugger0330/BookHub/assets/126323071/2e881b59-6418-4ff3-8320-92b3f79b8475)|![포인트상품수정삭제](https://github.com/bugger0330/BookHub/assets/126323071/06949030-3f15-4ff7-8a48-32dccb958a5c)|
@@ -262,14 +280,6 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - 관리자페이지(상품등록, 배너광고 등록)
 - 결제 기능
 
-## 개발기간/작업관리
-개발기간
-- 2024.02.08 ~ 2024.03.08
-작업관리
-- 노션을 이용하여 그날 작업했던 내용을 기록하였습니다.
-- 노션 주소 : https://phase-ground-168.notion.site/14c5a9ac94484ad29fdf3f0db3c4c613?v=d9e697a019a945f0a10048e72c89218e&pvs=4
 
-![image](https://github.com/bugger0330/BookHub/assets/101609520/0797e525-9f8d-4c0a-bb65-191799fe8030)
-![image](https://github.com/bugger0330/BookHub/assets/101609520/d573c147-0b46-4a53-b6c2-d44dd4fa911d)
 
 
