@@ -211,13 +211,30 @@ implementation 'org.springframework.boot:spring-boot-starter-oauth2-client:3.2.2
 - 도서관소개 페이지
 
 #😎 박한산
-|모임개설|
-|------|
-|![모임개설](https://github.com/bugger0330/BookHub/assets/126323071/bdbc0d97-37c5-4643-9b41-93e6fd5fe1bf)|
-
-|독서모임 찜하기|독서모임 신청, 취소|모임 개설 취소|독서모임 검색|
-|------|------|------|------|
-|![독서모임리스트, 찜하기](https://github.com/bugger0330/BookHub/assets/126323071/9ac3d5f1-06c6-4223-9b80-e2340aa56bcf)|![독서모임 신청, 취소](https://github.com/bugger0330/BookHub/assets/126323071/6d0a7d1b-7151-4e6c-9504-17334a87d187)|![모임개설취소](https://github.com/bugger0330/BookHub/assets/126323071/61a238a3-a1eb-4390-8c1b-4910d8582512)|![독서모임 검색](https://github.com/bugger0330/BookHub/assets/126323071/137f6359-0e94-45ba-a07a-8e89ddf5cd79)|
+<table>
+    <tr>
+        <td>독서모임 개설</td>
+        <td>독서모임 신청</td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/cf83f94d-ea35-4c24-ba4f-653b0219de22"></td>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/87c0c9ea-8d25-40e9-9bbc-891558e6bf04"></td>
+    </tr>
+    <tr>
+        <td>독서모임 찜하기</td>
+        <td>독서모임 검색</td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/aee7213f-a408-4c6f-a724-b324f15ab2f3"></td>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/13eee206-4dfe-4b23-9eaf-4c435f0cca8e"></td>
+    </tr>
+    <tr>
+         <td>독서모임 카테고리 및 인기모임</td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/bugger0330/BookHub/assets/136421972/aa226100-614a-4f61-a3bc-79fcef8cb824"></td>
+    </tr>
+</table>
 
 #😎 이지민
 |로그인|회원가입|이메일인증|출석체크|
