@@ -164,10 +164,8 @@ window.onload = function() {
 		if(data != null) {
 			
 			for(let i=0 ; i<data.length ; i++) {
-				
-			let setupClubImage = "/img/club/" + data[i].uploadFileName1;	
 			
-			// club entity에도 CDate로 저장되있는데 콘솔에 왜 cdate로 찍힐까??? cdate하니까 되네!!!!!
+			// club entity에도 cDate로 저장되있는데 콘솔에 왜 cdate로 찍힐까??? cdate하니까 되네!!!!!
 			let formattedDate = formatCDate(data[i].cdate);
 		    
 				
