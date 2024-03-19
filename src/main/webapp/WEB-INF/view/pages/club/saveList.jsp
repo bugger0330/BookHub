@@ -36,8 +36,8 @@
 	  	<div class="card-body">
 		    <h4 class="card-title text-center">${club.clubName}</h4>
 		    <p class="card-text text-center">개설일 : ${club.formatCreatedAt()}</p>
-	    <!--  data-toggle="modal" data-target="#deleteModal" 추가 -->
-		    <a data-id="${club.id }" name="deleteButton" href="#" class="btn btn-primary" >개설 취소</a>
+		    <!-- href속성 없어도 btn class라서 클릭 커서로 바뀜  -->
+		    <a data-id="${club.id }" name="deleteButton" class="btn btn-primary">개설 취소</a>
 	  	</div>
 	</div>
 	<br>

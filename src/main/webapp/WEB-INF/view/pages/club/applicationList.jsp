@@ -37,7 +37,7 @@
 		    	<h4 class="card-title text-center">${application.clubName}</h4>
 			    <p class="card-text text-center">신청일 : ${application.formatCreatedAt()}</p>
 			    <!-- 사용자정의 속성 주기!!!!!!! -->
-			    <a class="btn btn-primary" data-id="${application.id}" data-clubId="${application.clubId}">
+			    <a name="cancelButton" class="btn btn-primary" data-id="${application.id}" data-clubId="${application.clubId}">
 			    신청 취소</a>
 		  	</div>
 		</div>

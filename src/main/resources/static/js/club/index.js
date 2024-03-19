@@ -2,8 +2,8 @@
 window.onload = function() {
 	
 	const searchInput = document.getElementById('searchInput');
-	const searchBtn = document.querySelector('button');
-	const form = document.querySelector('form');
+	const searchBtn = document.getElementById('searchButton');
+	const form = document.getElementById('searchForm');
 	
 	// 검색 버튼 클릭이벤트로 하면 button의 타입이 submit이라 e.preventDefault 작동 안됨
 	form.addEventListener('submit', function(e) {

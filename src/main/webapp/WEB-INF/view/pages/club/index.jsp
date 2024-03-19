@@ -29,11 +29,11 @@
                        <h4 class="mb-3 text-secondary">독서와 무제한으로 친해지기 </h4>
                        <h1 class="mb-5 display-3 text-primary">BookHub</h1>
                        <div class="position-relative mx-auto">
-                           <form action="/club/searchList" method="get">
+                           <form id="searchForm" action="/club/searchList" method="get">
                            	<!-- index페이지는 input에 value값 설정할 필요없다 -->
                            	<!-- class는 -- 쓰고 id는 camel 쓰네 -->
                             <input id="searchInput" class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill" name="keyword" type="text" placeholder="모임검색">
-                            <button type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style="top: 0; right: 25%;">검색</button>
+                            <button id="searchButton" type="submit" class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100" style="top: 0; right: 25%;">검색</button>
                        	</form>
                        </div>
                    </div>
