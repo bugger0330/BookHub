@@ -36,9 +36,7 @@ Git-flow 전략을 기반으로 main, develop 브랜치와 feature 보조 브랜
 #😎 송기동
 -
 #😎 박한산
-- <img style="width: 200px;"> ![alt text](<독서모임 신청-1.gif>)</img>
-![alt text](<독서모임 신청.gif>)
-- 
+-
 #😎 이지민
 - 
 #😎 이준혁
